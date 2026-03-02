@@ -30,10 +30,10 @@ const About = () => {
                     <SectionLabel>Over mij</SectionLabel>
                     <motion.h1
                         variants={fadeUp}
-                        className="text-3xl md:text-5xl lg:text-[58px] font-sans font-bold leading-[1.1] text-[#F2F0E9] tracking-tighter"
+                        className="font-sans font-bold leading-[1.2] text-[#F2F0E9] tracking-tighter flex flex-wrap items-baseline gap-x-4 gap-y-2 text-3xl md:text-5xl lg:text-[58px]"
                     >
-                        Designer. Bouwer. <br />
-                        <span className="text-primary font-drama font-normal inline-block align-baseline mt-6 leading-[1.1] text-3xl md:text-5xl lg:text-[58px]">Jouw sparringspartner.</span>
+                        <span>Designer. Bouwer.</span>
+                        <span className="text-primary font-drama font-normal leading-[1.2] text-3xl md:text-5xl lg:text-[61px]">Jouw sparringspartner.</span>
                     </motion.h1>
                     <motion.p variants={fadeUp} className="font-sans text-[#F2F0E9]/80 text-lg md:text-2xl font-light italic leading-relaxed max-w-4xl border-l-[3px] border-primary/20 pl-8 md:pl-12">
                         Ik ben Merlijn. 10 jaar designer, nu ook bouwer van websites, dashboards en automatiseringen. Ik combineer wat andere freelancers niet combineren.
@@ -66,9 +66,9 @@ const About = () => {
                     >
                         <div className="space-y-8">
                             <SectionLabel>Wie ik ben</SectionLabel>
-                            <motion.h2 variants={fadeUp} className="text-3xl md:text-4xl lg:text-[58px] font-sans font-bold text-[#F2F0E9] leading-[1.1] tracking-tighter">
-                                De perfecte mix tussen <br />
-                                <span className="text-primary font-drama font-normal inline-block align-baseline mt-4 leading-[1.1] text-3xl md:text-4xl lg:text-[58px]">vorm en functie.</span>
+                            <motion.h2 variants={fadeUp} className="font-sans font-bold text-[#F2F0E9] leading-[1.2] tracking-tighter flex flex-wrap items-baseline gap-x-4 gap-y-2 text-3xl md:text-4xl lg:text-[58px]">
+                                <span>De perfecte mix tussen</span>
+                                <span className="text-primary font-drama font-normal leading-[1.2] text-3xl md:text-4xl lg:text-[61px]">vorm en functie.</span>
                             </motion.h2>
                         </div>
                         <div className="space-y-8 font-sans text-[#F2F0E9]/60 text-lg md:text-2xl font-light italic leading-relaxed border-l-[3px] border-primary/20 pl-8 md:pl-12">
@@ -89,9 +89,9 @@ const About = () => {
                 <div className="space-y-16 md:space-y-24 pt-16 md:pt-32 border-t border-white/5">
                     <div className="flex flex-col md:items-center text-left md:text-center space-y-8">
                         <SectionLabel>Keuze</SectionLabel>
-                        <h2 className="text-3xl md:text-5xl lg:text-[58px] font-sans font-bold text-[#F2F0E9] leading-[1.1] tracking-tighter">
-                            Waarom ondernemers voor <br />
-                            <span className="text-primary font-drama font-normal inline-block align-baseline mt-4 leading-[1.1] text-3xl md:text-5xl lg:text-[58px]">mij kiezen.</span>
+                        <h2 className="font-sans font-bold text-[#F2F0E9] leading-[1.2] tracking-tighter flex flex-wrap items-baseline gap-x-4 gap-y-2 md:justify-center text-3xl md:text-5xl lg:text-[58px]">
+                            <span>Waarom ondernemers voor</span>
+                            <span className="text-primary font-drama font-normal leading-[1.2] text-3xl md:text-5xl lg:text-[61px]">mij kiezen.</span>
                         </h2>
                     </div>
 
@@ -120,8 +120,9 @@ const About = () => {
                 {/* Bottom CTA */}
                 <div className="py-20 md:py-32 border-t border-white/5 flex flex-col items-center text-center">
                     <SectionLabel className="md:justify-center">Samenwerken</SectionLabel>
-                    <h2 className="text-3xl md:text-5xl lg:text-[58px] font-sans font-bold text-[#F2F0E9] leading-[1.1] tracking-tighter mt-8">
-                        Wil je <span className="text-primary font-drama font-normal italic inline-block align-baseline leading-[1.1] text-3xl md:text-5xl lg:text-[58px]">samenwerken?</span>
+                    <h2 className="font-sans font-bold text-[#F2F0E9] leading-[1.2] tracking-tighter flex flex-wrap items-baseline gap-x-4 gap-y-2 md:justify-center text-3xl md:text-5xl lg:text-[58px] mt-8">
+                        <span>Wil je</span>
+                        <span className="text-primary font-drama font-normal italic leading-[1.2] text-3xl md:text-5xl lg:text-[61px]">samenwerken?</span>
                     </h2>
                     <p className="font-sans text-[#F2F0E9]/40 text-lg md:text-2xl mt-8 mb-16 md:mb-24 italic max-w-2xl">
                         Plan een gratis check. In 20 minuten weet je of we een match zijn.

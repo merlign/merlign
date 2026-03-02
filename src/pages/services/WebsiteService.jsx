@@ -177,10 +177,13 @@ const WebsiteService = () => {
                         className="text-left md:text-center space-y-10 md:space-y-16 mb-16 md:mb-24 w-full"
                     >
                         <Link to="/contact" className="group flex flex-col items-center">
-                            <h2 className="font-sans font-bold text-[#F2F0E9] leading-[1.1] tracking-tighter flex flex-wrap items-baseline gap-x-4 md:justify-center text-3xl md:text-5xl lg:text-[58px]">
+                            <motion.h1
+                                variants={fadeUp}
+                                className="font-sans font-bold leading-[1.2] text-[#F2F0E9] tracking-tighter flex flex-wrap items-baseline gap-x-4 gap-y-2 text-3xl md:text-5xl lg:text-[58px]"
+                            >
                                 <span>Klaar om te</span>
-                                <span className="text-primary font-drama font-normal leading-[1.1] text-3xl md:text-5xl lg:text-[61px]">beginnen?</span>
-                            </h2>
+                                <span className="text-primary font-drama font-normal leading-[1.2] text-3xl md:text-5xl lg:text-[61px]">sturen op cijfers?</span>
+                            </motion.h1>
                         </Link>
                         <motion.p variants={fadeUp} className="font-sans text-[#F2F0E9]/40 text-base md:text-xl font-light leading-relaxed italic max-w-3xl mx-auto border-l-2 md:border-l-0 md:border-b-2 border-white/5 pb-10 md:pb-12 pl-8 md:pl-0 text-center">
                             Vraag een gratis check aan. In 20 minuten weet je wat het oplevert.
