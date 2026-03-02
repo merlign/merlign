@@ -51,20 +51,25 @@ body::before {
 
 @layer components {
   .btn-magnetic {
-    @apply relative overflow-hidden px-8 py-4 rounded-full font-mono font-bold tracking-[0.2em] uppercase text-[11px] transition-all duration-500 transform-gpu flex items-center justify-center gap-3;
-    transition-timing-function: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    @apply relative overflow-hidden px-8 py-4 rounded-full font-mono font-bold tracking-[0.2em] uppercase text-[11px] transition-all duration-700 transform-gpu flex items-center justify-center gap-3 bg-transparent;
+    transition-timing-function: cubic-bezier(0.23, 1, 0.32, 1);
   }
 
   .btn-magnetic:hover {
-    @apply scale-[1.03] -translate-y-[2px];
+    @apply scale-[1.05] -translate-y-1 text-white shadow-2xl shadow-primary/20;
   }
 
   .btn-magnetic .btn-bg {
-    @apply absolute inset-0 bg-primary translate-y-full transition-transform duration-500 ease-out -z-10;
+    @apply absolute inset-0 bg-primary translate-y-[102%] -z-10 rounded-[50%];
+    transition: transform 0.7s cubic-bezier(0.23, 1, 0.32, 1), border-radius 0.7s cubic-bezier(0.23, 1, 0.32, 1);
+    height: 150%;
+    width: 150%;
+    left: -25%;
+    top: -25%;
   }
 
   .btn-magnetic:hover .btn-bg {
-    @apply translate-y-0;
+    @apply translate-y-0 rounded-none;
   }
 
   .functional-card {
@@ -76,7 +81,7 @@ body::before {
   }
 
   .blueprint-border {
-    @apply border border-dark/5 relative;
+    @apply relative;
   }
 
   .blueprint-border::before,

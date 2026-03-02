@@ -47,19 +47,19 @@ const Navbar = () => {
                             <img src="/logo_merlign.png" alt="Merlign" className="h-5 md:h-6 transition-all duration-500 brightness-0 invert" />
                         </Link>
 
-                        <div className="hidden lg:flex items-center gap-10 font-mono text-[11px] uppercase tracking-[0.3em] text-[#F2F0E9]/40">
+                        <div className="hidden lg:flex items-center gap-10 font-mono text-[13px] uppercase tracking-[0.3em] text-[#F2F0E9]/40">
                             {/* Diensten Dropdown */}
                             <div
                                 className="relative group/diensten"
                                 onMouseEnter={() => setIsDienstenOpen(true)}
                                 onMouseLeave={() => setIsDienstenOpen(false)}
                             >
-                                <button className="hover:text-[#F2F0E9] transition-colors py-2 flex items-center gap-2 font-bold group font-mono text-[11px] uppercase tracking-[0.3em]">
+                                <button className="hover:text-[#F2F0E9] transition-colors py-2 flex items-center gap-2 font-bold group font-mono text-[13px] uppercase tracking-[0.3em]">
                                     Diensten
                                     <ChevronDown size={12} className="group-hover:rotate-180 transition-transform duration-500" />
                                 </button>
 
-                                <div className={`absolute top - full left - 1 / 2 - translate - x - 1 / 2 pt - 4 transition - all duration - 500 ${isDienstenOpen ? 'opacity-100 translate-y-0 pointer-events-auto' : 'opacity-0 translate-y-4 pointer-events-none'} `}>
+                                <div className={`absolute top-full left-1/2 -translate-x-1/2 pt-4 transition-all duration-500 ${isDienstenOpen ? 'opacity-100 translate-y-0 pointer-events-auto' : 'opacity-0 translate-y-4 pointer-events-none'}`}>
                                     <div className="bg-[#141414] border border-white/5 rounded-[2rem] p-6 shadow-2xl w-[280px] backdrop-blur-3xl">
                                         <div className="space-y-2">
                                             {services.map((s, i) => (
@@ -68,7 +68,7 @@ const Navbar = () => {
                                                     to={s.href}
                                                     className="block p-4 rounded-[1.5rem] hover:bg-primary/10 transition-all group/item"
                                                 >
-                                                    <p className="text-[#F2F0E9] font-mono font-bold text-[11px] uppercase tracking-[0.2em] leading-none">{s.label}</p>
+                                                    <p className="text-[#F2F0E9] font-mono font-bold text-[13px] uppercase tracking-[0.2em] leading-none">{s.label}</p>
                                                     <p className="text-[#F2F0E9]/30 font-mono text-[9px] uppercase tracking-widest mt-2">{s.desc}</p>
                                                 </Link>
                                             ))}
@@ -86,8 +86,8 @@ const Navbar = () => {
                         </div>
 
                         <div className="flex items-center gap-4 md:gap-6 relative z-10">
-                            <Link to="/contact" className="hidden sm:block btn-magnetic group bg-[#F2F0E9] text-[#0A0A0A] px-6 py-2.5 rounded-full overflow-hidden border border-white/5">
-                                <span className="relative z-10 text-[10px] font-bold uppercase tracking-widest">Plan Je Scan</span>
+                            <Link to="/contact" className="hidden sm:block btn-magnetic group bg-white/5 text-white px-6 py-2.5 rounded-full overflow-hidden">
+                                <span className="relative z-10 text-[12px] font-bold uppercase tracking-widest">Gratis adviesgesprek</span>
                                 <div className="btn-bg bg-primary shadow-[0_0_20px_rgba(201,168,76,0.5)]" />
                             </Link>
 
@@ -115,11 +115,11 @@ const Navbar = () => {
                         <div className="flex flex-col gap-8">
                             <div className="space-y-4">
                                 <button
-                                    className="flex items-center gap-2 hover:text-primary transition-colors py-2 uppercase tracking-[0.3em] font-mono text-[11px] font-bold"
+                                    className="flex items-center gap-2 hover:text-primary transition-colors py-2 uppercase tracking-[0.3em] font-mono text-[13px] font-bold"
                                     onClick={() => setIsDienstenOpen(!isDienstenOpen)}
                                 >
                                     Diensten
-                                    <ChevronDown size={14} className={`transition - transform duration - 500 ${isDienstenOpen ? 'rotate-180' : ''} `} />
+                                    <ChevronDown size={14} className={`transition-transform duration-500 ${isDienstenOpen ? 'rotate-180' : ''}`} />
                                 </button>
                                 <AnimatePresence>
                                     {isDienstenOpen && (
@@ -169,7 +169,7 @@ const Navbar = () => {
                                 className="w-full bg-primary text-[#0A0A0A] py-5 rounded-full font-mono text-[14px] uppercase tracking-[0.2em] font-bold flex items-center justify-center gap-4 group overflow-hidden relative"
                                 onClick={() => setIsMobileMenuOpen(false)}
                             >
-                                <span className="relative z-10">Plan Je Scan</span>
+                                <span className="relative z-10">Gratis adviesgesprek</span>
                                 <ArrowRight size={18} className="relative z-10" />
                                 <div className="btn-bg bg-[#F2F0E9]" />
                             </Link>

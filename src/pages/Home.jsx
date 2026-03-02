@@ -62,10 +62,10 @@ const Hero = () => {
                     </motion.p>
                     <motion.h1
                         variants={fadeUp}
-                        className="text-4xl md:text-5xl lg:text-[64px] font-sans font-bold leading-[1.1] text-[#F2F0E9] tracking-tighter"
+                        className="font-sans font-bold leading-[1.1] text-[#F2F0E9] tracking-tighter flex flex-wrap items-baseline gap-x-4 text-4xl md:text-5xl lg:text-[64px]"
                     >
-                        Krijg meer gedaan met <br />
-                        <span className="text-primary font-drama font-normal inline-block align-baseline mt-6 leading-[1.1] text-4xl md:text-5xl lg:text-[64px]">je huidige team.</span>
+                        <span>Krijg meer gedaan met</span>
+                        <span className="text-primary font-drama font-normal leading-[1.1] text-4xl md:text-5xl lg:text-[67px]">je huidige team.</span>
                     </motion.h1>
                     <motion.div
                         variants={fadeUp}
@@ -123,13 +123,13 @@ const HomeAbout = () => {
                     className="lg:col-span-8 space-y-10 md:space-y-16 px-8 md:px-20"
                 >
                     <SectionLabel>Wie ben ik?</SectionLabel>
-                    <motion.h2
+                    <motion.h1
                         variants={fadeUp}
-                        className="text-3xl md:text-5xl lg:text-[58px] font-sans font-bold leading-[1.1] text-[#F2F0E9] tracking-tighter"
+                        className="font-sans font-bold leading-[1.1] text-[#F2F0E9] tracking-tighter flex flex-wrap items-baseline gap-x-4 text-3xl md:text-5xl lg:text-[58px]"
                     >
-                        Geen bureau. <br />
-                        <span className="text-primary font-drama font-normal inline-block align-baseline mt-4 leading-[1.1] text-3xl md:text-5xl lg:text-[58px]">Eén partner.</span>
-                    </motion.h2>
+                        <span>Geen mooie praatjes.</span>
+                        <span className="text-primary font-drama font-normal leading-[1.1] text-3xl md:text-5xl lg:text-[61px]">Gewoon resultaten.</span>
+                    </motion.h1>
                     <div className="space-y-6">
                         <p className="font-sans text-[#F2F0E9]/80 text-lg md:text-2xl font-light italic leading-relaxed border-l-[3px] border-primary/40 pl-8 md:pl-12">
                             Ik ben al meer dan 10 jaar actief als designer. Dat is mijn edge. Ik begrijp hoe systemen eruit moeten zien voordat ik ze bouw: waardoor wat ik opleveer niet alleen werkt, maar er ook ziet alsof het zo hoort.
@@ -213,8 +213,9 @@ const Services = () => {
                 >
                     <div className="space-y-8 md:space-y-12">
                         <SectionLabel>Diensten</SectionLabel>
-                        <motion.h2 variants={fadeUp} className="text-3xl md:text-5xl lg:text-[58px] font-sans font-bold leading-[1.1] text-[#F2F0E9] tracking-tighter">
-                            Kies waar we <br /> <span className="text-primary font-drama font-normal inline-block align-baseline mt-4 leading-[1.1] text-3xl md:text-5xl lg:text-[58px]">beginnen.</span>
+                        <motion.h2 variants={fadeUp} className="font-sans font-bold leading-[1.1] text-[#F2F0E9] tracking-tighter flex flex-wrap items-baseline gap-x-4 text-3xl md:text-5xl lg:text-[58px]">
+                            <span>Kies waar we</span>
+                            <span className="text-primary font-drama font-normal leading-[1.1] text-3xl md:text-5xl lg:text-[61px]">beginnen.</span>
                         </motion.h2>
                     </div>
                     <motion.p variants={fadeUp} className="font-sans text-[#F2F0E9]/80 max-w-md text-lg md:text-2xl border-l-[3px] border-primary/20 pl-8 md:pl-12 pb-4 md:pb-6 italic leading-relaxed">
@@ -391,9 +392,9 @@ const Process = () => {
             <div className="max-w-[1200px] mx-auto px-8 md:px-20">
                 <div className="mb-24 md:mb-40 space-y-12 text-center">
                     <SectionLabel className="justify-center">Het Traject</SectionLabel>
-                    <h2 className="text-3xl md:text-5xl lg:text-[58px] font-sans font-bold text-[#F2F0E9] leading-[1.1] tracking-tighter">
-                        Drie fases. <br />
-                        <span className="text-primary font-drama font-normal inline-block align-baseline mt-4 leading-[1.1] text-3xl md:text-5xl lg:text-[58px]">Geen verrassingen.</span>
+                    <h2 className="font-sans font-bold text-[#F2F0E9] leading-[1.1] tracking-tighter flex flex-wrap items-baseline gap-x-4 justify-center text-3xl md:text-5xl lg:text-[58px]">
+                        <span>Drie fases.</span>
+                        <span className="text-primary font-drama font-normal leading-[1.1] text-3xl md:text-5xl lg:text-[61px]">Geen verrassingen.</span>
                     </h2>
                 </div>
 
@@ -458,9 +459,9 @@ const FAQ = () => {
             <div className="max-w-[1200px] mx-auto px-8 md:px-20 grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-20">
                 <div className="space-y-6">
                     <SectionLabel>Vragen</SectionLabel>
-                    <h2 className="text-3xl md:text-5xl lg:text-[58px] font-sans font-bold text-[#F2F0E9] leading-[1.1] tracking-tighter">
-                        Alles wat je moet weten <br />
-                        <span className="text-primary font-drama font-normal inline-block align-baseline mt-6 leading-[1.1] text-3xl md:text-5xl lg:text-[58px]">voordat we starten.</span>
+                    <h2 className="font-sans font-bold text-[#F2F0E9] leading-[1.1] tracking-tighter flex flex-wrap items-baseline gap-x-4 text-3xl md:text-5xl lg:text-[58px]">
+                        <span>Alles wat je moet weten</span>
+                        <span className="text-primary font-drama font-normal leading-[1.1] text-3xl md:text-5xl lg:text-[61px]">voordat we starten.</span>
                     </h2>
                 </div>
 
@@ -515,9 +516,9 @@ const ContactSection = () => {
                     className="text-left md:text-center space-y-10 md:space-y-16 mb-12 md:mb-20 w-full"
                 >
                     <SectionLabel className="md:justify-center">Plan Je Scan</SectionLabel>
-                    <motion.h2 variants={fadeUp} className="text-3xl md:text-5xl lg:text-[58px] font-sans font-bold text-[#F2F0E9] leading-[1.1] tracking-tighter">
-                        Welke upgrade gaan we als <br />
-                        <span className="text-primary font-drama font-normal inline-block align-baseline mt-4 leading-[1.1] text-3xl md:text-5xl lg:text-[58px]">eerste activeren?</span>
+                    <motion.h2 variants={fadeUp} className="font-sans font-bold text-[#F2F0E9] leading-[1.1] tracking-tighter flex flex-wrap items-baseline gap-x-4 md:justify-center text-3xl md:text-5xl lg:text-[58px]">
+                        <span>Welke upgrade gaan we als</span>
+                        <span className="text-primary font-drama font-normal leading-[1.1] text-3xl md:text-5xl lg:text-[61px]">eerste activeren?</span>
                     </motion.h2>
                     <motion.p variants={fadeUp} className="font-sans text-[#F2F0E9]/40 text-base md:text-xl font-light leading-relaxed italic max-w-3xl mx-auto border-b-2 border-white/5 pb-8 md:pb-10 text-center">
                         Kies het onderdeel waar je nu de meeste winst laat liggen. <br className="hidden md:block" />
