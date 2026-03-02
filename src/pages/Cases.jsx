@@ -85,10 +85,9 @@ const Cases = () => {
                     <SectionLabel>Cases</SectionLabel>
                     <motion.h1
                         variants={fadeUp}
-                        className="font-sans font-bold leading-[1.1] text-[#F2F0E9] tracking-tighter flex flex-wrap items-baseline gap-x-4 text-3xl md:text-5xl lg:text-[58px]"
+                        className="font-sans font-bold leading-tight text-[#F2F0E9] tracking-tighter text-3xl md:text-5xl lg:text-[58px]"
                     >
-                        <span>Geen mooie praatjes.</span>
-                        <span className="text-primary font-drama font-normal leading-[1.1] text-3xl md:text-5xl lg:text-[61px]">Gewoon resultaten.</span>
+                        Geen mooie praatjes. <span className="text-primary font-drama font-normal text-3xl md:text-5xl lg:text-[61px]">Gewoon resultaten.</span>
                     </motion.h1>
                     <motion.p variants={fadeUp} className="font-sans text-[#F2F0E9]/80 text-lg md:text-2xl font-light italic leading-relaxed max-w-4xl border-l-[3px] border-primary/20 pl-8 md:pl-12">
                         Wat ik heb gebouwd en welk meetbaar resultaat dat heeft opgeleverd.

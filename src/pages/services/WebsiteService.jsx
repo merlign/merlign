@@ -37,10 +37,9 @@ const WebsiteService = () => {
                     <SectionLabel>Website</SectionLabel>
                     <motion.h1
                         variants={fadeUp}
-                        className="text-3xl md:text-5xl lg:text-[58px] font-sans font-bold leading-[1.1] text-[#F2F0E9] tracking-tighter"
+                        className="font-sans font-bold leading-tight text-[#F2F0E9] tracking-tighter text-3xl md:text-5xl lg:text-[58px]"
                     >
-                        Een website die voor je werkt <br />
-                        <span className="text-primary font-drama font-normal inline-block align-baseline mt-6 leading-[1.1] text-3xl md:text-5xl lg:text-[58px]">terwijl jij onderneemt.</span>
+                        Een website die voor je werkt <span className="text-primary font-drama font-normal text-3xl md:text-5xl lg:text-[61px]">terwijl jij onderneemt.</span>
                     </motion.h1>
                     <motion.p variants={fadeUp} className="font-sans text-[#F2F0E9]/80 text-lg md:text-2xl font-light italic leading-relaxed max-w-4xl border-l-[3px] border-primary/20 pl-8 md:pl-12">
                         Niet alleen mooi. Gebouwd om bezoekers te overtuigen en te laten converteren. Klaar in 72 uur.
@@ -57,9 +56,8 @@ const WebsiteService = () => {
                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 md:gap-32 items-center">
                     <div className="space-y-10 md:space-y-16 order-2 lg:order-1">
                         <div className="space-y-6 md:space-y-10">
-                            <h2 className="text-2xl md:text-3xl lg:text-[58px] font-sans font-bold text-[#F2F0E9] leading-[1.1] tracking-tighter transition-all duration-700 hover:scale-[1.01]">
-                                Wat je krijgt dat <br />
-                                <span className="text-primary font-drama font-normal inline-block align-baseline mt-4 leading-[1.1] text-2xl md:text-3xl lg:text-[58px]">anderen niet leveren.</span>
+                            <h2 className="font-sans font-bold text-[#F2F0E9] leading-tight tracking-tighter text-2xl md:text-3xl lg:text-[58px]">
+                                Wat je krijgt dat <span className="text-primary font-drama font-normal text-2xl md:text-3xl lg:text-[61px]">anderen niet leveren.</span>
                             </h2>
                             <p className="font-sans text-[#F2F0E9]/80 text-lg md:text-2xl font-light italic leading-relaxed">
                                 Ik denk niet alleen na over hoe het eruit ziet. Ik denk na over wat een bezoeker voelt, twijfelt en nodig heeft om actie te nemen.
@@ -177,13 +175,9 @@ const WebsiteService = () => {
                         className="text-left md:text-center space-y-10 md:space-y-16 mb-16 md:mb-24 w-full"
                     >
                         <Link to="/contact" className="group flex flex-col items-center">
-                            <motion.h1
-                                variants={fadeUp}
-                                className="font-sans font-bold leading-[1.2] text-[#F2F0E9] tracking-tighter flex flex-wrap items-baseline gap-x-4 gap-y-2 text-3xl md:text-5xl lg:text-[58px]"
-                            >
-                                <span>Klaar om te</span>
-                                <span className="text-primary font-drama font-normal leading-[1.2] text-3xl md:text-5xl lg:text-[61px]">sturen op cijfers?</span>
-                            </motion.h1>
+                            <h2 className="font-sans font-bold text-[#F2F0E9] leading-tight tracking-tighter md:text-center text-3xl md:text-5xl lg:text-[58px]">
+                                Klaar om te <span className="text-primary font-drama font-normal ml-4 text-3xl md:text-5xl lg:text-[61px]">beginnen?</span>
+                            </h2>
                         </Link>
                         <motion.p variants={fadeUp} className="font-sans text-[#F2F0E9]/40 text-base md:text-xl font-light leading-relaxed italic max-w-3xl mx-auto border-l-2 md:border-l-0 md:border-b-2 border-white/5 pb-10 md:pb-12 pl-8 md:pl-0 text-center">
                             Vraag een gratis check aan. In 20 minuten weet je wat het oplevert.

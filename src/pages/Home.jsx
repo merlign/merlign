@@ -62,10 +62,9 @@ const Hero = () => {
                     </motion.p>
                     <motion.h1
                         variants={fadeUp}
-                        className="font-sans font-bold leading-[1.2] text-[#F2F0E9] tracking-tighter flex flex-wrap items-baseline gap-x-4 gap-y-2 text-4xl md:text-5xl lg:text-[64px]"
+                        className="font-sans font-bold leading-tight text-[#F2F0E9] tracking-tighter text-4xl md:text-5xl lg:text-[64px]"
                     >
-                        <span>Krijg meer gedaan met</span>
-                        <span className="text-primary font-drama font-normal leading-[1.2] text-4xl md:text-5xl lg:text-[67px]">je huidige team.</span>
+                        Krijg meer gedaan met <span className="text-primary font-drama font-normal text-4xl md:text-5xl lg:text-[67px]">je huidige team.</span>
                     </motion.h1>
                     <motion.div
                         variants={fadeUp}
@@ -125,10 +124,9 @@ const HomeAbout = () => {
                     <SectionLabel>Wie ben ik?</SectionLabel>
                     <motion.h1
                         variants={fadeUp}
-                        className="font-sans font-bold leading-[1.2] text-[#F2F0E9] tracking-tighter flex flex-wrap items-baseline gap-x-4 gap-y-2 text-3xl md:text-5xl lg:text-[58px]"
+                        className="font-sans font-bold leading-tight text-[#F2F0E9] tracking-tighter text-3xl md:text-5xl lg:text-[58px]"
                     >
-                        <span>Geen mooie praatjes.</span>
-                        <span className="text-primary font-drama font-normal leading-[1.2] text-3xl md:text-5xl lg:text-[61px]">Gewoon resultaten.</span>
+                        Geen mooie praatjes. <span className="text-primary font-drama font-normal text-3xl md:text-5xl lg:text-[61px]">Gewoon resultaten.</span>
                     </motion.h1>
                     <div className="space-y-6">
                         <p className="font-sans text-[#F2F0E9]/80 text-lg md:text-2xl font-light italic leading-relaxed border-l-[3px] border-primary/40 pl-8 md:pl-12">
@@ -213,9 +211,8 @@ const Services = () => {
                 >
                     <div className="space-y-8 md:space-y-12">
                         <SectionLabel>Diensten</SectionLabel>
-                        <motion.h2 variants={fadeUp} className="font-sans font-bold leading-[1.2] text-[#F2F0E9] tracking-tighter flex flex-wrap items-baseline gap-x-4 gap-y-2 text-3xl md:text-5xl lg:text-[58px]">
-                            <span>Kies waar we</span>
-                            <span className="text-primary font-drama font-normal leading-[1.2] text-3xl md:text-5xl lg:text-[61px]">beginnen.</span>
+                        <motion.h2 variants={fadeUp} className="font-sans font-bold leading-tight text-[#F2F0E9] tracking-tighter text-3xl md:text-4xl lg:text-[58px]">
+                            Kies waar we <span className="text-primary font-drama font-normal text-3xl md:text-4xl lg:text-[61px]">beginnen.</span>
                         </motion.h2>
                     </div>
                     <motion.p variants={fadeUp} className="font-sans text-[#F2F0E9]/80 max-w-md text-lg md:text-2xl border-l-[3px] border-primary/20 pl-8 md:pl-12 pb-4 md:pb-6 italic leading-relaxed">
@@ -392,9 +389,8 @@ const Process = () => {
             <div className="max-w-[1200px] mx-auto px-8 md:px-20">
                 <div className="mb-24 md:mb-40 space-y-12 text-center">
                     <SectionLabel className="justify-center">Het Traject</SectionLabel>
-                    <h2 className="font-sans font-bold text-[#F2F0E9] leading-[1.2] tracking-tighter flex flex-wrap items-baseline gap-x-4 gap-y-2 justify-center text-3xl md:text-5xl lg:text-[58px]">
-                        <span>Drie fases.</span>
-                        <span className="text-primary font-drama font-normal leading-[1.2] text-3xl md:text-5xl lg:text-[61px]">Geen verrassingen.</span>
+                    <h2 className="font-sans font-bold text-[#F2F0E9] leading-tight tracking-tighter text-3xl md:text-5xl lg:text-[58px]">
+                        Drie fases. <span className="text-primary font-drama font-normal text-3xl md:text-5xl lg:text-[61px]">Geen verrassingen.</span>
                     </h2>
                 </div>
 
@@ -459,9 +455,8 @@ const FAQ = () => {
             <div className="max-w-[1200px] mx-auto px-8 md:px-20 grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-20">
                 <div className="space-y-6">
                     <SectionLabel>Vragen</SectionLabel>
-                    <h2 className="font-sans font-bold text-[#F2F0E9] leading-[1.2] tracking-tighter flex flex-wrap items-baseline gap-x-4 gap-y-2 text-3xl md:text-5xl lg:text-[58px]">
-                        <span>Alles wat je moet weten</span>
-                        <span className="text-primary font-drama font-normal leading-[1.2] text-3xl md:text-5xl lg:text-[61px]">voordat we starten.</span>
+                    <h2 className="font-sans font-bold text-[#F2F0E9] leading-tight tracking-tighter text-3xl md:text-5xl lg:text-[58px]">
+                        Alles wat je moet weten <span className="text-primary font-drama font-normal text-3xl md:text-5xl lg:text-[61px]">voordat we starten.</span>
                     </h2>
                 </div>
 
@@ -516,9 +511,8 @@ const ContactSection = () => {
                     className="text-left md:text-center space-y-10 md:space-y-16 mb-12 md:mb-20 w-full"
                 >
                     <SectionLabel className="md:justify-center">Plan Je Scan</SectionLabel>
-                    <motion.h2 variants={fadeUp} className="font-sans font-bold text-[#F2F0E9] leading-[1.2] tracking-tighter flex flex-wrap items-baseline gap-x-4 gap-y-2 md:justify-center text-3xl md:text-5xl lg:text-[58px]">
-                        <span>Welke upgrade gaan we als</span>
-                        <span className="text-primary font-drama font-normal leading-[1.2] text-3xl md:text-5xl lg:text-[61px]">eerste activeren?</span>
+                    <motion.h2 variants={fadeUp} className="font-sans font-bold text-[#F2F0E9] leading-tight tracking-tighter text-3xl md:text-5xl lg:text-[58px]">
+                        Welke upgrade gaan we als <span className="text-primary font-drama font-normal text-3xl md:text-5xl lg:text-[61px]">eerste activeren?</span>
                     </motion.h2>
                     <motion.p variants={fadeUp} className="font-sans text-[#F2F0E9]/40 text-base md:text-xl font-light leading-relaxed italic max-w-3xl mx-auto border-b-2 border-white/5 pb-8 md:pb-10 text-center">
                         Kies het onderdeel waar je nu de meeste winst laat liggen. <br className="hidden md:block" />

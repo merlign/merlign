@@ -31,10 +31,9 @@ const ContactPage = () => {
                         <SectionLabel>Contact</SectionLabel>
                         <motion.h1
                             variants={fadeUp}
-                            className="text-3xl md:text-5xl lg:text-[58px] font-sans font-bold leading-[1.1] text-[#F2F0E9] tracking-tighter"
+                            className="font-sans font-bold leading-tight text-[#F2F0E9] tracking-tighter md:text-center text-3xl md:text-5xl lg:text-[58px]"
                         >
-                            Laat zien wat er speelt. <br />
-                            <span className="text-primary font-drama font-normal inline-block align-baseline mt-6 leading-[1.1] text-3xl md:text-5xl lg:text-[58px]">Ik kijk mee.</span>
+                            Laat zien wat er speelt. <span className="text-primary font-drama font-normal text-3xl md:text-5xl lg:text-[61px]">Ik kijk mee.</span>
                         </motion.h1>
                         <motion.p variants={fadeUp} className="font-sans text-[#F2F0E9]/80 text-lg md:text-2xl font-light italic leading-relaxed max-w-4xl border-l-[3px] md:border-l-0 md:border-b-2 border-primary/20 pl-8 md:pl-0 pb-8 md:pb-12 text-center">
                             In 20 minuten kijk ik met je mee naar je situatie. Je krijgt direct eerlijke feedback over wat het oplevert als je het aanpakt.
