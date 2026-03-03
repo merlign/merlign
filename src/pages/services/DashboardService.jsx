@@ -90,7 +90,7 @@ const DashboardService = () => {
                     <motion.p variants={fadeUp} className="font-sans text-[#F2F0E9]/80 text-lg md:text-2xl font-light italic leading-relaxed max-w-4xl border-l-[3px] border-primary/20 pl-8 md:pl-12">
                         {heroSubtitle}
                     </motion.p>
-                    <motion.div variants={fadeUp} className="pt-4 text-left md:text-center">
+                    <motion.div variants={fadeUp} className="pt-4 text-left">
                         <Link to="/contact" className="btn-magnetic group inline-flex bg-primary text-white border-transparent px-10 md:px-12 py-5 md:py-6 rounded-full shadow-[0_0_20px_rgba(201,168,76,0.3)]">
                             <span className="relative z-10 text-[12px] md:text-[14px] font-black italic tracking-[0.3em] uppercase">Vraag een gratis check aan</span>
                             <div className="btn-bg bg-[#F2F0E9]" />
