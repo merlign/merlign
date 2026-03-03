@@ -54,7 +54,7 @@ const Navbar = () => {
                                 onMouseEnter={() => setIsDienstenOpen(true)}
                                 onMouseLeave={() => setIsDienstenOpen(false)}
                             >
-                                <button className="hover:text-[#F2F0E9] transition-colors py-2 flex items-center gap-2 font-bold group font-mono text-[13px] uppercase tracking-[0.3em]">
+                                <button className="hover:text-[#F2F0E9] transition-colors py-2 flex items-center gap-2 font-bold group font-sans text-[13px] uppercase tracking-widest">
                                     Diensten
                                     <ChevronDown size={12} className="group-hover:rotate-180 transition-transform duration-500" />
                                 </button>
@@ -68,8 +68,8 @@ const Navbar = () => {
                                                     to={s.href}
                                                     className="block p-4 rounded-[1.5rem] hover:bg-primary/10 transition-all group/item"
                                                 >
-                                                    <p className="text-[#F2F0E9] font-mono font-bold text-[13px] uppercase tracking-[0.2em] leading-none">{s.label}</p>
-                                                    <p className="text-[#F2F0E9]/30 font-mono text-[9px] uppercase tracking-widest mt-2">{s.desc}</p>
+                                                    <p className="text-[#F2F0E9] font-sans font-bold text-[13px] uppercase tracking-widest leading-none">{s.label}</p>
+                                                    <p className="text-[#F2F0E9]/30 font-sans text-[9px] uppercase tracking-widest mt-2">{s.desc}</p>
                                                 </Link>
                                             ))}
                                         </div>
@@ -115,11 +115,11 @@ const Navbar = () => {
                         <div className="flex flex-col gap-8">
                             <div className="space-y-4">
                                 <button
-                                    className="flex items-center gap-2 hover:text-primary transition-colors py-2 uppercase tracking-[0.3em] font-mono text-[13px] font-bold"
+                                    className="flex items-center gap-4 text-[#F2F0E9] uppercase tracking-tighter font-sans text-3xl font-bold py-2"
                                     onClick={() => setIsDienstenOpen(!isDienstenOpen)}
                                 >
                                     Diensten
-                                    <ChevronDown size={14} className={`transition-transform duration-500 ${isDienstenOpen ? 'rotate-180' : ''}`} />
+                                    <ChevronDown size={24} className={`transition-transform duration-500 text-primary ${isDienstenOpen ? 'rotate-180' : ''}`} />
                                 </button>
                                 <AnimatePresence>
                                     {isDienstenOpen && (
@@ -135,7 +135,7 @@ const Navbar = () => {
                                                     <Link
                                                         key={i}
                                                         to={s.href}
-                                                        className="text-xl md:text-2xl font-mono font-bold uppercase tracking-widest text-[#F2F0E9]/60 hover:text-[#F2F0E9] transition-colors"
+                                                        className="text-xl md:text-2xl font-sans font-bold uppercase tracking-widest text-[#F2F0E9]/60 hover:text-[#F2F0E9] transition-colors pl-4"
                                                         onClick={() => setIsMobileMenuOpen(false)}
                                                     >
                                                         {s.label}
@@ -146,8 +146,6 @@ const Navbar = () => {
                                     )}
                                 </AnimatePresence>
                             </div>
-
-                            <div className="w-full h-[1px] bg-white/5" />
 
                             <div className="flex flex-col gap-8">
                                 {navLinks.map((link, i) => (

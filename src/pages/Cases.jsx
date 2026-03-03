@@ -85,9 +85,9 @@ const Cases = () => {
                     <SectionLabel>Cases</SectionLabel>
                     <motion.h1
                         variants={fadeUp}
-                        className="font-sans font-bold leading-tight text-[#F2F0E9] tracking-tighter text-3xl md:text-5xl lg:text-[58px]"
+                        className="font-sans font-bold text-[#F2F0E9] text-h1"
                     >
-                        Geen mooie praatjes. <span className="text-primary font-drama font-normal text-3xl md:text-5xl lg:text-[61px]">Gewoon resultaten.</span>
+                        Geen mooie praatjes. <span className="text-primary font-drama font-normal text-h1-serif">Gewoon resultaten.</span>
                     </motion.h1>
                     <motion.p variants={fadeUp} className="font-sans text-[#F2F0E9]/80 text-lg md:text-2xl font-light italic leading-relaxed max-w-4xl border-l-[3px] border-primary/20 pl-8 md:pl-12">
                         Wat ik heb gebouwd en welk meetbaar resultaat dat heeft opgeleverd.
@@ -147,7 +147,7 @@ const Cases = () => {
                                                 </div>
                                                 <span className="font-mono text-xs uppercase tracking-[0.4em] text-primary font-bold italic">{c.tag}</span>
                                             </div>
-                                            <h2 className="text-3xl md:text-5xl lg:text-[58px] font-sans font-bold text-[#F2F0E9] tracking-tighter leading-[1.1]">{c.name}</h2>
+                                            <h2 className="font-sans font-bold text-[#F2F0E9] text-h2">{c.name}</h2>
                                         </div>
 
                                         <div className="space-y-10">
@@ -211,8 +211,8 @@ const Cases = () => {
                 {/* Bottom CTA */}
                 <div className="py-20 md:py-32 border-t border-white/5 flex flex-col items-center text-center">
                     <SectionLabel className="md:justify-center">Volgende succes</SectionLabel>
-                    <h2 className="text-3xl md:text-5xl lg:text-[58px] font-sans font-bold text-[#F2F0E9] leading-[1.1] tracking-tighter mt-8">
-                        Jouw bedrijf <span className="text-primary font-drama font-normal italic inline-block align-baseline leading-[1.1] text-3xl md:text-5xl lg:text-[58px]">hier?</span>
+                    <h2 className="font-sans font-bold text-[#F2F0E9] mt-8 text-h2">
+                        Jouw bedrijf <span className="text-primary font-drama font-normal text-h2-serif">hier?</span>
                     </h2>
                     <p className="font-sans text-[#F2F0E9]/40 text-lg md:text-2xl mt-8 mb-16 md:mb-24 italic max-w-2xl">
                         Plan een gratis check. In 20 minuten weet je wat ik voor jou kan doen.

@@ -3,6 +3,7 @@ import { motion } from 'framer-motion';
 import { Mail, Linkedin } from 'lucide-react';
 import SectionLabel from '../components/SectionLabel';
 import ContactForm from '../components/ContactForm';
+import { getContactInfo } from '../lib/sanity';
 
 const fadeUp = {
     initial: { opacity: 0, y: 30 },
@@ -12,6 +13,25 @@ const fadeUp = {
 };
 
 const ContactPage = () => {
+    const [data, setData] = React.useState(null);
+
+    React.useEffect(() => {
+        const fetchData = async () => {
+            try {
+                const res = await getContactInfo();
+                setData(res);
+            } catch (err) {
+                console.error("Contact Page Fetch Error:", err);
+            }
+        };
+        fetchData();
+    }, []);
+
+    const headlineSans = data?.headlineSans || "Laat zien wat er speelt. ";
+    const headlineSerif = data?.headlineSerif || "Ik kijk mee.";
+    const subtitle = data?.subtitle || "In 20 minuten kijk ik met je mee naar je situatie. Je krijgt direct eerlijke feedback over wat het oplevert als je het aanpakt.";
+    const contactEmail = data?.email || "contact@merlign.com";
+    const linkedinLink = data?.linkedin || "https://www.linkedin.com/in/merlijn-van-der-vleuten-1b9118267/";
     return (
         <div className="pt-32 md:pt-48 pb-20 md:pb-32 px-6 md:px-8 bg-[#0A0A0A] relative overflow-hidden">
             {/* Background Artifacts */}
@@ -31,12 +51,12 @@ const ContactPage = () => {
                         <SectionLabel>Contact</SectionLabel>
                         <motion.h1
                             variants={fadeUp}
-                            className="font-sans font-bold leading-tight text-[#F2F0E9] tracking-tighter md:text-center text-3xl md:text-5xl lg:text-[58px]"
+                            className="font-sans font-bold text-[#F2F0E9] md:text-center text-h1"
                         >
-                            Laat zien wat er speelt. <span className="text-primary font-drama font-normal text-3xl md:text-5xl lg:text-[61px]">Ik kijk mee.</span>
+                            {headlineSans} <span className="text-primary font-drama font-normal text-h1-serif">{headlineSerif}</span>
                         </motion.h1>
                         <motion.p variants={fadeUp} className="font-sans text-[#F2F0E9]/80 text-lg md:text-2xl font-light italic leading-relaxed max-w-4xl border-l-[3px] md:border-l-0 md:border-b-2 border-primary/20 pl-8 md:pl-0 pb-8 md:pb-12 text-center">
-                            In 20 minuten kijk ik met je mee naar je situatie. Je krijgt direct eerlijke feedback over wat het oplevert als je het aanpakt.
+                            {subtitle}
                         </motion.p>
                     </motion.div>
 
@@ -46,8 +66,8 @@ const ContactPage = () => {
 
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12">
                         {[
-                            { icon: <Mail className="w-6 h-6 md:w-8 md:h-8" />, label: "E-mail", value: "contact@merlign.com", href: "mailto:contact@merlign.com" },
-                            { icon: <Linkedin className="w-6 h-6 md:w-8 md:h-8" />, label: "LinkedIn", value: "Merlijn van der Vleuten", href: "https://www.linkedin.com/in/merlijn-van-der-vleuten-1b9118267/" }
+                            { icon: <Mail className="w-6 h-6 md:w-8 md:h-8" />, label: "E-mail", value: contactEmail, href: `mailto:${contactEmail}` },
+                            { icon: <Linkedin className="w-6 h-6 md:w-8 md:h-8" />, label: "LinkedIn", value: "Merlijn van der Vleuten", href: linkedinLink }
                         ].map((item, i) => (
                             <motion.a
                                 key={i}

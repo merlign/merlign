@@ -1,9 +1,12 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Zap, Check, ArrowRight, MousePointerClick, Search, Settings, Cpu } from 'lucide-react';
+import { Zap, Check, ArrowRight, MousePointerClick, Search, Settings, Cpu, ChevronDown } from 'lucide-react';
+import { AnimatePresence } from 'framer-motion';
 import SectionLabel from '../../components/SectionLabel';
 import ContactForm from '../../components/ContactForm';
 import { Link } from 'react-router-dom';
+
+import { getServicePageData } from '../../lib/sanity';
 
 const fadeUp = {
     initial: { opacity: 0, y: 30 },
@@ -18,6 +21,49 @@ const staggerContainer = {
 };
 
 const AutomationService = () => {
+    const [data, setData] = React.useState(null);
+
+    React.useEffect(() => {
+        const fetchData = async () => {
+            try {
+                const res = await getServicePageData('Automatisering');
+                setData(res);
+            } catch (err) {
+                console.error("Automation Service Fetch Error:", err);
+            }
+        };
+        fetchData();
+    }, []);
+
+    const heroSans = data?.heroSans || "Automatiseer alsof er";
+    const heroSerif = data?.heroSerif || "10 extra mensen werken.";
+    const heroSubtitle = data?.heroSubtitle || "Ik automatiseer de repetitieve taken in jouw bedrijf. Van leadopvolging tot administratie. Jij besteedt je tijd aan wat telt.";
+
+    const staticFeatures = [
+        { title: "Leadopvolging op autopilot", desc: "Iemand vult je contactformulier in. Automatisch krijgt hij een bevestiging, een herinnering en een follow-up. Zonder dat jij er aan denkt." },
+        { title: "Tools die samenwerken", desc: "Ik koppel je bestaande tools aan elkaar zodat data automatisch doorstroomt. Geen handmatig overzetten meer." },
+        { title: "Administratie die zelf doet", desc: "Van factuurverwerking tot rapportages. Ik bouw de workflows die jou uren per week teruggeven." },
+        { title: "Schaalbaar zonder extra mensen", desc: "Je bedrijf kan groeien zonder dat je er meteen iemand voor hoeft aan te nemen. De automatisering schaalt mee." }
+    ];
+
+    const features = data?.features?.length > 0 ? data.features.map((f, i) => ({
+        title: f.title || staticFeatures[i]?.title,
+        desc: f.description || staticFeatures[i]?.desc
+    })) : staticFeatures;
+
+    const staticProcess = [
+        { step: "01", title: "Gratis check", desc: "We kijken samen welke taken je nu handmatig doet en hoeveel tijd dat kost. Ik geef je direct een eerlijk beeld van wat er mogelijk is.", icon: <Search size={24} /> },
+        { step: "02", title: "Bouw en test", desc: "Ik bouw de automatisering, test hem grondig en koppel hem aan je bestaande tools. Jij hoeft niks te doen.", icon: <Settings size={24} /> },
+        { step: "03", title: "Live en op de achtergrond", desc: "Zodra het live staat, loopt het. Je hoeft er niet meer naar om te kijken. Het werk wordt gedaan terwijl jij onderneemt.", icon: <Cpu size={24} /> }
+    ];
+
+    const processItems = data?.processSteps?.length > 0 ? data.processSteps.map((p, i) => ({
+        ...staticProcess[i],
+        step: p.stepNumber || staticProcess[i]?.step,
+        title: p.title || staticProcess[i]?.title,
+        desc: p.description || staticProcess[i]?.desc
+    })) : staticProcess;
+
     return (
         <div className="pt-32 md:pt-48 pb-20 md:pb-32 px-6 md:px-8 bg-[#0A0A0A] relative overflow-hidden">
             {/* Background Artifacts */}
@@ -37,12 +83,12 @@ const AutomationService = () => {
                     <SectionLabel>Automatisering</SectionLabel>
                     <motion.h1
                         variants={fadeUp}
-                        className="font-sans font-bold leading-tight text-[#F2F0E9] tracking-tighter text-3xl md:text-5xl lg:text-[58px]"
+                        className="font-sans font-bold text-[#F2F0E9] text-h1"
                     >
-                        Automatiseer alsof er <span className="text-primary font-drama font-normal text-3xl md:text-5xl lg:text-[61px]">10 extra mensen werken.</span>
+                        {heroSans} <span className="text-primary font-drama font-normal text-h1-serif">{heroSerif}</span>
                     </motion.h1>
                     <motion.p variants={fadeUp} className="font-sans text-[#F2F0E9]/80 text-lg md:text-2xl font-light italic leading-relaxed max-w-4xl border-l-[3px] border-primary/20 pl-8 md:pl-12">
-                        Ik automatiseer de repetitieve taken in jouw bedrijf. Van leadopvolging tot administratie. Jij besteedt je tijd aan wat telt.
+                        {heroSubtitle}
                     </motion.p>
                     <motion.div variants={fadeUp} className="pt-4">
                         <Link to="/contact" className="btn-magnetic group inline-flex bg-primary text-white border-transparent px-10 md:px-12 py-5 md:py-6 rounded-full shadow-[0_0_20px_rgba(201,168,76,0.3)]">
@@ -56,20 +102,15 @@ const AutomationService = () => {
                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 md:gap-32 items-center">
                     <div className="space-y-10 md:space-y-16 order-2 lg:order-1">
                         <div className="space-y-6 md:space-y-10">
-                            <h2 className="font-sans font-bold text-[#F2F0E9] leading-tight tracking-tighter text-2xl md:text-3xl lg:text-[58px]">
-                                Winst in tijd <span className="text-primary font-drama font-normal text-2xl md:text-3xl lg:text-[61px]">is winst in vrijheid.</span>
+                            <h2 className="font-sans font-bold text-[#F2F0E9] leading-tight tracking-tighter text-h2">
+                                Winst in tijd <span className="text-primary font-drama font-normal text-h2-serif">is winst in vrijheid.</span>
                             </h2>
                             <p className="font-sans text-[#F2F0E9]/80 text-lg md:text-2xl font-light italic leading-relaxed">
                                 Elke taak die je herhaalt kost tijd. Opgeteld zijn dat uren per week die je aan groei had kunnen besteden. Ik bouw de systemen die dat overnemen.
                             </p>
                         </div>
                         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12">
-                            {[
-                                { title: "Leadopvolging op autopilot", desc: "Iemand vult je contactformulier in. Automatisch krijgt hij een bevestiging, een herinnering en een follow-up. Zonder dat jij er aan denkt." },
-                                { title: "Tools die samenwerken", desc: "Ik koppel je bestaande tools aan elkaar zodat data automatisch doorstroomt. Geen handmatig overzetten meer." },
-                                { title: "Administratie die zelf doet", desc: "Van factuurverwerking tot rapportages. Ik bouw de workflows die jou uren per week teruggeven." },
-                                { title: "Schaalbaar zonder extra mensen", desc: "Je bedrijf kan groeien zonder dat je er meteen iemand voor hoeft aan te nemen. De automatisering schaalt mee." }
-                            ].map((item, i) => (
+                            {features.map((item, i) => (
                                 <motion.div
                                     key={i}
                                     initial={{ opacity: 0, y: 20 }}
@@ -125,16 +166,12 @@ const AutomationService = () => {
                 <div className="space-y-16 md:space-y-24">
                     <div className="text-center space-y-8">
                         <SectionLabel className="justify-center">Hoe het werkt</SectionLabel>
-                        <h2 className="text-3xl md:text-5xl lg:text-[58px] font-sans font-bold text-[#F2F0E9] leading-[1.1] tracking-tighter">
-                            Zo werkt <span className="text-primary font-drama font-normal italic inline-block align-baseline mt-4 leading-[1.1] text-3xl md:text-5xl lg:text-[58px]">het.</span>
+                        <h2 className="font-sans font-bold text-[#F2F0E9] text-h2">
+                            Zo werkt <span className="text-primary font-drama font-normal text-h2-serif">het.</span>
                         </h2>
                     </div>
                     <div className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-12">
-                        {[
-                            { step: "01", title: "Gratis check", desc: "We kijken samen welke taken je nu handmatig doet en hoeveel tijd dat kost. Ik geef je direct een eerlijk beeld van wat er mogelijk is.", icon: <Search size={24} /> },
-                            { step: "02", title: "Bouw en test", desc: "Ik bouw de automatisering, test hem grondig en koppel hem aan je bestaande tools. Jij hoeft niks te doen.", icon: <Settings size={24} /> },
-                            { step: "03", title: "Live en op de achtergrond", desc: "Zodra het live staat, loopt het. Je hoeft er niet meer naar om te kijken. Het werk wordt gedaan terwijl jij onderneemt.", icon: <Cpu size={24} /> }
-                        ].map((item, i) => (
+                        {processItems.map((item, i) => (
                             <motion.div
                                 key={i}
                                 initial={{ opacity: 0, y: 30 }}
@@ -144,20 +181,20 @@ const AutomationService = () => {
                                 className="p-10 rounded-[2.5rem] bg-[#1A1A1A]/40 border border-white/5 space-y-8 group hover:bg-[#1A1A1A]/60 transition-all duration-700"
                             >
                                 <div className="flex justify-between items-start">
-                                    <div className="w-14 h-14 rounded-2xl bg-primary/10 flex items-center justify-center text-primary group-hover:bg-primary group-hover:text-white transition-all duration-700">
-                                        {item.icon}
+                                    <div className="w-14 h-14 rounded-2xl bg-primary/10 flex items-center justify-center text-primary group-hover:bg-primary group-hover:text-white transition-all duration-700 transform group-hover:scale-110 group-hover:rotate-3">
+                                        {React.cloneElement(item.icon, { className: "group-hover:scale-110 transition-transform duration-500" })}
                                     </div>
                                     <span className="font-mono text-4xl font-black text-white/5 group-hover:text-primary/10 transition-colors uppercase italic">{item.step}</span>
                                 </div>
                                 <div className="space-y-4">
                                     <h3 className="text-xl md:text-2xl font-sans font-bold text-[#F2F0E9] tracking-tighter">{item.title}</h3>
-                                    <p className="font-sans text-[#F2F0E9]/40 leading-relaxed italic">{item.desc}</p>
+                                    <p className="font-sans text-[#F2F0E9]/70 leading-relaxed italic">{item.desc}</p>
                                 </div>
                             </motion.div>
                         ))}
                     </div>
                 </div>
-
+                <FAQ />
                 {/* Bottom CTA */}
                 <div className="py-20 md:py-32 border-t border-white/5 flex flex-col items-center text-center">
                     <motion.div
@@ -169,8 +206,8 @@ const AutomationService = () => {
                     >
                         <SectionLabel className="md:justify-center">Start Vandaag</SectionLabel>
                         <Link to="/contact" className="group flex flex-col items-center">
-                            <h2 className="font-sans font-bold text-[#F2F0E9] leading-tight tracking-tighter md:text-center text-3xl md:text-5xl lg:text-[58px]">
-                                Klaar om je tijd <span className="text-primary font-drama font-normal ml-4 text-3xl md:text-5xl lg:text-[61px]">terug te krijgen?</span>
+                            <h2 className="font-sans font-bold text-[#F2F0E9] md:text-center text-h2">
+                                Klaar om je tijd <span className="text-primary font-drama font-normal ml-4 text-h2-serif">terug te krijgen?</span>
                             </h2>
                         </Link>
                         <motion.p variants={fadeUp} className="font-sans text-[#F2F0E9]/40 text-base md:text-xl font-light leading-relaxed italic max-w-3xl mx-auto border-l-2 md:border-l-0 md:border-b-2 border-white/5 pb-10 md:pb-12 pl-8 md:pl-0">
@@ -182,6 +219,75 @@ const AutomationService = () => {
                 </div>
             </div>
         </div>
+    );
+};
+
+const FAQ = () => {
+    const questions = [
+        {
+            q: "Welke software kan worden geautomatiseerd?",
+            a: "Vrijwel alle moderne cloud-software (SaaS) die een API heeft. Denk aan tools als Make.com, Zapier, Slack, Gmail, Trello, Google Sheets en talloze gespecialiseerde CRM- en administratiesystemen."
+        },
+        {
+            q: "Wat als een automatisering een fout maakt?",
+            a: "Elke automatisering die ik bouw bevat foutopsporing en meldingen. Als er onverhoopt iets misgaat, bouwen we notificaties in zodat je direct op de hoogte bent en het systeem zichzelf kan herstellen of pauzeren."
+        },
+        {
+            q: "Hoeveel tijd kan ik hiermee besparen?",
+            a: "Per proces verschilt dit, maar ondernemers besparen vaak tussen de 5 en 15 uur per week op administratieve en repetitieve taken. Dat is tijd die direct terugvloeit in groei of vrije tijd."
+        },
+        {
+            q: "Kan ik mijn bestaande workflows importeren?",
+            a: "Ja, we kunnen kijken naar wat je nu al hebt (bijvoorbeeld in Zapier) en dit optimaliseren of overzetten naar een krachtiger en kosteneffectiever platform zoals Make.com."
+        }
+    ];
+
+    const [openIndex, setOpenIndex] = React.useState(0);
+
+    return (
+        <section className="py-20 md:py-32 border-t border-white/5">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 md:gap-20">
+                <div className="space-y-6">
+                    <SectionLabel>FAQ</SectionLabel>
+                    <h2 className="font-sans font-bold text-[#F2F0E9] leading-tight tracking-tighter text-h2">
+                        Veelgestelde vragen over <span className="text-primary font-drama font-normal text-h2-serif">automatisering.</span>
+                    </h2>
+                </div>
+
+                <div className="space-y-4">
+                    {questions.map((item, i) => (
+                        <div
+                            key={i}
+                            className={`rounded-[1.5rem] border transition-all duration-500 overflow-hidden ${openIndex === i ? 'bg-[#1A1A1A]/80 border-primary/20 shadow-sm' : 'bg-white/[0.01] border-white/5 hover:border-white/10'}`}
+                        >
+                            <button
+                                onClick={() => setOpenIndex(openIndex === i ? -1 : i)}
+                                className="w-full px-6 py-6 flex items-center justify-between text-left group"
+                            >
+                                <span className={`text-base md:text-lg font-sans font-bold transition-colors ${openIndex === i ? 'text-primary' : 'text-[#F2F0E9]/70'}`}>
+                                    {item.q}
+                                </span>
+                                <ChevronDown size={14} className={`transition-transform duration-500 ${openIndex === i ? 'rotate-180 text-primary' : 'text-[#F2F0E9]/20'}`} />
+                            </button>
+                            <AnimatePresence>
+                                {openIndex === i && (
+                                    <motion.div
+                                        initial={{ height: 0, opacity: 0 }}
+                                        animate={{ height: "auto", opacity: 1 }}
+                                        exit={{ height: 0, opacity: 0 }}
+                                        transition={{ duration: 0.4, ease: "circOut" }}
+                                    >
+                                        <div className="px-6 pb-6 text-[#F2F0E9]/50 text-base font-sans font-light italic border-t border-white/5 pt-4">
+                                            {item.a}
+                                        </div>
+                                    </motion.div>
+                                )}
+                            </AnimatePresence>
+                        </div>
+                    ))}
+                </div>
+            </div>
+        </section>
     );
 };
 

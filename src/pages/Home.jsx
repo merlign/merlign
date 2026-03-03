@@ -16,6 +16,7 @@ import {
 import { Link } from 'react-router-dom';
 import SectionLabel from '../components/SectionLabel';
 import ContactForm from '../components/ContactForm';
+import { getHomePageData, getFaqs, getContactInfo } from '../lib/sanity';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -31,10 +32,16 @@ const staggerContainer = {
     whileInView: { transition: { staggerChildren: 0.15 } }
 };
 
-const Hero = () => {
+const Hero = ({ data }) => {
     const heroRef = useRef(null);
     const { scrollY } = useScroll();
     const y1 = useTransform(scrollY, [0, 500], [0, 200]);
+
+    // Fallbacks
+    const heroSans = data?.heroSans || "Krijg meer gedaan met";
+    const heroSerif = data?.heroSerif || "je huidige team.";
+    const heroSubtitle = data?.heroSubtitle || "Ik bouw de systemen die het werk van je overnemen. Een website die zelf leads vangt, een dashboard voor direct overzicht, of slimme hulpjes voor je dagelijkse taken. Jij richt je op de groei, ik regel de techniek.";
+    const heroCta = data?.heroCta || "Start je traject";
 
     return (
         <section ref={heroRef} className="relative h-[100dvh] flex items-center bg-[#0A0A0A] overflow-hidden">
@@ -47,7 +54,7 @@ const Hero = () => {
             <div className="absolute inset-0 z-10 bg-gradient-to-tr from-primary/[0.04] via-transparent to-primary/[0.02]" />
             <div className="absolute inset-0 z-10 bg-gradient-to-t from-[#0A0A0A] via-transparent to-transparent opacity-100" />
 
-            <div className="relative z-20 w-full max-w-[1500px] mx-auto px-8 md:px-20 mt-24">
+            <div className="relative z-20 w-full content-max-width section-px pt-20 md:pt-32">
                 <motion.div
                     initial="initial"
                     animate="whileInView"
@@ -62,27 +69,27 @@ const Hero = () => {
                     </motion.p>
                     <motion.h1
                         variants={fadeUp}
-                        className="font-sans font-bold leading-tight text-[#F2F0E9] tracking-tighter text-4xl md:text-5xl lg:text-[64px]"
+                        className="font-sans font-bold text-[#F2F0E9] text-h1"
                     >
-                        Krijg meer gedaan met <span className="text-primary font-drama font-normal text-4xl md:text-5xl lg:text-[67px]">je huidige team.</span>
+                        {heroSans} <span className="text-primary font-drama font-normal text-h1-serif">{heroSerif}</span>
                     </motion.h1>
                     <motion.div
                         variants={fadeUp}
                         className="flex flex-col md:flex-row items-start md:items-center gap-12"
                     >
                         <p className="font-sans text-[#F2F0E9]/80 text-lg md:text-xl font-light max-w-2xl border-l-[2px] border-primary/40 pl-8 leading-relaxed italic">
-                            Ik bouw de systemen die het werk van je overnemen. Een website die zelf leads vangt, een dashboard voor direct overzicht, of slimme hulpjes voor je dagelijkse taken. Jij richt je op de groei, ik regel de techniek.
+                            {heroSubtitle}
                         </p>
                     </motion.div>
                     <motion.div
                         variants={fadeUp}
-                        className="flex flex-wrap items-center gap-6 pt-2"
+                        className="flex flex-wrap items-center gap-4 md:gap-6 pt-2"
                     >
-                        <a href="#contact" className="btn-magnetic group bg-primary text-white border-transparent shadow-[0_0_20px_rgba(201,168,76,0.3)]">
-                            <span className="relative z-10">Start je traject</span>
+                        <a href="#contact" className="btn-magnetic group bg-primary text-white border-transparent shadow-[0_0_20px_rgba(201,168,76,0.3)] w-full sm:w-auto">
+                            <span className="relative z-10">{heroCta}</span>
                             <div className="btn-bg bg-[#F2F0E9]" />
                         </a>
-                        <a href="#contact" className="btn-magnetic group bg-transparent border border-white/10 text-[#F2F0E9]">
+                        <a href="#contact" className="btn-magnetic group bg-transparent border border-white/10 text-[#F2F0E9] w-full sm:w-auto">
                             <span className="relative z-10">Gratis adviesgesprek</span>
                             <div className="btn-bg bg-[#F2F0E9]" />
                         </a>
@@ -96,37 +103,46 @@ const Hero = () => {
 
 const HomeAbout = () => {
     return (
-        <section className="py-24 px-8 bg-[#0A0A0A] relative overflow-hidden border-y border-white/5">
-            <div className="max-w-[1400px] mx-auto px-8 md:px-20 grid grid-cols-1 lg:grid-cols-12 gap-16 md:gap-32 items-center">
+        <section className="section-py relative overflow-hidden border-y border-white/5">
+            <div className="content-max-width section-px grid grid-cols-1 lg:grid-cols-12 gap-16 md:gap-32 items-center">
                 <motion.div
-                    initial={{ opacity: 0, x: -50 }}
-                    whileInView={{ opacity: 1, x: 0 }}
+                    initial={{ opacity: 0, scale: 0.95 }}
+                    whileInView={{ opacity: 1, scale: 1 }}
                     viewport={{ once: true }}
-                    className="lg:col-span-4 relative group lg:ml-auto"
+                    className="lg:col-span-4 relative group lg:ml-0 order-first lg:order-none lg:-ml-12"
                 >
-                    <div className="aspect-[4/5] max-w-[400px] mx-auto lg:mx-0 rounded-[2.5rem] overflow-hidden border border-white/10 relative shadow-sm">
-                        <img
-                            src="/merlijn-portrait.png"
+                    {/* The "Portal" Background */}
+                    <div className="aspect-[4/5] w-[280px] md:w-[400px] mx-auto lg:mx-0 rounded-[2.5rem] overflow-visible bg-[#1A1A1A]/40 border border-white/5 relative shadow-2xl transition-all duration-700 group-hover:bg-[#1A1A1A]/60">
+                        {/* Blueprint Grid Interior */}
+                        <div className="absolute inset-8 rounded-[1.5rem] border border-primary/10 opacity-20 bg-[linear-gradient(to_right,#C9A84C_1px,transparent_1px),linear-gradient(to_bottom,#C9A84C_1px,transparent_1px)] bg-[size:20px_20px]" />
+
+                        {/* Glowing Aura Behind Him */}
+                        <div className="absolute inset-0 bg-primary/20 blur-[100px] rounded-full scale-75 opacity-0 group-hover:opacity-100 transition-opacity duration-1000" />
+
+                        {/* The Cutout Portrait - Refined Proportional Scale */}
+                        <motion.img
+                            src="/merlijn-new.png"
                             alt="Merlijn"
-                            className="w-full h-full object-cover transition-all duration-1000 scale-105 group-hover:scale-100"
+                            className="absolute bottom-0 left-[46%] -translate-x-1/2 w-auto h-[90%] max-w-none z-10 filter brightness-95 group-hover:brightness-110 group-hover:scale-105 transition-all duration-1000 ease-out pointer-events-none origin-bottom"
                         />
-                        <div className="absolute inset-0 bg-primary/10 opacity-10 group-hover:opacity-0 transition-opacity duration-1000" />
+
+                        {/* Glassmorphic "Technical" Overlay */}
+                        <div className="absolute inset-0 rounded-[2.5rem] border border-white/5 pointer-events-none z-20" />
                     </div>
-                    <div className="absolute -bottom-8 -right-8 w-48 h-48 bg-primary/10 rounded-full blur-[80px] -z-10" />
                 </motion.div>
 
                 <motion.div
                     initial={{ opacity: 0, x: 50 }}
                     whileInView={{ opacity: 1, x: 0 }}
                     viewport={{ once: true }}
-                    className="lg:col-span-8 space-y-10 md:space-y-16 px-8 md:px-20"
+                    className="lg:col-span-8 space-y-10 md:space-y-16 px-4 md:pl-12"
                 >
                     <SectionLabel>Wie ben ik?</SectionLabel>
                     <motion.h1
                         variants={fadeUp}
-                        className="font-sans font-bold leading-tight text-[#F2F0E9] tracking-tighter text-3xl md:text-5xl lg:text-[58px]"
+                        className="font-sans font-bold text-[#F2F0E9] text-h2"
                     >
-                        Geen mooie praatjes. <span className="text-primary font-drama font-normal text-3xl md:text-5xl lg:text-[61px]">Gewoon resultaten.</span>
+                        Geen mooie praatjes. <span className="text-primary font-drama font-normal text-h2-serif">Gewoon resultaten.</span>
                     </motion.h1>
                     <div className="space-y-6">
                         <p className="font-sans text-[#F2F0E9]/80 text-lg md:text-2xl font-light italic leading-relaxed border-l-[3px] border-primary/40 pl-8 md:pl-12">
@@ -151,8 +167,8 @@ const HomeAbout = () => {
     );
 };
 
-const Services = () => {
-    const services = [
+const Services = ({ cmsServices }) => {
+    const staticServices = [
         {
             icon: <LayoutIcon />,
             title: "Nieuwe website die écht verkoopt",
@@ -179,6 +195,18 @@ const Services = () => {
         }
     ];
 
+    // Combine static services with icons and dynamic text from CMS
+    const services = staticServices.map((s, i) => {
+        if (cmsServices && cmsServices[i]) {
+            return {
+                ...s,
+                title: cmsServices[i].title || s.title,
+                desc: cmsServices[i].description || s.desc
+            };
+        }
+        return s;
+    });
+
     return (
         <section id="wat-ik-bouw" className="py-32 bg-[#141414] relative overflow-hidden border-t border-white/5">
             {/* 2D Background Artifacts */}
@@ -201,7 +229,7 @@ const Services = () => {
                     />
                 ))}
             </div>
-            <div className="max-w-[1500px] mx-auto px-8 md:px-20 space-y-32 relative z-10">
+            <div className="content-max-width section-px space-y-20 md:space-y-32 relative z-10">
                 <motion.div
                     initial="initial"
                     whileInView="whileInView"
@@ -211,8 +239,8 @@ const Services = () => {
                 >
                     <div className="space-y-8 md:space-y-12">
                         <SectionLabel>Diensten</SectionLabel>
-                        <motion.h2 variants={fadeUp} className="font-sans font-bold leading-tight text-[#F2F0E9] tracking-tighter text-3xl md:text-4xl lg:text-[58px]">
-                            Kies waar we <span className="text-primary font-drama font-normal text-3xl md:text-4xl lg:text-[61px]">beginnen.</span>
+                        <motion.h2 variants={fadeUp} className="font-sans font-bold leading-tight text-[#F2F0E9] tracking-tighter text-h2">
+                            Kies waar we <span className="text-primary font-drama font-normal text-h2-serif">beginnen.</span>
                         </motion.h2>
                     </div>
                     <motion.p variants={fadeUp} className="font-sans text-[#F2F0E9]/80 max-w-md text-lg md:text-2xl border-l-[3px] border-primary/20 pl-8 md:pl-12 pb-4 md:pb-6 italic leading-relaxed">
@@ -228,14 +256,14 @@ const Services = () => {
                             whileInView={{ opacity: 1, y: 0 }}
                             viewport={{ once: true }}
                             transition={{ duration: 0.8, delay: i * 0.15 }}
-                            className="group relative"
+                            className="group relative h-full"
                         >
-                            <div className="bg-[#1A1A1A]/40 backdrop-blur-xl p-8 md:p-10 rounded-[2.5rem] border border-white/5 group-hover:border-primary/40 group-hover:bg-[#1A1A1A]/60 transition-all duration-700 flex flex-col min-h-auto md:min-h-[500px] cursor-pointer shadow-sm hover:shadow-2xl overflow-hidden relative">
+                            <div className="bg-[#1A1A1A]/40 backdrop-blur-xl p-8 md:p-10 rounded-[2.5rem] border border-white/5 group-hover:border-primary/40 group-hover:bg-[#1A1A1A]/60 transition-all duration-700 flex flex-col h-full cursor-pointer shadow-sm hover:shadow-2xl overflow-hidden relative">
                                 <div className="absolute top-0 right-0 w-64 h-64 bg-primary/10 rounded-full blur-[100px] translate-x-1/2 -translate-y-1/2 opacity-0 group-hover:opacity-100 transition-opacity duration-1000" />
                                 <div className="absolute bottom-0 left-0 w-32 h-32 bg-primary/5 rounded-full blur-[60px] translate-y-1/2 -translate-x-1/2 opacity-0 group-hover:opacity-100 transition-opacity duration-1000" />
 
-                                <div className="w-14 h-14 md:w-20 md:h-20 bg-primary/10 rounded-2xl flex items-center justify-center mb-10 md:mb-16 text-primary group-hover:bg-primary group-hover:text-white transition-all duration-700">
-                                    {React.cloneElement(s.icon, { size: 28 })}
+                                <div className="w-14 h-14 md:w-20 md:h-20 bg-primary/10 rounded-2xl flex items-center justify-center mb-10 md:mb-16 text-primary group-hover:bg-primary group-hover:text-white transition-all duration-700 transform group-hover:scale-110 group-hover:rotate-3">
+                                    {React.cloneElement(s.icon, { size: 28, className: "group-hover:scale-110 transition-transform duration-500" })}
                                 </div>
 
                                 <div className="space-y-6 md:space-y-8 flex-grow relative z-10">
@@ -245,7 +273,7 @@ const Services = () => {
                                     <h3 className="text-2xl md:text-4xl font-sans font-bold text-[#F2F0E9] leading-tight tracking-tight">
                                         {s.title}
                                     </h3>
-                                    <p className="font-sans text-[#F2F0E9]/40 font-light leading-relaxed text-base md:text-xl pb-8 md:pb-12 italic">
+                                    <p className="font-sans text-[#F2F0E9]/70 font-light leading-relaxed text-base md:text-xl pb-8 md:pb-12 italic">
                                         {s.desc}
                                     </p>
                                 </div>
@@ -385,12 +413,12 @@ const Process = () => {
     });
 
     return (
-        <section ref={containerRef} id="samenwerking" className="py-24 md:py-48 bg-[#0A0A0A] relative border-b border-white/5">
-            <div className="max-w-[1200px] mx-auto px-8 md:px-20">
+        <section ref={containerRef} id="samenwerking" className="section-py relative border-b border-white/5 overflow-hidden">
+            <div className="content-max-width section-px">
                 <div className="mb-24 md:mb-40 space-y-12 text-center">
                     <SectionLabel className="justify-center">Het Traject</SectionLabel>
-                    <h2 className="font-sans font-bold text-[#F2F0E9] leading-tight tracking-tighter text-3xl md:text-5xl lg:text-[58px]">
-                        Drie fases. <span className="text-primary font-drama font-normal text-3xl md:text-5xl lg:text-[61px]">Geen verrassingen.</span>
+                    <h2 className="font-sans font-bold text-[#F2F0E9] leading-tight tracking-tighter text-h2">
+                        Drie fases. <span className="text-primary font-drama font-normal text-h2-serif">Geen verrassingen.</span>
                     </h2>
                 </div>
 
@@ -413,15 +441,16 @@ const Process = () => {
                                 className={`relative flex flex-col md:flex-row items-center gap-12 md:gap-24 ${i % 2 !== 0 ? 'md:flex-row-reverse' : ''}`}
                             >
                                 {/* Step Indicator */}
-                                <div className="absolute left-[20px] md:left-1/2 top-0 w-8 h-8 rounded-full bg-primary flex items-center justify-center z-20 -translate-x-1/2 -mt-1 shadow-lg shadow-primary/20">
-                                    <div className="w-2 h-2 bg-white rounded-full animate-pulse" />
+                                <div className="absolute left-[8px] md:left-1/2 top-0 w-6 h-6 md:w-8 md:h-8 rounded-full bg-primary flex items-center justify-center z-20 -translate-x-1/2 -mt-1 shadow-lg shadow-primary/20 sm:left-[20px] md:left-1/2">
+                                    <div className="w-1.5 h-1.5 md:w-2 md:h-2 bg-white rounded-full animate-pulse" />
                                 </div>
+                                <div className="absolute left-[8px] md:hidden top-0 bottom-0 w-[1px] bg-white/10 -translate-x-1/2 z-10" />
 
-                                <div className="w-full md:w-1/2 space-y-6 md:px-0 pl-16">
+                                <div className="w-full md:w-1/2 space-y-6 md:px-0 pl-10 md:pl-0">
                                     <div className="flex items-center gap-4">
                                         <span className="font-mono text-primary text-[12px] font-black tracking-widest">{step.id}</span>
                                     </div>
-                                    <h3 className="text-3xl md:text-5xl lg:text-[58px] font-sans font-bold text-[#F2F0E9] tracking-tighter leading-[1.1]">
+                                    <h3 className="text-2xl sm:text-3xl md:text-5xl lg:text-[58px] font-sans font-bold text-[#F2F0E9] tracking-tighter leading-tight">
                                         {step.title}
                                     </h3>
                                     <p className="text-[#F2F0E9]/50 text-base md:text-xl font-sans font-light leading-relaxed italic max-w-lg">
@@ -441,27 +470,57 @@ const Process = () => {
 };
 
 const FAQ = () => {
-    const questions = [
+    // 1. DIT ZIJN JE STANDAARD VRAGEN (FALLBACK)
+    const staticQuestions = [
         { q: "Heb ik zelf technische kennis nodig?", a: "Nee. Ik bouw het, ik leg het simpel uit en jij gebruikt het. Geen gedoe met code." },
         { q: "Ik heb al een website, wat nu?", a: "Geen probleem. We kunnen je huidige site optimaliseren of de dashboards en automatiseringen toevoegen." },
         { q: "Hoeveel tijd kost dit mij?", a: "Minimaal. We doen één intake van 20 minuten, daarna neem ik het werk uit handen." },
         { q: "Moet ik alles in één keer doen?", a: "Nee. De meeste ondernemers kiezen eerst één upgrade om een specifiek probleem op te lossen." }
     ];
 
+    // 2. DIT IS HOE JE HET CMS KOPPELT
+    const [cmsQuestions, setCmsQuestions] = useState([]);
+    const [loading, setLoading] = useState(false); // Optioneel: toon een loader
+
+    useEffect(() => {
+        const fetchCmsData = async () => {
+            setLoading(true);
+            try {
+                const data = await getFaqs();
+                if (data && data.length > 0) {
+                    // Map Sanity schema to local schema
+                    const mappedFaqs = data.map(item => ({
+                        q: item.question,
+                        a: item.answer
+                    }));
+                    setCmsQuestions(mappedFaqs);
+                }
+            } catch (err) {
+                console.error("CMS Error:", err);
+            } finally {
+                setLoading(false);
+            }
+        };
+        fetchCmsData();
+    }, []);
+
+    // Samengevoegde lijst (CMS data komt eerst als het er is)
+    const allQuestions = cmsQuestions.length > 0 ? [...cmsQuestions, ...staticQuestions] : staticQuestions;
+
     const [openIndex, setOpenIndex] = useState(0);
 
     return (
-        <section id="vragen" className="py-20 px-8 bg-[#141414] border-b border-white/5">
-            <div className="max-w-[1200px] mx-auto px-8 md:px-20 grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-20">
+        <section id="vragen" className="section-py relative border-b border-white/5">
+            <div className="content-max-width section-px grid grid-cols-1 lg:grid-cols-2 gap-12 md:gap-20">
                 <div className="space-y-6">
                     <SectionLabel>Vragen</SectionLabel>
-                    <h2 className="font-sans font-bold text-[#F2F0E9] leading-tight tracking-tighter text-3xl md:text-5xl lg:text-[58px]">
-                        Alles wat je moet weten <span className="text-primary font-drama font-normal text-3xl md:text-5xl lg:text-[61px]">voordat we starten.</span>
+                    <h2 className="font-sans font-bold text-[#F2F0E9] leading-tight tracking-tighter text-h2">
+                        Alles wat je moet weten <span className="text-primary font-drama font-normal text-h2-serif">voordat we starten.</span>
                     </h2>
                 </div>
 
                 <div className="space-y-4">
-                    {questions.map((item, i) => (
+                    {allQuestions.map((item, i) => (
                         <div
                             key={i}
                             className={`rounded-[1.5rem] border transition-all duration-500 overflow-hidden ${openIndex === i ? 'bg-[#1A1A1A]/80 border-primary/20 shadow-sm' : 'bg-white/[0.01] border-white/5 hover:border-white/10'}`}
@@ -497,7 +556,11 @@ const FAQ = () => {
     );
 };
 
-const ContactSection = () => {
+const ContactSection = ({ data }) => {
+    const headlineSans = data?.headlineSans || "Welke upgrade gaan we als";
+    const headlineSerif = data?.headlineSerif || "eerste activeren?";
+    const subtitle = data?.subtitle || "Kies het onderdeel waar je nu de meeste winst laat liggen. Ik kijk in 20 minuten met je mee waar de kansen zitten.";
+
     return (
         <section id="contact" className="py-24 px-8 bg-[#0A0A0A] text-[#F2F0E9] relative overflow-hidden">
             <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[1000px] h-[1000px] bg-primary/5 rounded-full blur-[200px]" />
@@ -511,16 +574,15 @@ const ContactSection = () => {
                     className="text-left md:text-center space-y-10 md:space-y-16 mb-12 md:mb-20 w-full"
                 >
                     <SectionLabel className="md:justify-center">Plan Je Scan</SectionLabel>
-                    <motion.h2 variants={fadeUp} className="font-sans font-bold text-[#F2F0E9] leading-tight tracking-tighter text-3xl md:text-5xl lg:text-[58px]">
-                        Welke upgrade gaan we als <span className="text-primary font-drama font-normal text-3xl md:text-5xl lg:text-[61px]">eerste activeren?</span>
+                    <motion.h2 variants={fadeUp} className="font-sans font-bold text-[#F2F0E9] leading-tight tracking-tighter text-h2">
+                        {headlineSans} <span className="text-primary font-drama font-normal text-h2-serif">{headlineSerif}</span>
                     </motion.h2>
                     <motion.p variants={fadeUp} className="font-sans text-[#F2F0E9]/40 text-base md:text-xl font-light leading-relaxed italic max-w-3xl mx-auto border-b-2 border-white/5 pb-8 md:pb-10 text-center">
-                        Kies het onderdeel waar je nu de meeste winst laat liggen. <br className="hidden md:block" />
-                        Ik kijk in 20 minuten met je mee waar de kansen zitten.
+                        {subtitle}
                     </motion.p>
                 </motion.div>
 
-                <div className="w-full max-w-4xl mx-auto px-8 md:px-20">
+                <div className="w-full content-max-width section-px">
                     <ContactForm />
                 </div>
             </div>
@@ -529,14 +591,33 @@ const ContactSection = () => {
 };
 
 const Home = () => {
+    const [pageData, setPageData] = useState(null);
+    const [contactInfo, setContactInfo] = useState(null);
+
+    useEffect(() => {
+        const fetchPageData = async () => {
+            try {
+                const [home, contact] = await Promise.all([
+                    getHomePageData(),
+                    getContactInfo()
+                ]);
+                setPageData(home);
+                setContactInfo(contact);
+            } catch (err) {
+                console.error("Sanity Fetch Error:", err);
+            }
+        };
+        fetchPageData();
+    }, []);
+
     return (
         <div className="bg-[#0A0A0A]">
-            <Hero />
+            <Hero data={pageData} />
             <HomeAbout />
-            <Services />
+            <Services cmsServices={pageData?.features} />
             <Process />
             <FAQ />
-            <ContactSection />
+            <ContactSection data={contactInfo} />
         </div>
     );
 };

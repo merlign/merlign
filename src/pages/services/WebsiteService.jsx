@@ -1,9 +1,12 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Check, ArrowRight, MousePointerClick, Zap, Layout as LayoutIcon, Search, Settings } from 'lucide-react';
+import { Check, ArrowRight, MousePointerClick, Zap, Layout as LayoutIcon, Search, Settings, ChevronDown } from 'lucide-react';
+import { AnimatePresence } from 'framer-motion';
 import SectionLabel from '../../components/SectionLabel';
 import ContactForm from '../../components/ContactForm';
 import { Link } from 'react-router-dom';
+
+import { getServicePageData } from '../../lib/sanity';
 
 const fadeUp = {
     initial: { opacity: 0, y: 30 },
@@ -18,6 +21,50 @@ const staggerContainer = {
 };
 
 const WebsiteService = () => {
+    const [data, setData] = React.useState(null);
+
+    React.useEffect(() => {
+        const fetchData = async () => {
+            try {
+                const res = await getServicePageData('Website');
+                setData(res);
+            } catch (err) {
+                console.error("Website Service Fetch Error:", err);
+            }
+        };
+        fetchData();
+    }, []);
+
+    const heroSans = data?.heroSans || "Een website die voor je werkt";
+    const heroSerif = data?.heroSerif || "terwijl jij onderneemt.";
+    const heroSubtitle = data?.heroSubtitle || "Niet alleen mooi. Gebouwd om bezoekers te overtuigen en te laten converteren. Klaar in 72 uur.";
+
+    const staticFeatures = [
+        { title: "Strategie voor design", desc: "Elke sectie heeft een doel. Elke zin doet werk. Ik bouw op basis van 10 jaar design-ervaring gecombineerd met funnel-denken." },
+        { title: "Live in 72 uur", desc: "Geen weken wachten. Na de check ga ik aan de slag en lever ik op. Jij geeft feedback, ik pas aan, klaar." },
+        { title: "SEO ingebakken", desc: "Snelle laadtijd, schone structuur, juiste titels en beschrijvingen. Je website wordt gevonden zonder dat je er extra voor hoeft te betalen." },
+        { title: "Zorgeloos onderhoud", desc: "Je website blijft veilig, snel en up-to-date. Ik zorg voor de techniek op de achtergrond, zodat jij er geen omkijken naar hebt." },
+        { title: "Makkelijk te beheren", desc: "Wil je toch zelf iets aanpassen? Dat kan. Ik lever met een korte uitleg zodat je zelfstandig kleine wijzigingen kunt doen." }
+    ];
+
+    const features = data?.features?.length > 0 ? data.features.map((f, i) => ({
+        title: f.title || staticFeatures[i]?.title,
+        desc: f.description || staticFeatures[i]?.desc
+    })) : staticFeatures;
+
+    const staticProcess = [
+        { step: "01", title: "Gratis check", desc: "20 minuten. Ik kijk naar je huidige situatie, wat je wil bereiken en wat daarvoor nodig is. Geen verkooppraatje.", icon: <Search size={24} /> },
+        { step: "02", title: "Bouwsprint", desc: "Ik bouw de website. Design, copy-structuur, SEO, snelheid, alles in één sprint. Jij geeft feedback als ik iets laat zien.", icon: <Zap size={24} /> },
+        { step: "03", title: "Live en klaar", desc: "Je site staat live. Korte overdracht, je bent zelfstandig, en je weet dat ik op de achtergrond het onderhoud blijf doen als je dat wenst.", icon: <Check size={24} /> }
+    ];
+
+    const processItems = data?.processSteps?.length > 0 ? data.processSteps.map((p, i) => ({
+        ...staticProcess[i],
+        step: p.stepNumber || staticProcess[i]?.step,
+        title: p.title || staticProcess[i]?.title,
+        desc: p.description || staticProcess[i]?.desc
+    })) : staticProcess;
+
     return (
         <div className="pt-32 md:pt-48 pb-20 md:pb-32 px-6 md:px-8 bg-[#0A0A0A] relative overflow-hidden">
             {/* Background Artifacts */}
@@ -32,17 +79,17 @@ const WebsiteService = () => {
                     initial="initial"
                     whileInView="whileInView"
                     viewport={{ once: true }}
-                    className="space-y-8 md:space-y-12"
+                    className="space-y-8 md:space-y-12 pt-12"
                 >
                     <SectionLabel>Website</SectionLabel>
                     <motion.h1
                         variants={fadeUp}
-                        className="font-sans font-bold leading-tight text-[#F2F0E9] tracking-tighter text-3xl md:text-5xl lg:text-[58px]"
+                        className="font-sans font-bold text-[#F2F0E9] text-h1"
                     >
-                        Een website die voor je werkt <span className="text-primary font-drama font-normal text-3xl md:text-5xl lg:text-[61px]">terwijl jij onderneemt.</span>
+                        {heroSans} <span className="text-primary font-drama font-normal text-h1-serif">{heroSerif}</span>
                     </motion.h1>
                     <motion.p variants={fadeUp} className="font-sans text-[#F2F0E9]/80 text-lg md:text-2xl font-light italic leading-relaxed max-w-4xl border-l-[3px] border-primary/20 pl-8 md:pl-12">
-                        Niet alleen mooi. Gebouwd om bezoekers te overtuigen en te laten converteren. Klaar in 72 uur.
+                        {heroSubtitle}
                     </motion.p>
                     <motion.div variants={fadeUp} className="pt-4 text-left">
                         <Link to="/contact" className="btn-magnetic group inline-flex bg-primary text-white border-transparent px-10 md:px-12 py-5 md:py-6 rounded-full shadow-[0_0_20px_rgba(201,168,76,0.3)]">
@@ -56,21 +103,15 @@ const WebsiteService = () => {
                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 md:gap-32 items-center">
                     <div className="space-y-10 md:space-y-16 order-2 lg:order-1">
                         <div className="space-y-6 md:space-y-10">
-                            <h2 className="font-sans font-bold text-[#F2F0E9] leading-tight tracking-tighter text-2xl md:text-3xl lg:text-[58px]">
-                                Wat je krijgt dat <span className="text-primary font-drama font-normal text-2xl md:text-3xl lg:text-[61px]">anderen niet leveren.</span>
+                            <h2 className="font-sans font-bold text-[#F2F0E9] leading-tight tracking-tighter text-h2">
+                                Wat je krijgt dat <span className="text-primary font-drama font-normal text-h2-serif">anderen niet leveren.</span>
                             </h2>
                             <p className="font-sans text-[#F2F0E9]/80 text-lg md:text-2xl font-light italic leading-relaxed">
                                 Ik denk niet alleen na over hoe het eruit ziet. Ik denk na over wat een bezoeker voelt, twijfelt en nodig heeft om actie te nemen.
                             </p>
                         </div>
                         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12">
-                            {[
-                                { title: "Strategie voor design", desc: "Elke sectie heeft een doel. Elke zin doet werk. Ik bouw op basis van 10 jaar design-ervaring gecombineerd met funnel-denken." },
-                                { title: "Live in 72 uur", desc: "Geen weken wachten. Na de check ga ik aan de slag en lever ik op. Jij geeft feedback, ik pas aan, klaar." },
-                                { title: "SEO ingebakken", desc: "Snelle laadtijd, schone structuur, juiste titels en beschrijvingen. Je website wordt gevonden zonder dat je er extra voor hoeft te betalen." },
-                                { title: "Zorgeloos onderhoud", desc: "Je website blijft veilig, snel en up-to-date. Ik zorg voor de techniek op de achtergrond, zodat jij er geen omkijken naar hebt." },
-                                { title: "Makkelijk te beheren", desc: "Wil je toch zelf iets aanpassen? Dat kan. Ik lever met een korte uitleg zodat je zelfstandig kleine wijzigingen kunt doen." }
-                            ].map((item, i) => (
+                            {features.map((item, i) => (
                                 <motion.div
                                     key={i}
                                     initial={{ opacity: 0, y: 20 }}
@@ -132,16 +173,12 @@ const WebsiteService = () => {
                 <div className="space-y-16 md:space-y-24">
                     <div className="text-center space-y-8">
                         <SectionLabel className="justify-center">Hoe het werkt</SectionLabel>
-                        <h2 className="text-3xl md:text-5xl lg:text-[58px] font-sans font-bold text-[#F2F0E9] leading-[1.1] tracking-tighter">
-                            Zo werkt <span className="text-primary font-drama font-normal italic inline-block align-baseline mt-4 leading-[1.1] text-3xl md:text-5xl lg:text-[58px]">het.</span>
+                        <h2 className="font-sans font-bold text-[#F2F0E9] text-h2">
+                            Zo werkt <span className="text-primary font-drama font-normal text-h2-serif">het.</span>
                         </h2>
                     </div>
                     <div className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-12">
-                        {[
-                            { step: "01", title: "Gratis check", desc: "20 minuten. Ik kijk naar je huidige situatie, wat je wil bereiken en wat daarvoor nodig is. Geen verkooppraatje.", icon: <Search size={24} /> },
-                            { step: "02", title: "Bouwsprint", desc: "Ik bouw de website. Design, copy-structuur, SEO, snelheid, alles in één sprint. Jij geeft feedback als ik iets laat zien.", icon: <Zap size={24} /> },
-                            { step: "03", title: "Live en klaar", desc: "Je site staat live. Korte overdracht, je bent zelfstandig, en je weet dat ik op de achtergrond het onderhoud blijf doen als je dat wenst.", icon: <Check size={24} /> }
-                        ].map((item, i) => (
+                        {processItems.map((item, i) => (
                             <motion.div
                                 key={i}
                                 initial={{ opacity: 0, y: 30 }}
@@ -151,20 +188,20 @@ const WebsiteService = () => {
                                 className="p-10 rounded-[2.5rem] bg-[#1A1A1A]/40 border border-white/5 space-y-8 group hover:bg-[#1A1A1A]/60 transition-all duration-700"
                             >
                                 <div className="flex justify-between items-start">
-                                    <div className="w-14 h-14 rounded-2xl bg-primary/10 flex items-center justify-center text-primary group-hover:bg-primary group-hover:text-white transition-all duration-700">
-                                        {item.icon}
+                                    <div className="w-14 h-14 rounded-2xl bg-primary/10 flex items-center justify-center text-primary group-hover:bg-primary group-hover:text-white transition-all duration-700 transform group-hover:scale-110 group-hover:rotate-3">
+                                        {React.cloneElement(item.icon, { className: "group-hover:scale-110 transition-transform duration-500" })}
                                     </div>
                                     <span className="font-mono text-4xl font-black text-white/5 group-hover:text-primary/10 transition-colors uppercase italic">{item.step}</span>
                                 </div>
                                 <div className="space-y-4">
                                     <h3 className="text-xl md:text-2xl font-sans font-bold text-[#F2F0E9] tracking-tighter">{item.title}</h3>
-                                    <p className="font-sans text-[#F2F0E9]/40 leading-relaxed italic">{item.desc}</p>
+                                    <p className="font-sans text-[#F2F0E9]/70 leading-relaxed italic">{item.desc}</p>
                                 </div>
                             </motion.div>
                         ))}
                     </div>
                 </div>
-
+                <FAQ />
                 {/* Bottom CTA */}
                 <div className="py-20 md:py-32 border-t border-white/5 flex flex-col items-center">
                     <motion.div
@@ -175,8 +212,8 @@ const WebsiteService = () => {
                         className="text-left md:text-center space-y-10 md:space-y-16 mb-16 md:mb-24 w-full"
                     >
                         <Link to="/contact" className="group flex flex-col items-center">
-                            <h2 className="font-sans font-bold text-[#F2F0E9] leading-tight tracking-tighter md:text-center text-3xl md:text-5xl lg:text-[58px]">
-                                Klaar om te <span className="text-primary font-drama font-normal ml-4 text-3xl md:text-5xl lg:text-[61px]">beginnen?</span>
+                            <h2 className="font-sans font-bold text-[#F2F0E9] md:text-center text-h2">
+                                Klaar om te <span className="text-primary font-drama font-normal ml-4 text-h2-serif">beginnen?</span>
                             </h2>
                         </Link>
                         <motion.p variants={fadeUp} className="font-sans text-[#F2F0E9]/40 text-base md:text-xl font-light leading-relaxed italic max-w-3xl mx-auto border-l-2 md:border-l-0 md:border-b-2 border-white/5 pb-10 md:pb-12 pl-8 md:pl-0 text-center">
@@ -188,6 +225,79 @@ const WebsiteService = () => {
                 </div>
             </div>
         </div>
+    );
+};
+
+const FAQ = () => {
+    const questions = [
+        {
+            q: "Is mijn website goed vindbaar in Google?",
+            a: "Ja. Elke site die ik bouw is vanaf de basis geoptimaliseerd voor SEO. Snelle laadtijden, schone code en de juiste meta-data zorgen voor een sterke start in de zoekresultaten."
+        },
+        {
+            q: "Is de website volledig mobielvriendelijk?",
+            a: "Absoluut. Meer dan 60% van het verkeer komt tegenwoordig via mobiel. Jouw site is 'mobile-first' ontworpen en werkt perfect op elk schermformaat."
+        },
+        {
+            q: "Kan ik zelf teksten en foto's aanpassen?",
+            a: "Zeker. Ik lever de website op met een eenvoudig beheersysteem (CMS) en een korte uitlegvideo. Je bent niet afhankelijk van mij voor elke kleine wijziging."
+        },
+        {
+            q: "Gebruik je WordPress of maatwerk?",
+            a: "Ik kies de techniek die het beste bij jouw doelen past. Meestal bouw ik in moderne frameworks (zoals React/Next.js) voor maximale snelheid en precisie, maar WordPress is ook een optie als dat beter uitkomt."
+        },
+        {
+            q: "Wat zijn de kosten voor onderhoud na de lancering?",
+            a: "Omdat mijn websites volledig custom codeerwerk zijn, ken ik elke regel code van binnenuit. Ik heb geen duur kantoor of personeel nodig, waardoor ik het onderhoud en de hosting voor een extreem lage prijs kan aanbieden. Je betaalt alleen voor pure technische stabiliteit."
+        }
+    ];
+
+    const [openIndex, setOpenIndex] = React.useState(0);
+
+    return (
+        <section className="py-20 md:py-32 border-t border-white/5">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 md:gap-20">
+                <div className="space-y-6">
+                    <SectionLabel>FAQ</SectionLabel>
+                    <h2 className="font-sans font-bold text-[#F2F0E9] leading-tight tracking-tighter text-h2">
+                        Veelgestelde vragen over <span className="text-primary font-drama font-normal text-h2-serif">websites.</span>
+                    </h2>
+                </div>
+
+                <div className="space-y-4">
+                    {questions.map((item, i) => (
+                        <div
+                            key={i}
+                            className={`rounded-[1.5rem] border transition-all duration-500 overflow-hidden ${openIndex === i ? 'bg-[#1A1A1A]/80 border-primary/20 shadow-sm' : 'bg-white/[0.01] border-white/5 hover:border-white/10'}`}
+                        >
+                            <button
+                                onClick={() => setOpenIndex(openIndex === i ? -1 : i)}
+                                className="w-full px-6 py-6 flex items-center justify-between text-left group"
+                            >
+                                <span className={`text-base md:text-lg font-sans font-bold transition-colors ${openIndex === i ? 'text-primary' : 'text-[#F2F0E9]/70'}`}>
+                                    {item.q}
+                                </span>
+                                <ChevronDown size={14} className={`transition-transform duration-500 ${openIndex === i ? 'rotate-180 text-primary' : 'text-[#F2F0E9]/20'}`} />
+                            </button>
+                            <AnimatePresence>
+                                {openIndex === i && (
+                                    <motion.div
+                                        initial={{ height: 0, opacity: 0 }}
+                                        animate={{ height: "auto", opacity: 1 }}
+                                        exit={{ height: 0, opacity: 0 }}
+                                        transition={{ duration: 0.4, ease: "circOut" }}
+                                    >
+                                        <div className="px-6 pb-6 text-[#F2F0E9]/50 text-base font-sans font-light italic border-t border-white/5 pt-4">
+                                            {item.a}
+                                        </div>
+                                    </motion.div>
+                                )}
+                            </AnimatePresence>
+                        </div>
+                    ))}
+                </div>
+            </div>
+        </section>
     );
 };
 
