@@ -504,8 +504,8 @@ const FAQ = () => {
         fetchCmsData();
     }, []);
 
-    // Samengevoegde lijst (CMS data komt eerst als het er is)
-    const allQuestions = cmsQuestions.length > 0 ? [...cmsQuestions, ...staticQuestions] : staticQuestions;
+    // Only use CMS data if available to avoid duplicates; otherwise fall back to static
+    const allQuestions = cmsQuestions.length > 0 ? cmsQuestions : staticQuestions;
 
     const [openIndex, setOpenIndex] = useState(0);
 
