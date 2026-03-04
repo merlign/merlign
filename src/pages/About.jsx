@@ -89,24 +89,24 @@ const About = () => {
                         initial={{ opacity: 0, x: 30 }}
                         whileInView={{ opacity: 1, x: 0 }}
                         viewport={{ once: true }}
-                        className="lg:col-span-7 space-y-12 md:space-y-16"
+                        className="lg:col-span-12 xl:col-span-7 space-y-12 md:space-y-16"
                     >
                         <div className="space-y-8">
                             <SectionLabel>Wie ik ben</SectionLabel>
                             <motion.h2 variants={fadeUp} className="font-sans font-bold text-[#F2F0E9] text-h2">
-                                De perfecte mix tussen <span className="text-primary font-drama font-normal text-h2-serif">vorm en functie.</span>
+                                {data?.whoAmIHeadlineSans || "De perfecte mix tussen"} <span className="text-primary font-drama font-normal text-h2-serif">{data?.whoAmIHeadlineSerif || "vorm en functie."}</span>
                             </motion.h2>
                         </div>
                         <div className="space-y-8 font-sans text-[#F2F0E9]/60 text-lg md:text-2xl font-light italic leading-relaxed border-l-[3px] border-primary/20 pl-8 md:pl-12">
-                            <p>
-                                Ik begon als grafisch designer en ben in AI gedoken omdat ik zag wat er mogelijk was. Nu combineer ik 10 jaar design-ervaring met moderne AI-tools om dingen te bouwen die er goed uitzien en goed werken.
-                            </p>
-                            <p>
-                                Het verschil met een bureau: ik ben snel, ik denk mee en je hebt altijd één aanspreekpunt. Het verschil met een goedkope freelancer: ik lever niet alleen wat je vraagt, maar ook wat je nodig hebt.
-                            </p>
-                            <p>
-                                Voor ondernemers van 1 tot 10 man ben ik de sparringspartner die ze anders niet hebben. Iemand die begrijpt hoe een goede uitstraling eruitziet én hoe systemen in elkaar moeten zitten.
-                            </p>
+                            {data?.whoAmIParas && data.whoAmIParas.length > 0 ? data.whoAmIParas.map((para, i) => (
+                                <p key={i}>{para}</p>
+                            )) : (
+                                <>
+                                    <p>Ik begon als grafisch designer en ben in AI gedoken omdat ik zag wat er mogelijk was. Nu combineer ik 10 jaar design-ervaring met moderne AI-tools om dingen te bouwen die er goed uitzien en goed werken.</p>
+                                    <p>Het verschil met een bureau: ik ben snel, ik denk mee en je hebt altijd één aanspreekpunt. Het verschil met een goedkope freelancer: ik lever niet alleen wat je vraagt, maar ook wat je nodig hebt.</p>
+                                    <p>Voor ondernemers van 1 tot 10 man ben ik de sparringspartner die ze anders niet hebben. Iemand die begrijpt hoe een goede uitstraling eruitziet én hoe systemen in elkaar moeten zitten.</p>
+                                </>
+                            )}
                         </div>
                     </motion.div>
                 </div>
@@ -115,17 +115,17 @@ const About = () => {
                     <div className="flex flex-col md:items-center text-left md:text-center space-y-8 mb-16 md:mb-24">
                         <SectionLabel>Keuze</SectionLabel>
                         <h2 className="font-sans font-bold text-[#F2F0E9] md:text-center text-h2">
-                            Waarom ondernemers voor <span className="text-primary font-drama font-normal text-h2-serif">mij kiezen.</span>
+                            {data?.choiceHeadlineSans || "Waarom ondernemers voor"} <span className="text-primary font-drama font-normal text-h2-serif">{data?.choiceHeadlineSerif || "mij kiezen."}</span>
                         </h2>
                     </div>
 
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-16">
-                        {[
-                            { title: "Niet alleen bouwen, ook meedenken", desc: "Ik neem niet blind je briefing over. Als ik iets zie dat beter kan, zeg ik het. Dat is wat een sparringspartner doet." },
-                            { title: "Design en techniek in één", desc: "Je hoeft niet te kiezen tussen iemand die het mooi maakt of iemand die het laat werken. Ik doe beide." },
-                            { title: "Snel en zonder gedoe", desc: "Geen maanden wachten, geen eindeloze vergaderingen. Ik werk in korte sprints en lever op." },
-                            { title: "Eerlijk over wat het kost", desc: "Geen vage offertes. Na de check weet je precies wat het wordt voor je akkoord gaat." }
-                        ].map((item, i) => (
+                        {(data?.choices?.length > 0 ? data.choices : [
+                            { title: "Niet alleen bouwen, ook meedenken", description: "Ik neem niet blind je briefing over. Als ik iets zie dat beter kan, zeg ik het. Dat is wat een sparringspartner doet." },
+                            { title: "Design en techniek in één", description: "Je hoeft niet te kiezen tussen iemand die het mooi maakt of iemand die het laat werken. Ik doe beide." },
+                            { title: "Snel en zonder gedoe", description: "Geen maanden wachten, geen eindeloze vergaderingen. Ik werk in korte sprints en lever op." },
+                            { title: "Eerlijk over wat het kost", description: "Geen vage offertes. Na de check weet je precies wat het wordt voor je akkoord gaat." }
+                        ]).map((item, i) => (
                             <motion.div
                                 key={i}
                                 initial={{ opacity: 0, y: 20 }}
@@ -135,7 +135,7 @@ const About = () => {
                                 className="p-10 rounded-[2.5rem] bg-[#1A1A1A]/40 border border-white/5 space-y-6 hover:bg-[#1A1A1A]/60 transition-all duration-700"
                             >
                                 <h3 className="text-xl md:text-3xl font-sans font-bold text-[#F2F0E9] tracking-tighter">{item.title}</h3>
-                                <p className="font-sans text-[#F2F0E9]/70 leading-relaxed italic text-base md:text-lg">{item.desc}</p>
+                                <p className="font-sans text-[#F2F0E9]/70 leading-relaxed italic text-base md:text-lg">{item.description || item.desc}</p>
                             </motion.div>
                         ))}
                     </div>
@@ -145,10 +145,10 @@ const About = () => {
                 <div className="section-py border-t border-white/5 flex flex-col items-center text-center">
                     <SectionLabel className="md:justify-center">Samenwerken</SectionLabel>
                     <h2 className="font-sans font-bold text-[#F2F0E9] mt-8 md:text-center text-h2">
-                        Wil je <span className="text-primary font-drama font-normal text-h2-serif">samenwerken?</span>
+                        {data?.ctaHeadlineSans || "Wil je"} <span className="text-primary font-drama font-normal text-h2-serif">{data?.ctaHeadlineSerif || "samenwerken?"}</span>
                     </h2>
                     <p className="font-sans text-[#F2F0E9]/40 text-lg md:text-2xl mt-8 mb-16 md:mb-24 italic max-w-2xl">
-                        Plan een gratis check. In 20 minuten weet je of we een match zijn.
+                        {data?.ctaSubtitle || "Plan een gratis check. In 20 minuten weet je of we een match zijn."}
                     </p>
                     <ContactForm />
                 </div>

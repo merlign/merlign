@@ -26,6 +26,22 @@ export default defineType({
             title: 'Hero Ondertitel',
             type: 'text',
         }),
+        // "Waarom" / Middle Section
+        defineField({
+            name: 'whyHeadlineSans',
+            title: 'Midden Sectie Headline (Sans)',
+            type: 'string',
+        }),
+        defineField({
+            name: 'whyHeadlineSerif',
+            title: 'Midden Sectie Headline (Serif)',
+            type: 'string',
+        }),
+        defineField({
+            name: 'whySubtitle',
+            title: 'Midden Sectie Ondertitel',
+            type: 'text',
+        }),
         defineField({
             name: 'features',
             title: 'Kenmerken / Voordelen',
@@ -51,6 +67,37 @@ export default defineType({
                         { name: 'stepNumber', title: 'Stap Nummer', type: 'string' },
                         { name: 'title', title: 'Titel', type: 'string' },
                         { name: 'description', title: 'Omschrijving', type: 'text' }
+                    ]
+                }
+            ]
+        }),
+        // Bottom CTA
+        defineField({
+            name: 'ctaHeadlineSans',
+            title: 'Beneden CTA Headline (Sans)',
+            type: 'string',
+        }),
+        defineField({
+            name: 'ctaHeadlineSerif',
+            title: 'Beneden CTA Headline (Serif)',
+            type: 'string',
+        }),
+        defineField({
+            name: 'ctaSubtitle',
+            title: 'Beneden CTA Ondertitel',
+            type: 'text',
+        }),
+        // Service-Specific FAQs
+        defineField({
+            name: 'faqs',
+            title: 'Veelgestelde Vragen (Specifiek voor deze dienst)',
+            type: 'array',
+            of: [
+                {
+                    type: 'object',
+                    fields: [
+                        { name: 'question', title: 'Vraag', type: 'string' },
+                        { name: 'answer', title: 'Antwoord', type: 'text' }
                     ]
                 }
             ]

@@ -103,10 +103,10 @@ const DashboardService = () => {
                     <div className="space-y-10 md:space-y-16 order-2 lg:order-1">
                         <div className="space-y-6 md:space-y-10">
                             <h2 className="font-sans font-bold text-[#F2F0E9] text-h2">
-                                Waarom ondernemers zonder <span className="text-primary font-drama font-normal text-h2-serif">dashboard geld laten liggen.</span>
+                                {data?.whyHeadlineSans || "Waarom ondernemers zonder"} <span className="text-primary font-drama font-normal text-h2-serif">{data?.whyHeadlineSerif || "dashboard geld laten liggen."}</span>
                             </h2>
                             <p className="font-sans text-[#F2F0E9]/80 text-lg md:text-2xl font-light italic leading-relaxed">
-                                Je kunt je bedrijf niet sturen als je niet weet wat er gebeurt. Een dashboard geeft je in één oogopslag wat je nodig hebt om de juiste beslissingen te nemen.
+                                {data?.whySubtitle || "Je kunt je bedrijf niet sturen als je niet weet wat er gebeurt. Een dashboard geeft je in één oogopslag wat je nodig hebt om de juiste beslissingen te nemen."}
                             </p>
                         </div>
                         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12">
@@ -203,7 +203,7 @@ const DashboardService = () => {
                         ))}
                     </div>
                 </div>
-                <FAQ />
+                <FAQ cmsFaqs={data?.faqs} />
                 {/* Bottom CTA */}
                 <div className="py-20 md:py-32 border-t border-white/5 flex flex-col items-center">
                     <motion.div
@@ -216,11 +216,11 @@ const DashboardService = () => {
                         <SectionLabel className="md:justify-center">Start Vandaag</SectionLabel>
                         <Link to="/contact" className="group flex flex-col items-center">
                             <h2 className="font-sans font-bold text-[#F2F0E9] md:text-center text-h2">
-                                Klaar om te <span className="text-primary font-drama font-normal ml-4 text-h2-serif">sturen op cijfers?</span>
+                                {data?.ctaHeadlineSans || "Klaar om te"} <span className="text-primary font-drama font-normal ml-4 text-h2-serif">{data?.ctaHeadlineSerif || "sturen op cijfers?"}</span>
                             </h2>
                         </Link>
                         <motion.p variants={fadeUp} className="font-sans text-[#F2F0E9]/40 text-base md:text-xl font-light leading-relaxed italic max-w-3xl mx-auto border-l-2 md:border-l-0 md:border-b-2 border-white/5 pb-10 md:pb-12 pl-8 md:pl-0 text-center">
-                            Vraag een gratis check aan. In 20 minuten weet je wat een dashboard jou oplevert.
+                            {data?.ctaSubtitle || "Vraag een gratis check aan. In 20 minuten weet je wat een dashboard jou oplevert."}
                         </motion.p>
                     </motion.div>
 
@@ -231,8 +231,8 @@ const DashboardService = () => {
     );
 };
 
-const FAQ = () => {
-    const questions = [
+const FAQ = ({ cmsFaqs }) => {
+    const staticQuestions = [
         {
             q: "Welke systemen kun je koppelen aan een dashboard?",
             a: "Vrijwel alles met een API. Denk aan Google Ads, Facebook Ads, CRM-systemen (HubSpot, Pipedrive), boekhoudsoftware (Exact, Moneybird) en natuurlijk je eigen website-data."
@@ -254,6 +254,11 @@ const FAQ = () => {
             a: "Elk dashboard is custom codeerwerk van de bovenste plank. Omdat ik elke regel zelf schrijf, is support bliksemsnel en de onderhoudskosten extreem laag. Je betaalt niet voor overhead, maar voor een systeem dat simpelweg blijft draaien."
         }
     ];
+
+    const questions = cmsFaqs?.length > 0 ? cmsFaqs.map(f => ({
+        q: f.question,
+        a: f.answer
+    })) : staticQuestions;
 
     const [openIndex, setOpenIndex] = React.useState(0);
 

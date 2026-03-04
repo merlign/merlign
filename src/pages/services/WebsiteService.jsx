@@ -103,11 +103,11 @@ const WebsiteService = () => {
                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 md:gap-32 items-center">
                     <div className="space-y-10 md:space-y-16 order-2 lg:order-1">
                         <div className="space-y-6 md:space-y-10">
-                            <h2 className="font-sans font-bold text-[#F2F0E9] leading-tight tracking-tighter text-h2">
-                                Wat je krijgt dat <span className="text-primary font-drama font-normal text-h2-serif">anderen niet leveren.</span>
+                            <h2 className="font-sans font-bold text-[#F2F0E9] text-h2">
+                                {data?.whyHeadlineSans || "Je website is je"} <span className="text-primary font-drama font-normal text-h2-serif">{data?.whyHeadlineSerif || "digitale voordeur."}</span>
                             </h2>
                             <p className="font-sans text-[#F2F0E9]/80 text-lg md:text-2xl font-light italic leading-relaxed">
-                                Ik denk niet alleen na over hoe het eruit ziet. Ik denk na over wat een bezoeker voelt, twijfelt en nodig heeft om actie te nemen.
+                                {data?.whySubtitle || "Een goede website is meer dan een online visitekaartje. Het is een machine die vertrouwen bouwt en 24/7 nieuwe leads voor je binnenhaalt."}
                             </p>
                         </div>
                         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12">
@@ -201,7 +201,7 @@ const WebsiteService = () => {
                         ))}
                     </div>
                 </div>
-                <FAQ />
+                <FAQ cmsFaqs={data?.faqs} />
                 {/* Bottom CTA */}
                 <div className="py-20 md:py-32 border-t border-white/5 flex flex-col items-center">
                     <motion.div
@@ -213,11 +213,11 @@ const WebsiteService = () => {
                     >
                         <Link to="/contact" className="group flex flex-col items-center">
                             <h2 className="font-sans font-bold text-[#F2F0E9] md:text-center text-h2">
-                                Klaar om te <span className="text-primary font-drama font-normal ml-4 text-h2-serif">beginnen?</span>
+                                {data?.ctaHeadlineSans || "Klaar om te"} <span className="text-primary font-drama font-normal ml-4 text-h2-serif">{data?.ctaHeadlineSerif || "beginnen?"}</span>
                             </h2>
                         </Link>
                         <motion.p variants={fadeUp} className="font-sans text-[#F2F0E9]/40 text-base md:text-xl font-light leading-relaxed italic max-w-3xl mx-auto border-l-2 md:border-l-0 md:border-b-2 border-white/5 pb-10 md:pb-12 pl-8 md:pl-0 text-center">
-                            Vraag een gratis check aan. In 20 minuten weet je wat het oplevert.
+                            {data?.ctaSubtitle || "Vraag een gratis check aan. In 20 minuten weet je wat het oplevert."}
                         </motion.p>
                     </motion.div>
 
@@ -228,8 +228,8 @@ const WebsiteService = () => {
     );
 };
 
-const FAQ = () => {
-    const questions = [
+const FAQ = ({ cmsFaqs }) => {
+    const staticQuestions = [
         {
             q: "Is mijn website goed vindbaar in Google?",
             a: "Ja. Elke site die ik bouw is vanaf de basis geoptimaliseerd voor SEO. Snelle laadtijden, schone code en de juiste meta-data zorgen voor een sterke start in de zoekresultaten."
@@ -251,6 +251,11 @@ const FAQ = () => {
             a: "Omdat mijn websites volledig custom codeerwerk zijn, ken ik elke regel code van binnenuit. Ik heb geen duur kantoor of personeel nodig, waardoor ik het onderhoud en de hosting voor een extreem lage prijs kan aanbieden. Je betaalt alleen voor pure technische stabiliteit."
         }
     ];
+
+    const questions = cmsFaqs?.length > 0 ? cmsFaqs.map(f => ({
+        q: f.question,
+        a: f.answer
+    })) : staticQuestions;
 
     const [openIndex, setOpenIndex] = React.useState(0);
 

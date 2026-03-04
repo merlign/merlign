@@ -132,9 +132,10 @@ const HomeAbout = () => {
                 </motion.div>
 
                 <motion.div
-                    initial={{ opacity: 0, x: 50 }}
-                    whileInView={{ opacity: 1, x: 0 }}
+                    initial="initial"
+                    whileInView="whileInView"
                     viewport={{ once: true }}
+                    variants={staggerContainer}
                     className="lg:col-span-8 space-y-10 md:space-y-16 px-4 md:pl-12"
                 >
                     <SectionLabel>Wie ben ik?</SectionLabel>
@@ -142,14 +143,14 @@ const HomeAbout = () => {
                         variants={fadeUp}
                         className="font-sans font-bold text-[#F2F0E9] text-h2"
                     >
-                        Geen mooie praatjes. <span className="text-primary font-drama font-normal text-h2-serif">Gewoon resultaten.</span>
+                        {headlineSans} <span className="text-primary font-drama font-normal text-h2-serif">{headlineSerif}</span>
                     </motion.h1>
                     <div className="space-y-6">
                         <p className="font-sans text-[#F2F0E9]/80 text-lg md:text-2xl font-light italic leading-relaxed border-l-[3px] border-primary/40 pl-8 md:pl-12">
-                            Ik ben al meer dan 10 jaar actief als designer. Dat is mijn edge. Ik begrijp hoe systemen eruit moeten zien voordat ik ze bouw: waardoor wat ik opleveer niet alleen werkt, maar er ook ziet alsof het zo hoort.
+                            {para1}
                         </p>
                         <p className="font-sans text-[#F2F0E9]/40 text-base md:text-lg font-light leading-relaxed max-w-2xl ml-8 md:ml-12 italic">
-                            Ik heb een allergie voor traagheid en onnodige complexiteit. Geen eindeloze meetings, geen vaag advies. Ik bouw geen websites, ik bouw tools die je werk uit handen nemen omdat ik stop met handmatige gepruts. Dit is geen tijdprobleem, dit is een systeemprobleem.
+                            {para2}
                         </p>
                     </div>
                     <Link
@@ -167,7 +168,10 @@ const HomeAbout = () => {
     );
 };
 
-const Services = ({ cmsServices }) => {
+const Services = ({ cmsServices, data }) => {
+    const headlineSans = data?.servicesHeadlineSans || "Kies waar we";
+    const headlineSerif = data?.servicesHeadlineSerif || "beginnen.";
+    const subtitle = data?.servicesSubtitle || "Drie manieren om je bedrijf weer op snelheid te krijgen. Zonder gedoe, direct resultaat.";
     const staticServices = [
         {
             icon: <LayoutIcon />,
@@ -240,11 +244,11 @@ const Services = ({ cmsServices }) => {
                     <div className="space-y-8 md:space-y-12">
                         <SectionLabel>Diensten</SectionLabel>
                         <motion.h2 variants={fadeUp} className="font-sans font-bold leading-tight text-[#F2F0E9] tracking-tighter text-h2">
-                            Kies waar we <span className="text-primary font-drama font-normal text-h2-serif">beginnen.</span>
+                            {headlineSans} <span className="text-primary font-drama font-normal text-h2-serif">{headlineSerif}</span>
                         </motion.h2>
                     </div>
                     <motion.p variants={fadeUp} className="font-sans text-[#F2F0E9]/80 max-w-md text-lg md:text-2xl border-l-[3px] border-primary/20 pl-8 md:pl-12 pb-4 md:pb-6 italic leading-relaxed">
-                        Drie manieren om je bedrijf weer op snelheid te krijgen. Zonder gedoe, direct resultaat.
+                        {subtitle}
                     </motion.p>
                 </motion.div>
 
@@ -381,8 +385,11 @@ const ProcessAnimation = ({ id }) => {
     return null;
 };
 
-const Process = () => {
-    const steps = [
+const Process = ({ data }) => {
+    const headlineSans = data?.processHeadlineSans || "Drie fases.";
+    const headlineSerif = data?.processHeadlineSerif || "Geen verrassingen.";
+
+    const staticSteps = [
         {
             id: "01",
             title: "De Intake",
@@ -399,6 +406,12 @@ const Process = () => {
             desc: "Je krijgt een systeem dat werkt, inclusief een simpele uitleg zodat je direct door kunt met real-time overzicht over je business."
         }
     ];
+
+    const steps = data?.processSteps?.length > 0 ? data.processSteps.map((s, i) => ({
+        id: s.stepNumber || staticSteps[i]?.id,
+        title: s.title || staticSteps[i]?.title,
+        desc: s.description || staticSteps[i]?.desc
+    })) : staticSteps;
 
     const containerRef = useRef(null);
     const { scrollYProgress } = useScroll({
@@ -418,7 +431,7 @@ const Process = () => {
                 <div className="mb-24 md:mb-40 space-y-12 text-center">
                     <SectionLabel className="justify-center">Het Traject</SectionLabel>
                     <h2 className="font-sans font-bold text-[#F2F0E9] leading-tight tracking-tighter text-h2">
-                        Drie fases. <span className="text-primary font-drama font-normal text-h2-serif">Geen verrassingen.</span>
+                        {headlineSans} <span className="text-primary font-drama font-normal text-h2-serif">{headlineSerif}</span>
                     </h2>
                 </div>
 
@@ -613,9 +626,9 @@ const Home = () => {
     return (
         <div className="bg-[#0A0A0A]">
             <Hero data={pageData} />
-            <HomeAbout />
-            <Services cmsServices={pageData?.features} />
-            <Process />
+            <HomeAbout data={pageData} />
+            <Services cmsServices={pageData?.features} data={pageData} />
+            <Process data={pageData} />
             <FAQ />
             <ContactSection data={contactInfo} />
         </div>

@@ -102,11 +102,11 @@ const AutomationService = () => {
                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 md:gap-32 items-center">
                     <div className="space-y-10 md:space-y-16 order-2 lg:order-1">
                         <div className="space-y-6 md:space-y-10">
-                            <h2 className="font-sans font-bold text-[#F2F0E9] leading-tight tracking-tighter text-h2">
-                                Winst in tijd <span className="text-primary font-drama font-normal text-h2-serif">is winst in vrijheid.</span>
+                            <h2 className="font-sans font-bold text-[#F2F0E9] text-h2">
+                                {data?.whyHeadlineSans || "Winst in tijd"} <span className="text-primary font-drama font-normal text-h2-serif">{data?.whyHeadlineSerif || "is winst in vrijheid."}</span>
                             </h2>
                             <p className="font-sans text-[#F2F0E9]/80 text-lg md:text-2xl font-light italic leading-relaxed">
-                                Elke taak die je herhaalt kost tijd. Opgeteld zijn dat uren per week die je aan groei had kunnen besteden. Ik bouw de systemen die dat overnemen.
+                                {data?.whySubtitle || "Elke taak die je herhaalt kost tijd. Opgeteld zijn dat uren per week die je aan groei had kunnen besteden. Ik bouw de systemen die dat overnemen."}
                             </p>
                         </div>
                         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12">
@@ -194,7 +194,7 @@ const AutomationService = () => {
                         ))}
                     </div>
                 </div>
-                <FAQ />
+                <FAQ cmsFaqs={data?.faqs} />
                 {/* Bottom CTA */}
                 <div className="py-20 md:py-32 border-t border-white/5 flex flex-col items-center text-center">
                     <motion.div
@@ -207,11 +207,11 @@ const AutomationService = () => {
                         <SectionLabel className="md:justify-center">Start Vandaag</SectionLabel>
                         <Link to="/contact" className="group flex flex-col items-center">
                             <h2 className="font-sans font-bold text-[#F2F0E9] md:text-center text-h2">
-                                Klaar om je tijd <span className="text-primary font-drama font-normal ml-4 text-h2-serif">terug te krijgen?</span>
+                                {data?.ctaHeadlineSans || "Klaar om je tijd"} <span className="text-primary font-drama font-normal ml-4 text-h2-serif">{data?.ctaHeadlineSerif || "terug te krijgen?"}</span>
                             </h2>
                         </Link>
                         <motion.p variants={fadeUp} className="font-sans text-[#F2F0E9]/40 text-base md:text-xl font-light leading-relaxed italic max-w-3xl mx-auto border-l-2 md:border-l-0 md:border-b-2 border-white/5 pb-10 md:pb-12 pl-8 md:pl-0">
-                            Vraag een gratis check aan. In 20 minuten weet je wat er geautomatiseerd kan worden.
+                            {data?.ctaSubtitle || "Vraag een gratis check aan. In 20 minuten weet je wat er geautomatiseerd kan worden."}
                         </motion.p>
                     </motion.div>
 
@@ -222,8 +222,8 @@ const AutomationService = () => {
     );
 };
 
-const FAQ = () => {
-    const questions = [
+const FAQ = ({ cmsFaqs }) => {
+    const staticQuestions = [
         {
             q: "Welke software kan worden geautomatiseerd?",
             a: "Vrijwel alle moderne cloud-software (SaaS) die een API heeft. Denk aan tools als Make.com, Zapier, Slack, Gmail, Trello, Google Sheets en talloze gespecialiseerde CRM- en administratiesystemen."
@@ -241,6 +241,11 @@ const FAQ = () => {
             a: "Ja, we kunnen kijken naar wat je nu al hebt (bijvoorbeeld in Zapier) en dit optimaliseren of overzetten naar een krachtiger en kosteneffectiever platform zoals Make.com."
         }
     ];
+
+    const questions = cmsFaqs?.length > 0 ? cmsFaqs.map(f => ({
+        q: f.question,
+        a: f.answer
+    })) : staticQuestions;
 
     const [openIndex, setOpenIndex] = React.useState(0);
 
@@ -287,7 +292,7 @@ const FAQ = () => {
                     ))}
                 </div>
             </div>
-        </section>
+        </section >
     );
 };
 
