@@ -54,12 +54,13 @@ const Hero = ({ data }) => {
             <div className="absolute inset-0 z-10 bg-gradient-to-tr from-primary/[0.04] via-transparent to-primary/[0.02]" />
             <div className="absolute inset-0 z-10 bg-gradient-to-t from-[#0A0A0A] via-transparent to-transparent opacity-100" />
 
-            <div className="relative z-20 w-full content-max-width section-px pt-20 md:pt-32">
+            <div className="relative z-20 w-full content-max-width section-px pt-24 md:pt-40">
                 <motion.div
                     initial="initial"
                     animate="whileInView"
+                    viewport={{ once: true }}
                     variants={staggerContainer}
-                    className="max-w-5xl space-y-10"
+                    className="max-w-5xl space-y-12"
                 >
                     <motion.p
                         variants={fadeUp}
@@ -101,18 +102,23 @@ const Hero = ({ data }) => {
     );
 };
 
-const HomeAbout = () => {
+const HomeAbout = ({ data }) => {
+    const headlineSans = data?.aboutHeadlineSans || "Geen mooie praatjes.";
+    const headlineSerif = data?.aboutHeadlineSerif || "Gewoon resultaten.";
+    const para1 = data?.aboutPara1 || "Ik ben al meer dan 10 jaar actief als designer. Dat is mijn edge. Ik begrijp hoe systemen eruit moeten zien voordat ik ze bouw: waardoor wat ik opleveer niet alleen werkt, maar er ook ziet alsof het zo hoort.";
+    const para2 = data?.aboutPara2 || "Ik heb een allergie voor traagheid en onnodige complexiteit. Geen eindeloze meetings, geen vaag advies. Ik bouw geen websites, ik bouw tools die je werk uit handen nemen omdat ik stop met handmatige gepruts. Dit is geen tijdprobleem, dit is een systeemprobleem.";
+
     return (
-        <section className="section-py relative overflow-hidden border-y border-white/5">
-            <div className="content-max-width section-px grid grid-cols-1 lg:grid-cols-12 gap-16 md:gap-32 items-center">
+        <section id="over-mij" className="section-py relative overflow-hidden border-y border-white/5 bg-[#0A0A0A]">
+            <div className="content-max-width section-px grid grid-cols-1 lg:grid-cols-2 gap-16 md:gap-32 items-center">
                 <motion.div
                     initial={{ opacity: 0, scale: 0.95 }}
                     whileInView={{ opacity: 1, scale: 1 }}
                     viewport={{ once: true }}
-                    className="lg:col-span-4 relative group lg:ml-0 order-first lg:order-none lg:-ml-12"
+                    className="relative group lg:ml-0 order-first lg:order-none"
                 >
                     {/* The "Portal" Background */}
-                    <div className="aspect-[4/5] w-[280px] md:w-[400px] mx-auto lg:mx-0 rounded-[2.5rem] overflow-visible bg-[#1A1A1A]/40 border border-white/5 relative shadow-2xl transition-all duration-700 group-hover:bg-[#1A1A1A]/60">
+                    <div className="aspect-[4/5] w-full max-w-[280px] md:max-w-[400px] mx-auto lg:mx-0 rounded-[2.5rem] overflow-visible bg-[#1A1A1A]/40 border border-white/5 relative shadow-2xl transition-all duration-700 group-hover:bg-[#1A1A1A]/60">
                         {/* Blueprint Grid Interior */}
                         <div className="absolute inset-8 rounded-[1.5rem] border border-primary/10 opacity-20 bg-[linear-gradient(to_right,#C9A84C_1px,transparent_1px),linear-gradient(to_bottom,#C9A84C_1px,transparent_1px)] bg-[size:20px_20px]" />
 
@@ -136,15 +142,15 @@ const HomeAbout = () => {
                     whileInView="whileInView"
                     viewport={{ once: true }}
                     variants={staggerContainer}
-                    className="lg:col-span-8 space-y-10 md:space-y-16 px-4 md:pl-12"
+                    className="space-y-10 md:space-y-16"
                 >
                     <SectionLabel>Wie ben ik?</SectionLabel>
-                    <motion.h1
+                    <motion.h2
                         variants={fadeUp}
                         className="font-sans font-bold text-[#F2F0E9] text-h2"
                     >
                         {headlineSans} <span className="text-primary font-drama font-normal text-h2-serif">{headlineSerif}</span>
-                    </motion.h1>
+                    </motion.h2>
                     <div className="space-y-6">
                         <p className="font-sans text-[#F2F0E9]/80 text-lg md:text-2xl font-light italic leading-relaxed border-l-[3px] border-primary/40 pl-8 md:pl-12">
                             {para1}

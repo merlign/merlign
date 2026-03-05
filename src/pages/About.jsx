@@ -30,7 +30,7 @@ const About = () => {
     const introSerif = data?.introSerif || "Jouw sparringspartner.";
     const bioText = data?.bio?.[0]?.children?.[0]?.text || "Ik ben Merlijn. 10 jaar designer, nu ook bouwer van websites, dashboards en automatiseringen. Ik combineer wat andere freelancers niet combineren.";
     return (
-        <div className="pt-32 md:pt-48 pb-20 md:pb-32 px-6 md:px-8 bg-[#0A0A0A] relative overflow-hidden">
+        <div className="pt-40 md:pt-56 pb-20 md:pb-32 px-6 md:px-8 bg-[#0A0A0A] relative overflow-hidden">
             {/* Background Artifacts */}
             <div className="absolute inset-0 z-0 pointer-events-none opacity-40">
                 <div className="absolute top-[10%] right-[5%] w-[40vw] h-[40vw] bg-primary/10 rounded-full blur-[100px]" />
@@ -58,15 +58,15 @@ const About = () => {
                 </motion.div>
 
                 {/* Who am I */}
-                <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 md:gap-32 items-start">
+                <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 md:gap-32 items-start">
                     <motion.div
                         initial={{ opacity: 0, x: -30 }}
                         whileInView={{ opacity: 1, x: 0 }}
                         viewport={{ once: true }}
-                        className="lg:col-span-4 relative group order-first lg:order-none lg:-ml-12"
+                        className="relative group order-first lg:order-none"
                     >
                         {/* Exact Clone of Home Portal */}
-                        <div className="aspect-[4/5] w-[280px] md:w-[400px] mx-auto lg:mx-0 rounded-[2.5rem] overflow-visible bg-[#1A1A1A]/40 border border-white/5 relative shadow-2xl transition-all duration-700 group-hover:bg-[#1A1A1A]/60">
+                        <div className="aspect-[4/5] w-full max-w-[280px] md:w-[400px] mx-auto lg:mx-0 rounded-[2.5rem] overflow-visible bg-[#1A1A1A]/40 border border-white/5 relative shadow-2xl transition-all duration-700 group-hover:bg-[#1A1A1A]/60">
                             {/* Blueprint Grid Interior */}
                             <div className="absolute inset-8 rounded-[1.5rem] border border-primary/10 opacity-20 bg-[linear-gradient(to_right,#C9A84C_1px,transparent_1px),linear-gradient(to_bottom,#C9A84C_1px,transparent_1px)] bg-[size:20px_20px]" />
 
@@ -89,7 +89,7 @@ const About = () => {
                         initial={{ opacity: 0, x: 30 }}
                         whileInView={{ opacity: 1, x: 0 }}
                         viewport={{ once: true }}
-                        className="lg:col-span-12 xl:col-span-7 space-y-12 md:space-y-16"
+                        className="space-y-12 md:space-y-16"
                     >
                         <div className="space-y-8">
                             <SectionLabel>Wie ik ben</SectionLabel>
