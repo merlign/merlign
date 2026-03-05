@@ -5,6 +5,7 @@ import SectionLabel from '../components/SectionLabel';
 import ContactForm from '../components/ContactForm';
 import { Link } from 'react-router-dom';
 import { BrowserMockup, DashboardMockup, AutomationMockup } from '../components/CaseMockup';
+import { getCases, urlFor } from '../lib/sanity';
 
 const fadeUp = {
     initial: { opacity: 0, y: 30 },
@@ -15,45 +16,28 @@ const fadeUp = {
 
 const Cases = () => {
     const [selectedFilter, setSelectedFilter] = useState('alle');
+    const [cases, setCases] = React.useState([]);
 
-    const cases = [
-        {
-            name: "Ferry Zorgt",
-            tag: "Website",
-            category: "websites",
-            icon: <LayoutIcon size={24} />,
-            situatie: "Ferry is zorgverlener en had een verouderde website die niet de professionaliteit uitstraalde die hij zijn klanten biedt. Potentiële klanten haakten af voor ze contact opnamen.",
-            aanpak: "Ik bouwde een nieuwe website die het vertrouwen uitstraalt dat zijn klanten nodig hebben om de stap te zetten. Helder, warm, en strategisch opgebouwd om bezoekers te overtuigen.",
-            results: ["Live in 72u", "SEO geoptimaliseerd", "Hogere conversie"],
-            quote: "Ik schaamde me voor mijn oude website. Nu stuur ik hem trots door.",
-            author: "Ferry, Ferry Zorgt",
-            img: "https://merlign.com/wp-content/uploads/2026/03/Screenshot-2026-03-02-at-21.31.03-scaled.png"
-        },
-        {
-            name: "Social Manners",
-            tag: "Dashboard",
-            category: "dashboards",
-            icon: <Database size={24} />,
-            situatie: "Social Manners is een social media bureau dat voor meerdere klanten tegelijk werkt. Ze hadden geen overzicht van de prestaties per klant en moesten alles handmatig uit verschillende tools halen.",
-            aanpak: "Ik bouwde een dashboard dat alle klantdata op één plek toont. Bereik, engagement, groei per platform, alles zichtbaar in één overzicht. Het team bespaart nu uren per week aan rapportages.",
-            results: ["Data gecentraliseerd", "Uren besparing", "Real-time inzicht"],
-            quote: "We besteden nu geen tijd meer aan rapporten. We besteden die tijd aan onze klanten.",
-            author: "Team Social Manners",
-            img: "https://images.unsplash.com/photo-1497366754035-f200968a6e72?q=80&w=2069&auto=format&fit=crop"
-        },
-        {
-            name: "EcoLogistics",
-            tag: "Automatisering",
-            category: "automatiseringen",
-            icon: <Zap size={24} />,
-            situatie: "EcoLogistics verwerkte honderden facturen en pakbonnen handmatig per week. Dit leidde tot fouten en een enorme administratieve last voor het team.",
-            aanpak: "Ik implementeerde een AI-gestuurde automatisering die documenten uitleest, controleert en direct in hun boekhoudsysteem zet. Geen menselijke tussenkomst meer nodig voor 90% van de document-flow.",
-            results: ["90% Automatisering", "Nul fout marge", "40u p/week winst"],
-            quote: "Het voelt alsof we een extra werknemer hebben die nooit slaapt.",
-            author: "Directie EcoLogistics",
-            img: "https://images.unsplash.com/photo-1518152006812-edab29b069ac?q=80&w=2070&auto=format&fit=crop"
+    React.useEffect(() => {
+        const fetchCases = async () => {
+            try {
+                const data = await getCases();
+                setCases(data || []);
+            } catch (err) {
+                console.error("Cases Fetch Error:", err);
+            }
+        };
+        fetchCases();
+    }, []);
+
+    const getIcon = (category) => {
+        switch (category) {
+            case 'websites': return <LayoutIcon size={24} />;
+            case 'dashboards': return <Database size={24} />;
+            case 'automatiseringen': return <Zap size={24} />;
+            default: return <Zap size={24} />;
         }
-    ];
+    };
 
     const filteredCases = selectedFilter === 'alle'
         ? cases
@@ -143,11 +127,11 @@ const Cases = () => {
                                         <div className="space-y-8">
                                             <div className="flex items-center gap-4">
                                                 <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center text-primary border border-primary/20">
-                                                    {c.icon}
+                                                    {getIcon(c.category)}
                                                 </div>
                                                 <span className="font-mono text-xs uppercase tracking-[0.4em] text-primary font-bold italic">{c.tag}</span>
                                             </div>
-                                            <h2 className="font-sans font-bold text-[#F2F0E9] text-h2">{c.name}</h2>
+                                            <h2 className="font-sans font-bold text-[#F2F0E9] text-h2">{c.title}</h2>
                                         </div>
 
                                         <div className="space-y-10">
@@ -164,7 +148,7 @@ const Cases = () => {
                                         <div className="space-y-6">
                                             <h4 className="font-mono text-[10px] uppercase tracking-[0.4em] text-[#F2F0E9]/20 font-black italic">Resultaten</h4>
                                             <div className="flex flex-wrap gap-3">
-                                                {c.results.map((r, ri) => (
+                                                {c.results?.map((r, ri) => (
                                                     <span
                                                         key={ri}
                                                         className="px-6 py-3 rounded-full border border-primary/20 bg-primary/5 text-primary text-[10px] md:text-[11px] font-mono font-bold uppercase tracking-[0.2em] flex items-center gap-3 transition-all duration-500 hover:bg-primary/20 hover:border-primary/40 shadow-sm"
@@ -178,9 +162,9 @@ const Cases = () => {
                                     </div>
 
                                     <div className="lg:col-span-7 space-y-12 md:space-y-20">
-                                        {c.category === 'websites' && <BrowserMockup image={c.img} title={c.name} />}
-                                        {c.category === 'dashboards' && <DashboardMockup image={c.img} title={c.name} />}
-                                        {c.category === 'automatiseringen' && <AutomationMockup title={c.name} />}
+                                        {c.category === 'websites' && <BrowserMockup image={urlFor(c.image)?.url()} title={c.title} />}
+                                        {c.category === 'dashboards' && <DashboardMockup image={urlFor(c.image)?.url()} title={c.title} />}
+                                        {c.category === 'automatiseringen' && <AutomationMockup title={c.title} />}
 
                                         <motion.div
                                             initial={{ opacity: 0, y: 10 }}

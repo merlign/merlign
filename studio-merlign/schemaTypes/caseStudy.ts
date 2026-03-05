@@ -7,35 +7,58 @@ export default defineType({
     fields: [
         defineField({
             name: 'title',
-            title: 'Project Titel',
+            title: 'Klantnaam / Projectnaam',
             type: 'string',
         }),
         defineField({
-            name: 'subtitle',
-            title: 'Subtitel (Wat heb je gedaan?)',
+            name: 'category',
+            title: 'Categorie',
+            type: 'string',
+            options: {
+                list: [
+                    { title: 'Websites', value: 'websites' },
+                    { title: 'Dashboards', value: 'dashboards' },
+                    { title: 'Automatiseringen', value: 'automatiseringen' }
+                ],
+                layout: 'radio'
+            }
+        }),
+        defineField({
+            name: 'tag',
+            title: 'Tag (bijv. "Website")',
             type: 'string',
         }),
         defineField({
-            name: 'description',
-            title: 'Omschrijving',
+            name: 'situatie',
+            title: 'De Situatie',
             type: 'text',
         }),
         defineField({
-            name: 'image',
-            title: 'Head Image',
-            type: 'image',
-            options: { hotspot: true }
+            name: 'aanpak',
+            title: 'De Aanpak',
+            type: 'text',
         }),
         defineField({
-            name: 'tags',
-            title: 'Tags',
+            name: 'results',
+            title: 'Resultaten (lijst)',
             type: 'array',
             of: [{ type: 'string' }]
         }),
         defineField({
-            name: 'result',
-            title: 'Resultaat (bijv: "2x meer leads")',
+            name: 'quote',
+            title: 'Quote van de klant',
+            type: 'text',
+        }),
+        defineField({
+            name: 'author',
+            title: 'Auteur van de quote (bijv. "Ferry, Ferry Zorgt")',
             type: 'string',
-        })
+        }),
+        defineField({
+            name: 'image',
+            title: 'Mockup Afbeelding',
+            type: 'image',
+            options: { hotspot: true }
+        }),
     ]
 })

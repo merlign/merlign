@@ -182,7 +182,10 @@ const Navbar = () => {
     );
 };
 
-const Footer = () => {
+const Footer = ({ data }) => {
+    const description = data?.footerDescription || "Websites, dashboards en automatiseringen voor ondernemers die vooruit willen.";
+    const linkedinLink = data?.linkedin || "https://www.linkedin.com/in/merlijn-van-der-vleuten-1b9118267/";
+
     return (
         <footer className="bg-[#141414] text-[#F2F0E9] pt-12 md:pt-20 pb-12 px-6 md:px-8 relative overflow-hidden">
             <div className="absolute bottom-0 left-0 w-full h-[1px] bg-gradient-to-r from-transparent via-primary/20 to-transparent" />
@@ -195,7 +198,7 @@ const Footer = () => {
                         <div className="space-y-8 text-left">
                             <div className="pt-4">
                                 <p className="font-sans text-[#F2F0E9]/30 italic text-lg max-w-md leading-relaxed">
-                                    Websites, dashboards en automatiseringen voor ondernemers die vooruit willen.
+                                    {description}
                                 </p>
                             </div>
                         </div>
@@ -211,7 +214,7 @@ const Footer = () => {
                     <div className="space-y-8 md:space-y-12 pt-8 md:pt-0">
                         <h5 className="font-mono text-[12px] md:text-[14px] uppercase tracking-[0.5em] text-[#F2F0E9]/40 font-black italic">Sociaal</h5>
                         <ul className="space-y-4 md:space-y-6 font-mono text-[14px] md:text-[16px] uppercase tracking-[0.2em] font-bold">
-                            <li><a href="https://www.linkedin.com/in/merlijn-van-der-vleuten-1b9118267/" target="_blank" rel="noopener noreferrer" className="text-[#F2F0E9]/40 hover:text-primary transition-colors">LinkedIn</a></li>
+                            <li><a href={linkedinLink} target="_blank" rel="noopener noreferrer" className="text-[#F2F0E9]/40 hover:text-primary transition-colors">LinkedIn</a></li>
                         </ul>
                     </div>
                 </div>
@@ -229,18 +232,30 @@ const Footer = () => {
     );
 };
 
+import { getContactInfo } from '../lib/sanity';
+
 const Layout = ({ children }) => {
     const { pathname } = useLocation();
+    const [contactInfo, setContactInfo] = useState(null);
 
     useEffect(() => {
         window.scrollTo(0, 0);
+        const fetchContact = async () => {
+            try {
+                const data = await getContactInfo();
+                setContactInfo(data);
+            } catch (err) {
+                console.error("Footer Contact Error:", err);
+            }
+        };
+        fetchContact();
     }, [pathname]);
 
     return (
         <div className="bg-[#0A0A0A] text-[#F2F0E9] selection:bg-primary selection:text-black min-h-screen">
             <Navbar />
             <main>{children}</main>
-            <Footer />
+            <Footer data={contactInfo} />
         </div>
     );
 };

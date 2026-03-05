@@ -41,7 +41,9 @@ const Hero = ({ data }) => {
     const heroSans = data?.heroSans || "Krijg meer gedaan met";
     const heroSerif = data?.heroSerif || "je huidige team.";
     const heroSubtitle = data?.heroSubtitle || "Ik bouw de systemen die het werk van je overnemen. Een website die zelf leads vangt, een dashboard voor direct overzicht, of slimme hulpjes voor je dagelijkse taken. Jij richt je op de groei, ik regel de techniek.";
-    const heroCta = data?.heroCta || "Start je traject";
+    const heroCta = data?.heroCta || "Gratis adviesgesprek";
+    const heroLabel = data?.heroLabel || "Senior Digitaal Strateeg · 10+ jaar Designer";
+    const heroCtaAlt = data?.heroCtaAlt || "Bekijk diensten";
 
     return (
         <section ref={heroRef} className="relative h-[100dvh] flex items-center bg-[#0A0A0A] overflow-hidden">
@@ -66,7 +68,7 @@ const Hero = ({ data }) => {
                         variants={fadeUp}
                         className="font-mono text-[12px] md:text-[14px] uppercase tracking-[0.4em] text-primary font-bold italic"
                     >
-                        Senior Digitaal Strateeg · 10+ jaar Designer
+                        {heroLabel}
                     </motion.p>
                     <motion.h1
                         variants={fadeUp}
@@ -86,12 +88,12 @@ const Hero = ({ data }) => {
                         variants={fadeUp}
                         className="flex flex-wrap items-center gap-4 md:gap-6 pt-2"
                     >
-                        <a href="#contact" className="btn-magnetic group bg-primary text-white border-transparent shadow-[0_0_20px_rgba(201,168,76,0.3)] w-full sm:w-auto">
-                            <span className="relative z-10">{heroCta}</span>
+                        <a href="#contact" className="btn-magnetic group bg-primary text-white border-transparent px-10 md:px-12 py-5 md:py-6 rounded-full shadow-[0_0_20px_rgba(201,168,76,0.3)] w-full sm:w-auto">
+                            <span className="relative z-10 text-[12px] md:text-[14px] font-black italic tracking-[0.3em] uppercase">{heroCta}</span>
                             <div className="btn-bg bg-[#F2F0E9]" />
                         </a>
-                        <a href="#contact" className="btn-magnetic group bg-transparent border border-white/10 text-[#F2F0E9] w-full sm:w-auto">
-                            <span className="relative z-10">Gratis adviesgesprek</span>
+                        <a href="#wat-ik-bouw" className="btn-magnetic group bg-transparent border border-white/10 text-[#F2F0E9] px-10 md:px-12 py-5 md:py-6 rounded-full w-full sm:w-auto">
+                            <span className="relative z-10 text-[12px] md:text-[14px] font-black italic tracking-[0.3em] uppercase">{heroCtaAlt}</span>
                             <div className="btn-bg bg-[#F2F0E9]" />
                         </a>
                     </motion.div>

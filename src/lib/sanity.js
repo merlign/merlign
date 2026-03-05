@@ -1,4 +1,5 @@
 import { createClient } from '@sanity/client'
+import imageUrlBuilder from '@sanity/image-url'
 
 export const client = createClient({
     projectId: '1r5lk62n',
@@ -6,6 +7,13 @@ export const client = createClient({
     useCdn: true, // `false` als je de allernieuwste data wilt, `true` voor extra snelheid
     apiVersion: '2023-05-03', // Of een recentere datum
 })
+
+const builder = imageUrlBuilder(client)
+
+export function urlFor(source) {
+    if (!source) return null;
+    return builder.image(source)
+}
 
 export async function getHomePageData() {
     return await client.fetch(`*[_type == "homePage"][0]`)
