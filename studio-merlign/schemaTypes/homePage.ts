@@ -54,7 +54,20 @@ export default defineType({
                     type: 'object',
                     fields: [
                         { name: 'title', title: 'Titel', type: 'string' },
-                        { name: 'description', title: 'Omschrijving', type: 'text' }
+                        { name: 'description', title: 'Omschrijving', type: 'text' },
+                        {
+                            name: 'serviceType',
+                            title: 'Link naar pagina',
+                            type: 'string',
+                            options: {
+                                list: [
+                                    { title: 'Website', value: 'website' },
+                                    { title: 'Dashboard', value: 'dashboard' },
+                                    { title: 'Automatisering', value: 'automation' },
+                                    { title: 'Contact', value: 'contact' }
+                                ]
+                            }
+                        }
                     ]
                 }
             ],

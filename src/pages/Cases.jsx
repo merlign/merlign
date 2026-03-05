@@ -193,7 +193,7 @@ const Cases = () => {
                 </div>
 
                 {/* Bottom CTA */}
-                <div className="py-20 md:py-32 border-t border-white/5 flex flex-col items-center text-center">
+                <div id="contact" className="py-20 md:py-32 border-t border-white/5 flex flex-col items-center text-center">
                     <SectionLabel className="md:justify-center">Volgende succes</SectionLabel>
                     <h2 className="font-sans font-bold text-[#F2F0E9] mt-8 text-h2">
                         Jouw bedrijf <span className="text-primary font-drama font-normal text-h2-serif">hier?</span>

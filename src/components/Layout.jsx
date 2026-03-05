@@ -86,10 +86,10 @@ const Navbar = () => {
                         </div>
 
                         <div className="flex items-center gap-4 md:gap-6 relative z-10">
-                            <Link to="/contact" className="hidden sm:block btn-magnetic group bg-white/5 text-white px-6 py-2.5 rounded-full overflow-hidden">
+                            <a href="#contact" className="hidden sm:block btn-magnetic group bg-white/5 text-white px-6 py-2.5 rounded-full overflow-hidden">
                                 <span className="relative z-10 text-[12px] font-bold uppercase tracking-widest">Gratis adviesgesprek</span>
                                 <div className="btn-bg bg-primary shadow-[0_0_20px_rgba(201,168,76,0.5)]" />
-                            </Link>
+                            </a>
 
                             <button
                                 className="lg:hidden w-10 h-10 flex items-center justify-center text-[#F2F0E9]/60 hover:text-[#F2F0E9] transition-colors"
@@ -162,15 +162,15 @@ const Navbar = () => {
                         </div>
 
                         <div className="mt-auto pb-12 space-y-8">
-                            <Link
-                                to="/contact"
+                            <a
+                                href="#contact"
                                 className="w-full bg-primary text-[#0A0A0A] py-5 rounded-full font-mono text-[14px] uppercase tracking-[0.2em] font-bold flex items-center justify-center gap-4 group overflow-hidden relative"
                                 onClick={() => setIsMobileMenuOpen(false)}
                             >
                                 <span className="relative z-10">Gratis adviesgesprek</span>
                                 <ArrowRight size={18} className="relative z-10" />
                                 <div className="btn-bg bg-[#F2F0E9]" />
-                            </Link>
+                            </a>
                             <div className="flex justify-center gap-8 text-[#F2F0E9]/20 font-mono text-[10px] uppercase tracking-[0.4em]">
                                 <span>© 2026</span>
                             </div>
@@ -235,11 +235,25 @@ const Footer = ({ data }) => {
 import { getContactInfo } from '../lib/sanity';
 
 const Layout = ({ children }) => {
-    const { pathname } = useLocation();
+    const { pathname, hash } = useLocation();
     const [contactInfo, setContactInfo] = useState(null);
 
     useEffect(() => {
-        window.scrollTo(0, 0);
+        // Scroll to top or specific hash on route change
+        if (!hash) {
+            window.scrollTo({
+                top: 0,
+                left: 0,
+                behavior: 'instant'
+            });
+        } else {
+            const id = hash.substring(1);
+            const el = document.getElementById(id);
+            if (el) {
+                el.scrollIntoView({ behavior: 'smooth' });
+            }
+        }
+
         const fetchContact = async () => {
             try {
                 const data = await getContactInfo();
@@ -249,7 +263,7 @@ const Layout = ({ children }) => {
             }
         };
         fetchContact();
-    }, [pathname]);
+    }, [pathname, hash]);
 
     return (
         <div className="bg-[#0A0A0A] text-[#F2F0E9] selection:bg-primary selection:text-black min-h-screen">

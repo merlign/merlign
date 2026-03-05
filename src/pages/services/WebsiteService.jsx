@@ -92,10 +92,10 @@ const WebsiteService = () => {
                         {heroSubtitle}
                     </motion.p>
                     <motion.div variants={fadeUp} className="pt-4 text-left">
-                        <Link to="/contact" className="btn-magnetic group inline-flex bg-primary text-white border-transparent px-10 md:px-12 py-5 md:py-6 rounded-full shadow-[0_0_20px_rgba(201,168,76,0.3)]">
+                        <a href="#contact" className="btn-magnetic group inline-flex bg-primary text-white border-transparent px-10 md:px-12 py-5 md:py-6 rounded-full shadow-[0_0_20px_rgba(201,168,76,0.3)]">
                             <span className="relative z-10 text-[12px] md:text-[14px] font-black italic tracking-[0.3em] uppercase">Vraag een gratis check aan</span>
                             <div className="btn-bg bg-[#F2F0E9]" />
-                        </Link>
+                        </a>
                     </motion.div>
                 </motion.div>
 
@@ -203,7 +203,7 @@ const WebsiteService = () => {
                 </div>
                 <FAQ cmsFaqs={data?.faqs} />
                 {/* Bottom CTA */}
-                <div className="py-20 md:py-32 border-t border-white/5 flex flex-col items-center">
+                <div id="contact" className="py-20 md:py-32 border-t border-white/5 flex flex-col items-center">
                     <motion.div
                         initial="initial"
                         whileInView="whileInView"
@@ -211,11 +211,11 @@ const WebsiteService = () => {
                         variants={staggerContainer}
                         className="text-left md:text-center space-y-10 md:space-y-16 mb-16 md:mb-24 w-full"
                     >
-                        <Link to="/contact" className="group flex flex-col items-center">
+                        <a href="#contact" className="group flex flex-col items-center">
                             <h2 className="font-sans font-bold text-[#F2F0E9] md:text-center text-h2">
                                 {data?.ctaHeadlineSans || "Klaar om te"} <span className="text-primary font-drama font-normal ml-4 text-h2-serif">{data?.ctaHeadlineSerif || "beginnen?"}</span>
                             </h2>
-                        </Link>
+                        </a>
                         <motion.p variants={fadeUp} className="font-sans text-[#F2F0E9]/40 text-base md:text-xl font-light leading-relaxed italic max-w-3xl mx-auto border-l-2 md:border-l-0 md:border-b-2 border-white/5 pb-10 md:pb-12 pl-8 md:pl-0 text-center">
                             {data?.ctaSubtitle || "Vraag een gratis check aan. In 20 minuten weet je wat het oplevert."}
                         </motion.p>

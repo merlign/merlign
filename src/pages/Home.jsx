@@ -210,10 +210,21 @@ const Services = ({ cmsServices, data }) => {
     // Combine static services with icons and dynamic text from CMS
     const services = staticServices.map((s, i) => {
         if (cmsServices && cmsServices[i]) {
+            // Map serviceType to the correct URL
+            const typeMap = {
+                'website': '/website',
+                'dashboard': '/dashboard',
+                'automation': '/automatisering',
+                'contact': '#contact'
+            };
+
+            const mappedHref = cmsServices[i].serviceType ? typeMap[cmsServices[i].serviceType] : s.href;
+
             return {
                 ...s,
                 title: cmsServices[i].title || s.title,
-                desc: cmsServices[i].description || s.desc
+                desc: cmsServices[i].description || s.desc,
+                href: mappedHref
             };
         }
         return s;

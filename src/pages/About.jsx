@@ -61,6 +61,12 @@ const About = () => {
                         <motion.p variants={fadeUp} className="font-sans text-[#F2F0E9]/80 text-lg md:text-2xl font-light italic leading-relaxed max-w-4xl border-l-[3px] border-primary/20 pl-8 md:pl-12">
                             {bioText}
                         </motion.p>
+                        <motion.div variants={fadeUp} className="pt-4">
+                            <a href="#contact" className="btn-magnetic group inline-flex bg-primary text-white border-transparent px-10 md:px-12 py-5 md:py-6 rounded-full shadow-[0_0_20px_rgba(201,168,76,0.3)]">
+                                <span className="relative z-10 text-[12px] md:text-[14px] font-black italic tracking-[0.3em] uppercase">Vraag een gratis check aan</span>
+                                <div className="btn-bg bg-[#F2F0E9]" />
+                            </a>
+                        </motion.div>
                     </motion.div>
                 </div>
             </section>
@@ -155,11 +161,17 @@ const About = () => {
                             </motion.div>
                         ))}
                     </div>
+                    <motion.div variants={fadeUp} className="pt-4 text-center">
+                        <a href="#contact" className="btn-magnetic group inline-flex bg-primary text-white border-transparent px-10 md:px-12 py-5 md:py-6 rounded-full shadow-[0_0_20px_rgba(201,168,76,0.3)]">
+                            <span className="relative z-10 text-[12px] md:text-[14px] font-black italic tracking-[0.3em] uppercase">Vraag een gratis check aan</span>
+                            <div className="btn-bg bg-[#F2F0E9]" />
+                        </a>
+                    </motion.div>
                 </div>
             </section>
 
             {/* Bottom CTA Section */}
-            <section className="section-px pt-20 pb-32">
+            <section id="contact" className="section-px pt-20 pb-32">
                 <div className="content-max-width border-t border-white/5 pt-20 flex flex-col items-center text-center">
                     <SectionLabel className="md:justify-center">Samenwerken</SectionLabel>
                     <h2 className="font-sans font-bold text-[#F2F0E9] mt-8 md:text-center text-h2">
