@@ -11,6 +11,11 @@ const fadeUp = {
     transition: { duration: 0.8, ease: [0.22, 1, 0.36, 1] }
 };
 
+const staggerContainer = {
+    initial: {},
+    whileInView: { transition: { staggerChildren: 0.15 } }
+};
+
 const About = () => {
     const [data, setData] = React.useState(null);
 
@@ -30,40 +35,44 @@ const About = () => {
     const introSerif = data?.introSerif || "Jouw sparringspartner.";
     const bioText = data?.bio?.[0]?.children?.[0]?.text || "Ik ben Merlijn. 10 jaar designer, nu ook bouwer van websites, dashboards en automatiseringen. Ik combineer wat andere freelancers niet combineren.";
     return (
-        <div className="pt-40 md:pt-56 pb-20 md:pb-32 px-6 md:px-8 bg-[#0A0A0A] relative overflow-hidden">
+        <div className="bg-[#0A0A0A] relative overflow-hidden">
             {/* Background Artifacts */}
             <div className="absolute inset-0 z-0 pointer-events-none opacity-40">
                 <div className="absolute top-[10%] right-[5%] w-[40vw] h-[40vw] bg-primary/10 rounded-full blur-[100px]" />
                 <div className="absolute bottom-[10%] left-[5%] w-[30vw] h-[30vw] bg-primary/5 rounded-full blur-[80px]" />
             </div>
 
-            <div className="max-w-[1400px] mx-auto px-8 md:px-20 space-y-20 md:space-y-40 relative z-10">
-                {/* Hero */}
-                <motion.div
-                    initial="initial"
-                    whileInView="whileInView"
-                    viewport={{ once: true }}
-                    className="space-y-8 md:space-y-12 pt-12"
-                >
-                    <SectionLabel>Over mij</SectionLabel>
-                    <motion.h1
-                        variants={fadeUp}
-                        className="font-sans font-bold text-[#F2F0E9] text-h1"
-                    >
-                        {introSans} <span className="text-primary font-drama font-normal text-h1-serif">{introSerif}</span>
-                    </motion.h1>
-                    <motion.p variants={fadeUp} className="font-sans text-[#F2F0E9]/80 text-lg md:text-2xl font-light italic leading-relaxed max-w-4xl border-l-[3px] border-primary/20 pl-8 md:pl-12">
-                        {bioText}
-                    </motion.p>
-                </motion.div>
-
-                {/* Who am I */}
-                <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 md:gap-32 items-start">
+            {/* Hero Section */}
+            <section className="pt-40 md:pt-56 pb-20 md:pb-32 relative z-10">
+                <div className="content-max-width section-px">
                     <motion.div
-                        initial={{ opacity: 0, x: -30 }}
-                        whileInView={{ opacity: 1, x: 0 }}
+                        initial="initial"
+                        whileInView="whileInView"
                         viewport={{ once: true }}
-                        className="relative group order-first lg:order-none"
+                        className="space-y-8 md:space-y-12"
+                    >
+                        <SectionLabel>Over mij</SectionLabel>
+                        <motion.h1
+                            variants={fadeUp}
+                            className="font-sans font-bold text-[#F2F0E9] text-h1"
+                        >
+                            {introSans} <span className="text-primary font-drama font-normal text-h1-serif">{introSerif}</span>
+                        </motion.h1>
+                        <motion.p variants={fadeUp} className="font-sans text-[#F2F0E9]/80 text-lg md:text-2xl font-light italic leading-relaxed max-w-4xl border-l-[3px] border-primary/20 pl-8 md:pl-12">
+                            {bioText}
+                        </motion.p>
+                    </motion.div>
+                </div>
+            </section>
+
+            {/* Who am I Section */}
+            <section className="section-py relative overflow-hidden border-y border-white/5">
+                <div className="content-max-width section-px grid grid-cols-1 lg:grid-cols-2 gap-16 md:gap-32 items-center">
+                    <motion.div
+                        initial={{ opacity: 0, scale: 0.95 }}
+                        whileInView={{ opacity: 1, scale: 1 }}
+                        viewport={{ once: true }}
+                        className="relative group lg:ml-0 order-first lg:order-none"
                     >
                         {/* Exact Clone of Home Portal */}
                         <div className="aspect-[4/5] w-full max-w-[280px] md:w-[400px] mx-auto lg:mx-0 rounded-[2.5rem] overflow-visible bg-[#1A1A1A]/40 border border-white/5 relative shadow-2xl transition-all duration-700 group-hover:bg-[#1A1A1A]/60">
@@ -86,14 +95,18 @@ const About = () => {
                     </motion.div>
 
                     <motion.div
-                        initial={{ opacity: 0, x: 30 }}
-                        whileInView={{ opacity: 1, x: 0 }}
+                        initial="initial"
+                        whileInView="whileInView"
                         viewport={{ once: true }}
-                        className="space-y-12 md:space-y-16"
+                        variants={staggerContainer}
+                        className="space-y-10 md:space-y-16"
                     >
                         <div className="space-y-8">
                             <SectionLabel>Wie ik ben</SectionLabel>
-                            <motion.h2 variants={fadeUp} className="font-sans font-bold text-[#F2F0E9] text-h2">
+                            <motion.h2
+                                variants={fadeUp}
+                                className="font-sans font-bold text-[#F2F0E9] text-h2"
+                            >
                                 {data?.whoAmIHeadlineSans || "De perfecte mix tussen"} <span className="text-primary font-drama font-normal text-h2-serif">{data?.whoAmIHeadlineSerif || "vorm en functie."}</span>
                             </motion.h2>
                         </div>
@@ -110,8 +123,11 @@ const About = () => {
                         </div>
                     </motion.div>
                 </div>
+            </section>
 
-                <div className="section-py border-t border-white/5">
+            {/* Choice Section */}
+            <section className="section-py border-t border-white/5">
+                <div className="content-max-width section-px">
                     <div className="flex flex-col md:items-center text-left md:text-center space-y-8 mb-16 md:mb-24">
                         <SectionLabel>Keuze</SectionLabel>
                         <h2 className="font-sans font-bold text-[#F2F0E9] md:text-center text-h2">
@@ -140,9 +156,11 @@ const About = () => {
                         ))}
                     </div>
                 </div>
+            </section>
 
-                {/* Bottom CTA */}
-                <div className="section-py border-t border-white/5 flex flex-col items-center text-center">
+            {/* Bottom CTA Section */}
+            <section className="section-px pt-20 pb-32">
+                <div className="content-max-width border-t border-white/5 pt-20 flex flex-col items-center text-center">
                     <SectionLabel className="md:justify-center">Samenwerken</SectionLabel>
                     <h2 className="font-sans font-bold text-[#F2F0E9] mt-8 md:text-center text-h2">
                         {data?.ctaHeadlineSans || "Wil je"} <span className="text-primary font-drama font-normal text-h2-serif">{data?.ctaHeadlineSerif || "samenwerken?"}</span>
@@ -152,7 +170,7 @@ const About = () => {
                     </p>
                     <ContactForm />
                 </div>
-            </div>
+            </section>
         </div>
     );
 };
