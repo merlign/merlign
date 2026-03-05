@@ -75,7 +75,7 @@ const About = () => {
                         className="relative group lg:ml-0 order-first lg:order-none"
                     >
                         {/* Exact Clone of Home Portal */}
-                        <div className="aspect-[4/5] w-full max-w-[280px] md:w-[400px] mx-auto lg:mx-0 rounded-[2.5rem] overflow-visible bg-[#1A1A1A]/40 border border-white/5 relative shadow-2xl transition-all duration-700 group-hover:bg-[#1A1A1A]/60">
+                        <div className="aspect-[4/5] w-full max-w-[280px] md:max-w-[480px] mx-auto lg:mx-0 rounded-[2.5rem] overflow-visible bg-[#1A1A1A]/40 border border-white/5 relative shadow-2xl transition-all duration-700 group-hover:bg-[#1A1A1A]/60">
                             {/* Blueprint Grid Interior */}
                             <div className="absolute inset-8 rounded-[1.5rem] border border-primary/10 opacity-20 bg-[linear-gradient(to_right,#C9A84C_1px,transparent_1px),linear-gradient(to_bottom,#C9A84C_1px,transparent_1px)] bg-[size:20px_20px]" />
 
@@ -86,7 +86,7 @@ const About = () => {
                             <motion.img
                                 src="/merlijn-new.png"
                                 alt="Merlijn"
-                                className="absolute bottom-0 left-[46%] -translate-x-1/2 w-auto h-[90%] max-w-none z-10 filter brightness-95 group-hover:brightness-110 group-hover:scale-105 transition-all duration-1000 ease-out pointer-events-none origin-bottom"
+                                className="absolute bottom-0 left-[48%] -translate-x-1/2 w-auto h-[95%] max-w-none z-10 filter brightness-95 group-hover:brightness-110 group-hover:scale-105 transition-all duration-1000 ease-out pointer-events-none origin-bottom"
                             />
 
                             {/* Glassmorphic "Technical" Overlay */}
