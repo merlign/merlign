@@ -86,7 +86,8 @@ const WebsiteService = () => {
                         variants={fadeUp}
                         className="font-sans font-bold text-[#F2F0E9] text-h1"
                     >
-                        {heroSans} <span className="text-primary font-drama font-normal text-h1-serif">{heroSerif}</span>
+                        {heroSans}{' '}
+                        <span className="text-primary font-drama font-normal text-h1-serif">{heroSerif}</span>
                     </motion.h1>
                     <motion.p variants={fadeUp} className="font-sans text-[#F2F0E9]/80 text-lg md:text-2xl font-light italic leading-relaxed max-w-4xl border-l-[3px] border-primary/20 pl-8 md:pl-12">
                         {heroSubtitle}
@@ -104,7 +105,8 @@ const WebsiteService = () => {
                     <div className="space-y-10 md:space-y-16 order-2 lg:order-1">
                         <div className="space-y-6 md:space-y-10">
                             <h2 className="font-sans font-bold text-[#F2F0E9] text-h2">
-                                {data?.whyHeadlineSans || "Je website is je"} <span className="text-primary font-drama font-normal text-h2-serif">{data?.whyHeadlineSerif || "digitale voordeur."}</span>
+                                {data?.whyHeadlineSans || "Je website is je"}{' '}
+                                <span className="text-primary font-drama font-normal text-h2-serif">{data?.whyHeadlineSerif || "digitale voordeur."}</span>
                             </h2>
                             <p className="font-sans text-[#F2F0E9]/80 text-lg md:text-2xl font-light italic leading-relaxed">
                                 {data?.whySubtitle || "Een goede website is meer dan een online visitekaartje. Het is een machine die vertrouwen bouwt en 24/7 nieuwe leads voor je binnenhaalt."}
@@ -213,7 +215,8 @@ const WebsiteService = () => {
                     >
                         <a href="#contact" className="group flex flex-col items-center">
                             <h2 className="font-sans font-bold text-[#F2F0E9] md:text-center text-h2">
-                                {data?.ctaHeadlineSans || "Klaar om te"} <span className="text-primary font-drama font-normal ml-4 text-h2-serif">{data?.ctaHeadlineSerif || "beginnen?"}</span>
+                                {data?.ctaHeadlineSans || "Klaar om te"}{' '}
+                                <span className="text-primary font-drama font-normal text-h2-serif">{data?.ctaHeadlineSerif || "beginnen?"}</span>
                             </h2>
                         </a>
                         <motion.p variants={fadeUp} className="font-sans text-[#F2F0E9]/40 text-base md:text-xl font-light leading-relaxed italic max-w-3xl mx-auto border-l-2 md:border-l-0 md:border-b-2 border-white/5 pb-10 md:pb-12 pl-8 md:pl-0 text-center">

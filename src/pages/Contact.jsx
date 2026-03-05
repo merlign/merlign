@@ -53,7 +53,8 @@ const ContactPage = () => {
                             variants={fadeUp}
                             className="font-sans font-bold text-[#F2F0E9] md:text-center text-h1"
                         >
-                            {headlineSans} <span className="text-primary font-drama font-normal text-h1-serif">{headlineSerif}</span>
+                            {headlineSans}{' '}
+                            <span className="text-primary font-drama font-normal text-h1-serif">{headlineSerif}</span>
                         </motion.h1>
                         <motion.p variants={fadeUp} className="font-sans text-[#F2F0E9]/80 text-lg md:text-2xl font-light italic leading-relaxed max-w-4xl border-l-[3px] md:border-l-0 md:border-b-2 border-primary/20 pl-8 md:pl-0 pb-8 md:pb-12 text-center">
                             {subtitle}

@@ -28,7 +28,13 @@ export async function getFaqs() {
 }
 
 export async function getCases() {
-    return await client.fetch(`*[_type == "caseStudy"]`)
+    try {
+        const data = await client.fetch(`*[_type == "caseStudy"]`)
+        return Array.isArray(data) ? data : []
+    } catch (err) {
+        console.error("Sanity getCases Error:", err);
+        return [];
+    }
 }
 
 export async function getServicePageData(serviceName) {

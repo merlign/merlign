@@ -16,15 +16,19 @@ const fadeUp = {
 
 const Cases = () => {
     const [selectedFilter, setSelectedFilter] = useState('alle');
-    const [cases, setCases] = React.useState([]);
+    const [cases, setCases] = useState([]);
+    const [isLoading, setIsLoading] = useState(true);
 
     React.useEffect(() => {
         const fetchCases = async () => {
             try {
+                setIsLoading(true);
                 const data = await getCases();
-                setCases(data || []);
+                setCases(Array.isArray(data) ? data : []);
             } catch (err) {
                 console.error("Cases Fetch Error:", err);
+            } finally {
+                setIsLoading(false);
             }
         };
         fetchCases();
@@ -39,9 +43,11 @@ const Cases = () => {
         }
     };
 
-    const filteredCases = selectedFilter === 'alle'
-        ? cases
-        : cases.filter(c => c.category === selectedFilter);
+    const filteredCases = (Array.isArray(cases) ? cases : [])
+        .filter(c => {
+            if (selectedFilter === 'alle') return true;
+            return c?.category === selectedFilter;
+        });
 
     const filterOptions = [
         { id: 'alle', label: 'Alle Cases' },
@@ -62,8 +68,7 @@ const Cases = () => {
                 {/* Hero */}
                 <motion.div
                     initial="initial"
-                    whileInView="whileInView"
-                    viewport={{ once: true }}
+                    animate="whileInView"
                     className="space-y-8 md:space-y-12"
                 >
                     <SectionLabel>Cases</SectionLabel>
@@ -106,90 +111,100 @@ const Cases = () => {
 
                 {/* Case List */}
                 <div className="space-y-32 md:space-y-64 min-h-[400px]">
-                    <AnimatePresence mode="wait">
-                        <motion.div
-                            key={selectedFilter}
-                            initial={{ opacity: 0, y: 20 }}
-                            animate={{ opacity: 1, y: 0 }}
-                            exit={{ opacity: 0, y: -20 }}
-                            transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
-                            className="space-y-32 md:space-y-64"
-                        >
-                            {filteredCases.map((c, i) => (
-                                <motion.div
-                                    key={c.name}
-                                    initial={{ opacity: 0, y: 40 }}
-                                    whileInView={{ opacity: 1, y: 0 }}
-                                    viewport={{ once: true }}
-                                    className="grid grid-cols-1 lg:grid-cols-12 gap-16 md:gap-32 items-start group"
-                                >
-                                    <div className="lg:col-span-5 space-y-10 md:space-y-16">
-                                        <div className="space-y-8">
-                                            <div className="flex items-center gap-4">
-                                                <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center text-primary border border-primary/20">
-                                                    {getIcon(c.category)}
+                    {isLoading ? (
+                        <div className="flex items-center justify-center py-40">
+                            <motion.div
+                                animate={{ rotate: 360 }}
+                                transition={{ duration: 1, repeat: Infinity, ease: "linear" }}
+                                className="w-10 h-10 border-2 border-primary/20 border-t-primary rounded-full"
+                            />
+                        </div>
+                    ) : (
+                        <AnimatePresence mode="wait">
+                            <motion.div
+                                key={selectedFilter}
+                                initial={{ opacity: 0, y: 20 }}
+                                animate={{ opacity: 1, y: 0 }}
+                                exit={{ opacity: 0, y: -20 }}
+                                transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
+                                className="space-y-32 md:space-y-64"
+                            >
+                                {filteredCases.map((c, i) => (
+                                    <motion.div
+                                        key={c.name}
+                                        initial={{ opacity: 0, y: 40 }}
+                                        whileInView={{ opacity: 1, y: 0 }}
+                                        viewport={{ once: true }}
+                                        className="grid grid-cols-1 lg:grid-cols-12 gap-16 md:gap-32 items-start group"
+                                    >
+                                        <div className="lg:col-span-5 space-y-10 md:space-y-16">
+                                            <div className="space-y-8">
+                                                <div className="flex items-center gap-4">
+                                                    <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center text-primary border border-primary/20">
+                                                        {getIcon(c.category)}
+                                                    </div>
+                                                    <span className="font-mono text-xs uppercase tracking-[0.4em] text-primary font-bold italic">{c.tag}</span>
                                                 </div>
-                                                <span className="font-mono text-xs uppercase tracking-[0.4em] text-primary font-bold italic">{c.tag}</span>
+                                                <h2 className="font-sans font-bold text-[#F2F0E9] text-h2">{c.title}</h2>
                                             </div>
-                                            <h2 className="font-sans font-bold text-[#F2F0E9] text-h2">{c.title}</h2>
-                                        </div>
 
-                                        <div className="space-y-10">
-                                            <div className="space-y-4">
-                                                <h4 className="font-mono text-[10px] uppercase tracking-[0.4em] text-[#F2F0E9]/20 font-black italic">Situatie</h4>
-                                                <p className="font-sans text-[#F2F0E9]/80 text-lg md:text-2xl font-light italic leading-relaxed border-l-[3px] border-primary/20 pl-8 md:pl-12">{c.situatie}</p>
-                                            </div>
-                                            <div className="space-y-4">
-                                                <h4 className="font-mono text-[10px] uppercase tracking-[0.4em] text-[#F2F0E9]/20 font-black italic">Aanpak</h4>
-                                                <p className="font-sans text-[#F2F0E9]/80 text-lg md:text-2xl font-light italic leading-relaxed border-l-[3px] border-primary/20 pl-8 md:pl-12">{c.aanpak}</p>
-                                            </div>
-                                        </div>
-
-                                        <div className="space-y-6">
-                                            <h4 className="font-mono text-[10px] uppercase tracking-[0.4em] text-[#F2F0E9]/20 font-black italic">Resultaten</h4>
-                                            <div className="flex flex-wrap gap-3">
-                                                {c.results?.map((r, ri) => (
-                                                    <span
-                                                        key={ri}
-                                                        className="px-6 py-3 rounded-full border border-primary/20 bg-primary/5 text-primary text-[10px] md:text-[11px] font-mono font-bold uppercase tracking-[0.2em] flex items-center gap-3 transition-all duration-500 hover:bg-primary/20 hover:border-primary/40 shadow-sm"
-                                                    >
-                                                        <Zap size={14} className="animate-pulse" />
-                                                        {r}
-                                                    </span>
-                                                ))}
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <div className="lg:col-span-7 space-y-12 md:space-y-20">
-                                        {c.category === 'websites' && <BrowserMockup image={urlFor(c.image)?.url()} title={c.title} />}
-                                        {c.category === 'dashboards' && <DashboardMockup image={urlFor(c.image)?.url()} title={c.title} />}
-                                        {c.category === 'automatiseringen' && <AutomationMockup title={c.title} />}
-
-                                        <motion.div
-                                            initial={{ opacity: 0, y: 10 }}
-                                            whileInView={{ opacity: 1, y: 0 }}
-                                            viewport={{ once: true }}
-                                            className="px-8 md:px-12 py-10 rounded-[2.5rem] bg-[#1A1A1A]/20 border border-white/5 text-[#F2F0E9] space-y-8 relative overflow-hidden group/quote transition-all duration-700 hover:bg-[#1A1A1A]/40 shadow-sm"
-                                        >
-                                            <MessageSquare className="absolute top-8 right-8 w-12 h-12 text-primary/10 -rotate-12 group-hover/quote:rotate-0 transition-all duration-700" />
-                                            <p className="text-lg md:text-xl font-sans font-medium leading-relaxed tracking-tight relative z-10 italic text-[#F2F0E9]/60">
-                                                "{c.quote}"
-                                            </p>
-                                            <div className="flex items-center gap-4 relative z-10 pt-4 border-t border-white/5">
-                                                <div className="w-10 h-10 rounded-full border border-white/10 flex items-center justify-center font-mono text-[10px] uppercase font-black italic text-primary/40">
-                                                    {c.author.charAt(0)}
+                                            <div className="space-y-10">
+                                                <div className="space-y-4">
+                                                    <h4 className="font-mono text-[10px] uppercase tracking-[0.4em] text-[#F2F0E9]/20 font-black italic">Situatie</h4>
+                                                    <p className="font-sans text-[#F2F0E9]/80 text-lg md:text-2xl font-light italic leading-relaxed border-l-[3px] border-primary/20 pl-8 md:pl-12">{c.situatie}</p>
                                                 </div>
-                                                <div className="space-y-1">
-                                                    <p className="font-mono text-[9px] uppercase tracking-[0.4em] font-black text-primary">{c.author}</p>
+                                                <div className="space-y-4">
+                                                    <h4 className="font-mono text-[10px] uppercase tracking-[0.4em] text-[#F2F0E9]/20 font-black italic">Aanpak</h4>
+                                                    <p className="font-sans text-[#F2F0E9]/80 text-lg md:text-2xl font-light italic leading-relaxed border-l-[3px] border-primary/20 pl-8 md:pl-12">{c.aanpak}</p>
                                                 </div>
                                             </div>
-                                        </motion.div>
-                                    </div>
-                                </motion.div>
-                            ))}
-                        </motion.div>
-                    </AnimatePresence>
+
+                                            <div className="space-y-6">
+                                                <h4 className="font-mono text-[10px] uppercase tracking-[0.4em] text-[#F2F0E9]/20 font-black italic">Resultaten</h4>
+                                                <div className="flex flex-wrap gap-3">
+                                                    {c.results?.map((r, ri) => (
+                                                        <span
+                                                            key={ri}
+                                                            className="px-6 py-3 rounded-full border border-primary/20 bg-primary/5 text-primary text-[10px] md:text-[11px] font-mono font-bold uppercase tracking-[0.2em] flex items-center gap-3 transition-all duration-500 hover:bg-primary/20 hover:border-primary/40 shadow-sm"
+                                                        >
+                                                            <Zap size={14} className="animate-pulse" />
+                                                            {r}
+                                                        </span>
+                                                    ))}
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div className="lg:col-span-7 space-y-12 md:space-y-20">
+                                            {c.category === 'websites' && <BrowserMockup image={urlFor(c.image)?.url()} title={c.title} />}
+                                            {c.category === 'dashboards' && <DashboardMockup image={urlFor(c.image)?.url()} title={c.title} />}
+                                            {c.category === 'automatiseringen' && <AutomationMockup title={c.title} />}
+
+                                            <motion.div
+                                                initial={{ opacity: 0, y: 10 }}
+                                                whileInView={{ opacity: 1, y: 0 }}
+                                                viewport={{ once: true }}
+                                                className="px-8 md:px-12 py-10 rounded-[2.5rem] bg-[#1A1A1A]/20 border border-white/5 text-[#F2F0E9] space-y-8 relative overflow-hidden group/quote transition-all duration-700 hover:bg-[#1A1A1A]/40 shadow-sm"
+                                            >
+                                                <MessageSquare className="absolute top-8 right-8 w-12 h-12 text-primary/10 -rotate-12 group-hover/quote:rotate-0 transition-all duration-700" />
+                                                <p className="text-lg md:text-xl font-sans font-medium leading-relaxed tracking-tight relative z-10 italic text-[#F2F0E9]/60">
+                                                    "{c.quote}"
+                                                </p>
+                                                <div className="flex items-center gap-4 relative z-10 pt-4 border-t border-white/5">
+                                                    <div className="w-10 h-10 rounded-full border border-white/10 flex items-center justify-center font-mono text-[10px] uppercase font-black italic text-primary/40">
+                                                        {c.author?.charAt?.(0) || 'M'}
+                                                    </div>
+                                                    <div className="space-y-1">
+                                                        <p className="font-mono text-[9px] uppercase tracking-[0.4em] font-black text-primary">{c.author || 'Merlign client'}</p>
+                                                    </div>
+                                                </div>
+                                            </motion.div>
+                                        </div>
+                                    </motion.div>
+                                ))}
+                            </motion.div>
+                        </AnimatePresence>
+                    )}
                 </div>
 
                 {/* Bottom CTA */}

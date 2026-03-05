@@ -74,7 +74,8 @@ const Hero = ({ data }) => {
                         variants={fadeUp}
                         className="font-sans font-bold text-[#F2F0E9] text-h1"
                     >
-                        {heroSans} <span className="text-primary font-drama font-normal text-h1-serif">{heroSerif}</span>
+                        {heroSans}{' '}
+                        <span className="text-primary font-drama font-normal text-h1-serif">{heroSerif}</span>
                     </motion.h1>
                     <motion.div
                         variants={fadeUp}
@@ -151,7 +152,8 @@ const HomeAbout = ({ data }) => {
                         variants={fadeUp}
                         className="font-sans font-bold text-[#F2F0E9] text-h2"
                     >
-                        {headlineSans} <span className="text-primary font-drama font-normal text-h2-serif">{headlineSerif}</span>
+                        {headlineSans}{' '}
+                        <span className="text-primary font-drama font-normal text-h2-serif">{headlineSerif}</span>
                     </motion.h2>
                     <div className="space-y-6">
                         <p className="font-sans text-[#F2F0E9]/80 text-lg md:text-2xl font-light italic leading-relaxed border-l-[3px] border-primary/40 pl-8 md:pl-12">
@@ -607,7 +609,8 @@ const ContactSection = ({ data }) => {
                 >
                     <SectionLabel className="md:justify-center">Plan Je Scan</SectionLabel>
                     <motion.h2 variants={fadeUp} className="font-sans font-bold text-[#F2F0E9] leading-tight tracking-tighter text-h2">
-                        {headlineSans} <span className="text-primary font-drama font-normal text-h2-serif">{headlineSerif}</span>
+                        {headlineSans}{' '}
+                        <span className="text-primary font-drama font-normal text-h2-serif">{headlineSerif}</span>
                     </motion.h2>
                     <motion.p variants={fadeUp} className="font-sans text-[#F2F0E9]/40 text-base md:text-xl font-light leading-relaxed italic max-w-3xl mx-auto border-b-2 border-white/5 pb-8 md:pb-10 text-center">
                         {subtitle}

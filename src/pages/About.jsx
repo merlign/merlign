@@ -54,14 +54,15 @@ const About = () => {
                         <SectionLabel>Over mij</SectionLabel>
                         <motion.h1
                             variants={fadeUp}
-                            className="font-sans font-bold text-[#F2F0E9] text-h1"
+                            className="font-sans font-bold text-[#F2F0E9] md:text-center text-h1"
                         >
-                            {introSans} <span className="text-primary font-drama font-normal text-h1-serif">{introSerif}</span>
+                            {introSans}{' '}
+                            <span className="text-primary font-drama font-normal text-h1-serif">{introSerif}</span>
                         </motion.h1>
                         <motion.p variants={fadeUp} className="font-sans text-[#F2F0E9]/80 text-lg md:text-2xl font-light italic leading-relaxed max-w-4xl border-l-[3px] border-primary/20 pl-8 md:pl-12">
                             {bioText}
                         </motion.p>
-                        <motion.div variants={fadeUp} className="pt-4">
+                        <motion.div variants={fadeUp} className="pt-12 md:pt-16">
                             <a href="#contact" className="btn-magnetic group inline-flex bg-primary text-white border-transparent px-10 md:px-12 py-5 md:py-6 rounded-full shadow-[0_0_20px_rgba(201,168,76,0.3)]">
                                 <span className="relative z-10 text-[12px] md:text-[14px] font-black italic tracking-[0.3em] uppercase">Vraag een gratis check aan</span>
                                 <div className="btn-bg bg-[#F2F0E9]" />
@@ -161,7 +162,7 @@ const About = () => {
                             </motion.div>
                         ))}
                     </div>
-                    <motion.div variants={fadeUp} className="pt-4 text-center">
+                    <motion.div variants={fadeUp} className="pt-12 md:pt-20 text-center">
                         <a href="#contact" className="btn-magnetic group inline-flex bg-primary text-white border-transparent px-10 md:px-12 py-5 md:py-6 rounded-full shadow-[0_0_20px_rgba(201,168,76,0.3)]">
                             <span className="relative z-10 text-[12px] md:text-[14px] font-black italic tracking-[0.3em] uppercase">Vraag een gratis check aan</span>
                             <div className="btn-bg bg-[#F2F0E9]" />
