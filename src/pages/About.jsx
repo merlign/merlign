@@ -54,7 +54,7 @@ const About = () => {
                         <SectionLabel>Over mij</SectionLabel>
                         <motion.h1
                             variants={fadeUp}
-                            className="font-sans font-bold text-[#F2F0E9] md:text-center text-h1"
+                            className="font-sans font-bold text-[#F2F0E9] text-h1 text-left"
                         >
                             {introSans}{' '}
                             <span className="text-primary font-drama font-normal text-h1-serif">{introSerif}</span>
