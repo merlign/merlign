@@ -155,8 +155,8 @@ const Cases = () => {
                                             </span>
                                         </div>
 
-                                        {/* Info Column (No longer sticky per request) */}
-                                        <div className="lg:col-span-5 space-y-10 md:space-y-16">
+                                        {/* Info Column (Sticky on Desktop) */}
+                                        <div className="lg:col-span-5 lg:sticky lg:top-48 space-y-10 md:space-y-16 lg:pb-20">
                                             <div className="space-y-8">
                                                 <div className="flex items-center gap-4">
                                                     <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center text-primary border border-primary/20">
@@ -202,7 +202,7 @@ const Cases = () => {
                                                             initial={{ opacity: 0, x: -10 }}
                                                             whileInView={{ opacity: 1, x: 0 }}
                                                             transition={{ delay: ri * 0.1 }}
-                                                            className="flex items-start gap-4 p-4 rounded-2xl bg-white/[0.02] border border-white/5 group/res"
+                                                            className="flex items-start gap-4 p-4 rounded-2xl bg-white/[0.02] border border-white/5 group/res shadow-sm hover:border-white/10 transition-colors"
                                                         >
                                                             <div className="w-6 h-6 rounded-full bg-primary/10 flex items-center justify-center shrink-0 mt-0.5 group-hover/res:bg-primary/20 transition-colors">
                                                                 <Zap size={12} className="text-primary" />
@@ -214,8 +214,8 @@ const Cases = () => {
                                             </div>
                                         </div>
 
-                                        {/* Visuals Column with overlapping Quote */}
-                                        <div className="lg:col-span-7 space-y-12 md:space-y-20 pt-4 lg:pt-0 relative">
+                                        {/* Visuals Column */}
+                                        <div className="lg:col-span-7 space-y-12 md:space-y-20 pt-4 lg:pt-0">
                                             <div className="relative group/visual">
                                                 {/* Category floating label */}
                                                 <div className="absolute -top-3 -right-3 z-20 bg-primary px-4 py-1.5 rounded-full shadow-2xl rotate-3">
@@ -230,32 +230,31 @@ const Cases = () => {
                                                 <div className="absolute -inset-4 bg-primary/5 blur-3xl rounded-[3rem] -z-10 opacity-0 group-hover/visual:opacity-100 transition-opacity duration-1000" />
                                             </div>
 
-                                            {/* Overlapping, Smaller Quote Card */}
                                             <motion.div
-                                                initial={{ opacity: 0, scale: 0.9, y: 30 }}
-                                                whileInView={{ opacity: 1, scale: 1, y: 0 }}
+                                                initial={{ opacity: 0, y: 10 }}
+                                                whileInView={{ opacity: 1, y: 0 }}
                                                 viewport={{ once: true }}
-                                                className="lg:absolute lg:-bottom-20 lg:-left-32 lg:max-w-[420px] z-30 px-6 py-8 rounded-[2rem] bg-[#141414]/90 backdrop-blur-xl border border-white/10 text-[#F2F0E9] space-y-6 shadow-2xl group/quote transition-all duration-700 hover:border-primary/20"
+                                                className="px-8 md:px-12 py-10 rounded-[2.5rem] bg-[#1A1A1A]/20 border border-white/5 text-[#F2F0E9] space-y-8 relative overflow-hidden group/quote transition-all duration-700 hover:bg-[#1A1A1A]/40 shadow-sm"
                                             >
-                                                <MessageSquare className="absolute top-6 right-6 w-8 h-8 text-primary/10 -rotate-12 group-hover/quote:rotate-0 transition-all duration-700" />
-                                                <p className="text-base md:text-lg font-sans font-light leading-relaxed tracking-tight relative z-10 italic text-[#F2F0E9]/80">
+                                                <MessageSquare className="absolute top-8 right-8 w-12 h-12 text-primary/10 -rotate-12 group-hover/quote:rotate-0 transition-all duration-700" />
+                                                <p className="text-lg md:text-2xl font-sans font-light leading-relaxed tracking-tight relative z-10 italic text-[#F2F0E9]/80">
                                                     "{c.quote}"
                                                 </p>
-                                                <div className="flex items-center gap-4 relative z-10 pt-4 border-t border-white/5">
+                                                <div className="flex items-center gap-4 relative z-10 pt-6 border-t border-white/5">
                                                     {c.authorImage ? (
                                                         <img
                                                             src={urlFor(c.authorImage).width(80).height(80).url()}
                                                             alt={c.author}
-                                                            className="w-10 h-10 rounded-full object-cover border border-primary/20 shadow-sm"
+                                                            className="w-12 h-12 rounded-full object-cover border border-primary/20"
                                                         />
                                                     ) : (
-                                                        <div className="w-10 h-10 rounded-full border border-primary/20 bg-primary/5 flex items-center justify-center font-mono text-xs uppercase font-black italic text-primary">
+                                                        <div className="w-12 h-12 rounded-full border border-primary/20 bg-primary/5 flex items-center justify-center font-mono text-sm uppercase font-black italic text-primary group-hover/quote:bg-primary/10 transition-colors">
                                                             {c.author?.charAt?.(0) || 'M'}
                                                         </div>
                                                     )}
                                                     <div className="space-y-0.5">
-                                                        <p className="font-mono text-[9px] uppercase tracking-[0.4em] font-black text-primary leading-none">{c.author || 'Merlign client'}</p>
-                                                        <p className="font-mono text-[7px] uppercase tracking-[0.2em] text-[#F2F0E9]/20 font-bold uppercase">Geverifieerde Review</p>
+                                                        <p className="font-mono text-[10px] uppercase tracking-[0.4em] font-black text-primary leading-none">{c.author || 'Merlign client'}</p>
+                                                        <p className="font-mono text-[8px] uppercase tracking-[0.2em] text-[#F2F0E9]/20 font-bold">Geverifieerde Review</p>
                                                     </div>
                                                 </div>
                                             </motion.div>
