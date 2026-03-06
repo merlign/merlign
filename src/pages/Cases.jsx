@@ -178,7 +178,7 @@ const Cases = () => {
                                                         <div className="w-1 h-1 rounded-full bg-primary" />
                                                         <h4 className="font-mono text-[10px] uppercase tracking-[0.4em] text-[#F2F0E9]/20 font-black italic">Situatie</h4>
                                                     </div>
-                                                    <p className="font-sans text-[#F2F0E9]/70 text-lg md:text-xl font-light italic leading-relaxed pl-4">
+                                                    <p className="font-sans text-[#F2F0E9]/85 text-lg md:text-xl font-light italic leading-relaxed pl-4">
                                                         {c.situatie}
                                                     </p>
                                                 </div>
@@ -187,7 +187,7 @@ const Cases = () => {
                                                         <div className="w-1 h-1 rounded-full bg-primary" />
                                                         <h4 className="font-mono text-[10px] uppercase tracking-[0.4em] text-[#F2F0E9]/20 font-black italic">Aanpak</h4>
                                                     </div>
-                                                    <p className="font-sans text-[#F2F0E9]/70 text-lg md:text-xl font-light italic leading-relaxed pl-4">
+                                                    <p className="font-sans text-[#F2F0E9]/85 text-lg md:text-xl font-light italic leading-relaxed pl-4">
                                                         {c.aanpak}
                                                     </p>
                                                 </div>
