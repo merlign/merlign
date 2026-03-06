@@ -24,23 +24,31 @@ const ContactForm = ({ selectedUpgrade: initialUpgrade = null }) => {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        if (!selectedUpgrade || !formData.email || isSending) return;
+        const trimmedEmail = formData.email?.trim();
+        const trimmedName = formData.name?.trim();
+
+        if (!selectedUpgrade || !trimmedEmail || isSending) return;
         setIsSending(true);
+
         const templateParams = {
-            from_name: formData.name,
-            reply_to: formData.email,
-            company: formData.company,
+            from_name: trimmedName,
+            reply_to: trimmedEmail,
+            company: formData.company?.trim(),
             message: formData.message,
             upgrade_choice: upgrades.find(u => u.id === selectedUpgrade)?.title || selectedUpgrade
         };
+
         try {
-            // Using existing EmailJS config from previous sessions
-            await emailjs.send('service_qdlv6x6', 'template_ibof6py', templateParams, 'kWXpmJZNrXzXz9PHt');
-            await emailjs.send('service_qdlv6x6', 'template_z48xd8j', templateParams, 'kWXpmJZNrXzXz9PHt');
+            // Send both emails in parallel for better reliability on mobile
+            await Promise.all([
+                emailjs.send('service_qdlv6x6', 'template_ibof6py', templateParams, 'kWXpmJZNrXzXz9PHt'),
+                emailjs.send('service_qdlv6x6', 'template_z48xd8j', templateParams, 'kWXpmJZNrXzXz9PHt')
+            ]);
             setIsSuccess(true);
         } catch (error) {
             console.error('EmailJS error:', error);
-            alert('Er ging iets mis. Probeer het later opnieuw.');
+            // More descriptive error for debugging if possible
+            alert('Er ging iets mis bij het verzenden. Controleer je internetverbinding en probeer het opnieuw.');
         } finally {
             setIsSending(false);
         }

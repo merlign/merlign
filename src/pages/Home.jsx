@@ -81,7 +81,7 @@ const Hero = ({ data }) => {
                         variants={fadeUp}
                         className="flex flex-col md:flex-row items-start md:items-center gap-12"
                     >
-                        <p className="font-sans text-[#F2F0E9]/85 text-lg md:text-xl font-light max-w-2xl border-l-[2px] border-primary/40 pl-8 leading-[1.8] italic">
+                        <p className="font-sans text-[#F2F0E9]/85 text-lg md:text-xl font-light max-w-2xl border-l-[2px] border-primary/40 pl-8 leading-[1.8] italic whitespace-pre-wrap">
                             {heroSubtitle}
                         </p>
                     </motion.div>
@@ -156,10 +156,10 @@ const HomeAbout = ({ data }) => {
                         <span className="text-primary font-drama font-normal text-h2-serif">{headlineSerif}</span>
                     </motion.h2>
                     <div className="space-y-6">
-                        <p className="font-sans text-[#F2F0E9]/85 text-lg md:text-2xl font-light italic leading-[1.8] border-l-[3px] border-primary/40 pl-8 md:pl-12">
+                        <p className="font-sans text-[#F2F0E9]/85 text-lg md:text-2xl font-light italic leading-[1.8] border-l-[3px] border-primary/40 pl-8 md:pl-12 whitespace-pre-wrap">
                             {para1}
                         </p>
-                        <p className="font-sans text-[#F2F0E9]/85 text-base md:text-lg font-light leading-[1.8] max-w-2xl ml-8 md:ml-12 italic">
+                        <p className="font-sans text-[#F2F0E9]/85 text-base md:text-lg font-light leading-[1.8] max-w-2xl ml-8 md:ml-12 italic whitespace-pre-wrap">
                             {para2}
                         </p>
                     </div>
@@ -576,7 +576,7 @@ const FAQ = () => {
                                         exit={{ height: 0, opacity: 0 }}
                                         transition={{ duration: 0.4, ease: "circOut" }}
                                     >
-                                        <div className="px-6 pb-6 text-[#F2F0E9]/50 text-base font-sans font-light italic border-t border-white/5 pt-4">
+                                        <div className="px-6 pb-6 text-[#F2F0E9]/50 text-base font-sans font-light italic border-t border-white/5 pt-4 whitespace-pre-wrap">
                                             {item.a}
                                         </div>
                                     </motion.div>
@@ -646,13 +646,38 @@ const Home = () => {
     }, []);
 
     return (
-        <div className="bg-[#0A0A0A]">
-            <Hero data={pageData} />
-            <HomeAbout data={pageData} />
-            <Services cmsServices={pageData?.features} data={pageData} />
-            <Process data={pageData} />
-            <FAQ />
-            <ContactSection data={contactInfo} />
+        <div className="bg-[#0A0A0A] min-h-screen">
+            <AnimatePresence mode="wait">
+                {!pageData ? (
+                    <motion.div
+                        key="loader"
+                        initial={{ opacity: 1 }}
+                        exit={{ opacity: 0 }}
+                        transition={{ duration: 0.5 }}
+                        className="fixed inset-0 bg-[#0A0A0A] z-[200] flex items-center justify-center"
+                    >
+                        <motion.div
+                            animate={{ opacity: [0.3, 0.6, 0.3] }}
+                            transition={{ duration: 2, repeat: Infinity }}
+                            className="w-12 h-12 border border-primary/20 rounded-full"
+                        />
+                    </motion.div>
+                ) : (
+                    <motion.div
+                        key="content"
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        transition={{ duration: 0.8, ease: "easeOut" }}
+                    >
+                        <Hero data={pageData} />
+                        <HomeAbout data={pageData} />
+                        <Services cmsServices={pageData?.features} data={pageData} />
+                        <Process data={pageData} />
+                        <FAQ />
+                        <ContactSection data={contactInfo} />
+                    </motion.div>
+                )}
+            </AnimatePresence>
         </div>
     );
 };
