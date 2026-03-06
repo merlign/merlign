@@ -33,22 +33,30 @@ const ContactForm = ({ selectedUpgrade: initialUpgrade = null }) => {
         const templateParams = {
             from_name: trimmedName,
             reply_to: trimmedEmail,
+            to_email: trimmedEmail, // Added for auto-reply templates
+            user_email: trimmedEmail, // Added for auto-reply templates
+            email: trimmedEmail, // Added for auto-reply templates
             company: formData.company?.trim(),
             message: formData.message,
             upgrade_choice: upgrades.find(u => u.id === selectedUpgrade)?.title || selectedUpgrade
         };
 
         try {
-            // Send both emails in parallel for better reliability on mobile
-            await Promise.all([
-                emailjs.send('service_qdlv6x6', 'template_ibof6py', templateParams, 'kWXpmJZNrXzXz9PHt'),
-                emailjs.send('service_qdlv6x6', 'template_z48xd8j', templateParams, 'kWXpmJZNrXzXz9PHt')
-            ]);
+            // 1. Send main notification to you (critical)
+            await emailjs.send('service_qdlv6x6', 'template_ibof6py', templateParams, 'kWXpmJZNrXzXz9PHt');
+
+            // 2. Send confirmation to client (non-critical, don't block success if it fails)
+            try {
+                await emailjs.send('service_qdlv6x6', 'template_z48xd8j', templateParams, 'kWXpmJZNrXzXz9PHt');
+            } catch (err) {
+                console.warn('Auto-reply failed, but main email was sent:', err);
+            }
+
             setIsSuccess(true);
         } catch (error) {
             console.error('EmailJS error:', error);
-            // More descriptive error for debugging if possible
-            alert('Er ging iets mis bij het verzenden. Controleer je internetverbinding en probeer het opnieuw.');
+            const errorMsg = error?.text || error?.message || 'Onbekende fout';
+            alert(`Er ging iets mis bij het verzenden: ${errorMsg}. Controleer je gegevens en probeer het opnieuw.`);
         } finally {
             setIsSending(false);
         }
