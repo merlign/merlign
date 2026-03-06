@@ -55,6 +55,12 @@ export default defineType({
             type: 'string',
         }),
         defineField({
+            name: 'authorImage',
+            title: 'Foto van de auteur',
+            type: 'image',
+            options: { hotspot: true }
+        }),
+        defineField({
             name: 'image',
             title: 'Mockup Afbeelding',
             type: 'image',
