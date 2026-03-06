@@ -88,23 +88,34 @@ const Cases = () => {
                         className="flex flex-wrap items-center gap-4 md:gap-8 pt-4"
                     >
                         <div className="flex flex-wrap gap-2 md:gap-4 bg-[#F2F0E9]/5 p-2 rounded-[1.5rem] border border-white/5 backdrop-blur-xl">
-                            {filterOptions.map((option) => (
-                                <button
-                                    key={option.id}
-                                    onClick={() => setSelectedFilter(option.id)}
-                                    className={`px-6 md:px-8 py-3 md:py-4 rounded-full font-mono text-[10px] md:text-[11px] uppercase tracking-[0.2em] font-bold transition-all duration-500 relative overflow-hidden group ${selectedFilter === option.id ? 'text-black' : 'text-[#F2F0E9]/40 hover:text-[#F2F0E9]'}`}
-                                >
-                                    <span className="relative z-10">{option.label}</span>
-                                    {selectedFilter === option.id && (
-                                        <motion.div
-                                            layoutId="activeFilter"
-                                            className="absolute inset-0 bg-primary"
-                                            transition={{ type: "spring", bounce: 0.2, duration: 0.6 }}
-                                        />
-                                    )}
-                                    <div className="absolute inset-0 bg-white/5 scale-x-0 group-hover:scale-x-100 transition-transform origin-left duration-500" />
-                                </button>
-                            ))}
+                            {filterOptions.map((option) => {
+                                const count = option.id === 'alle'
+                                    ? cases.length
+                                    : cases.filter(c => c.category === option.id).length;
+
+                                return (
+                                    <button
+                                        key={option.id}
+                                        onClick={() => setSelectedFilter(option.id)}
+                                        className={`px-6 md:px-8 py-3 md:py-4 rounded-full font-mono text-[10px] md:text-[11px] uppercase tracking-[0.2em] font-bold transition-all duration-500 relative overflow-hidden group ${selectedFilter === option.id ? 'text-black' : 'text-[#F2F0E9]/40 hover:text-[#F2F0E9]'}`}
+                                    >
+                                        <span className="relative z-10 flex items-center gap-2">
+                                            {option.label}
+                                            <span className={`text-[8px] opacity-40 ${selectedFilter === option.id ? 'text-black/60' : 'text-primary'}`}>
+                                                ({count})
+                                            </span>
+                                        </span>
+                                        {selectedFilter === option.id && (
+                                            <motion.div
+                                                layoutId="activeFilter"
+                                                className="absolute inset-0 bg-primary"
+                                                transition={{ type: "spring", bounce: 0.2, duration: 0.6 }}
+                                            />
+                                        )}
+                                        <div className="absolute inset-0 bg-white/5 scale-x-0 group-hover:scale-x-100 transition-transform origin-left duration-500" />
+                                    </button>
+                                );
+                            })}
                         </div>
                     </motion.div>
                 </motion.div>
@@ -131,54 +142,90 @@ const Cases = () => {
                             >
                                 {filteredCases.map((c, i) => (
                                     <motion.div
-                                        key={c.name}
+                                        key={c._id || i}
                                         initial={{ opacity: 0, y: 40 }}
                                         whileInView={{ opacity: 1, y: 0 }}
-                                        viewport={{ once: true }}
-                                        className="grid grid-cols-1 lg:grid-cols-12 gap-16 md:gap-32 items-start group"
+                                        viewport={{ once: true, margin: "-100px" }}
+                                        className="grid grid-cols-1 lg:grid-cols-12 gap-16 md:gap-32 items-start relative"
                                     >
-                                        <div className="lg:col-span-5 space-y-10 md:space-y-16">
+                                        {/* Vertical Index Number (Desktop) */}
+                                        <div className="hidden lg:block absolute -left-32 top-0 mt-2">
+                                            <span className="font-mono text-[100px] font-black text-white/[0.03] leading-none select-none">
+                                                {(i + 1).toString().padStart(2, '0')}
+                                            </span>
+                                        </div>
+
+                                        {/* Info Column (Sticky on Desktop) */}
+                                        <div className="lg:col-span-5 lg:sticky lg:top-48 space-y-10 md:space-y-16">
                                             <div className="space-y-8">
                                                 <div className="flex items-center gap-4">
                                                     <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center text-primary border border-primary/20">
                                                         {getIcon(c.category)}
                                                     </div>
-                                                    <span className="font-mono text-xs uppercase tracking-[0.4em] text-primary font-bold italic">{c.tag}</span>
+                                                    <div className="flex flex-col">
+                                                        <span className="font-mono text-[10px] uppercase tracking-[0.4em] text-primary/40 font-bold italic leading-none mb-2">Case Study</span>
+                                                        <span className="font-mono text-xs uppercase tracking-[0.2em] text-[#F2F0E9]/60 font-bold">{c.tag}</span>
+                                                    </div>
                                                 </div>
-                                                <h2 className="font-sans font-bold text-[#F2F0E9] text-h2">{c.title}</h2>
+                                                <h2 className="font-sans font-bold text-[#F2F0E9] text-h2 leading-tight">
+                                                    {c.title}
+                                                </h2>
                                             </div>
 
-                                            <div className="space-y-10">
+                                            <div className="space-y-12">
                                                 <div className="space-y-4">
-                                                    <h4 className="font-mono text-[10px] uppercase tracking-[0.4em] text-[#F2F0E9]/20 font-black italic">Situatie</h4>
-                                                    <p className="font-sans text-[#F2F0E9]/80 text-lg md:text-2xl font-light italic leading-relaxed border-l-[3px] border-primary/20 pl-8 md:pl-12">{c.situatie}</p>
+                                                    <div className="flex items-center gap-3">
+                                                        <div className="w-1 h-1 rounded-full bg-primary" />
+                                                        <h4 className="font-mono text-[10px] uppercase tracking-[0.4em] text-[#F2F0E9]/20 font-black italic">Situatie</h4>
+                                                    </div>
+                                                    <p className="font-sans text-[#F2F0E9]/70 text-lg md:text-xl font-light italic leading-relaxed pl-4">
+                                                        {c.situatie}
+                                                    </p>
                                                 </div>
                                                 <div className="space-y-4">
-                                                    <h4 className="font-mono text-[10px] uppercase tracking-[0.4em] text-[#F2F0E9]/20 font-black italic">Aanpak</h4>
-                                                    <p className="font-sans text-[#F2F0E9]/80 text-lg md:text-2xl font-light italic leading-relaxed border-l-[3px] border-primary/20 pl-8 md:pl-12">{c.aanpak}</p>
+                                                    <div className="flex items-center gap-3">
+                                                        <div className="w-1 h-1 rounded-full bg-primary" />
+                                                        <h4 className="font-mono text-[10px] uppercase tracking-[0.4em] text-[#F2F0E9]/20 font-black italic">Aanpak</h4>
+                                                    </div>
+                                                    <p className="font-sans text-[#F2F0E9]/70 text-lg md:text-xl font-light italic leading-relaxed pl-4">
+                                                        {c.aanpak}
+                                                    </p>
                                                 </div>
                                             </div>
 
-                                            <div className="space-y-6">
-                                                <h4 className="font-mono text-[10px] uppercase tracking-[0.4em] text-[#F2F0E9]/20 font-black italic">Resultaten</h4>
-                                                <div className="flex flex-wrap gap-3">
+                                            <div className="space-y-6 pt-8 border-t border-white/5">
+                                                <h4 className="font-mono text-[10px] uppercase tracking-[0.4em] text-primary font-black italic">Kernresultaten</h4>
+                                                <div className="grid grid-cols-1 gap-4">
                                                     {c.results?.map((r, ri) => (
-                                                        <span
+                                                        <motion.div
                                                             key={ri}
-                                                            className="px-6 py-3 rounded-full border border-primary/20 bg-primary/5 text-primary text-[10px] md:text-[11px] font-mono font-bold uppercase tracking-[0.2em] flex items-center gap-3 transition-all duration-500 hover:bg-primary/20 hover:border-primary/40 shadow-sm"
+                                                            initial={{ opacity: 0, x: -10 }}
+                                                            whileInView={{ opacity: 1, x: 0 }}
+                                                            transition={{ delay: ri * 0.1 }}
+                                                            className="flex items-start gap-4 p-4 rounded-2xl bg-white/[0.02] border border-white/5 group/res"
                                                         >
-                                                            <Zap size={14} className="animate-pulse" />
-                                                            {r}
-                                                        </span>
+                                                            <div className="w-6 h-6 rounded-full bg-primary/10 flex items-center justify-center shrink-0 mt-0.5 group-hover/res:bg-primary/20 transition-colors">
+                                                                <Zap size={12} className="text-primary" />
+                                                            </div>
+                                                            <span className="font-sans text-[#F2F0E9]/80 text-sm md:text-base font-medium italic">{r}</span>
+                                                        </motion.div>
                                                     ))}
                                                 </div>
                                             </div>
                                         </div>
 
-                                        <div className="lg:col-span-7 space-y-12 md:space-y-20">
-                                            {c.category === 'websites' && <BrowserMockup image={urlFor(c.image)?.url()} title={c.title} />}
-                                            {c.category === 'dashboards' && <DashboardMockup image={urlFor(c.image)?.url()} title={c.title} />}
-                                            {c.category === 'automatiseringen' && <AutomationMockup title={c.title} />}
+                                        {/* Visuals Column */}
+                                        <div className="lg:col-span-7 space-y-12 md:space-y-20 pt-4 lg:pt-0">
+                                            <div className="relative">
+                                                {/* Category floating label */}
+                                                <div className="absolute -top-3 -right-3 z-20 bg-primary px-4 py-1.5 rounded-full shadow-2xl rotate-3">
+                                                    <span className="font-mono text-[10px] font-black text-black uppercase tracking-widest">{c.category}</span>
+                                                </div>
+
+                                                {c.category === 'websites' && <BrowserMockup image={urlFor(c.image)?.url()} title={c.title} />}
+                                                {c.category === 'dashboards' && <DashboardMockup image={urlFor(c.image)?.url()} title={c.title} />}
+                                                {c.category === 'automatiseringen' && <AutomationMockup title={c.title} />}
+                                            </div>
 
                                             <motion.div
                                                 initial={{ opacity: 0, y: 10 }}
@@ -187,15 +234,16 @@ const Cases = () => {
                                                 className="px-8 md:px-12 py-10 rounded-[2.5rem] bg-[#1A1A1A]/20 border border-white/5 text-[#F2F0E9] space-y-8 relative overflow-hidden group/quote transition-all duration-700 hover:bg-[#1A1A1A]/40 shadow-sm"
                                             >
                                                 <MessageSquare className="absolute top-8 right-8 w-12 h-12 text-primary/10 -rotate-12 group-hover/quote:rotate-0 transition-all duration-700" />
-                                                <p className="text-lg md:text-xl font-sans font-medium leading-relaxed tracking-tight relative z-10 italic text-[#F2F0E9]/60">
+                                                <p className="text-lg md:text-2xl font-sans font-light leading-relaxed tracking-tight relative z-10 italic text-[#F2F0E9]/80">
                                                     "{c.quote}"
                                                 </p>
-                                                <div className="flex items-center gap-4 relative z-10 pt-4 border-t border-white/5">
-                                                    <div className="w-10 h-10 rounded-full border border-white/10 flex items-center justify-center font-mono text-[10px] uppercase font-black italic text-primary/40">
+                                                <div className="flex items-center gap-4 relative z-10 pt-6 border-t border-white/5">
+                                                    <div className="w-12 h-12 rounded-full border border-primary/20 bg-primary/5 flex items-center justify-center font-mono text-sm uppercase font-black italic text-primary">
                                                         {c.author?.charAt?.(0) || 'M'}
                                                     </div>
-                                                    <div className="space-y-1">
-                                                        <p className="font-mono text-[9px] uppercase tracking-[0.4em] font-black text-primary">{c.author || 'Merlign client'}</p>
+                                                    <div className="space-y-0.5">
+                                                        <p className="font-mono text-[10px] uppercase tracking-[0.4em] font-black text-primary leading-none">{c.author || 'Merlign client'}</p>
+                                                        <p className="font-mono text-[8px] uppercase tracking-[0.2em] text-[#F2F0E9]/20 font-bold">Geverifieerde Review</p>
                                                     </div>
                                                 </div>
                                             </motion.div>
