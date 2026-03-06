@@ -47,7 +47,7 @@ const Navbar = () => {
                             <img src="/logo_merlign.png" alt="Merlign" className="h-5 md:h-6 transition-all duration-500 brightness-0 invert" />
                         </Link>
 
-                        <div className="hidden lg:flex items-center gap-10 font-mono text-[13px] uppercase tracking-[0.3em] text-[#F2F0E9]/40">
+                        <div className="hidden lg:flex items-center gap-10 font-mono text-[13px] uppercase tracking-[0.3em] text-[#F2F0E9]/60">
                             {/* Diensten Dropdown */}
                             <div
                                 className="relative group/diensten"
@@ -69,7 +69,7 @@ const Navbar = () => {
                                                     className="block p-4 rounded-[1.5rem] hover:bg-primary/10 transition-all group/item"
                                                 >
                                                     <p className="text-[#F2F0E9] font-sans font-bold text-[13px] uppercase tracking-widest leading-none">{s.label}</p>
-                                                    <p className="text-[#F2F0E9]/30 font-sans text-[9px] uppercase tracking-widest mt-2">{s.desc}</p>
+                                                    <p className="text-[#F2F0E9]/60 font-sans text-[9px] uppercase tracking-widest mt-2">{s.desc}</p>
                                                 </Link>
                                             ))}
                                         </div>
@@ -197,7 +197,7 @@ const Footer = ({ data }) => {
                         </Link>
                         <div className="space-y-8 text-left">
                             <div className="pt-4">
-                                <p className="font-sans text-[#F2F0E9]/30 italic text-lg max-w-md leading-relaxed">
+                                <p className="font-sans text-[#F2F0E9]/60 italic text-lg max-w-md leading-relaxed">
                                     {description}
                                 </p>
                             </div>
@@ -206,20 +206,20 @@ const Footer = ({ data }) => {
                     <div className="space-y-8 md:space-y-12 pt-8 md:pt-0">
                         <h5 className="font-mono text-[12px] md:text-[14px] uppercase tracking-[0.5em] text-[#F2F0E9]/40 font-black italic">Archief</h5>
                         <ul className="space-y-4 md:space-y-6 font-mono text-[14px] md:text-[16px] uppercase tracking-[0.2em] font-bold">
-                            <li><Link to="/over-mij" className="text-[#F2F0E9]/40 hover:text-primary transition-colors">Over mij</Link></li>
-                            <li><Link to="/cases" className="text-[#F2F0E9]/40 hover:text-primary transition-colors">Cases</Link></li>
-                            <li><Link to="/contact" className="text-[#F2F0E9]/40 hover:text-primary transition-colors">Contact</Link></li>
+                            <li><Link to="/over-mij" className="text-[#F2F0E9]/60 hover:text-primary transition-colors">Over mij</Link></li>
+                            <li><Link to="/cases" className="text-[#F2F0E9]/60 hover:text-primary transition-colors">Cases</Link></li>
+                            <li><Link to="/contact" className="text-[#F2F0E9]/60 hover:text-primary transition-colors">Contact</Link></li>
                         </ul>
                     </div>
                     <div className="space-y-8 md:space-y-12 pt-8 md:pt-0">
                         <h5 className="font-mono text-[12px] md:text-[14px] uppercase tracking-[0.5em] text-[#F2F0E9]/40 font-black italic">Sociaal</h5>
                         <ul className="space-y-4 md:space-y-6 font-mono text-[14px] md:text-[16px] uppercase tracking-[0.2em] font-bold">
-                            <li><a href={linkedinLink} target="_blank" rel="noopener noreferrer" className="text-[#F2F0E9]/40 hover:text-primary transition-colors">LinkedIn</a></li>
+                            <li><a href={linkedinLink} target="_blank" rel="noopener noreferrer" className="text-[#F2F0E9]/60 hover:text-primary transition-colors">LinkedIn</a></li>
                         </ul>
                     </div>
                 </div>
                 <div className="flex flex-col md:flex-row justify-between items-center gap-8 md:gap-12 pt-8 md:pt-10 border-t border-white/5">
-                    <div className="flex items-center gap-4 font-mono text-[10px] md:text-[11px] uppercase tracking-[0.5em] font-black italic text-[#F2F0E9]/30">
+                    <div className="flex items-center gap-4 font-mono text-[10px] md:text-[11px] uppercase tracking-[0.5em] font-black italic text-[#F2F0E9]/45">
                         <span>© 2026 MERLIJN VAN DER VLEUTEN</span>
                     </div>
                     <div className="flex items-center gap-8 font-mono text-[10px] uppercase tracking-[0.4em] text-[#F2F0E9]/20">

@@ -78,7 +78,7 @@ const Cases = () => {
                     >
                         Geen mooie praatjes. <span className="text-primary font-drama font-normal text-h1-serif">Gewoon resultaten.</span>
                     </motion.h1>
-                    <motion.p variants={fadeUp} className="font-sans text-[#F2F0E9]/80 text-lg md:text-2xl font-light italic leading-relaxed max-w-4xl border-l-[3px] border-primary/20 pl-8 md:pl-12">
+                    <motion.p variants={fadeUp} className="font-sans text-[#F2F0E9]/85 text-lg md:text-2xl font-light italic leading-[1.8] max-w-4xl border-l-[3px] border-primary/20 pl-8 md:pl-12">
                         Wat ik heb gebouwd en welk meetbaar resultaat dat heeft opgeleverd.
                     </motion.p>
 
@@ -176,18 +176,18 @@ const Cases = () => {
                                                 <div className="space-y-4">
                                                     <div className="flex items-center gap-3">
                                                         <div className="w-1 h-1 rounded-full bg-primary" />
-                                                        <h4 className="font-mono text-[10px] uppercase tracking-[0.4em] text-[#F2F0E9]/20 font-black italic">Situatie</h4>
+                                                        <h4 className="font-mono text-[10px] uppercase tracking-[0.4em] text-[#F2F0E9]/40 font-black italic">Situatie</h4>
                                                     </div>
-                                                    <p className="font-sans text-[#F2F0E9]/85 text-lg md:text-xl font-light italic leading-relaxed pl-4">
+                                                    <p className="font-sans text-[#F2F0E9]/85 text-lg md:text-xl font-light italic leading-[1.8] pl-4">
                                                         {c.situatie}
                                                     </p>
                                                 </div>
                                                 <div className="space-y-4">
                                                     <div className="flex items-center gap-3">
                                                         <div className="w-1 h-1 rounded-full bg-primary" />
-                                                        <h4 className="font-mono text-[10px] uppercase tracking-[0.4em] text-[#F2F0E9]/20 font-black italic">Aanpak</h4>
+                                                        <h4 className="font-mono text-[10px] uppercase tracking-[0.4em] text-[#F2F0E9]/40 font-black italic">Aanpak</h4>
                                                     </div>
-                                                    <p className="font-sans text-[#F2F0E9]/85 text-lg md:text-xl font-light italic leading-relaxed pl-4">
+                                                    <p className="font-sans text-[#F2F0E9]/85 text-lg md:text-xl font-light italic leading-[1.8] pl-4">
                                                         {c.aanpak}
                                                     </p>
                                                 </div>
@@ -237,7 +237,7 @@ const Cases = () => {
                                                 className="px-8 md:px-12 py-10 rounded-[2.5rem] bg-[#1A1A1A]/20 border border-white/5 text-[#F2F0E9] space-y-8 relative overflow-hidden group/quote transition-all duration-700 hover:bg-[#1A1A1A]/40 shadow-sm"
                                             >
                                                 <MessageSquare className="absolute top-8 right-8 w-12 h-12 text-primary/10 -rotate-12 group-hover/quote:rotate-0 transition-all duration-700" />
-                                                <p className="text-lg md:text-2xl font-sans font-light leading-relaxed tracking-tight relative z-10 italic text-[#F2F0E9]/80">
+                                                <p className="text-lg md:text-2xl font-sans font-medium leading-[1.6] tracking-tight relative z-10 italic text-[#F2F0E9]/90">
                                                     "{c.quote}"
                                                 </p>
                                                 <div className="flex items-center gap-4 relative z-10 pt-6 border-t border-white/5">
@@ -272,7 +272,7 @@ const Cases = () => {
                     <h2 className="font-sans font-bold text-[#F2F0E9] mt-8 text-h2">
                         Jouw bedrijf <span className="text-primary font-drama font-normal text-h2-serif">hier?</span>
                     </h2>
-                    <p className="font-sans text-[#F2F0E9]/40 text-lg md:text-2xl mt-8 mb-16 md:mb-24 italic max-w-2xl">
+                    <p className="font-sans text-[#F2F0E9]/85 text-lg md:text-2xl mt-8 mb-16 md:mb-24 italic max-w-2xl">
                         Plan een gratis check. In 20 minuten weet je wat ik voor jou kan doen.
                     </p>
                     <ContactForm />

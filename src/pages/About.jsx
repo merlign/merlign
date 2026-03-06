@@ -59,7 +59,7 @@ const About = () => {
                             {introSans}{' '}
                             <span className="text-primary font-drama font-normal text-h1-serif">{introSerif}</span>
                         </motion.h1>
-                        <motion.p variants={fadeUp} className="font-sans text-[#F2F0E9]/80 text-lg md:text-2xl font-light italic leading-relaxed max-w-4xl border-l-[3px] border-primary/20 pl-8 md:pl-12">
+                        <motion.p variants={fadeUp} className="font-sans text-[#F2F0E9]/85 text-lg md:text-2xl font-light italic leading-[1.8] max-w-4xl border-l-[3px] border-primary/20 pl-8 md:pl-12">
                             {bioText}
                         </motion.p>
                         <motion.div variants={fadeUp} className="pt-12 md:pt-16">
@@ -117,7 +117,7 @@ const About = () => {
                                 {data?.whoAmIHeadlineSans || "De perfecte mix tussen"} <span className="text-primary font-drama font-normal text-h2-serif">{data?.whoAmIHeadlineSerif || "vorm en functie."}</span>
                             </motion.h2>
                         </div>
-                        <div className="space-y-8 font-sans text-[#F2F0E9]/60 text-lg md:text-2xl font-light italic leading-relaxed border-l-[3px] border-primary/20 pl-8 md:pl-12">
+                        <div className="space-y-8 font-sans text-[#F2F0E9]/85 text-lg md:text-2xl font-light italic leading-[1.8] border-l-[3px] border-primary/20 pl-8 md:pl-12">
                             {data?.whoAmIParas && data.whoAmIParas.length > 0 ? data.whoAmIParas.map((para, i) => (
                                 <p key={i}>{para}</p>
                             )) : (
@@ -158,7 +158,7 @@ const About = () => {
                                 className="p-10 rounded-[2.5rem] bg-[#1A1A1A]/40 border border-white/5 space-y-6 hover:bg-[#1A1A1A]/60 transition-all duration-700"
                             >
                                 <h3 className="text-xl md:text-3xl font-sans font-bold text-[#F2F0E9] tracking-tighter">{item.title}</h3>
-                                <p className="font-sans text-[#F2F0E9]/70 leading-relaxed italic text-base md:text-lg">{item.description || item.desc}</p>
+                                <p className="font-sans text-[#F2F0E9]/85 leading-[1.8] italic text-base md:text-lg">{item.description || item.desc}</p>
                             </motion.div>
                         ))}
                     </div>

@@ -88,7 +88,7 @@ const AutomationService = () => {
                         {heroSans}{' '}
                         <span className="text-primary font-drama font-normal text-h1-serif">{heroSerif}</span>
                     </motion.h1>
-                    <motion.p variants={fadeUp} className="font-sans text-[#F2F0E9]/80 text-lg md:text-2xl font-light italic leading-relaxed max-w-4xl border-l-[3px] border-primary/20 pl-8 md:pl-12">
+                    <motion.p variants={fadeUp} className="font-sans text-[#F2F0E9]/85 text-lg md:text-2xl font-light italic leading-[1.8] max-w-4xl border-l-[3px] border-primary/20 pl-8 md:pl-12">
                         {heroSubtitle}
                     </motion.p>
                     <motion.div variants={fadeUp} className="pt-4">
@@ -107,7 +107,7 @@ const AutomationService = () => {
                                 {data?.whyHeadlineSans || "Winst in tijd"}{' '}
                                 <span className="text-primary font-drama font-normal text-h2-serif">{data?.whyHeadlineSerif || "is winst in vrijheid."}</span>
                             </h2>
-                            <p className="font-sans text-[#F2F0E9]/80 text-lg md:text-2xl font-light italic leading-relaxed">
+                            <p className="font-sans text-[#F2F0E9]/85 text-lg md:text-2xl font-light italic leading-[1.8]">
                                 {data?.whySubtitle || "Elke taak die je herhaalt kost tijd. Opgeteld zijn dat uren per week die je aan groei had kunnen besteden. Ik bouw de systemen die dat overnemen."}
                             </p>
                         </div>
@@ -122,7 +122,7 @@ const AutomationService = () => {
                                     className="space-y-4"
                                 >
                                     <h4 className="text-lg md:text-xl font-sans font-bold text-[#F2F0E9] tracking-tighter">{item.title}</h4>
-                                    <p className="font-sans text-[#F2F0E9]/40 leading-relaxed italic text-sm md:text-base">{item.desc}</p>
+                                    <p className="font-sans text-[#F2F0E9]/85 leading-[1.8] italic text-sm md:text-base">{item.desc}</p>
                                 </motion.div>
                             ))}
                         </div>
@@ -190,7 +190,7 @@ const AutomationService = () => {
                                 </div>
                                 <div className="space-y-4">
                                     <h3 className="text-xl md:text-2xl font-sans font-bold text-[#F2F0E9] tracking-tighter">{item.title}</h3>
-                                    <p className="font-sans text-[#F2F0E9]/70 leading-relaxed italic">{item.desc}</p>
+                                    <p className="font-sans text-[#F2F0E9]/85 leading-[1.8] italic">{item.desc}</p>
                                 </div>
                             </motion.div>
                         ))}
@@ -213,7 +213,7 @@ const AutomationService = () => {
                                 <span className="text-primary font-drama font-normal text-h2-serif">{data?.ctaHeadlineSerif || "terug te krijgen?"}</span>
                             </h2>
                         </a>
-                        <motion.p variants={fadeUp} className="font-sans text-[#F2F0E9]/40 text-base md:text-xl font-light leading-relaxed italic max-w-3xl mx-auto border-l-2 md:border-l-0 md:border-b-2 border-white/5 pb-10 md:pb-12 pl-8 md:pl-0">
+                        <motion.p variants={fadeUp} className="font-sans text-[#F2F0E9]/85 text-base md:text-xl font-light leading-[1.8] italic max-w-3xl mx-auto border-l-2 md:border-l-0 md:border-b-2 border-white/5 pb-10 md:pb-12 pl-8 md:pl-0">
                             {data?.ctaSubtitle || "Vraag een gratis check aan. In 20 minuten weet je wat er geautomatiseerd kan worden."}
                         </motion.p>
                     </motion.div>
@@ -285,7 +285,7 @@ const FAQ = ({ cmsFaqs }) => {
                                         exit={{ height: 0, opacity: 0 }}
                                         transition={{ duration: 0.4, ease: "circOut" }}
                                     >
-                                        <div className="px-6 pb-6 text-[#F2F0E9]/50 text-base font-sans font-light italic border-t border-white/5 pt-4">
+                                        <div className="px-6 pb-6 text-[#F2F0E9]/85 text-base font-sans font-light italic border-t border-white/5 pt-4">
                                             {item.a}
                                         </div>
                                     </motion.div>

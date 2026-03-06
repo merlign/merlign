@@ -81,7 +81,7 @@ const Hero = ({ data }) => {
                         variants={fadeUp}
                         className="flex flex-col md:flex-row items-start md:items-center gap-12"
                     >
-                        <p className="font-sans text-[#F2F0E9]/80 text-lg md:text-xl font-light max-w-2xl border-l-[2px] border-primary/40 pl-8 leading-relaxed italic">
+                        <p className="font-sans text-[#F2F0E9]/85 text-lg md:text-xl font-light max-w-2xl border-l-[2px] border-primary/40 pl-8 leading-[1.8] italic">
                             {heroSubtitle}
                         </p>
                     </motion.div>
@@ -156,10 +156,10 @@ const HomeAbout = ({ data }) => {
                         <span className="text-primary font-drama font-normal text-h2-serif">{headlineSerif}</span>
                     </motion.h2>
                     <div className="space-y-6">
-                        <p className="font-sans text-[#F2F0E9]/80 text-lg md:text-2xl font-light italic leading-relaxed border-l-[3px] border-primary/40 pl-8 md:pl-12">
+                        <p className="font-sans text-[#F2F0E9]/85 text-lg md:text-2xl font-light italic leading-[1.8] border-l-[3px] border-primary/40 pl-8 md:pl-12">
                             {para1}
                         </p>
-                        <p className="font-sans text-[#F2F0E9]/40 text-base md:text-lg font-light leading-relaxed max-w-2xl ml-8 md:ml-12 italic">
+                        <p className="font-sans text-[#F2F0E9]/85 text-base md:text-lg font-light leading-[1.8] max-w-2xl ml-8 md:ml-12 italic">
                             {para2}
                         </p>
                     </div>
@@ -268,7 +268,7 @@ const Services = ({ cmsServices, data }) => {
                             {headlineSans} <span className="text-primary font-drama font-normal text-h2-serif">{headlineSerif}</span>
                         </motion.h2>
                     </div>
-                    <motion.p variants={fadeUp} className="font-sans text-[#F2F0E9]/80 max-w-md text-lg md:text-2xl border-l-[3px] border-primary/20 pl-8 md:pl-12 pb-4 md:pb-6 italic leading-relaxed">
+                    <motion.p variants={fadeUp} className="font-sans text-[#F2F0E9]/85 max-w-md text-lg md:text-2xl border-l-[3px] border-primary/20 pl-8 md:pl-12 pb-4 md:pb-6 italic leading-[1.8]">
                         {subtitle}
                     </motion.p>
                 </motion.div>
@@ -298,7 +298,7 @@ const Services = ({ cmsServices, data }) => {
                                     <h3 className="text-2xl md:text-4xl font-sans font-bold text-[#F2F0E9] leading-tight tracking-tight">
                                         {s.title}
                                     </h3>
-                                    <p className="font-sans text-[#F2F0E9]/70 font-light leading-relaxed text-base md:text-xl pb-8 md:pb-12 italic">
+                                    <p className="font-sans text-[#F2F0E9]/85 font-light leading-[1.8] text-base md:text-xl pb-8 md:pb-12 italic">
                                         {s.desc}
                                     </p>
                                 </div>
@@ -487,7 +487,7 @@ const Process = ({ data }) => {
                                     <h3 className="text-2xl sm:text-3xl md:text-5xl lg:text-[58px] font-sans font-bold text-[#F2F0E9] tracking-tighter leading-tight">
                                         {step.title}
                                     </h3>
-                                    <p className="text-[#F2F0E9]/50 text-base md:text-xl font-sans font-light leading-relaxed italic max-w-lg">
+                                    <p className="text-[#F2F0E9]/85 text-base md:text-xl font-sans font-light leading-[1.8] italic max-w-lg">
                                         {step.desc}
                                     </p>
                                 </div>
@@ -612,7 +612,7 @@ const ContactSection = ({ data }) => {
                         {headlineSans}{' '}
                         <span className="text-primary font-drama font-normal text-h2-serif">{headlineSerif}</span>
                     </motion.h2>
-                    <motion.p variants={fadeUp} className="font-sans text-[#F2F0E9]/40 text-base md:text-xl font-light leading-relaxed italic max-w-3xl mx-auto border-b-2 border-white/5 pb-8 md:pb-10 text-center">
+                    <motion.p variants={fadeUp} className="font-sans text-[#F2F0E9]/85 text-base md:text-xl font-light leading-[1.8] italic max-w-3xl mx-auto border-b-2 border-white/5 pb-8 md:pb-10 text-center">
                         {subtitle}
                     </motion.p>
                 </motion.div>
