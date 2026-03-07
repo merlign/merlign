@@ -43,7 +43,17 @@ const Navbar = () => {
             <div className="fixed top-4 md:top-6 left-0 w-full z-[100] px-4 md:px-20 pointer-events-none">
                 <nav className={`max-w-[1500px] mx-auto pointer-events-auto transition-all duration-700 ease-[cubic-bezier(0.25,0.46,0.45,0.94)] rounded-full border ${isScrolled ? 'bg-[#0A0A0A]/60 backdrop-blur-xl border-white/5 py-3 md:py-4 px-6 md:px-10 shadow-2xl' : 'bg-[#0A0A0A]/20 backdrop-blur-sm border-white/5 py-4 md:py-6 px-4'}`}>
                     <div className="flex items-center justify-between">
-                        <Link to="/" onClick={() => setIsMobileMenuOpen(false)} className="relative z-10">
+                        <Link
+                            to="/"
+                            onClick={(e) => {
+                                if (pathname === '/') {
+                                    e.preventDefault();
+                                    window.scrollTo({ top: 0, behavior: 'smooth' });
+                                }
+                                setIsMobileMenuOpen(false);
+                            }}
+                            className="relative z-10"
+                        >
                             <img src="/logo_merlign.png" alt="Merlign" className="h-5 md:h-6 transition-all duration-500 brightness-0 invert" />
                         </Link>
 
@@ -183,6 +193,7 @@ const Navbar = () => {
 };
 
 const Footer = ({ data }) => {
+    const { pathname } = useLocation();
     const description = data?.footerDescription || "Websites, dashboards en automatiseringen voor ondernemers die vooruit willen.";
     const linkedinLink = data?.linkedin || "https://www.linkedin.com/in/merlijn-van-der-vleuten-1b9118267/";
 
@@ -192,7 +203,15 @@ const Footer = ({ data }) => {
             <div className="max-w-[1500px] mx-auto px-8 md:px-20 relative z-20">
                 <div className="grid grid-cols-1 md:grid-cols-4 gap-16 md:gap-32 border-b border-white/5 pb-10 md:pb-16">
                     <div className="md:col-span-2 space-y-10 md:space-y-16">
-                        <Link to="/">
+                        <Link
+                            to="/"
+                            onClick={(e) => {
+                                if (pathname === '/') {
+                                    e.preventDefault();
+                                    window.scrollTo({ top: 0, behavior: 'smooth' });
+                                }
+                            }}
+                        >
                             <img src="/logo_merlign.png" alt="Merlign" className="h-8 brightness-0 invert" />
                         </Link>
                         <div className="space-y-8 text-left">
