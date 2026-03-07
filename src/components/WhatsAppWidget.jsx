@@ -121,8 +121,7 @@ const WhatsAppWidget = ({ phoneNumber = "0647693209" }) => {
                                     <span className="absolute bottom-0 right-0 w-3.5 h-3.5 bg-green-500 rounded-full border-2 border-primary shadow-sm" />
                                 </div>
                                 <div className="text-white">
-                                    <h4 className="font-sans font-black text-sm uppercase tracking-widest leading-none">Kloontje Merlijn</h4>
-                                    <p className="text-[9px] uppercase tracking-[0.2em] font-bold text-white/50 mt-1.5 opacity-60">Status: Online</p>
+                                    <h4 className="font-sans font-black text-sm uppercase tracking-widest leading-none">Merlijn AI</h4>
                                 </div>
                             </div>
                             <button
