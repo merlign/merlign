@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Link, useLocation } from 'react-router-dom';
 import { ChevronDown, Linkedin, ArrowRight, ArrowUpRight, Menu, X } from 'lucide-react';
+import WhatsAppWidget from './WhatsAppWidget';
 
 const Navbar = () => {
     const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -288,6 +289,7 @@ const Layout = ({ children }) => {
         <div className="bg-[#0A0A0A] text-[#F2F0E9] selection:bg-primary selection:text-black min-h-screen">
             <Navbar />
             <main>{children}</main>
+            <WhatsAppWidget phoneNumber={contactInfo?.whatsappPhone || "+31612345678"} />
             <Footer data={contactInfo} />
         </div>
     );

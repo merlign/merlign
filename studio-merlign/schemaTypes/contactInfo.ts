@@ -48,6 +48,13 @@ export default defineType({
             initialValue: 'https://www.linkedin.com/in/merlijn-van-der-vleuten-1b9118267/'
         }),
         defineField({
+            name: 'whatsappPhone',
+            title: 'WhatsApp Telefoonnummer',
+            type: 'string',
+            initialValue: '+31612345678',
+            description: 'Inclusief landcode (bijv. +316...)'
+        }),
+        defineField({
             name: 'footerDescription',
             title: 'Footer Omschrijving',
             type: 'text',
