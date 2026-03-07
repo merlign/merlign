@@ -59,9 +59,20 @@ const WhatsAppWidget = ({ phoneNumber = "0647693209" }) => {
     };
 
     const handleWhatsAppRedirect = () => {
-        const cleanPhone = phoneNumber.replace(/\+/g, '').replace(/\s/g, '');
-        // Using an empty text parameter or omitting it usually opens a blank chat
-        window.open(`https://wa.me/31${cleanPhone.startsWith('0') ? cleanPhone.substring(1) : cleanPhone}`, '_blank');
+        // More robust logic: strip anything that isn't a digit
+        let clean = phoneNumber.replace(/\D/g, '');
+
+        // If it starts with 06 (and not 31), replace 0 with 31
+        if (clean.startsWith('0')) {
+            clean = '31' + clean.substring(1);
+        }
+
+        // Ensure it has 31 prefix if it's a Dutch number missing it
+        if (!clean.startsWith('31') && clean.length >= 9) {
+            clean = '31' + clean;
+        }
+
+        window.open(`https://wa.me/${clean}`, '_blank');
     };
 
     return (
@@ -110,11 +121,8 @@ const WhatsAppWidget = ({ phoneNumber = "0647693209" }) => {
                                     <span className="absolute bottom-0 right-0 w-3.5 h-3.5 bg-green-500 rounded-full border-2 border-primary shadow-sm" />
                                 </div>
                                 <div className="text-white">
-                                    <h4 className="font-sans font-black text-sm uppercase tracking-widest leading-none">Merlijn AI</h4>
-                                    <div className="flex items-center gap-1.5 mt-1.5">
-                                        <Sparkles size={10} className="text-white/60 animate-pulse" />
-                                        <p className="text-[9px] uppercase tracking-[0.2em] font-bold text-white/50">Generative Assistant</p>
-                                    </div>
+                                    <h4 className="font-sans font-black text-sm uppercase tracking-widest leading-none">Kloontje Merlijn</h4>
+                                    <p className="text-[9px] uppercase tracking-[0.2em] font-bold text-white/50 mt-1.5 opacity-60">Status: Online</p>
                                 </div>
                             </div>
                             <button
@@ -135,8 +143,8 @@ const WhatsAppWidget = ({ phoneNumber = "0647693209" }) => {
                                     className={`flex ${msg.role === 'user' ? 'justify-end' : 'justify-start'}`}
                                 >
                                     <div className={`max-w-[85%] p-4 rounded-2xl text-[13px] md:text-[14px] leading-relaxed font-sans shadow-sm ${msg.role === 'user'
-                                            ? 'bg-primary text-black font-bold rounded-tr-none'
-                                            : 'bg-white/5 border border-white/5 text-[#F2F0E9]/80 italic rounded-tl-none'
+                                        ? 'bg-primary text-black font-bold rounded-tr-none'
+                                        : 'bg-white/5 border border-white/5 text-[#F2F0E9]/80 italic rounded-tl-none'
                                         }`}>
                                         {msg.text}
                                     </div>
