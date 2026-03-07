@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { MessageSquare, Send, X, Sparkles, User, ArrowRight } from 'lucide-react';
+import { MessageSquare, Send, X, Sparkles, MessageCircle, ArrowRight } from 'lucide-react';
 
 const WhatsAppWidget = ({ phoneNumber = "+31612345678" }) => {
     const [isOpen, setIsOpen] = useState(false);
@@ -30,21 +30,25 @@ const WhatsAppWidget = ({ phoneNumber = "+31612345678" }) => {
         setMessage('');
         setIsTyping(true);
 
-        // Simulate AI "thinking" and generating a response based on Merlign's services
+        // Simulated AI logic with your specific answers
         setTimeout(() => {
             let response = "";
             const lowerMsg = userMsg.toLowerCase();
 
             if (lowerMsg.includes('website')) {
-                response = "Ik kan een high-end website voor je bouwen die binnen 72 uur live staat. Geen standaard templates, maar echt maatwerk gericht op conversie. Wil je hier meer over weten?";
+                response = "Ik bouw high-end maatwerk websites die binnen 72 uur live kunnen staan. Focus ligt op conversie en design voor MKB en solo ondernemers.";
             } else if (lowerMsg.includes('dashboard')) {
-                response = "Mijn Smart Dashboards koppelen al je data (omzet, leads, ad-spend) in één overzicht. Zo kun je sturen op cijfers in plaats van op gevoel.";
+                response = "Voor een dashboard heb ik ongeveer 7 dagen nodig. Dit komt omdat ik API-koppelingen leg en alles grondig moet testen voor een foutloos inzicht.";
             } else if (lowerMsg.includes('automatisering') || lowerMsg.includes('ai')) {
-                response = "Ik help ondernemers repetitief werk te automatiseren met AI en slimme workflows. Denk aan leadopvolging of administratie die 'zichzelf' doet.";
-            } else if (lowerMsg.includes('prijs') || lowerMsg.includes('kosten')) {
-                response = "Omdat elk project maatwerk is, heb ik geen vaste prijslijst. Maar ik werk altijd met een duidelijke investering vooraf die zich snel terugverdient door tijd- of omzetwinst.";
+                response = "Ik help je repetitief werk te automatiseren. Om te starten heb ik vaak toegang nodig tot je data of accounts, maar dat bespreken we in de gratis check.";
+            } else if (lowerMsg.includes('prijs') || lowerMsg.includes('kosten') || lowerMsg.includes('duur')) {
+                response = "Prijzen zijn bij mij altijd op basis van maatwerk, omdat elk bedrijf anders is. Onderhoud bied ik overigens al aan vanaf €35,- per maand.";
+            } else if (lowerMsg.includes('nodig') || lowerMsg.includes('starten') || lowerMsg.includes('hoe werkt')) {
+                response = "Voor de start heb ik toegang tot data en design assets nodig. We beginnen met een gratis check van 20 minuten, daarna gaan we een uurtje de diepte in.";
+            } else if (lowerMsg.includes('wie') || lowerMsg.includes('voor wie') || lowerMsg.includes('doelgroep')) {
+                response = "Ik werk het liefst voor ambitieuze MKB-ondernemers en solo ondernemers die hun business willen professionaliseren en automatiseren.";
             } else {
-                response = "Goede vraag! Voor dit soort specifieke zaken kan ik je het beste even persoonlijk spreken. Zal ik je doorverbinden naar m'n persoonlijke WhatsApp?";
+                response = "Interessante vraag! Ik kan hier dieper op ingaan tijdens een korte call of via WhatsApp. Zal ik je doorverbinden naar m'n persoonlijke app?";
             }
 
             setChatHistory(prev => [...prev, { role: 'assistant', text: response }]);
@@ -121,8 +125,8 @@ const WhatsAppWidget = ({ phoneNumber = "+31612345678" }) => {
                                     className={`flex ${msg.role === 'user' ? 'justify-end' : 'justify-start'}`}
                                 >
                                     <div className={`max-w-[85%] p-4 rounded-2xl text-[13px] md:text-[14px] leading-relaxed font-sans shadow-sm ${msg.role === 'user'
-                                            ? 'bg-primary text-black font-bold rounded-tr-none'
-                                            : 'bg-white/5 border border-white/5 text-[#F2F0E9]/80 italic rounded-tl-none'
+                                        ? 'bg-primary text-black font-bold rounded-tr-none'
+                                        : 'bg-white/5 border border-white/5 text-[#F2F0E9]/80 italic rounded-tl-none'
                                         }`}>
                                         {msg.text}
                                     </div>
