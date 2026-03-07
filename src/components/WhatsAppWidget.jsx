@@ -2,7 +2,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { MessageSquare, Send, X, Sparkles, MessageCircle, ArrowRight } from 'lucide-react';
 
-const WhatsAppWidget = ({ phoneNumber = "0647693209" }) => {
+const WhatsAppWidget = ({ phoneNumber = "31647693209" }) => {
     const [isOpen, setIsOpen] = useState(false);
     const [isTooltipDismissed, setIsTooltipDismissed] = useState(false);
     const [message, setMessage] = useState('');
