@@ -671,8 +671,8 @@ const Home = () => {
                         transition={{ duration: 0.8, ease: "easeOut" }}
                     >
                         <Hero data={pageData} />
-                        <HomeAbout data={pageData} />
                         <Services cmsServices={pageData?.features} data={pageData} />
+                        <HomeAbout data={pageData} />
                         <Process data={pageData} />
                         <FAQ />
                         <ContactSection data={contactInfo} />
