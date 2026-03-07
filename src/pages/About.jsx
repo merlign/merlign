@@ -20,6 +20,7 @@ const About = () => {
     const [data, setData] = React.useState(null);
 
     React.useEffect(() => {
+        document.title = "Over Merlign — Design & Automatisering Strateeg";
         const fetchData = async () => {
             try {
                 const res = await getAboutPageData();

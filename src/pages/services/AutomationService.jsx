@@ -24,6 +24,7 @@ const AutomationService = () => {
     const [openFaq, setOpenFaq] = React.useState(0);
 
     React.useEffect(() => {
+        document.title = "AI & Workflow Automatisering — Bespaar Tijd met Merlign";
         const fetchData = async () => {
             try {
                 const res = await getServicePageData('Automatisering');

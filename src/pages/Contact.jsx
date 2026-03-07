@@ -16,6 +16,7 @@ const ContactPage = () => {
     const [data, setData] = React.useState(null);
 
     React.useEffect(() => {
+        document.title = "Contact — Laten we jouw business versnellen | Merlign";
         const fetchData = async () => {
             try {
                 const res = await getContactInfo();

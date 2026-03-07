@@ -24,6 +24,7 @@ const WebsiteService = () => {
     const [data, setData] = React.useState(null);
 
     React.useEffect(() => {
+        document.title = "Maatwerk Websites — Conversie & Design door Merlign";
         const fetchData = async () => {
             try {
                 const res = await getServicePageData('Website');

@@ -24,6 +24,7 @@ const DashboardService = () => {
     const [data, setData] = React.useState(null);
 
     React.useEffect(() => {
+        document.title = "Smart Dashboards — Data Inzicht voor Ondernemers | Merlign";
         const fetchData = async () => {
             try {
                 const res = await getServicePageData('Dashboard');

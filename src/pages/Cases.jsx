@@ -20,6 +20,7 @@ const Cases = () => {
     const [isLoading, setIsLoading] = useState(true);
 
     React.useEffect(() => {
+        document.title = "Portfolio & Resultaten — Case Studies door Merlign";
         const fetchCases = async () => {
             try {
                 setIsLoading(true);

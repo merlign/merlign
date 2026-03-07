@@ -630,6 +630,7 @@ const Home = () => {
     const [contactInfo, setContactInfo] = useState(null);
 
     useEffect(() => {
+        document.title = "Merlign — High-end design & AI-automatisering";
         const fetchPageData = async () => {
             try {
                 const [home, contact] = await Promise.all([
