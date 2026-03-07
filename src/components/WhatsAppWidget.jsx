@@ -62,18 +62,35 @@ const WhatsAppWidget = ({ phoneNumber = "+31612345678" }) => {
     return (
         <div className="fixed bottom-6 right-6 md:bottom-10 md:right-10 z-[1000] flex flex-col items-end gap-4">
             <AnimatePresence>
+                {!isOpen && (
+                    <motion.div
+                        initial={{ opacity: 0, y: 10, scale: 0.9 }}
+                        animate={{ opacity: 1, y: 0, scale: 1 }}
+                        exit={{ opacity: 0, y: 10, scale: 0.9 }}
+                        transition={{ delay: 1 }}
+                        className="bg-white px-5 py-3 rounded-2xl rounded-br-none shadow-xl mb-2 relative hidden md:block"
+                    >
+                        <p className="font-sans text-black text-[12px] font-bold uppercase tracking-widest whitespace-nowrap">
+                            Vragen? Stel ze hier.
+                        </p>
+                        <div className="absolute -bottom-2 right-4 w-4 h-4 bg-white rotate-45" />
+                    </motion.div>
+                )}
+            </AnimatePresence>
+
+            <AnimatePresence>
                 {isOpen && (
                     <motion.div
                         initial={{ opacity: 0, scale: 0.8, y: 20, transformOrigin: 'bottom right' }}
                         animate={{ opacity: 1, scale: 1, y: 0 }}
                         exit={{ opacity: 0, scale: 0.8, y: 20 }}
-                        className="w-[340px] md:w-[420px] h-[550px] bg-[#141414] border border-white/10 rounded-[2.5rem] shadow-2xl overflow-hidden flex flex-col backdrop-blur-2xl"
+                        className="w-[340px] md:w-[420px] h-[550px] bg-[#141414] border border-white/10 rounded-[2.5rem] shadow-2xl overflow-hidden flex flex-col backdrop-blur-2xl mb-4"
                     >
                         {/* Header with Photo */}
                         <div className="bg-primary p-6 md:p-8 flex items-center justify-between shadow-lg relative z-10">
                             <div className="flex items-center gap-4">
                                 <div className="relative">
-                                    <div className="w-12 h-12 rounded-full overflow-hidden border-2 border-white/30 shadow-inner">
+                                    <div className="w-12 h-12 rounded-full overflow-hidden border-2 border-white/30 shadow-inner bg-black/20">
                                         <img src="/merlijn-portrait.png" alt="Merlijn" className="w-full h-full object-cover" />
                                     </div>
                                     <span className="absolute bottom-0 right-0 w-3.5 h-3.5 bg-green-500 rounded-full border-2 border-primary shadow-sm" />
@@ -171,12 +188,12 @@ const WhatsAppWidget = ({ phoneNumber = "+31612345678" }) => {
                 )}
             </AnimatePresence>
 
-            {/* Toggle Button with Notification Badge */}
+            {/* Toggle Button */}
             <motion.button
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
                 onClick={() => setIsOpen(!isOpen)}
-                className={`w-14 h-14 md:w-20 md:h-20 rounded-full flex items-center justify-center shadow-2xl transition-all duration-700 relative group overflow-hidden ${isOpen ? 'bg-white border-white' : 'bg-primary border-primary'}`}
+                className={`w-14 h-14 md:w-16 md:h-16 rounded-full flex items-center justify-center shadow-2xl transition-all duration-700 relative group overflow-hidden ${isOpen ? 'bg-white' : 'bg-primary shadow-[0_0_30px_rgba(201,168,76,0.3)]'}`}
             >
                 <div className="absolute inset-0 rounded-full bg-primary/40 animate-ping opacity-20 pointer-events-none" />
                 <div className="absolute inset-0 bg-gradient-to-tr from-black/20 via-transparent to-white/10 opacity-50" />
@@ -184,14 +201,7 @@ const WhatsAppWidget = ({ phoneNumber = "+31612345678" }) => {
                 {isOpen ? (
                     <X className="text-black relative z-10" size={28} />
                 ) : (
-                    <div className="relative z-10 flex flex-col items-center">
-                        <div className="w-10 h-10 md:w-14 md:h-14 rounded-full overflow-hidden border-2 border-white/20 mb-[-10px] scale-110 shadow-xl group-hover:scale-125 transition-transform duration-700">
-                            <img src="/merlijn-portrait.png" alt="Merlijn" className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700" />
-                        </div>
-                        <div className="bg-primary text-black px-2 py-0.5 rounded-full border border-black/10 scale-75 md:scale-90">
-                            <MessageSquare size={12} strokeWidth={3} />
-                        </div>
-                    </div>
+                    <MessageCircle className="text-white relative z-10" size={32} />
                 )}
             </motion.button>
         </div>
