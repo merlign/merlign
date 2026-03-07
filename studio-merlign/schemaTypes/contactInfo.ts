@@ -51,7 +51,7 @@ export default defineType({
             name: 'whatsappPhone',
             title: 'WhatsApp Telefoonnummer',
             type: 'string',
-            initialValue: '+31612345678',
+            initialValue: '31647693209',
             description: 'Inclusief landcode (bijv. +316...)'
         }),
         defineField({

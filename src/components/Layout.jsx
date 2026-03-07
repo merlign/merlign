@@ -289,7 +289,7 @@ const Layout = ({ children }) => {
         <div className="bg-[#0A0A0A] text-[#F2F0E9] selection:bg-primary selection:text-black min-h-screen">
             <Navbar />
             <main>{children}</main>
-            <WhatsAppWidget phoneNumber={contactInfo?.whatsappPhone || "+31612345678"} />
+            <WhatsAppWidget phoneNumber={contactInfo?.whatsappPhone || "31647693209"} />
             <Footer data={contactInfo} />
         </div>
     );
