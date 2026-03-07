@@ -2,8 +2,9 @@ import React, { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { MessageSquare, Send, X, Sparkles, MessageCircle, ArrowRight } from 'lucide-react';
 
-const WhatsAppWidget = ({ phoneNumber = "+31612345678" }) => {
+const WhatsAppWidget = ({ phoneNumber = "0647693209" }) => {
     const [isOpen, setIsOpen] = useState(false);
+    const [isTooltipDismissed, setIsTooltipDismissed] = useState(false);
     const [message, setMessage] = useState('');
     const [chatHistory, setChatHistory] = useState([
         { role: 'assistant', text: "Hoi! Ik ben de AI-assistent van Merlijn. 👋" },
@@ -19,6 +20,7 @@ const WhatsAppWidget = ({ phoneNumber = "+31612345678" }) => {
     useEffect(() => {
         if (isOpen) {
             scrollToBottom();
+            setIsTooltipDismissed(true); // Dismiss tooltip once chat is opened
         }
     }, [chatHistory, isOpen, isTyping]);
 
@@ -57,27 +59,35 @@ const WhatsAppWidget = ({ phoneNumber = "+31612345678" }) => {
     };
 
     const handleWhatsAppRedirect = () => {
-        const lastConv = chatHistory.slice(-2).map(m => `${m.role === 'user' ? 'Mijn vraag' : 'Merlijn'}: ${m.text}`).join('\n\n');
-        const encodedMessage = encodeURIComponent(`Hoi Merlijn, ik heb een vraag via je AI-assistent:\n\n${lastConv}`);
         const cleanPhone = phoneNumber.replace(/\+/g, '').replace(/\s/g, '');
-        window.open(`https://wa.me/${cleanPhone}?text=${encodedMessage}`, '_blank');
+        // Using an empty text parameter or omitting it usually opens a blank chat
+        window.open(`https://wa.me/31${cleanPhone.startsWith('0') ? cleanPhone.substring(1) : cleanPhone}`, '_blank');
     };
 
     return (
         <div className="fixed bottom-6 right-6 md:bottom-10 md:right-10 z-[1000] flex flex-col items-end gap-4">
             <AnimatePresence>
-                {!isOpen && (
+                {!isOpen && !isTooltipDismissed && (
                     <motion.div
                         initial={{ opacity: 0, y: 10, scale: 0.9 }}
                         animate={{ opacity: 1, y: 0, scale: 1 }}
                         exit={{ opacity: 0, y: 10, scale: 0.9 }}
                         transition={{ delay: 1 }}
-                        className="bg-white px-5 py-3 rounded-2xl rounded-br-none shadow-xl mb-2 relative hidden md:block"
+                        className="bg-white px-5 py-3 rounded-2xl rounded-br-none shadow-2xl mb-2 relative hidden md:flex items-center gap-3 transition-all border border-black/5"
                     >
                         <p className="font-sans text-black text-[12px] font-bold uppercase tracking-widest whitespace-nowrap">
                             Vragen? Stel ze hier.
                         </p>
-                        <div className="absolute -bottom-2 right-4 w-4 h-4 bg-white rotate-45" />
+                        <button
+                            onClick={(e) => {
+                                e.stopPropagation();
+                                setIsTooltipDismissed(true);
+                            }}
+                            className="text-black/30 hover:text-black transition-colors"
+                        >
+                            <X size={14} />
+                        </button>
+                        <div className="absolute -bottom-2 right-4 w-4 h-4 bg-white rotate-45 border-r border-b border-black/5" />
                     </motion.div>
                 )}
             </AnimatePresence>
@@ -125,8 +135,8 @@ const WhatsAppWidget = ({ phoneNumber = "+31612345678" }) => {
                                     className={`flex ${msg.role === 'user' ? 'justify-end' : 'justify-start'}`}
                                 >
                                     <div className={`max-w-[85%] p-4 rounded-2xl text-[13px] md:text-[14px] leading-relaxed font-sans shadow-sm ${msg.role === 'user'
-                                        ? 'bg-primary text-black font-bold rounded-tr-none'
-                                        : 'bg-white/5 border border-white/5 text-[#F2F0E9]/80 italic rounded-tl-none'
+                                            ? 'bg-primary text-black font-bold rounded-tr-none'
+                                            : 'bg-white/5 border border-white/5 text-[#F2F0E9]/80 italic rounded-tl-none'
                                         }`}>
                                         {msg.text}
                                     </div>
@@ -179,13 +189,13 @@ const WhatsAppWidget = ({ phoneNumber = "+31612345678" }) => {
 
                             <button
                                 onClick={handleWhatsAppRedirect}
-                                className="w-full group flex items-center justify-between bg-white/[0.03] hover:bg-white/[0.08] border border-white/5 p-4 rounded-2xl transition-all duration-500"
+                                className="w-full group flex items-center justify-center gap-4 bg-green-500 hover:bg-green-600 p-4 rounded-2xl transition-all duration-500 shadow-[0_0_20px_rgba(34,197,94,0.2)]"
                             >
-                                <span className="text-[10px] md:text-[11px] font-bold uppercase tracking-[0.2em] text-[#F2F0E9]/60 group-hover:text-primary transition-colors">Spreek de echte Merlijn</span>
-                                <div className="flex items-center gap-2">
-                                    <span className="w-1.5 h-1.5 bg-green-500 rounded-full animate-pulse shadow-[0_0_10px_rgba(34,197,94,0.5)]" />
-                                    <ArrowRight size={14} className="text-[#F2F0E9]/30 group-hover:text-primary group-hover:translate-x-1 transition-all" />
+                                <div className="flex items-center justify-center w-8 h-8 rounded-full bg-white/20">
+                                    <MessageCircle className="text-white fill-white" size={18} />
                                 </div>
+                                <span className="text-[11px] font-black uppercase tracking-[0.2em] text-white">Spreek de echte Merlijn</span>
+                                <ArrowRight size={14} className="text-white/50 group-hover:text-white group-hover:translate-x-1 transition-all" />
                             </button>
                         </div>
                     </motion.div>
