@@ -2,6 +2,7 @@ import React from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import SectionLabel from '../components/SectionLabel';
 import ContactForm from '../components/ContactForm';
+import SEO from '../components/SEO';
 import { getAboutPageData } from '../lib/sanity';
 
 const fadeUp = {
@@ -20,7 +21,6 @@ const About = () => {
     const [data, setData] = React.useState(null);
 
     React.useEffect(() => {
-        document.title = "Over Merlign — Design & Automatisering Strateeg";
         const fetchData = async () => {
             try {
                 const res = await getAboutPageData();
@@ -37,6 +37,11 @@ const About = () => {
     const bioText = data?.bio?.[0]?.children?.[0]?.text || "Ik ben Merlijn. 10 jaar designer, nu ook bouwer van websites, dashboards en automatiseringen. Ik combineer wat andere freelancers niet combineren.";
     return (
         <div className="bg-[#0A0A0A] min-h-screen">
+            <SEO
+                title="Over mij"
+                description="Ontdek wie er achter Merlign zit. Merlijn combineert over 10 jaar design-expertise met AI-kennis om bedrijven digitaal te versterken."
+                path="/over-mij"
+            />
             <AnimatePresence mode="wait">
                 {!data ? (
                     <motion.div

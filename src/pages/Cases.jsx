@@ -5,6 +5,7 @@ import SectionLabel from '../components/SectionLabel';
 import ContactForm from '../components/ContactForm';
 import { Link } from 'react-router-dom';
 import { BrowserMockup, DashboardMockup, AutomationMockup } from '../components/CaseMockup';
+import SEO from '../components/SEO';
 import { getCases, urlFor } from '../lib/sanity';
 
 const fadeUp = {
@@ -20,7 +21,6 @@ const Cases = () => {
     const [isLoading, setIsLoading] = useState(true);
 
     React.useEffect(() => {
-        document.title = "Portfolio & Resultaten — Case Studies door Merlign";
         const fetchCases = async () => {
             try {
                 setIsLoading(true);
@@ -58,14 +58,19 @@ const Cases = () => {
     ];
 
     return (
-        <div className="pt-32 md:pt-48 pb-20 md:pb-32 px-6 md:px-8 bg-[#0A0A0A] relative overflow-hidden">
+        <div className="pt-40 md:pt-56 pb-20 md:pb-32 bg-[#0A0A0A] relative overflow-hidden">
+            <SEO
+                title="Cases & portfolio"
+                description="Bekijk projecten van Merlign: websites, dashboards en AI-automatisering voor Nederlandse bedrijven. Zie de resultaten van onze samenwerkingen."
+                path="/cases"
+            />
             {/* Background Artifacts */}
             <div className="absolute inset-0 z-0 pointer-events-none opacity-40">
                 <div className="absolute top-[10%] left-[-5%] w-[50vw] h-[50vw] bg-primary/10 rounded-full blur-[140px]" />
                 <div className="absolute bottom-[20%] right-[-10%] w-[40vw] h-[40vw] bg-primary/5 rounded-full blur-[100px]" />
             </div>
 
-            <div className="max-w-[1400px] mx-auto px-8 md:px-20 space-y-20 md:space-y-40 relative z-10">
+            <div className="content-max-width section-px space-y-20 md:space-y-40 relative z-10">
                 {/* Hero */}
                 <motion.div
                     initial="initial"

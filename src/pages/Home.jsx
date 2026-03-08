@@ -16,6 +16,7 @@ import {
 import { Link } from 'react-router-dom';
 import SectionLabel from '../components/SectionLabel';
 import ContactForm from '../components/ContactForm';
+import SEO from '../components/SEO';
 import { getHomePageData, getFaqs, getContactInfo } from '../lib/sanity';
 
 gsap.registerPlugin(ScrollTrigger);
@@ -630,7 +631,6 @@ const Home = () => {
     const [contactInfo, setContactInfo] = useState(null);
 
     useEffect(() => {
-        document.title = "Merlign — High-end design & AI-automatisering";
         const fetchPageData = async () => {
             try {
                 const [home, contact] = await Promise.all([
@@ -648,6 +648,11 @@ const Home = () => {
 
     return (
         <div className="bg-[#0A0A0A] min-h-screen">
+            <SEO
+                title="Design & AI-automatisering bureau"
+                description="Merlign bouwt high-end websites en AI-automatiseringsoplossingen voor ambitieuze bedrijven. Bekijk de diensten en neem contact op."
+                path="/"
+            />
             <AnimatePresence mode="wait">
                 {!pageData ? (
                     <motion.div

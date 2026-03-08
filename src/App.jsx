@@ -8,6 +8,8 @@ import ContactPage from './pages/Contact';
 import WebsiteService from './pages/services/WebsiteService';
 import DashboardService from './pages/services/DashboardService';
 import AutomationService from './pages/services/AutomationService';
+import Privacy from './pages/Privacy';
+import Terms from './pages/Terms';
 
 export default function App() {
     return (
@@ -21,6 +23,8 @@ export default function App() {
                     <Route path="/website" element={<WebsiteService />} />
                     <Route path="/dashboard" element={<DashboardService />} />
                     <Route path="/automatisering" element={<AutomationService />} />
+                    <Route path="/privacy" element={<Privacy />} />
+                    <Route path="/terms" element={<Terms />} />
                 </Routes>
             </Layout>
         </Router>

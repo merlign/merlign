@@ -3,6 +3,7 @@ import { motion } from 'framer-motion';
 import { Mail, Linkedin } from 'lucide-react';
 import SectionLabel from '../components/SectionLabel';
 import ContactForm from '../components/ContactForm';
+import SEO from '../components/SEO';
 import { getContactInfo } from '../lib/sanity';
 
 const fadeUp = {
@@ -16,7 +17,6 @@ const ContactPage = () => {
     const [data, setData] = React.useState(null);
 
     React.useEffect(() => {
-        document.title = "Contact — Laten we jouw business versnellen | Merlign";
         const fetchData = async () => {
             try {
                 const res = await getContactInfo();
@@ -34,14 +34,19 @@ const ContactPage = () => {
     const contactEmail = data?.email || "contact@merlign.com";
     const linkedinLink = data?.linkedin || "https://www.linkedin.com/in/merlijn-van-der-vleuten-1b9118267/";
     return (
-        <div className="pt-32 md:pt-48 pb-20 md:pb-32 px-6 md:px-8 bg-[#0A0A0A] relative overflow-hidden">
+        <div className="pt-40 md:pt-56 pb-20 md:pb-32 bg-[#0A0A0A] relative overflow-hidden">
+            <SEO
+                title="Samenwerken"
+                description="Klaar voor de volgende stap? Neem contact op met Merlign voor een gratis adviesgesprek over uw website, dashboard of AI-automatisering."
+                path="/contact"
+            />
             {/* Background Artifacts */}
             <div className="absolute inset-0 z-0 pointer-events-none opacity-40">
-                <div className="absolute top-[10%] left-[10%] w-[40vw] h-[40vw] bg-primary/10 rounded-full blur-[100px]" />
-                <div className="absolute bottom-[20%] right-[10%] w-[30vw] h-[30vw] bg-primary/5 rounded-full blur-[80px]" />
+                <div className="absolute top-[10%] left-[-5%] w-[50vw] h-[50vw] bg-primary/10 rounded-full blur-[140px]" />
+                <div className="absolute bottom-[20%] right-[-10%] w-[40vw] h-[40vw] bg-primary/5 rounded-full blur-[100px]" />
             </div>
 
-            <div className="max-w-[1400px] mx-auto px-8 md:px-20 space-y-20 md:space-y-40 relative z-10">
+            <div className="content-max-width section-px space-y-20 md:space-y-40 relative z-10">
                 <div className="space-y-24 md:space-y-40 text-center">
                     <motion.div
                         initial="initial"

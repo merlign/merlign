@@ -241,10 +241,12 @@ const Footer = ({ data }) => {
                 <div className="flex flex-col md:flex-row justify-between items-center gap-8 md:gap-12 pt-8 md:pt-10 border-t border-white/5">
                     <div className="flex items-center gap-4 font-mono text-[10px] md:text-[11px] uppercase tracking-[0.5em] font-black italic text-[#F2F0E9]/45">
                         <span>© 2026 MERLIJN VAN DER VLEUTEN</span>
+                        <span className="opacity-40">|</span>
+                        <span>KVK-NUMMER: 94002636</span>
                     </div>
                     <div className="flex items-center gap-8 font-mono text-[10px] uppercase tracking-[0.4em] text-[#F2F0E9]/20">
-                        <a href="#" className="hover:text-primary transition-colors italic">Privacy</a>
-                        <a href="#" className="hover:text-primary transition-colors italic">Terms</a>
+                        <Link to="/privacy" className="hover:text-primary transition-colors italic">Privacy</Link>
+                        <Link to="/terms" className="hover:text-primary transition-colors italic">Terms</Link>
                     </div>
                 </div>
             </div>

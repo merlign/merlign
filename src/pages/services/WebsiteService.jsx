@@ -7,6 +7,7 @@ import ContactForm from '../../components/ContactForm';
 import { Link } from 'react-router-dom';
 
 import { getServicePageData } from '../../lib/sanity';
+import SEO from '../../components/SEO';
 
 const fadeUp = {
     initial: { opacity: 0, y: 30 },
@@ -24,7 +25,6 @@ const WebsiteService = () => {
     const [data, setData] = React.useState(null);
 
     React.useEffect(() => {
-        document.title = "Maatwerk Websites — Conversie & Design door Merlign";
         const fetchData = async () => {
             try {
                 const res = await getServicePageData('Website');
@@ -68,36 +68,35 @@ const WebsiteService = () => {
 
     return (
         <div className="bg-[#0A0A0A] min-h-screen">
+            <SEO
+                title="Maatwerk Websites"
+                description="High-end design websites die klanten trekken en resultaat boeken. Merlign bouwt jouw online business in 72 uur met de nieuwste technieken."
+                path="/website"
+            />
             <AnimatePresence mode="wait">
                 {!data ? (
                     <motion.div
-                        key="website-loader"
-                        initial={{ opacity: 1 }}
+                        key="loader"
                         exit={{ opacity: 0 }}
-                        transition={{ duration: 0.5 }}
-                        className="fixed inset-0 bg-[#0A0A0A] z-[200] flex items-center justify-center"
+                        className="fixed inset-0 bg-[#0A0A0A] z-[100] flex items-center justify-center font-mono text-primary text-sm tracking-widest uppercase italic"
                     >
-                        <motion.div
-                            animate={{ opacity: [0.3, 0.6, 0.3] }}
-                            transition={{ duration: 2, repeat: Infinity }}
-                            className="w-12 h-12 border border-primary/20 rounded-full"
-                        />
+                        Rendering Infrastructure...
                     </motion.div>
                 ) : (
                     <motion.div
-                        key="website-content"
+                        key="content"
                         initial={{ opacity: 0 }}
                         animate={{ opacity: 1 }}
-                        transition={{ duration: 0.8, ease: "easeOut" }}
+                        transition={{ duration: 1 }}
                     >
-                        <div className="pt-32 md:pt-48 pb-20 md:pb-32 px-6 md:px-8 bg-[#0A0A0A] relative overflow-hidden">
-                            {/* Background Artifacts */}
+                        <div className="pt-40 md:pt-56 pb-20 md:pb-32 relative overflow-hidden">
+                            {/* Background Effects */}
                             <div className="absolute inset-0 z-0 pointer-events-none opacity-40">
-                                <div className="absolute top-[10%] left-[5%] w-[40vw] h-[40vw] bg-primary/10 rounded-full blur-[100px]" />
-                                <div className="absolute bottom-[20%] right-[5%] w-[35vw] h-[35vw] bg-primary/5 rounded-full blur-[80px]" />
+                                <div className="absolute top-[10%] left-[-5%] w-[50vw] h-[50vw] bg-primary/10 rounded-full blur-[140px]" />
+                                <div className="absolute bottom-[20%] right-[-10%] w-[40vw] h-[40vw] bg-primary/5 rounded-full blur-[100px]" />
                             </div>
 
-                            <div className="max-w-[1400px] mx-auto px-8 md:px-20 space-y-20 md:space-y-40 relative z-10">
+                            <div className="content-max-width section-px space-y-20 md:space-y-40 relative z-10">
                                 {/* Hero Section */}
                                 <motion.div
                                     initial="initial"
