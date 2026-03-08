@@ -8,7 +8,7 @@ const Privacy = () => {
         <div className="pt-40 md:pt-56 pb-20 md:pb-32 bg-[#0A0A0A] min-h-screen relative overflow-hidden">
             <SEO title="Privacybeleid" description="Privacybeleid van Merlign. Ontdek hoe wij omgaan met uw gegevens." path="/privacy" />
             <div className="content-max-width section-px relative z-10">
-                <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} className="space-y-12">
+                <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} className="max-w-5xl space-y-12">
                     <SectionLabel>Juridisch</SectionLabel>
                     <h1 className="font-sans font-bold text-[#F2F0E9] text-h1">Privacybeleid</h1>
                     <div className="prose prose-invert max-w-4xl font-sans text-[#F2F0E9]/80 space-y-8">

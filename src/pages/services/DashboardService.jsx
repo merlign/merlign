@@ -101,7 +101,7 @@ const DashboardService = () => {
                                     initial="initial"
                                     whileInView="whileInView"
                                     viewport={{ once: true }}
-                                    className="space-y-8 md:space-y-12"
+                                    className="max-w-5xl space-y-8 md:space-y-12"
                                 >
                                     <SectionLabel>Dashboard</SectionLabel>
                                     <motion.h1

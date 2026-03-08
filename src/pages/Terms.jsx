@@ -8,7 +8,7 @@ const Terms = () => {
         <div className="pt-40 md:pt-56 pb-20 md:pb-32 bg-[#0A0A0A] min-h-screen relative overflow-hidden">
             <SEO title="Algemene Voorwaarden" description="Algemene Voorwaarden van Merlign. De juridische basis voor onze samenwerking." path="/terms" />
             <div className="content-max-width section-px relative z-10">
-                <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} className="space-y-12">
+                <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} className="max-w-5xl space-y-12">
                     <SectionLabel>Juridisch</SectionLabel>
                     <h1 className="font-sans font-bold text-[#F2F0E9] text-h1">Algemene Voorwaarden</h1>
                     <div className="prose prose-invert max-w-4xl font-sans text-[#F2F0E9]/80 space-y-8">

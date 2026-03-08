@@ -52,7 +52,7 @@ const ContactPage = () => {
                         initial="initial"
                         whileInView="whileInView"
                         viewport={{ once: true }}
-                        className="space-y-8 md:space-y-12 mb-4 md:mb-12 flex flex-col items-center"
+                        className="max-w-5xl mx-auto space-y-8 md:space-y-12 mb-4 md:mb-12 flex flex-col items-center"
                     >
                         <SectionLabel>Contact</SectionLabel>
                         <motion.h1

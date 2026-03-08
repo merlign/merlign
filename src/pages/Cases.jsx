@@ -75,7 +75,7 @@ const Cases = () => {
                 <motion.div
                     initial="initial"
                     animate="whileInView"
-                    className="space-y-8 md:space-y-12"
+                    className="max-w-5xl space-y-8 md:space-y-12"
                 >
                     <SectionLabel>Cases</SectionLabel>
                     <motion.h1
