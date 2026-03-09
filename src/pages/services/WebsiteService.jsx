@@ -117,7 +117,7 @@ const WebsiteService = () => {
                                         {heroSans}{' '}
                                         <span className="text-primary font-drama font-normal text-h1-serif">{heroSerif}</span>
                                     </motion.h1>
-                                    <motion.p variants={fadeUp} className="font-sans text-[#F2F0E9]/85 text-lg md:text-xl font-light italic leading-[1.8] max-w-2xl whitespace-pre-wrap">
+                                    <motion.p variants={fadeUp} className="font-sans text-[#F2F0E9]/85 text-base md:text-xl font-light italic leading-[1.8] max-w-2xl">
                                         {heroSubtitle}
                                     </motion.p>
                                     <motion.div variants={fadeUp} className="pt-4 text-left">
@@ -136,7 +136,7 @@ const WebsiteService = () => {
                                                 {data?.whyHeadlineSans || "Je website is je"}{' '}
                                                 <span className="text-primary font-drama font-normal text-h2-serif">{data?.whyHeadlineSerif || "digitale voordeur."}</span>
                                             </h2>
-                                            <p className="font-sans text-[#F2F0E9]/85 text-lg md:text-2xl font-light italic leading-[1.8] whitespace-pre-wrap">
+                                            <p className="font-sans text-[#F2F0E9]/85 text-base md:text-2xl font-light italic leading-[1.8]">
                                                 {data?.whySubtitle || "Een goede website is meer dan een online visitekaartje. Het is een machine die vertrouwen bouwt en 24/7 nieuwe leads voor je binnenhaalt."}
                                             </p>
                                         </div>

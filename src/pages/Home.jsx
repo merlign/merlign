@@ -82,7 +82,7 @@ const Hero = ({ data }) => {
                         variants={fadeUp}
                         className="flex flex-col md:flex-row items-start md:items-center gap-12"
                     >
-                        <p className="font-sans text-[#F2F0E9]/85 text-lg md:text-xl font-light max-w-2xl leading-[1.8] italic whitespace-pre-wrap">
+                        <p className="font-sans text-[#F2F0E9]/85 text-base md:text-xl font-light max-w-2xl leading-[1.7] italic">
                             {heroSubtitle}
                         </p>
                     </motion.div>
@@ -157,10 +157,10 @@ const HomeAbout = ({ data }) => {
                         <span className="text-primary font-drama font-normal text-h2-serif">{headlineSerif}</span>
                     </motion.h2>
                     <div className="space-y-6">
-                        <p className="font-sans text-[#F2F0E9]/85 text-lg md:text-xl font-light italic leading-[1.8] max-w-2xl whitespace-pre-wrap">
+                        <p className="font-sans text-[#F2F0E9]/85 text-base md:text-xl font-light italic leading-[1.8] max-w-2xl">
                             {para1}
                         </p>
-                        <p className="font-sans text-[#F2F0E9]/85 text-base md:text-lg font-light leading-[1.8] max-w-2xl italic whitespace-pre-wrap">
+                        <p className="font-sans text-[#F2F0E9]/85 text-base md:text-lg font-light leading-[1.8] max-w-2xl italic">
                             {para2}
                         </p>
                     </div>

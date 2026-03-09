@@ -117,7 +117,7 @@ const AutomationService = () => {
                                         {heroSans}{' '}
                                         <span className="text-primary font-drama font-normal text-h1-serif">{heroSerif}</span>
                                     </motion.h1>
-                                    <motion.p variants={fadeUp} className="font-sans text-[#F2F0E9]/85 text-lg md:text-xl font-light italic leading-[1.8] max-w-2xl">
+                                    <motion.p variants={fadeUp} className="font-sans text-[#F2F0E9]/85 text-base md:text-xl font-light italic leading-[1.8] max-w-2xl">
                                         {heroSubtitle}
                                     </motion.p>
                                     <motion.div variants={fadeUp} className="pt-4">
@@ -136,7 +136,7 @@ const AutomationService = () => {
                                                 {data?.whyHeadlineSans || "Winst in tijd"}{' '}
                                                 <span className="text-primary font-drama font-normal text-h2-serif">{data?.whyHeadlineSerif || "is winst in vrijheid."}</span>
                                             </h2>
-                                            <p className="font-sans text-[#F2F0E9]/85 text-lg md:text-2xl font-light italic leading-[1.8] whitespace-pre-wrap">
+                                            <p className="font-sans text-[#F2F0E9]/85 text-base md:text-2xl font-light italic leading-[1.8]">
                                                 {data?.whySubtitle || "Elke taak die je herhaalt kost tijd. Opgeteld zijn dat uren per week die je aan groei had kunnen besteden. Ik bouw de systemen die dat overnemen."}
                                             </p>
                                         </div>
