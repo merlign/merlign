@@ -79,7 +79,7 @@ const WebsiteService = () => {
                         initial={{ opacity: 1 }}
                         exit={{ opacity: 0 }}
                         transition={{ duration: 0.5 }}
-                        className="fixed inset-0 bg-[#0A0A0A] z-[100] flex items-center justify-center"
+                        className="fixed inset-0 bg-[#0A0A0A] z-[100] flex items-center justify-center page-loader"
                     >
                         <motion.div
                             animate={{ opacity: [0.3, 0.6, 0.3] }}
@@ -266,20 +266,20 @@ const WebsiteService = () => {
 const FAQ = ({ cmsFaqs }) => {
     const staticQuestions = [
         {
-            q: "Is mijn website goed vindbaar in Google?",
-            a: "Ja. Elke site die ik bouw is vanaf de basis geoptimaliseerd voor SEO. Snelle laadtijden, schone code en de juiste meta-data zorgen voor een sterke start in de zoekresultaten."
+            q: "Waarom kies je voor een framework als React/Vite in plaats van WordPress?",
+            a: "Veel bureaus gebruiken WordPress omdat het makkelijk is voor henzelf, maar het is vaak zwaar en traag voor de bezoeker. Ik bouw je website met moderne technieken (React en Vite) die zorgen voor een 'app-achtige' ervaring. Pagina's laden direct, zonder die vervelende laadbalkjes. Voor Google is deze snelheid (Core Web Vitals) een van de belangrijkste factoren om je hoger in de zoekresultaten te plaatsen. Plus: je bent minder kwetsbaar voor hackers omdat er geen database-koppelingen op de voorgrond draaien."
         },
         {
-            q: "Is de website volledig mobielvriendelijk?",
-            a: "Absoluut. Meer dan 60% van het verkeer komt tegenwoordig via mobiel. Jouw site is 'mobile-first' ontworpen en werkt perfect op elk schermformaat."
+            q: "Hoe zorg je ervoor dat mijn website meer leads en leads-aanvragen oplevert?",
+            a: "Een mooi design is slechts de helft van het werk. Ik pas 'conversion centered design' toe. Dit betekent dat we bij elke knop, elke afbeelding en elke tekstregel kijken: helpt dit de bezoeker om de volgende stap te zetten? We kijken naar psychologische triggers, duidelijke Call-to-Actions en een logische flow. Een website van Merlign is geen digitaal visitekaartje, maar een verkoopmachine die 24/7 voor je aan het werk is."
         },
         {
-            q: "Kan ik zelf teksten en foto's aanpassen?",
-            a: "Zeker. Ik lever de website op met een eenvoudig beheersysteem (CMS) en een korte uitlegvideo. Je bent niet afhankelijk van mij voor elke kleine wijziging."
+            q: "Is mijn website schaalbaar als mijn bedrijf groeit?",
+            a: "Absoluut. Omdat ik met componenten werk, kunnen we later heel eenvoudig nieuwe functionaliteiten toevoegen — van een boekingssysteem tot een klantenportaal — zonder dat de hele site verbouwd hoeft te worden. De basis die we leggen is toekomstbestendig."
         },
         {
-            q: "Gebruik je WordPress of maatwerk?",
-            a: "Ik kies de techniek die het beste bij jouw doelen past. Meestal bouw ik in moderne frameworks (zoals React/Next.js) voor maximale snelheid en precisie, maar WordPress is ook een optie als dat beter uitkomt."
+            q: "Hoe zit het met de vindbaarheid (SEO) bij een op maat gemaakte site?",
+            a: "Veel maatwerk sites vergeten SEO, maar bij Merlign zit dit in het DNA. Ik gebruik technieken zoals Static Site Generation (SSG) zodat de teksten direct leesbaar zijn voor Google-bots. Verder zorg ik voor schone meta-data, geoptimaliseerde afbeeldingen (WebP) en een logische kopstructuur (H1, H2, H3). Je krijgt een technische SEO-basis die sterker is dan de meeste standaard plugins kunnen bieden."
         },
         {
             q: "Wat zijn de kosten voor onderhoud na de lancering?",

@@ -78,7 +78,7 @@ const DashboardService = () => {
                         initial={{ opacity: 1 }}
                         exit={{ opacity: 0 }}
                         transition={{ duration: 0.5 }}
-                        className="fixed inset-0 bg-[#0A0A0A] z-[100] flex items-center justify-center"
+                        className="fixed inset-0 bg-[#0A0A0A] z-[100] flex items-center justify-center page-loader"
                     >
                         <motion.div
                             animate={{ opacity: [0.3, 0.6, 0.3] }}
@@ -269,24 +269,24 @@ const DashboardService = () => {
 const FAQ = ({ cmsFaqs }) => {
     const staticQuestions = [
         {
-            q: "Welke systemen kun je koppelen aan een dashboard?",
-            a: "Vrijwel alles met een API. Denk aan Google Ads, Facebook Ads, CRM-systemen (HubSpot, Pipedrive), boekhoudsoftware (Exact, Moneybird) en natuurlijk je eigen website-data."
+            q: "Kan ik data uit verschillende bronnen combineren in één overzicht?",
+            a: "Ja, dat is juist de kracht van een custom dashboard. We trekken data uit je boekhoudpakket (bijv. Moneybird), je advertentie-accounts (Meta, Google) en je CRM (HubSpot) en leggen die over elkaar heen. Zo zie je direct: 'Ik heb €1000 uitgegeven aan ads, en dat heeft onderaan de streep €4000 aan gefactureerde omzet opgeleverd.' Je stopt met gokken en begint met sturen op feiten."
+        },
+        {
+            q: "Hoe 'live' is de data in mijn dashboard?",
+            a: "Dit bepalen we samen. De meeste dashboards verversen we elk uur of elke dag, afhankelijk van hoe vaak je beslissingen neemt. Voor marketing-dashboards is daily refresh vaak perfect, voor operationele systemen kijken we naar near-real-time updates. Je kijkt in ieder geval nooit meer naar een Excel-bestand van vorige maand."
+        },
+        {
+            q: "Heb ik speciale softwarelicenties nodig om het dashboard te gebruiken?",
+            a: "Omdat ik maatwerk dashboards bouw, ben je niet gebonden aan dure maandabonnementen van tools zoals Tableau of PowerBI. Ik lever een stand-alone web-applicatie op die je via een beveiligde link op elk apparaat kunt openen — van je iPhone tot de tv op kantoor. Een eenmalige investering die jaren meegaat."
+        },
+        {
+            q: "Wat als mijn datastructuur in de toekomst verandert?",
+            a: "De dashboards zijn modulair opgebouwd. Als je overstapt naar een ander CRM of een nieuw e-commerce systeem, hoeven we alleen die specifieke 'kraan' aan te passen. De rest van je dashboard blijft gewoon werken."
         },
         {
             q: "Is mijn data veilig in het dashboard?",
             a: "Absoluut. Ik bouw dashboards die direct verbinding maken met jouw bronnen via beveiligde versleutelde verbindingen. Je behoudt volledige controle over wie toegang heeft."
-        },
-        {
-            q: "Kan ik het dashboard delen met mijn team?",
-            a: "Ja. Je kunt specifieke toegangsrechten instellen zodat je teamleden alleen de data zien die voor hen relevant is, zonder dat ze toegang nodig hebben tot de bronbestanden."
-        },
-        {
-            q: "Wordt de data automatisch ververst?",
-            a: "Zeker. Afhankelijk van de bron wordt de data real-time of met een vaste interval (bijv. elk uur) ververst. Je kijkt dus nooit naar verouderde cijfers."
-        },
-        {
-            q: "Hoe zit het met support en onderhoud voor mijn dashboard?",
-            a: "Elk dashboard is custom codeerwerk van de bovenste plank. Omdat ik elke regel zelf schrijf, is support bliksemsnel en de onderhoudskosten extreem laag. Je betaalt niet voor overhead, maar voor een systeem dat simpelweg blijft draaien."
         }
     ];
 

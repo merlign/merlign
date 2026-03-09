@@ -660,7 +660,7 @@ const Home = () => {
                         initial={{ opacity: 1 }}
                         exit={{ opacity: 0 }}
                         transition={{ duration: 0.5 }}
-                        className="fixed inset-0 bg-[#0A0A0A] z-[200] flex items-center justify-center"
+                        className="fixed inset-0 bg-[#0A0A0A] z-[100] flex items-center justify-center page-loader"
                     >
                         <motion.div
                             animate={{ opacity: [0.3, 0.6, 0.3] }}

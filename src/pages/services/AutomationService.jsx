@@ -79,7 +79,7 @@ const AutomationService = () => {
                         initial={{ opacity: 1 }}
                         exit={{ opacity: 0 }}
                         transition={{ duration: 0.5 }}
-                        className="fixed inset-0 bg-[#0A0A0A] z-[100] flex items-center justify-center"
+                        className="fixed inset-0 bg-[#0A0A0A] z-[100] flex items-center justify-center page-loader"
                     >
                         <motion.div
                             animate={{ opacity: [0.3, 0.6, 0.3] }}
@@ -261,20 +261,20 @@ const AutomationService = () => {
 const FAQ = ({ cmsFaqs }) => {
     const staticQuestions = [
         {
-            q: "Welke software kan worden geautomatiseerd?",
-            a: "Vrijwel alle moderne cloud-software (SaaS) die een API heeft. Denk aan tools als Make.com, Zapier, Slack, Gmail, Trello, Google Sheets en talloze gespecialiseerde CRM- en administratiesystemen."
+            q: "Waarom gebruik je n8n of Make in plaats van Zapier?",
+            a: "Zapier is prima voor simpele taken, maar wordt extreem duur naarmate je meer automatiseert. Ik kies vaak voor n8n of Make.com omdat deze tools veel complexere logica aankunnen en vaak 70-80% goedkoper zijn op de lange termijn. Dit betekent meer automatisering voor minder maandelijkse kosten. n8n geeft ons bovendien de vrijheid om data volledig in eigen beheer te houden op eigen servers, wat essentieel is voor AVG-gevoelige informatie."
         },
         {
-            q: "Wat als een automatisering een fout maakt?",
-            a: "Elke automatisering die ik bouw bevat foutopsporing en meldingen. Als er onverhoopt iets misgaat, bouwen we notificaties in zodat je direct op de hoogte bent en het systeem zichzelf kan herstellen of pauzeren."
+            q: "Voor welke bedrijfsprocessen is AI-automatisering het meest geschikt?",
+            a: "Denk aan alles waar data van plek A naar plek B moet, of waar een menselijke 'filter' tussen zit. Bijvoorbeeld: automatisch offertes genereren op basis van een formulier-inzending, het automatisch sorteren van inkomende e-mails, of het laten genereren van eerste concept-blogs door AI op basis van jouw kernwaardes. Als je een taak meer dan drie keer per week op dezelfde manier doet, kunnen we het waarschijnlijk automatiseren."
         },
         {
-            q: "Hoeveel tijd kan ik hiermee besparen?",
-            a: "Per proces verschilt dit, maar ondernemers besparen vaak tussen de 5 en 15 uur per week op administratieve en repetitieve taken. Dat is tijd die direct terugvloeit in groei of vrije tijd."
+            q: "Hoe veilig is mijn bedrijfsdata als ik AI gebruik?",
+            a: "Veiligheid is mijn hoogste prioriteit. We koppelen AI-modellen via beveiligde API-sessies (zoals OpenAI's Enterprise-tier) waarbij jouw data niet wordt gebruikt om hun modellen te trainen. Je bedrijfsgeheimen blijven dus van jou. Bovendien bouwen we 'human-in-the-loop' controles in waar nodig: de AI doet het zware werk, jij geeft de definitieve klap op het resultaat."
         },
         {
-            q: "Kan ik mijn bestaande workflows importeren?",
-            a: "Ja, we kunnen kijken naar wat je nu al hebt (bijvoorbeeld in Zapier) en dit optimaliseren of overzetten naar een krachtiger en kosteneffectiever platform zoals Make.com."
+            q: "Wat is de terugverdientijd (ROI) van een automatiseringstraject?",
+            a: "De meeste automatiseringen die ik bouw verdienen zichzelf binnen 3 tot 6 maanden terug. Niet alleen in directe loonkosten die je bespaart, maar vooral in de foutmarge die naar 0 gaat en de snelheid waarmee je klanten kunt bedienen. Terwijl jij slaapt, blijft het systeem offertes sturen en klanten onboarden."
         }
     ];
 
