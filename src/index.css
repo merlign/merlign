@@ -120,11 +120,11 @@ html {
 /* Fluid Typography for Headings */
 @layer utilities {
   .text-h1 {
-    @apply text-[2.3rem] sm:text-[3rem] md:text-[4rem] lg:text-[72px] leading-[1.1] md:leading-[1.2];
+    @apply text-[1.8rem] sm:text-[3rem] md:text-[4rem] lg:text-[72px] leading-[1.1] md:leading-[1.2];
   }
 
   .text-h1-serif {
-    @apply text-[2.5rem] sm:text-[3.25rem] md:text-[4.25rem] lg:text-[78px] leading-[1.1] md:leading-[1.2];
+    @apply text-[2.1rem] sm:text-[3.25rem] md:text-[4.25rem] lg:text-[78px] leading-[1.1] md:leading-[1.2];
   }
 
   .text-h2 {
