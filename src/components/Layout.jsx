@@ -243,7 +243,7 @@ const Footer = ({ data }) => {
                         <div className="flex items-center gap-4">
                             <span>© 2026 MERLIJN VAN DER VLEUTEN</span>
                             <span className="opacity-40">|</span>
-                            <span>KVK-NUMMER: 94002636</span>
+                            <span>KVK-NUMMER: 75629887</span>
                         </div>
                         <div className="flex items-center gap-4">
                             <span className="hidden md:inline opacity-40">|</span>
