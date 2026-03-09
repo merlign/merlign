@@ -68,8 +68,8 @@ const AutomationService = () => {
     return (
         <div className="bg-[#0A0A0A] min-h-screen">
             <SEO
-                title="AI-automatisering voor bedrijven"
-                description="Automatiseer repetitieve processen met AI. Merlign bouwt slimme workflows die tijd besparen en fouten elimineren voor jouw business."
+                title="AI & workflow automatisering"
+                description="Bespaar uren per week door saaie taken te automatiseren. Ik bouw slimme koppelingen met AI zodat jij en je team weer echt werk kunnen doen."
                 path="/automatisering"
             />
             <AnimatePresence mode="wait">
@@ -79,9 +79,13 @@ const AutomationService = () => {
                         initial={{ opacity: 1 }}
                         exit={{ opacity: 0 }}
                         transition={{ duration: 0.5 }}
-                        className="fixed inset-0 bg-[#0A0A0A] z-[100] flex items-center justify-center font-mono text-primary text-sm tracking-widest uppercase italic"
+                        className="fixed inset-0 bg-[#0A0A0A] z-[100] flex items-center justify-center"
                     >
-                        Rendering Infrastructure...
+                        <motion.div
+                            animate={{ opacity: [0.3, 0.6, 0.3] }}
+                            transition={{ duration: 2, repeat: Infinity }}
+                            className="w-12 h-12 border border-primary/20 rounded-full"
+                        />
                     </motion.div>
                 ) : (
                     <motion.div

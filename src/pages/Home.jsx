@@ -157,10 +157,10 @@ const HomeAbout = ({ data }) => {
                         <span className="text-primary font-drama font-normal text-h2-serif">{headlineSerif}</span>
                     </motion.h2>
                     <div className="space-y-6">
-                        <p className="font-sans text-[#F2F0E9]/85 text-lg md:text-2xl font-light italic leading-[1.8] whitespace-pre-wrap">
+                        <p className="font-sans text-[#F2F0E9]/85 text-lg md:text-xl font-light italic leading-[1.8] max-w-2xl whitespace-pre-wrap">
                             {para1}
                         </p>
-                        <p className="font-sans text-[#F2F0E9]/85 text-base md:text-lg font-light leading-[1.8] max-w-2xl ml-8 md:ml-12 italic whitespace-pre-wrap">
+                        <p className="font-sans text-[#F2F0E9]/85 text-base md:text-lg font-light leading-[1.8] max-w-2xl italic whitespace-pre-wrap">
                             {para2}
                         </p>
                     </div>
@@ -649,8 +649,8 @@ const Home = () => {
     return (
         <div className="bg-[#0A0A0A] min-h-screen">
             <SEO
-                title="Design & AI-automatisering bureau"
-                description="Merlign bouwt high-end websites en AI-automatiseringsoplossingen voor ambitieuze bedrijven. Bekijk de diensten en neem contact op."
+                title="Design & AI-automatisering voor mkb en zzpers"
+                description="Ik bouw websites die converteren, dashboards die inzicht geven en automatiseringen die tijd besparen. Geen gedoe, gewoon resultaat voor mkb en zzpers."
                 path="/"
             />
             <AnimatePresence mode="wait">

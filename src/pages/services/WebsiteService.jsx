@@ -1,7 +1,6 @@
 import React from 'react';
-import { motion } from 'framer-motion';
+import { motion, AnimatePresence } from 'framer-motion';
 import { Check, ArrowRight, MousePointerClick, Zap, Layout as LayoutIcon, Search, Settings, ChevronDown } from 'lucide-react';
-import { AnimatePresence } from 'framer-motion';
 import SectionLabel from '../../components/SectionLabel';
 import ContactForm from '../../components/ContactForm';
 import { Link } from 'react-router-dom';
@@ -69,18 +68,24 @@ const WebsiteService = () => {
     return (
         <div className="bg-[#0A0A0A] min-h-screen">
             <SEO
-                title="Maatwerk Websites"
-                description="High-end design websites die klanten trekken en resultaat boeken. Merlign bouwt jouw online business in 72 uur met de nieuwste technieken."
+                title="Maatwerk website laten maken"
+                description="Een website die écht voor je werkt. Ik bouw high-end sites die razendsnel zijn en meer leads opleveren. Meestal al binnen 72 uur online."
                 path="/website"
             />
             <AnimatePresence mode="wait">
                 {!data ? (
                     <motion.div
                         key="loader"
+                        initial={{ opacity: 1 }}
                         exit={{ opacity: 0 }}
-                        className="fixed inset-0 bg-[#0A0A0A] z-[100] flex items-center justify-center font-mono text-primary text-sm tracking-widest uppercase italic"
+                        transition={{ duration: 0.5 }}
+                        className="fixed inset-0 bg-[#0A0A0A] z-[100] flex items-center justify-center"
                     >
-                        Rendering Infrastructure...
+                        <motion.div
+                            animate={{ opacity: [0.3, 0.6, 0.3] }}
+                            transition={{ duration: 2, repeat: Infinity }}
+                            className="w-12 h-12 border border-primary/20 rounded-full"
+                        />
                     </motion.div>
                 ) : (
                     <motion.div

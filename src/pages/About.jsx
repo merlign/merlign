@@ -38,8 +38,8 @@ const About = () => {
     return (
         <div className="bg-[#0A0A0A] min-h-screen">
             <SEO
-                title="Over mij"
-                description="Ontdek wie er achter Merlign zit. Merlijn combineert over 10 jaar design-expertise met AI-kennis om bedrijven digitaal te versterken."
+                title="Over Merlign | Senior design & tech specialist"
+                description="Designer, bouwer en jouw sparringspartner. Ik gebruik 10 jaar design-ervaring en de nieuwste AI-tools om ondernemers, zzpers en het mkb echt verder te helpen."
                 path="/over-mij"
             />
             <AnimatePresence mode="wait">
@@ -115,7 +115,7 @@ const About = () => {
                                         <div className="absolute inset-0 bg-primary/20 blur-[100px] rounded-full scale-75 opacity-0 group-hover:opacity-100 transition-opacity duration-1000" />
                                         <motion.img
                                             src="/merlijn-new.png"
-                                            alt="Merlijn"
+                                            alt="Merlijn van der Vleuten - Senior Design & Tech Specialist bij Merlign"
                                             className="absolute bottom-0 left-[48%] -translate-x-1/2 w-auto h-[95%] max-w-none z-10 filter brightness-95 group-hover:brightness-110 group-hover:scale-105 transition-all duration-1000 ease-out pointer-events-none origin-bottom"
                                         />
                                         <div className="absolute inset-0 rounded-[2.5rem] border border-white/5 pointer-events-none z-20" />

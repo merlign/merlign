@@ -58,93 +58,105 @@ const Cases = () => {
     ];
 
     return (
-        <div className="pt-40 md:pt-56 pb-20 md:pb-32 bg-[#0A0A0A] relative overflow-hidden">
+        <div className="bg-[#0A0A0A] min-h-screen">
             <SEO
-                title="Cases & portfolio"
-                description="Bekijk projecten van Merlign: websites, dashboards en AI-automatisering voor Nederlandse bedrijven. Zie de resultaten van onze samenwerkingen."
+                title="Portfolio & success stories | Resultaten van Merlign"
+                description="Zie hoe ik andere ondernemers en bedrijven hielp met webdesign, dashboards en AI. Bekijk de meetbare resultaten van mijn samenwerkingen."
                 path="/cases"
             />
-            {/* Background Artifacts */}
-            <div className="absolute inset-0 z-0 pointer-events-none opacity-40">
-                <div className="absolute top-[10%] left-[-5%] w-[50vw] h-[50vw] bg-primary/10 rounded-full blur-[140px]" />
-                <div className="absolute bottom-[20%] right-[-10%] w-[40vw] h-[40vw] bg-primary/5 rounded-full blur-[100px]" />
-            </div>
-
-            <div className="content-max-width section-px space-y-20 md:space-y-40 relative z-10">
-                {/* Hero */}
-                <motion.div
-                    initial="initial"
-                    animate="whileInView"
-                    className="max-w-5xl space-y-8 md:space-y-12"
-                >
-                    <SectionLabel>Cases</SectionLabel>
-                    <motion.h1
-                        variants={fadeUp}
-                        className="font-sans font-bold text-[#F2F0E9] text-h1"
-                    >
-                        Geen mooie praatjes. <span className="text-primary font-drama font-normal text-h1-serif">Gewoon resultaten.</span>
-                    </motion.h1>
-                    <motion.p variants={fadeUp} className="font-sans text-[#F2F0E9]/85 text-lg md:text-xl font-light italic leading-[1.8] max-w-2xl">
-                        Wat ik heb gebouwd en welk meetbaar resultaat dat heeft opgeleverd.
-                    </motion.p>
-
-                    {/* Filter Bar */}
+            <AnimatePresence mode="wait">
+                {isLoading ? (
                     <motion.div
-                        variants={fadeUp}
-                        className="flex flex-wrap items-center gap-4 md:gap-8 pt-4"
+                        key="loader"
+                        initial={{ opacity: 1 }}
+                        exit={{ opacity: 0 }}
+                        transition={{ duration: 0.5 }}
+                        className="fixed inset-0 bg-[#0A0A0A] z-[200] flex items-center justify-center"
                     >
-                        <div className="flex flex-wrap gap-2 md:gap-4 bg-[#F2F0E9]/5 p-2 rounded-[1.5rem] border border-white/5 backdrop-blur-xl">
-                            {filterOptions.map((option) => {
-                                const count = option.id === 'alle'
-                                    ? cases.length
-                                    : cases.filter(c => c.category === option.id).length;
-
-                                return (
-                                    <button
-                                        key={option.id}
-                                        onClick={() => setSelectedFilter(option.id)}
-                                        className={`px-6 md:px-8 py-3 md:py-4 rounded-full font-mono text-[10px] md:text-[11px] uppercase tracking-[0.2em] font-bold transition-all duration-500 relative overflow-hidden group ${selectedFilter === option.id ? 'text-black' : 'text-[#F2F0E9]/40 hover:text-[#F2F0E9]'}`}
-                                    >
-                                        <span className="relative z-10 flex items-center gap-2">
-                                            {option.label}
-                                            <span className={`text-[8px] opacity-40 ${selectedFilter === option.id ? 'text-black/60' : 'text-primary'}`}>
-                                                ({count})
-                                            </span>
-                                        </span>
-                                        {selectedFilter === option.id && (
-                                            <motion.div
-                                                layoutId="activeFilter"
-                                                className="absolute inset-0 bg-primary"
-                                                transition={{ type: "spring", bounce: 0.2, duration: 0.6 }}
-                                            />
-                                        )}
-                                        <div className="absolute inset-0 bg-white/5 scale-x-0 group-hover:scale-x-100 transition-transform origin-left duration-500" />
-                                    </button>
-                                );
-                            })}
-                        </div>
+                        <motion.div
+                            animate={{ opacity: [0.3, 0.6, 0.3] }}
+                            transition={{ duration: 2, repeat: Infinity }}
+                            className="w-12 h-12 border border-primary/20 rounded-full"
+                        />
                     </motion.div>
-                </motion.div>
-
-                {/* Case List */}
-                <div className="space-y-32 md:space-y-64 min-h-[400px]">
-                    {isLoading ? (
-                        <div className="flex items-center justify-center py-40">
-                            <motion.div
-                                animate={{ rotate: 360 }}
-                                transition={{ duration: 1, repeat: Infinity, ease: "linear" }}
-                                className="w-10 h-10 border-2 border-primary/20 border-t-primary rounded-full"
-                            />
+                ) : (
+                    <motion.div
+                        key="content"
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        transition={{ duration: 0.8 }}
+                        className="pt-40 md:pt-56 pb-20 md:pb-32 relative overflow-hidden"
+                    >
+                        {/* Background Artifacts */}
+                        <div className="absolute inset-0 z-0 pointer-events-none opacity-40">
+                            <div className="absolute top-[10%] left-[-5%] w-[50vw] h-[50vw] bg-primary/10 rounded-full blur-[140px]" />
+                            <div className="absolute bottom-[20%] right-[-10%] w-[40vw] h-[40vw] bg-primary/5 rounded-full blur-[100px]" />
                         </div>
-                    ) : (
-                        <AnimatePresence mode="wait">
+
+                        <div className="content-max-width section-px space-y-20 md:space-y-40 relative z-10">
+                            {/* Hero */}
+                            <motion.div
+                                initial="initial"
+                                animate="whileInView"
+                                className="max-w-5xl space-y-8 md:space-y-12"
+                            >
+                                <SectionLabel>Cases</SectionLabel>
+                                <motion.h1
+                                    variants={fadeUp}
+                                    className="font-sans font-bold text-[#F2F0E9] text-h1"
+                                >
+                                    Geen mooie praatjes. <span className="text-primary font-drama font-normal text-h1-serif">Gewoon resultaten.</span>
+                                </motion.h1>
+                                <motion.p variants={fadeUp} className="font-sans text-[#F2F0E9]/85 text-lg md:text-xl font-light italic leading-[1.8] max-w-2xl">
+                                    Wat ik heb gebouwd en welk meetbaar resultaat dat heeft opgeleverd.
+                                </motion.p>
+
+                                {/* Filter Bar */}
+                                <motion.div
+                                    variants={fadeUp}
+                                    className="flex flex-wrap items-center gap-4 md:gap-8 pt-4"
+                                >
+                                    <div className="flex flex-wrap gap-2 md:gap-4 bg-[#F2F0E9]/5 p-2 rounded-[1.5rem] border border-white/5 backdrop-blur-xl">
+                                        {filterOptions.map((option) => {
+                                            const count = option.id === 'alle'
+                                                ? cases.length
+                                                : cases.filter(c => c.category === option.id).length;
+
+                                            return (
+                                                <button
+                                                    key={option.id}
+                                                    onClick={() => setSelectedFilter(option.id)}
+                                                    className={`px-6 md:px-8 py-3 md:py-4 rounded-full font-mono text-[10px] md:text-[11px] uppercase tracking-[0.2em] font-bold transition-all duration-500 relative overflow-hidden group ${selectedFilter === option.id ? 'text-black' : 'text-[#F2F0E9]/40 hover:text-[#F2F0E9]'}`}
+                                                >
+                                                    <span className="relative z-10 flex items-center gap-2">
+                                                        {option.label}
+                                                        <span className={`text-[8px] opacity-40 ${selectedFilter === option.id ? 'text-black/60' : 'text-primary'}`}>
+                                                            ({count})
+                                                        </span>
+                                                    </span>
+                                                    {selectedFilter === option.id && (
+                                                        <motion.div
+                                                            layoutId="activeFilter"
+                                                            className="absolute inset-0 bg-primary"
+                                                            transition={{ type: "spring", bounce: 0.2, duration: 0.6 }}
+                                                        />
+                                                    )}
+                                                    <div className="absolute inset-0 bg-white/5 scale-x-0 group-hover:scale-x-100 transition-transform origin-left duration-500" />
+                                                </button>
+                                            );
+                                        })}
+                                    </div>
+                                </motion.div>
+                            </motion.div>
+
+                            {/* Case List */}
                             <motion.div
                                 key={selectedFilter}
                                 initial={{ opacity: 0, y: 20 }}
                                 animate={{ opacity: 1, y: 0 }}
                                 exit={{ opacity: 0, y: -20 }}
                                 transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
-                                className="space-y-32 md:space-y-64"
+                                className="space-y-32 md:space-y-64 min-h-[400px]"
                             >
                                 {filteredCases.map((c, i) => (
                                     <motion.div
@@ -250,7 +262,7 @@ const Cases = () => {
                                                     {c.authorImage ? (
                                                         <img
                                                             src={urlFor(c.authorImage).width(80).height(80).url()}
-                                                            alt={c.author}
+                                                            alt={`Review van ${c.author} over Merlign`}
                                                             className="w-12 h-12 rounded-full object-cover border border-primary/20"
                                                         />
                                                     ) : (
@@ -268,22 +280,22 @@ const Cases = () => {
                                     </motion.div>
                                 ))}
                             </motion.div>
-                        </AnimatePresence>
-                    )}
-                </div>
 
-                {/* Bottom CTA */}
-                <div id="contact" className="py-20 md:py-32 border-t border-white/5 flex flex-col items-center text-center">
-                    <SectionLabel className="md:justify-center">Volgende succes</SectionLabel>
-                    <h2 className="font-sans font-bold text-[#F2F0E9] mt-8 text-h2">
-                        Jouw bedrijf <span className="text-primary font-drama font-normal text-h2-serif">hier?</span>
-                    </h2>
-                    <p className="font-sans text-[#F2F0E9]/85 text-lg md:text-2xl mt-8 mb-16 md:mb-24 italic max-w-2xl">
-                        Plan een gratis check. In 20 minuten weet je wat ik voor jou kan doen.
-                    </p>
-                    <ContactForm />
-                </div>
-            </div>
+                            {/* Bottom CTA */}
+                            <div id="contact" className="py-20 md:py-32 border-t border-white/5 flex flex-col items-center text-center">
+                                <SectionLabel className="md:justify-center">Volgende succes</SectionLabel>
+                                <h2 className="font-sans font-bold text-[#F2F0E9] mt-8 text-h2">
+                                    Jouw bedrijf <span className="text-primary font-drama font-normal text-h2-serif">hier?</span>
+                                </h2>
+                                <p className="font-sans text-[#F2F0E9]/85 text-lg md:text-2xl mt-8 mb-16 md:mb-24 italic max-w-2xl">
+                                    Plan een gratis check. In 20 minuten weet je wat ik voor jou kan doen.
+                                </p>
+                                <ContactForm />
+                            </div>
+                        </div>
+                    </motion.div>
+                )}
+            </AnimatePresence>
         </div>
     );
 };

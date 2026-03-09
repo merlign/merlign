@@ -1,7 +1,6 @@
 import React from 'react';
-import { motion } from 'framer-motion';
+import { motion, AnimatePresence } from 'framer-motion';
 import { Check, ArrowRight, MousePointerClick, Activity, Search, Database, Layout, ChevronDown } from 'lucide-react';
-import { AnimatePresence } from 'framer-motion';
 import SectionLabel from '../../components/SectionLabel';
 import ContactForm from '../../components/ContactForm';
 import { Link } from 'react-router-dom';
@@ -68,18 +67,24 @@ const DashboardService = () => {
     return (
         <div className="bg-[#0A0A0A] min-h-screen">
             <SEO
-                title="Smart Dashboards"
-                description="Krijg direct inzicht in uw data met maatwerk dashboards. Merlign bouwt intuïtieve interfaces die uw business keuzes makkelijker maken."
+                title="Business dashboards & data inzicht"
+                description="Stop met gissen naar je cijfers. Ik bouw dashboards die al je data van Ads, CRM en Sales samenbrengen in één duidelijk overzicht."
                 path="/dashboard"
             />
             <AnimatePresence mode="wait">
                 {!data ? (
                     <motion.div
                         key="loader"
+                        initial={{ opacity: 1 }}
                         exit={{ opacity: 0 }}
-                        className="fixed inset-0 bg-[#0A0A0A] z-[100] flex items-center justify-center font-mono text-primary text-sm tracking-widest uppercase italic"
+                        transition={{ duration: 0.5 }}
+                        className="fixed inset-0 bg-[#0A0A0A] z-[100] flex items-center justify-center"
                     >
-                        Rendering Infrastructure...
+                        <motion.div
+                            animate={{ opacity: [0.3, 0.6, 0.3] }}
+                            transition={{ duration: 2, repeat: Infinity }}
+                            className="w-12 h-12 border border-primary/20 rounded-full"
+                        />
                     </motion.div>
                 ) : (
                     <motion.div

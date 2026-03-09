@@ -239,10 +239,16 @@ const Footer = ({ data }) => {
                     </div>
                 </div>
                 <div className="flex flex-col md:flex-row justify-between items-center gap-8 md:gap-12 pt-8 md:pt-10 border-t border-white/5">
-                    <div className="flex items-center gap-4 font-mono text-[10px] md:text-[11px] uppercase tracking-[0.5em] font-black italic text-[#F2F0E9]/45">
-                        <span>© 2026 MERLIJN VAN DER VLEUTEN</span>
-                        <span className="opacity-40">|</span>
-                        <span>KVK-NUMMER: 94002636</span>
+                    <div className="flex flex-col md:flex-row items-center gap-4 md:gap-8 font-mono text-[10px] md:text-[11px] uppercase tracking-[0.5em] font-black italic text-[#F2F0E9]/45">
+                        <div className="flex items-center gap-4">
+                            <span>© 2026 MERLIJN VAN DER VLEUTEN</span>
+                            <span className="opacity-40">|</span>
+                            <span>KVK-NUMMER: 94002636</span>
+                        </div>
+                        <div className="flex items-center gap-4">
+                            <span className="hidden md:inline opacity-40">|</span>
+                            <span>Dennendreef 5-111, 5282 HK Boxtel</span>
+                        </div>
                     </div>
                     <div className="flex items-center gap-8 font-mono text-[10px] uppercase tracking-[0.4em] text-[#F2F0E9]/20">
                         <Link to="/privacy" className="hover:text-primary transition-colors italic">Privacy</Link>
