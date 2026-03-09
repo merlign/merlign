@@ -5,7 +5,7 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "vite build && (node prerender.js || echo 'Prerendering failed - proceeding with SPA build')",
+    "build": "vite build && node prerender.js",
     "preview": "vite preview"
   },
   "dependencies": {
@@ -29,6 +29,8 @@
     "autoprefixer": "^10.4.17",
     "critters": "^0.0.23",
     "express": "^5.2.1",
+    "jsdom": "^28.1.0",
+    "jsdom-global": "^3.0.2",
     "postcss": "^8.4.35",
     "puppeteer": "^24.38.0",
     "serve-handler": "^6.1.7",

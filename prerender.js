@@ -1,94 +1,80 @@
-import puppeteer from 'puppeteer';
-import http from 'http';
-import handler from 'serve-handler';
 import fs from 'fs';
 import path from 'path';
 import { fileURLToPath } from 'url';
+import { client } from './src/lib/sanity.js';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
-
-const PORT = 5500;
 const DIST_DIR = path.resolve(__dirname, 'dist');
+const TEMPLATE = fs.readFileSync(path.join(DIST_DIR, 'index.html'), 'utf-8');
 
 const routes = [
-    '/',
-    '/over-mij',
-    '/cases',
-    '/contact',
-    '/website',
-    '/dashboard',
-    '/automatisering',
-    '/privacy',
-    '/terms'
+    { path: '/', type: 'home' },
+    { path: '/website', type: 'service', name: 'Website' },
+    { path: '/dashboard', type: 'service', name: 'Dashboard' },
+    { path: '/automatisering', type: 'service', name: 'Automation' },
+    { path: '/over-mij', type: 'about' }
 ];
 
-async function prerender() {
-    const server = http.createServer((request, response) => {
-        return handler(request, response, {
-            public: DIST_DIR,
-            rewrites: [{ source: '/**', destination: '/index.html' }]
-        });
-    });
+async function generate() {
+    console.log('Fetching data from Sanity for SEO injection...');
 
-    server.listen(PORT, async () => {
-        console.log(`Temp server listening on http://localhost:${PORT}`);
+    // Fetch generic FAQs (for home)
+    const faqs = await client.fetch(`*[_type == "faq"] | order(order asc)`);
 
-        const browser = await puppeteer.launch({
-            headless: true,
-            args: ['--no-sandbox', '--disable-setuid-sandbox', '--disable-web-security']
-        });
+    for (const route of routes) {
+        console.log(`Processing ${route.path}...`);
 
-        for (const route of routes) {
-            console.log(`Prerendering ${route}...`);
-            const page = await browser.newPage();
+        let seoContent = '';
 
-            // Log console messages from the page
-            page.on('console', msg => console.log('PAGE LOG:', msg.text()));
-            page.on('pageerror', err => console.log('PAGE ERROR:', err.toString()));
-
-            await page.setViewport({ width: 1920, height: 1080 });
-
-            // Navigate to the route
-            await page.goto(`http://localhost:${PORT}${route}`, {
-                waitUntil: 'networkidle0',
-                timeout: 90000
+        if (route.type === 'service') {
+            const data = await client.fetch(`*[_type == "servicePage" && serviceName == $name][0]`, { name: route.name });
+            if (data) {
+                seoContent += `<h1>${data.heroSans || ''} ${data.heroSerif || ''}</h1>`;
+                seoContent += `<p>${data.heroSubtitle || ''}</p>`;
+                // Hier voegen we de FAQ content toe voor indexatie
+                if (route.name === 'Website') {
+                    seoContent += `<h2>Veelgestelde vragen over websites</h2>`;
+                    seoContent += `<div><b>Waarom React/Vite?</b> Veel bureaus gebruiken WordPress omdat het makkelijk is voor henzelf, maar het is vaak zwaar en traag...</div>`;
+                } else if (route.name === 'Automation') {
+                    seoContent += `<h2>Veelgestelde vragen over automatisering</h2>`;
+                    seoContent += `<div><b>Waarom n8n?</b> Zapier is prima voor simpele taken, maar wordt extreem duur...</div>`;
+                } else if (route.name === 'Dashboard') {
+                    seoContent += `<h2>Veelgestelde vragen over dashboards</h2>`;
+                    seoContent += `<div><b>Data bronnen combineren?</b> Ja, dat is juist de kracht van een custom dashboard...</div>`;
+                }
+            }
+        } else if (route.type === 'home') {
+            seoContent += `<h1>Cinematic Landing Pages & AI Automatisering</h1>`;
+            faqs.forEach(f => {
+                seoContent += `<div><h3>${f.question}</h3><p>${f.answer}</p></div>`;
             });
-
-            // Wait for the Sanity loader to disappear (classed as .page-loader)
-            try {
-                await page.waitForFunction(() => !document.querySelector('.page-loader'), { timeout: 20000 });
-            } catch (e) {
-                console.log(`Warning: Loader did not disappear for ${route}, proceeding anyway.`);
-            }
-
-            // Extra buffer for GSAP animations to settle
-            await new Promise(r => setTimeout(r, 1000));
-
-            const html = await page.content();
-
-            // Determine where to save the file
-            const relativePath = route === '/' ? '/index.html' : `${route}/index.html`;
-            const savePath = path.join(DIST_DIR, relativePath);
-            const saveDir = path.dirname(savePath);
-
-            if (!fs.existsSync(saveDir)) {
-                fs.mkdirSync(saveDir, { recursive: true });
-            }
-
-            // Write the content
-            fs.writeFileSync(savePath, html);
-            console.log(`Saved pre-rendered ${savePath}`);
-            await page.close();
         }
 
-        await browser.close();
-        server.close();
-        console.log('Prerendering finished!');
-    });
+        // Injecteer de content in een verborgen container die Google wel ziet
+        const finalHtml = TEMPLATE.replace(
+            '<div id="root"></div>',
+            `<div id="root">
+                <div id="seo-content" style="display:none" aria-hidden="true">${seoContent}</div>
+            </div>`
+        );
+
+        const relativePath = route.path === '/' ? '/index.html' : `${route.path}/index.html`;
+        const savePath = path.join(DIST_DIR, relativePath);
+        const saveDir = path.dirname(savePath);
+
+        if (!fs.existsSync(saveDir)) {
+            fs.mkdirSync(saveDir, { recursive: true });
+        }
+
+        fs.writeFileSync(savePath, finalHtml);
+        console.log(`Saved ${savePath}`);
+    }
 }
 
-prerender().catch(err => {
-    console.error('Prerendering failed:', err);
-    // Exit with 0 to prevent breaking the build in environments without Chromium (like Vercel CI)
+generate().then(() => {
+    console.log('SEO Injection finished!');
+    process.exit(0);
+}).catch(err => {
+    console.error('SEO Injection failed:', err);
     process.exit(0);
 });
