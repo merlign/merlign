@@ -88,7 +88,7 @@ const About = () => {
                                         {introSans}{' '}
                                         <span className="text-primary font-drama font-normal text-h1-serif">{introSerif}</span>
                                     </motion.h1>
-                                    <motion.p variants={fadeUp} className="font-sans text-[#F2F0E9]/85 text-lg md:text-2xl font-light italic leading-[1.8] max-w-4xl border-l-[3px] border-primary/20 pl-8 md:pl-12 whitespace-pre-wrap">
+                                    <motion.p variants={fadeUp} className="font-sans text-[#F2F0E9]/85 text-lg md:text-xl font-light italic leading-[1.8] max-w-2xl whitespace-pre-wrap">
                                         {bioText}
                                     </motion.p>
                                     <motion.div variants={fadeUp} className="pt-12 md:pt-16">
@@ -138,7 +138,7 @@ const About = () => {
                                             {data?.whoAmIHeadlineSans || "De perfecte mix tussen"} <span className="text-primary font-drama font-normal text-h2-serif">{data?.whoAmIHeadlineSerif || "vorm en functie."}</span>
                                         </motion.h2>
                                     </div>
-                                    <div className="space-y-8 font-sans text-[#F2F0E9]/85 text-lg md:text-2xl font-light italic leading-[1.8] border-l-[3px] border-primary/20 pl-8 md:pl-12 whitespace-pre-wrap">
+                                    <div className="space-y-8 font-sans text-[#F2F0E9]/85 text-lg md:text-2xl font-light italic leading-[1.8] whitespace-pre-wrap">
                                         {data?.whoAmIParas && data.whoAmIParas.length > 0 ? data.whoAmIParas.map((para, i) => (
                                             <p key={i}>{para}</p>
                                         )) : (

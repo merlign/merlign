@@ -58,7 +58,7 @@ const Navbar = () => {
                             <img src="/logo_merlign.png" alt="Merlign" className="h-5 md:h-6 transition-all duration-500 brightness-0 invert" />
                         </Link>
 
-                        <div className="hidden lg:flex items-center gap-10 font-mono text-[13px] uppercase tracking-[0.3em] text-[#F2F0E9]/60">
+                        <div className="hidden lg:flex items-center gap-10 font-sans text-[13px] uppercase tracking-widest text-[#F2F0E9]/60">
                             {/* Diensten Dropdown */}
                             <div
                                 className="relative group/diensten"
@@ -126,7 +126,7 @@ const Navbar = () => {
                         <div className="flex flex-col gap-8">
                             <div className="space-y-4">
                                 <button
-                                    className="flex items-center gap-4 text-[#F2F0E9] uppercase tracking-tighter font-sans text-3xl font-bold py-2"
+                                    className="flex items-center gap-4 text-[#F2F0E9] uppercase tracking-widest font-sans text-3xl font-bold py-2"
                                     onClick={() => setIsDienstenOpen(!isDienstenOpen)}
                                 >
                                     Diensten
@@ -163,7 +163,7 @@ const Navbar = () => {
                                     <Link
                                         key={i}
                                         to={link.href}
-                                        className="text-3xl font-sans font-bold text-[#F2F0E9] uppercase tracking-tighter"
+                                        className="text-3xl font-sans font-bold text-[#F2F0E9] uppercase tracking-widest"
                                         onClick={() => setIsMobileMenuOpen(false)}
                                     >
                                         {link.label}
@@ -224,16 +224,16 @@ const Footer = ({ data }) => {
                         </div>
                     </div>
                     <div className="space-y-8 md:space-y-12 pt-8 md:pt-0">
-                        <h5 className="font-mono text-[12px] md:text-[14px] uppercase tracking-[0.5em] text-[#F2F0E9]/40 font-black italic">Archief</h5>
-                        <ul className="space-y-4 md:space-y-6 font-mono text-[14px] md:text-[16px] uppercase tracking-[0.2em] font-bold">
+                        <h5 className="font-sans text-[12px] md:text-[14px] uppercase tracking-widest text-[#F2F0E9]/40 font-black italic">Archief</h5>
+                        <ul className="space-y-4 md:space-y-6 font-sans text-[14px] md:text-[15px] uppercase tracking-widest font-bold">
                             <li><Link to="/over-mij" className="text-[#F2F0E9]/60 hover:text-primary transition-colors">Over mij</Link></li>
                             <li><Link to="/cases" className="text-[#F2F0E9]/60 hover:text-primary transition-colors">Cases</Link></li>
                             <li><Link to="/contact" className="text-[#F2F0E9]/60 hover:text-primary transition-colors">Contact</Link></li>
                         </ul>
                     </div>
                     <div className="space-y-8 md:space-y-12 pt-8 md:pt-0">
-                        <h5 className="font-mono text-[12px] md:text-[14px] uppercase tracking-[0.5em] text-[#F2F0E9]/40 font-black italic">Sociaal</h5>
-                        <ul className="space-y-4 md:space-y-6 font-mono text-[14px] md:text-[16px] uppercase tracking-[0.2em] font-bold">
+                        <h5 className="font-sans text-[12px] md:text-[14px] uppercase tracking-widest text-[#F2F0E9]/40 font-black italic">Sociaal</h5>
+                        <ul className="space-y-4 md:space-y-6 font-sans text-[14px] md:text-[15px] uppercase tracking-widest font-bold">
                             <li><a href={linkedinLink} target="_blank" rel="noopener noreferrer" className="text-[#F2F0E9]/60 hover:text-primary transition-colors">LinkedIn</a></li>
                         </ul>
                     </div>

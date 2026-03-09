@@ -113,7 +113,7 @@ const AutomationService = () => {
                                         {heroSans}{' '}
                                         <span className="text-primary font-drama font-normal text-h1-serif">{heroSerif}</span>
                                     </motion.h1>
-                                    <motion.p variants={fadeUp} className="font-sans text-[#F2F0E9]/85 text-lg md:text-2xl font-light italic leading-[1.8] max-w-4xl border-l-[3px] border-primary/20 pl-8 md:pl-12 whitespace-pre-wrap">
+                                    <motion.p variants={fadeUp} className="font-sans text-[#F2F0E9]/85 text-lg md:text-xl font-light italic leading-[1.8] max-w-2xl whitespace-pre-wrap">
                                         {heroSubtitle}
                                     </motion.p>
                                     <motion.div variants={fadeUp} className="pt-4">
@@ -238,7 +238,7 @@ const AutomationService = () => {
                                                 <span className="text-primary font-drama font-normal text-h2-serif">{data?.ctaHeadlineSerif || "terug te krijgen?"}</span>
                                             </h2>
                                         </a>
-                                        <motion.p variants={fadeUp} className="font-sans text-[#F2F0E9]/85 text-base md:text-xl font-light leading-[1.8] italic max-w-3xl mx-auto border-l-2 md:border-l-0 md:border-b-2 border-white/5 pb-10 md:pb-12 pl-8 md:pl-0">
+                                        <motion.p variants={fadeUp} className="font-sans text-[#F2F0E9]/85 text-base md:text-xl font-light leading-[1.8] italic max-w-3xl mx-auto border-b-2 border-white/5 pb-10 md:pb-12 text-center">
                                             {data?.ctaSubtitle || "Vraag een gratis check aan. In 20 minuten weet je wat er geautomatiseerd kan worden."}
                                         </motion.p>
                                     </motion.div>

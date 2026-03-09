@@ -84,7 +84,7 @@ const Cases = () => {
                     >
                         Geen mooie praatjes. <span className="text-primary font-drama font-normal text-h1-serif">Gewoon resultaten.</span>
                     </motion.h1>
-                    <motion.p variants={fadeUp} className="font-sans text-[#F2F0E9]/85 text-lg md:text-2xl font-light italic leading-[1.8] max-w-4xl border-l-[3px] border-primary/20 pl-8 md:pl-12">
+                    <motion.p variants={fadeUp} className="font-sans text-[#F2F0E9]/85 text-lg md:text-xl font-light italic leading-[1.8] max-w-2xl">
                         Wat ik heb gebouwd en welk meetbaar resultaat dat heeft opgeleverd.
                     </motion.p>
 

@@ -82,7 +82,7 @@ const Hero = ({ data }) => {
                         variants={fadeUp}
                         className="flex flex-col md:flex-row items-start md:items-center gap-12"
                     >
-                        <p className="font-sans text-[#F2F0E9]/85 text-lg md:text-xl font-light max-w-2xl border-l-[2px] border-primary/40 pl-8 leading-[1.8] italic whitespace-pre-wrap">
+                        <p className="font-sans text-[#F2F0E9]/85 text-lg md:text-xl font-light max-w-2xl leading-[1.8] italic whitespace-pre-wrap">
                             {heroSubtitle}
                         </p>
                     </motion.div>
@@ -157,7 +157,7 @@ const HomeAbout = ({ data }) => {
                         <span className="text-primary font-drama font-normal text-h2-serif">{headlineSerif}</span>
                     </motion.h2>
                     <div className="space-y-6">
-                        <p className="font-sans text-[#F2F0E9]/85 text-lg md:text-2xl font-light italic leading-[1.8] border-l-[3px] border-primary/40 pl-8 md:pl-12 whitespace-pre-wrap">
+                        <p className="font-sans text-[#F2F0E9]/85 text-lg md:text-2xl font-light italic leading-[1.8] whitespace-pre-wrap">
                             {para1}
                         </p>
                         <p className="font-sans text-[#F2F0E9]/85 text-base md:text-lg font-light leading-[1.8] max-w-2xl ml-8 md:ml-12 italic whitespace-pre-wrap">
@@ -269,7 +269,7 @@ const Services = ({ cmsServices, data }) => {
                             {headlineSans} <span className="text-primary font-drama font-normal text-h2-serif">{headlineSerif}</span>
                         </motion.h2>
                     </div>
-                    <motion.p variants={fadeUp} className="font-sans text-[#F2F0E9]/85 max-w-md text-lg md:text-2xl border-l-[3px] border-primary/20 pl-8 md:pl-12 pb-4 md:pb-6 italic leading-[1.8]">
+                    <motion.p variants={fadeUp} className="font-sans text-[#F2F0E9]/85 max-w-md text-lg md:text-2xl pb-4 md:pb-6 italic leading-[1.8]">
                         {subtitle}
                     </motion.p>
                 </motion.div>
