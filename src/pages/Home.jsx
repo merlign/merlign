@@ -507,10 +507,22 @@ const Process = ({ data }) => {
 const FAQ = () => {
     // 1. DIT ZIJN JE STANDAARD VRAGEN (FALLBACK)
     const staticQuestions = [
-        { q: "Heb ik zelf technische kennis nodig?", a: "Nee. Ik bouw het, ik leg het simpel uit en jij gebruikt het. Geen gedoe met code." },
-        { q: "Ik heb al een website, wat nu?", a: "Geen probleem. We kunnen je huidige site optimaliseren of de dashboards en automatiseringen toevoegen." },
-        { q: "Hoeveel tijd kost dit mij?", a: "Minimaal. We doen één intake van 20 minuten, daarna neem ik het werk uit handen." },
-        { q: "Moet ik alles in één keer doen?", a: "Nee. De meeste ondernemers kiezen eerst één upgrade om een specifiek probleem op te lossen." }
+        {
+            q: "Heb ik zelf technische kennis nodig?",
+            a: "Totaal niet. Ik neem het volledige proces uit handen: van design en code tot de laatste API-koppeling. Jij krijgt een systeem dat simpel werkt, zodat jij je kunt focussen op je business terwijl de techniek op de achtergrond voor je draait."
+        },
+        {
+            q: "Ik heb al een website, wat nu?",
+            a: "Geen probleem. We kunnen je huidige site optimaliseren voor meer conversie, of we voegen specifiek de dashboards en automatiseringen toe aan je bestaande systeem. Ik bouw modulaire oplossingen die overal op aansluiten."
+        },
+        {
+            q: "Hoeveel tijd kost een samenwerking mij?",
+            a: "Minimaal. We starten met een check van 20 minuten. Daarna neem ik het zware werk over. Ik werk in korte sprints en jij geeft alleen feedback op de mijlpalen. Zo bouwen we high-end resultaat zonder dat het jouw agenda overneemt."
+        },
+        {
+            q: "Moet ik alles (website, dashboard, automatisering) in één keer doen?",
+            a: "Zeker niet. De meeste ondernemers beginnen met de grootste tijdvreter of het herstellen van hun 'digitale voordeur'. We pakken eerst het proces aan dat je nu de meeste winst of tijd oplevert. Opschalen kan altijd."
+        }
     ];
 
     // 2. DIT IS HOE JE HET CMS KOPPELT
