@@ -4,7 +4,26 @@ export default defineType({
     name: 'contactInfo',
     title: 'Contact Informatie & Teksten',
     type: 'document',
+    groups: [
+        { name: 'seo', title: 'SEO / Zoekmachine' },
+    ],
     fields: [
+        defineField({
+            name: 'seoTitle',
+            title: 'SEO Titel',
+            type: 'string',
+            group: 'seo',
+            initialValue: 'Contact opnemen — Merlign',
+            description: 'De titel die getoond wordt in Google. Laat leeg om de standaard te gebruiken.'
+        }),
+        defineField({
+            name: 'seoDescription',
+            title: 'SEO Omschrijving',
+            type: 'text',
+            group: 'seo',
+            initialValue: 'Heb je een vraag of wil je direct een gratis check inplannen? Neem contact op via het formulier, e-mail of WhatsApp.',
+            description: 'De tekst die getoond wordt onder de titel in Google.'
+        }),
         defineField({
             name: 'headlineSans',
             title: 'Contact Headline (Sans)',

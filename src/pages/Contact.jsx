@@ -36,8 +36,8 @@ const ContactPage = () => {
     return (
         <div className="bg-[#0A0A0A] min-h-screen">
             <SEO
-                title="Gratis adviesgesprek | Plan je digital scan"
-                description="Zullen we even bellen? Plan een gratis scan van 20 minuten met mij in. Direct weten wat er beter kan op je website of in je bedrijfsprocessen."
+                title={data?.seoTitle || "Gratis adviesgesprek | Plan je digital scan"}
+                description={data?.seoDescription || "Zullen we even bellen? Plan een gratis scan van 20 minuten met mij in. Direct weten wat er beter kan op je website of in je bedrijfsprocessen."}
                 path="/contact"
             />
             <AnimatePresence mode="wait">

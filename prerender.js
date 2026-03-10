@@ -13,7 +13,8 @@ const routes = [
     { path: '/dashboard', type: 'service', name: 'Dashboard' },
     { path: '/automatisering', type: 'service', name: 'Automation' },
     { path: '/over-mij', type: 'about' },
-    { path: '/cases', type: 'cases' }
+    { path: '/cases', type: 'cases' },
+    { path: '/contact', type: 'contact' }
 ];
 
 async function generate() {
@@ -68,6 +69,11 @@ async function generate() {
             routeTitle = cases?.seoTitle || "Projecten & Successen — Merlign";
             routeDesc = cases?.seoDescription || "Bekijk de projecten die ik heb uitgevoerd.";
             seoContent += `<h1>Projecten & Successen</h1>`;
+        } else if (route.type === 'contact') {
+            const contact = await client.fetch(`*[_type == "contactInfo"][0]`);
+            routeTitle = contact?.seoTitle || "Contact opnemen — Merlign";
+            routeDesc = contact?.seoDescription || "Heb je een vraag of wil je direct een gratis check inplannen?";
+            seoContent += `<h1>Contact opnemen</h1>`;
         }
 
         // Inject content into body
