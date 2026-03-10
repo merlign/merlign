@@ -255,7 +255,6 @@ const Cases = () => {
                                                 viewport={{ once: true }}
                                                 className="px-8 md:px-12 py-10 rounded-[2.5rem] bg-[#1A1A1A]/20 border border-white/5 text-[#F2F0E9] space-y-8 relative overflow-hidden group/quote transition-all duration-700 hover:bg-[#1A1A1A]/40 shadow-sm"
                                             >
-                                                <MessageSquare className="absolute top-8 right-8 w-12 h-12 text-primary/10 -rotate-12 group-hover/quote:rotate-0 transition-all duration-700" />
                                                 <p className="text-lg md:text-2xl font-sans font-medium leading-[1.6] tracking-tight relative z-10 italic text-[#F2F0E9]/90">
                                                     "{c.quote}"
                                                 </p>
