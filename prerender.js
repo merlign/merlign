@@ -94,6 +94,7 @@ async function generate() {
         const metaTags = `
     <title>${routeTitle}</title>
     <meta name="description" content="${routeDesc}">
+    <meta name="google-site-verification" content="r3hVpGRHUOO4mx2O30EZ6eyUYx62mJBLucBDW9cLPZI">
     <meta property="og:title" content="${routeTitle}">
     <meta property="og:description" content="${routeDesc}">
     <link rel="canonical" href="https://merlign.com${route.path === '/' ? '' : route.path}">`;

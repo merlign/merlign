@@ -76,7 +76,7 @@ const SEO = ({ title, description, path = "", type = "website" }) => {
             <meta name="robots" content="index, follow" />
 
             {/* Google Search Console Verification - Replace with real code when available */}
-            <meta name="google-site-verification" content="YOUR_VERIFICATION_CODE_HERE" />
+            <meta name="google-site-verification" content="r3hVpGRHUOO4mx2O30EZ6eyUYx62mJBLucBDW9cLPZI" />
 
             {/* Open Graph / Facebook */}
             <meta property="og:type" content={type} />
