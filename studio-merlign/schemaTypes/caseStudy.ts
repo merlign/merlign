@@ -18,6 +18,15 @@ export default defineType({
             type: 'string',
         }),
         defineField({
+            name: 'clientLogo',
+            title: 'Klant Logo',
+            type: 'image',
+            description: 'Het logo van de klant (bijv. een wit/transparant logo werkt het best).',
+            options: {
+                hotspot: true,
+            },
+        }),
+        defineField({
             name: 'category',
             title: 'Categorie',
             type: 'string',

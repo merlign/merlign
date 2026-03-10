@@ -181,10 +181,18 @@ const Cases = () => {
                                         {/* Info Column (Sticky on Desktop) */}
                                         <div className="lg:col-span-5 lg:sticky lg:top-48 space-y-10 md:space-y-16 lg:pb-20">
                                             <div className="space-y-8">
-                                                <div className="flex items-center gap-4">
-                                                    <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center text-primary border border-primary/20">
-                                                        {getIcon(c.category)}
-                                                    </div>
+                                                <div className="flex items-center gap-6">
+                                                    {c.clientLogo ? (
+                                                        <img
+                                                            src={urlFor(c.clientLogo).height(100).url()}
+                                                            alt={`Logo ${c.title}`}
+                                                            className="h-10 md:h-12 w-auto object-contain opacity-80 brightness-0 invert"
+                                                        />
+                                                    ) : (
+                                                        <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center text-primary border border-primary/20">
+                                                            {getIcon(c.category)}
+                                                        </div>
+                                                    )}
                                                     <div className="flex flex-col">
                                                         <span className="font-mono text-[10px] uppercase tracking-[0.4em] text-primary/40 font-bold italic leading-none mb-2">Case Study</span>
                                                         <span className="font-mono text-xs uppercase tracking-[0.2em] text-[#F2F0E9]/60 font-bold">{c.tag}</span>
@@ -240,10 +248,6 @@ const Cases = () => {
                                         {/* Visuals Column */}
                                         <div className="lg:col-span-7 space-y-12 md:space-y-20 pt-4 lg:pt-0">
                                             <div className="relative group/visual">
-                                                {/* Category floating label */}
-                                                <div className="absolute -top-3 -right-3 z-20 bg-primary px-4 py-1.5 rounded-full shadow-2xl rotate-3">
-                                                    <span className="font-mono text-[10px] font-black text-black uppercase tracking-widest">{c.category}</span>
-                                                </div>
 
                                                 {c.category === 'websites' && <BrowserMockup image={urlFor(c.image)?.url()} title={c.title} />}
                                                 {c.category === 'dashboards' && <DashboardMockup image={urlFor(c.image)?.url()} title={c.title} />}
