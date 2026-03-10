@@ -12,7 +12,8 @@ const routes = [
     { path: '/website', type: 'service', name: 'Website' },
     { path: '/dashboard', type: 'service', name: 'Dashboard' },
     { path: '/automatisering', type: 'service', name: 'Automation' },
-    { path: '/over-mij', type: 'about' }
+    { path: '/over-mij', type: 'about' },
+    { path: '/cases', type: 'cases' }
 ];
 
 async function generate() {
@@ -62,6 +63,11 @@ async function generate() {
             routeTitle = about?.seoTitle || "Over Merlign — Design & Strategie";
             routeDesc = about?.seoDescription || "Lees meer over de visie van Merlijn op design en automatisering.";
             seoContent += `<h1>Over Merlign</h1>`;
+        } else if (route.type === 'cases') {
+            const cases = await client.fetch(`*[_type == "casesPage"][0]`);
+            routeTitle = cases?.seoTitle || "Projecten & Successen — Merlign";
+            routeDesc = cases?.seoDescription || "Bekijk de projecten die ik heb uitgevoerd.";
+            seoContent += `<h1>Projecten & Successen</h1>`;
         }
 
         // Inject content into body

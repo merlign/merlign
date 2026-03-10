@@ -6,7 +6,7 @@ import ContactForm from '../components/ContactForm';
 import { Link } from 'react-router-dom';
 import { BrowserMockup, DashboardMockup, AutomationMockup } from '../components/CaseMockup';
 import SEO from '../components/SEO';
-import { getCases, urlFor } from '../lib/sanity';
+import { getCases, urlFor, getCasesPageData } from '../lib/sanity';
 
 const fadeUp = {
     initial: { opacity: 0, y: 30 },
@@ -18,21 +18,26 @@ const fadeUp = {
 const Cases = () => {
     const [selectedFilter, setSelectedFilter] = useState('alle');
     const [cases, setCases] = useState([]);
+    const [pageData, setPageData] = useState(null);
     const [isLoading, setIsLoading] = useState(true);
 
     React.useEffect(() => {
-        const fetchCases = async () => {
+        const fetchData = async () => {
             try {
                 setIsLoading(true);
-                const data = await getCases();
-                setCases(Array.isArray(data) ? data : []);
+                const [casesData, pageInfo] = await Promise.all([
+                    getCases(),
+                    getCasesPageData()
+                ]);
+                setCases(Array.isArray(casesData) ? casesData : []);
+                setPageData(pageInfo);
             } catch (err) {
                 console.error("Cases Fetch Error:", err);
             } finally {
                 setIsLoading(false);
             }
         };
-        fetchCases();
+        fetchData();
     }, []);
 
     const getIcon = (category) => {
@@ -60,8 +65,8 @@ const Cases = () => {
     return (
         <div className="bg-[#0A0A0A] min-h-screen">
             <SEO
-                title="Portfolio & success stories | Resultaten van Merlign"
-                description="Zie hoe ik andere ondernemers en bedrijven hielp met webdesign, dashboards en AI. Bekijk de meetbare resultaten van mijn samenwerkingen."
+                title={pageData?.seoTitle || "Portfolio & success stories | Resultaten van Merlign"}
+                description={pageData?.seoDescription || "Zie hoe ik andere ondernemers en bedrijven hielp met webdesign, dashboards en AI. Bekijk de meetbare resultaten van mijn samenwerkingen."}
                 path="/cases"
             />
             <AnimatePresence mode="wait">
@@ -105,10 +110,10 @@ const Cases = () => {
                                     variants={fadeUp}
                                     className="font-sans font-bold text-[#F2F0E9] text-h1"
                                 >
-                                    Geen mooie praatjes. <span className="text-primary font-drama font-normal text-h1-serif">Gewoon resultaten.</span>
+                                    {pageData?.headlineSans || "Geen mooie praatjes."} <span className="text-primary font-drama font-normal text-h1-serif">{pageData?.headlineSerif || "Gewoon resultaten."}</span>
                                 </motion.h1>
                                 <motion.p variants={fadeUp} className="font-sans text-[#F2F0E9]/85 text-lg md:text-xl font-light italic leading-[1.8] max-w-2xl">
-                                    Wat ik heb gebouwd en welk meetbaar resultaat dat heeft opgeleverd.
+                                    {pageData?.subtitle || "Wat ik heb gebouwd en welk meetbaar resultaat dat heeft opgeleverd."}
                                 </motion.p>
 
                                 {/* Filter Bar */}

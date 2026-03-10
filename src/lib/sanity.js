@@ -45,3 +45,7 @@ export async function getContactInfo() {
     return await client.fetch(`*[_type == "contactInfo"][0]`)
 }
 
+export async function getCasesPageData() {
+    return await client.fetch(`*[_type == "casesPage"][0]`)
+}
+
