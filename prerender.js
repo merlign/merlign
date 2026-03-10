@@ -14,7 +14,9 @@ const routes = [
     { path: '/automatisering', type: 'service', name: 'Automation' },
     { path: '/over-mij', type: 'about' },
     { path: '/cases', type: 'cases' },
-    { path: '/contact', type: 'contact' }
+    { path: '/contact', type: 'contact' },
+    { path: '/privacy', type: 'simple', title: 'Privacy Policy — Merlign' },
+    { path: '/terms', type: 'simple', title: 'Terms of Service — Merlign' }
 ];
 
 async function generate() {
@@ -74,6 +76,10 @@ async function generate() {
             routeTitle = contact?.seoTitle || "Contact opnemen — Merlign";
             routeDesc = contact?.seoDescription || "Heb je een vraag of wil je direct een gratis check inplannen?";
             seoContent += `<h1>Contact opnemen</h1>`;
+        } else if (route.type === 'simple') {
+            routeTitle = route.title;
+            routeDesc = "Lees onze voorwaarden.";
+            seoContent += `<h1>${route.title}</h1>`;
         }
 
         // Inject content into body
