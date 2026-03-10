@@ -274,7 +274,6 @@ const Cases = () => {
                                                         )}
                                                         <div className="space-y-0.5">
                                                             <p className="font-mono text-[10px] uppercase tracking-[0.4em] font-black text-primary leading-none">{c.author || 'Merlign client'}</p>
-                                                            <p className="font-mono text-[8px] uppercase tracking-[0.2em] text-[#F2F0E9]/20 font-bold">Geverifieerde Review</p>
                                                         </div>
                                                     </div>
 
