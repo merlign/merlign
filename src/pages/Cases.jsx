@@ -181,18 +181,10 @@ const Cases = () => {
                                         {/* Info Column (Sticky on Desktop) */}
                                         <div className="lg:col-span-5 lg:sticky lg:top-48 space-y-10 md:space-y-16 lg:pb-20">
                                             <div className="space-y-8">
-                                                <div className="flex items-center gap-6">
-                                                    {c.clientLogo ? (
-                                                        <img
-                                                            src={urlFor(c.clientLogo).height(100).url()}
-                                                            alt={`Logo ${c.title}`}
-                                                            className="h-10 md:h-12 w-auto object-contain opacity-80 brightness-0 invert"
-                                                        />
-                                                    ) : (
-                                                        <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center text-primary border border-primary/20">
-                                                            {getIcon(c.category)}
-                                                        </div>
-                                                    )}
+                                                <div className="flex items-center gap-4">
+                                                    <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center text-primary border border-primary/20">
+                                                        {getIcon(c.category)}
+                                                    </div>
                                                     <div className="flex flex-col">
                                                         <span className="font-mono text-[10px] uppercase tracking-[0.4em] text-primary/40 font-bold italic leading-none mb-2">Case Study</span>
                                                         <span className="font-mono text-xs uppercase tracking-[0.2em] text-[#F2F0E9]/60 font-bold">{c.tag}</span>
@@ -267,22 +259,32 @@ const Cases = () => {
                                                 <p className="text-lg md:text-2xl font-sans font-medium leading-[1.6] tracking-tight relative z-10 italic text-[#F2F0E9]/90">
                                                     "{c.quote}"
                                                 </p>
-                                                <div className="flex items-center gap-4 relative z-10 pt-6 border-t border-white/5">
-                                                    {c.authorImage ? (
-                                                        <img
-                                                            src={urlFor(c.authorImage).width(80).height(80).url()}
-                                                            alt={`Review van ${c.author} over Merlign`}
-                                                            className="w-12 h-12 rounded-full object-cover border border-primary/20"
-                                                        />
-                                                    ) : (
-                                                        <div className="w-12 h-12 rounded-full border border-primary/20 bg-primary/5 flex items-center justify-center font-mono text-sm uppercase font-black italic text-primary group-hover/quote:bg-primary/10 transition-colors">
-                                                            {c.author?.charAt?.(0) || 'M'}
+                                                <div className="flex items-center justify-between relative z-10 pt-6 border-t border-white/5">
+                                                    <div className="flex items-center gap-4">
+                                                        {c.authorImage ? (
+                                                            <img
+                                                                src={urlFor(c.authorImage).width(80).height(80).url()}
+                                                                alt={`Review van ${c.author} over Merlign`}
+                                                                className="w-10 h-10 md:w-12 md:h-12 rounded-full object-cover border border-primary/20"
+                                                            />
+                                                        ) : (
+                                                            <div className="w-10 h-10 md:w-12 md:h-12 rounded-full border border-primary/20 bg-primary/5 flex items-center justify-center font-mono text-sm uppercase font-black italic text-primary group-hover/quote:bg-primary/10 transition-colors">
+                                                                {c.author?.charAt?.(0) || 'M'}
+                                                            </div>
+                                                        )}
+                                                        <div className="space-y-0.5">
+                                                            <p className="font-mono text-[10px] uppercase tracking-[0.4em] font-black text-primary leading-none">{c.author || 'Merlign client'}</p>
+                                                            <p className="font-mono text-[8px] uppercase tracking-[0.2em] text-[#F2F0E9]/20 font-bold">Geverifieerde Review</p>
                                                         </div>
-                                                    )}
-                                                    <div className="space-y-0.5">
-                                                        <p className="font-mono text-[10px] uppercase tracking-[0.4em] font-black text-primary leading-none">{c.author || 'Merlign client'}</p>
-                                                        <p className="font-mono text-[8px] uppercase tracking-[0.2em] text-[#F2F0E9]/20 font-bold">Geverifieerde Review</p>
                                                     </div>
+
+                                                    {c.clientLogo && (
+                                                        <img
+                                                            src={urlFor(c.clientLogo).height(80).url()}
+                                                            alt={`Logo ${c.title}`}
+                                                            className="h-6 md:h-8 w-auto object-contain opacity-30 grayscale group-hover/quote:opacity-80 group-hover/quote:grayscale-0 transition-all duration-700"
+                                                        />
+                                                    )}
                                                 </div>
                                             </motion.div>
                                         </div>
