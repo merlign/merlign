@@ -67,8 +67,8 @@ const DashboardService = () => {
     return (
         <div className="bg-[#0A0A0A] min-h-screen">
             <SEO
-                title="Business dashboards & data inzicht"
-                description="Stop met gissen naar je cijfers. Ik bouw dashboards die al je data van Ads, CRM en Sales samenbrengen in één duidelijk overzicht."
+                title={data?.seoTitle || "Business dashboards & data inzicht"}
+                description={data?.seoDescription || "Stop met gissen naar je cijfers. Ik bouw dashboards die al je data van Ads, CRM en Sales samenbrengen in één duidelijk overzicht."}
                 path="/dashboard"
             />
             <AnimatePresence mode="wait">
