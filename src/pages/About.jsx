@@ -38,8 +38,8 @@ const About = () => {
     return (
         <div className="bg-[#0A0A0A] min-h-screen">
             <SEO
-                title="Over Merlign | Senior design & tech specialist"
-                description="Designer, bouwer en jouw sparringspartner. Ik gebruik 10 jaar design-ervaring en de nieuwste AI-tools om ondernemers, zzpers en het mkb echt verder te helpen."
+                title={data?.seoTitle || "Over Merlign | Senior design & tech specialist"}
+                description={data?.seoDescription || "Designer, bouwer en jouw sparringspartner. Ik gebruik 10 jaar design-ervaring en de nieuwste AI-tools om ondernemers, zzpers en het mkb echt verder te helpen."}
                 path="/over-mij"
             />
             <AnimatePresence mode="wait">

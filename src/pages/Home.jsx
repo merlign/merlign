@@ -661,8 +661,8 @@ const Home = () => {
     return (
         <div className="bg-[#0A0A0A] min-h-screen">
             <SEO
-                title="Design & AI-automatisering voor mkb en zzpers"
-                description="Ik bouw websites die converteren, dashboards die inzicht geven en automatiseringen die tijd besparen. Geen gedoe, gewoon resultaat voor mkb en zzpers."
+                title={pageData?.seoTitle || "Design & AI-automatisering voor mkb en zzpers"}
+                description={pageData?.seoDescription || "Ik bouw websites die converteren, dashboards die inzicht geven en automatiseringen die tijd besparen. Geen gedoe, gewoon resultaat voor mkb en zzpers."}
                 path="/"
             />
             <AnimatePresence mode="wait">

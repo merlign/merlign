@@ -31,8 +31,8 @@ async function generate() {
         if (route.type === 'service') {
             const data = await client.fetch(`*[_type == "servicePage" && serviceName == $name][0]`, { name: route.name });
             if (data) {
-                routeTitle = `${data.title || route.name} — Merlign`;
-                routeDesc = data.heroSubtitle || routeDesc;
+                routeTitle = data.seoTitle || `${data.title || route.name} — Merlign`;
+                routeDesc = data.seoDescription || data.heroSubtitle || routeDesc;
                 seoContent += `<h1>${data.heroSans || ''} ${data.heroSerif || ''}</h1>`;
                 seoContent += `<p>${data.heroSubtitle || ''}</p>`;
 
@@ -49,8 +49,8 @@ async function generate() {
             }
         } else if (route.type === 'home') {
             const home = await client.fetch(`*[_type == "homePage"][0]`);
-            routeTitle = "Merlign — Cinematic Landing Pages & AI Automatisering";
-            routeDesc = home?.heroSubtitle || "Ik bouw de systemen die het werk van je overnemen. Een website die zelf leads vangt, een dashboard voor direct overzicht, of slimme hulpjes.";
+            routeTitle = home?.seoTitle || "Merlign — Cinematic Landing Pages & AI Automatisering";
+            routeDesc = home?.seoDescription || home?.heroSubtitle || "Ik bouw de systemen die het werk van je overnemen. Een website die zelf leads vangt, een dashboard voor direct overzicht, of slimme hulpjes.";
 
             seoContent += `<h1>Cinematic Landing Pages & AI Automatisering</h1>`;
             seoContent += `<p>${routeDesc}</p>`;
@@ -58,8 +58,9 @@ async function generate() {
                 seoContent += `<div><h3>${f.question}</h3><p>${f.answer}</p></div>`;
             });
         } else if (route.type === 'about') {
-            routeTitle = "Over Merlign — Design & Strategie";
-            routeDesc = "Lees meer over de visie van Merlijn op design en automatisering.";
+            const about = await client.fetch(`*[_type == "aboutPage"][0]`);
+            routeTitle = about?.seoTitle || "Over Merlign — Design & Strategie";
+            routeDesc = about?.seoDescription || "Lees meer over de visie van Merlijn op design en automatisering.";
             seoContent += `<h1>Over Merlign</h1>`;
         }
 

@@ -4,7 +4,24 @@ export default defineType({
     name: 'servicePage',
     title: 'Diensten Pagina',
     type: 'document',
+    groups: [
+        { name: 'seo', title: 'SEO / Zoekmachine' },
+    ],
     fields: [
+        defineField({
+            name: 'seoTitle',
+            title: 'SEO Titel',
+            type: 'string',
+            group: 'seo',
+            description: 'De titel die getoond wordt in Google. Laat leeg om de standaard te gebruiken.'
+        }),
+        defineField({
+            name: 'seoDescription',
+            title: 'SEO Omschrijving',
+            type: 'text',
+            group: 'seo',
+            description: 'De tekst die getoond wordt onder de titel in Google.'
+        }),
         defineField({
             name: 'serviceName',
             title: 'Dienst Naam',

@@ -29,7 +29,7 @@ export async function getFaqs() {
 
 export async function getCases() {
     try {
-        const data = await client.fetch(`*[_type == "caseStudy"]`)
+        const data = await client.fetch(`*[_type == "caseStudy" && showOnWebsite == true]`)
         return Array.isArray(data) ? data : []
     } catch (err) {
         console.error("Sanity getCases Error:", err);

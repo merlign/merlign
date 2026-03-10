@@ -6,6 +6,13 @@ export default defineType({
     type: 'document',
     fields: [
         defineField({
+            name: 'showOnWebsite',
+            title: 'Zichtbaar op website',
+            type: 'boolean',
+            initialValue: true,
+            description: 'Zet dit uit om de case tijdelijk te verbergen.'
+        }),
+        defineField({
             name: 'title',
             title: 'Klantnaam / Projectnaam',
             type: 'string',
@@ -64,7 +71,9 @@ export default defineType({
             name: 'image',
             title: 'Mockup Afbeelding',
             type: 'image',
-            options: { hotspot: true }
+            options: { hotspot: true },
+            readOnly: false,
+            description: 'Upload hier de hoofdafbeelding voor deze case.'
         }),
     ]
 })
