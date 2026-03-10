@@ -13,6 +13,7 @@ export default defineType({
             title: 'SEO Titel',
             type: 'string',
             group: 'seo',
+            initialValue: 'Website laten maken — Merlign', // Default example
             description: 'De titel die getoond wordt in Google. Laat leeg om de standaard te gebruiken.'
         }),
         defineField({
@@ -20,6 +21,7 @@ export default defineType({
             title: 'SEO Omschrijving',
             type: 'text',
             group: 'seo',
+            initialValue: 'Ik bouw high-end maatwerk oplossingen die binnen recordtempo live kunnen staan. Focus op conversie en resultaat.',
             description: 'De tekst die getoond wordt onder de titel in Google.'
         }),
         defineField({

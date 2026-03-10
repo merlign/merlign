@@ -13,6 +13,7 @@ export default defineType({
             title: 'SEO Titel',
             type: 'string',
             group: 'seo',
+            initialValue: 'Over Merlign — Design & Strategie',
             description: 'De titel die getoond wordt in Google. Laat leeg om de standaard te gebruiken.'
         }),
         defineField({
@@ -20,6 +21,7 @@ export default defineType({
             title: 'SEO Omschrijving',
             type: 'text',
             group: 'seo',
+            initialValue: 'Lees meer over de visie van Merlijn op design en automatisering. 10 jaar ervaring gecombineerd met moderne tech.',
             description: 'De tekst die getoond wordt onder de titel in Google.'
         }),
         defineField({

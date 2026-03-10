@@ -49,8 +49,8 @@ async function generate() {
             }
         } else if (route.type === 'home') {
             const home = await client.fetch(`*[_type == "homePage"][0]`);
-            routeTitle = home?.seoTitle || "Merlign — Cinematic Landing Pages & AI Automatisering";
-            routeDesc = home?.seoDescription || home?.heroSubtitle || "Ik bouw de systemen die het werk van je overnemen. Een website die zelf leads vangt, een dashboard voor direct overzicht, of slimme hulpjes.";
+            routeTitle = home?.seoTitle || "Design & AI-Automatisering voor mkb en zzpers";
+            routeDesc = home?.seoDescription || home?.heroSubtitle || "Ik bouw websites die converteren, dashboards die inzicht geven en automatiseringen die tijd besparen. Geen gedoe, gewoon resultaat voor mkb en zzpers.";
 
             seoContent += `<h1>Cinematic Landing Pages & AI Automatisering</h1>`;
             seoContent += `<p>${routeDesc}</p>`;

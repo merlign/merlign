@@ -13,6 +13,7 @@ export default defineType({
             title: 'SEO Titel',
             type: 'string',
             group: 'seo',
+            initialValue: 'Design & AI-Automatisering voor mkb en zzpers',
             description: 'De titel die getoond wordt in Google. Laat leeg om de standaard te gebruiken.'
         }),
         defineField({
@@ -20,6 +21,7 @@ export default defineType({
             title: 'SEO Omschrijving',
             type: 'text',
             group: 'seo',
+            initialValue: 'Ik bouw websites die converteren, dashboards die inzicht geven en automatiseringen die tijd besparen. Geen gedoe, gewoon resultaat voor mkb en zzpers.',
             description: 'De tekst die getoond wordt onder de titel in Google.'
         }),
         defineField({
