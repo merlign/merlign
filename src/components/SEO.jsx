@@ -3,7 +3,7 @@ import { Helmet } from 'react-helmet-async';
 
 const SEO = ({ title, description, path = "", type = "website" }) => {
     const siteName = "Merlign";
-    const fullTitle = `${title} | ${siteName} — Webdesign & AI-automatisering`;
+    const fullTitle = title.includes(siteName) ? title : `${title} | ${siteName}`;
     const url = `https://merlign.com${path}`;
     const ogImage = "https://merlign.com/og-image.png";
 
