@@ -279,9 +279,9 @@ const Cases = () => {
 
                                                     {c.clientLogo && (
                                                         <img
-                                                            src={urlFor(c.clientLogo).height(80).url()}
+                                                            src={urlFor(c.clientLogo).height(120).url()}
                                                             alt={`Logo ${c.title}`}
-                                                            className="h-6 md:h-8 w-auto object-contain opacity-30 grayscale group-hover/quote:opacity-80 group-hover/quote:grayscale-0 transition-all duration-700"
+                                                            className="h-8 md:h-12 w-auto object-contain opacity-30 grayscale group-hover/quote:opacity-80 group-hover/quote:grayscale-0 transition-all duration-700"
                                                         />
                                                     )}
                                                 </div>
