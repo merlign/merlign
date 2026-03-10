@@ -25,13 +25,17 @@ async function generate() {
         console.log(`Processing ${route.path}...`);
 
         let seoContent = '';
+        let routeTitle = 'Merlign — Webdesign & AI-automatisering';
+        let routeDesc = 'Ik bouw websites die converteren, dashboards die inzicht geven en automatiseringen die tijd besparen. Geen gedoe, gewoon resultaat.';
 
         if (route.type === 'service') {
             const data = await client.fetch(`*[_type == "servicePage" && serviceName == $name][0]`, { name: route.name });
             if (data) {
+                routeTitle = `${data.title || route.name} — Merlign`;
+                routeDesc = data.heroSubtitle || routeDesc;
                 seoContent += `<h1>${data.heroSans || ''} ${data.heroSerif || ''}</h1>`;
                 seoContent += `<p>${data.heroSubtitle || ''}</p>`;
-                // Hier voegen we de FAQ content toe voor indexatie
+
                 if (route.name === 'Website') {
                     seoContent += `<h2>Veelgestelde vragen over websites</h2>`;
                     seoContent += `<div><b>Waarom React/Vite?</b> Veel bureaus gebruiken WordPress omdat het makkelijk is voor henzelf, maar het is vaak zwaar en traag...</div>`;
@@ -44,19 +48,38 @@ async function generate() {
                 }
             }
         } else if (route.type === 'home') {
+            const home = await client.fetch(`*[_type == "homePage"][0]`);
+            routeTitle = "Merlign — Cinematic Landing Pages & AI Automatisering";
+            routeDesc = home?.heroSubtitle || "Ik bouw de systemen die het werk van je overnemen. Een website die zelf leads vangt, een dashboard voor direct overzicht, of slimme hulpjes.";
+
             seoContent += `<h1>Cinematic Landing Pages & AI Automatisering</h1>`;
+            seoContent += `<p>${routeDesc}</p>`;
             faqs.forEach(f => {
                 seoContent += `<div><h3>${f.question}</h3><p>${f.answer}</p></div>`;
             });
+        } else if (route.type === 'about') {
+            routeTitle = "Over Merlign — Design & Strategie";
+            routeDesc = "Lees meer over de visie van Merlijn op design en automatisering.";
+            seoContent += `<h1>Over Merlign</h1>`;
         }
 
-        // Injecteer de content in een verborgen container die Google wel ziet
-        const finalHtml = TEMPLATE.replace(
+        // Inject content into body
+        let finalHtml = TEMPLATE.replace(
             '<div id="root"></div>',
             `<div id="root">
                 <div id="seo-content" style="display:none" aria-hidden="true">${seoContent}</div>
             </div>`
         );
+
+        // Inject meta tags into head
+        const metaTags = `
+    <title>${routeTitle}</title>
+    <meta name="description" content="${routeDesc}">
+    <meta property="og:title" content="${routeTitle}">
+    <meta property="og:description" content="${routeDesc}">
+    <link rel="canonical" href="https://merlign.com${route.path === '/' ? '' : route.path}">`;
+
+        finalHtml = finalHtml.replace('</head>', `${metaTags}\n</head>`);
 
         const relativePath = route.path === '/' ? '/index.html' : `${route.path}/index.html`;
         const savePath = path.join(DIST_DIR, relativePath);
