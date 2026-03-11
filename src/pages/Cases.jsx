@@ -8,6 +8,55 @@ import { BrowserMockup, DashboardMockup, AutomationMockup } from '../components/
 import SEO from '../components/SEO';
 import { getCases, urlFor, getCasesPageData } from '../lib/sanity';
 
+const CaseImage = ({ image, title, isScrollable, url }) => {
+    return (
+        <div className="relative group/visual">
+            {url ? (
+                <a href={url} target="_blank" rel="noopener noreferrer" className="block relative">
+                    <div className={`relative w-full aspect-[16/10] bg-[#1A1A1A] rounded-[1.5rem] md:rounded-[2.5rem] border border-white/5 shadow-2xl overflow-hidden group/mockup ${isScrollable ? 'cursor-ns-resize' : ''}`}>
+                        <img
+                            src={image}
+                            alt={title}
+                            className={`w-full h-full object-cover object-top transition-all duration-[6000ms] ease-in-out ${isScrollable ? 'group-hover:object-bottom' : 'group-hover:scale-105'
+                                }`}
+                        />
+                        <div className="absolute inset-0 bg-gradient-to-t from-[#0A0A0A]/40 to-transparent pointer-events-none" />
+                        <div className="absolute top-6 right-6 w-12 h-12 rounded-full bg-black/40 backdrop-blur-md border border-white/10 flex items-center justify-center text-white opacity-0 group-hover:opacity-100 translate-y-2 group-hover:translate-y-0 transition-all duration-500 z-20">
+                            <ArrowRight className="-rotate-45" size={20} />
+                        </div>
+                        {isScrollable && (
+                            <div className="absolute bottom-6 left-1/2 -translate-x-1/2 px-4 py-2 rounded-full bg-black/60 backdrop-blur-md border border-white/10 flex items-center gap-2 text-[9px] font-mono uppercase tracking-[0.2em] text-white/80 opacity-100 group-hover:opacity-0 transition-opacity duration-500 shadow-xl">
+                                <div className="w-1.5 h-1.5 rounded-full bg-primary animate-pulse" />
+                                Hover om te scrollen
+                            </div>
+                        )}
+                    </div>
+                    <div className="absolute -inset-4 bg-primary/5 blur-3xl rounded-[3rem] -z-10 opacity-0 group-hover/visual:opacity-100 transition-opacity duration-1000" />
+                </a>
+            ) : (
+                <div className="relative">
+                    <div className={`relative w-full aspect-[16/10] bg-[#1A1A1A] rounded-[1.5rem] md:rounded-[2.5rem] border border-white/5 shadow-2xl overflow-hidden group/mockup ${isScrollable ? 'cursor-ns-resize' : ''}`}>
+                        <img
+                            src={image}
+                            alt={title}
+                            className={`w-full h-full object-cover object-top transition-all duration-[6000ms] ease-in-out ${isScrollable ? 'group-hover:object-bottom' : 'group-hover:scale-105'
+                                }`}
+                        />
+                        <div className="absolute inset-0 bg-gradient-to-t from-[#0A0A0A]/40 to-transparent pointer-events-none" />
+                        {isScrollable && (
+                            <div className="absolute bottom-6 left-1/2 -translate-x-1/2 px-4 py-2 rounded-full bg-black/60 backdrop-blur-md border border-white/10 flex items-center gap-2 text-[9px] font-mono uppercase tracking-[0.2em] text-white/80 opacity-100 group-hover:opacity-0 transition-opacity duration-500 shadow-xl">
+                                <div className="w-1.5 h-1.5 rounded-full bg-primary animate-pulse" />
+                                Hover om te scrollen
+                            </div>
+                        )}
+                    </div>
+                    <div className="absolute -inset-4 bg-primary/5 blur-3xl rounded-[3rem] -z-10 opacity-0 group-hover/visual:opacity-100 transition-opacity duration-1000" />
+                </div>
+            )}
+        </div>
+    );
+};
+
 const fadeUp = {
     initial: { opacity: 0, y: 30 },
     whileInView: { opacity: 1, y: 0 },
@@ -239,40 +288,12 @@ const Cases = () => {
 
                                         {/* Visuals Column */}
                                         <div className="lg:col-span-7 space-y-12 md:space-y-20 pt-4 lg:pt-0">
-                                            {c.caseUrl ? (
-                                                <a
-                                                    href={c.caseUrl}
-                                                    target="_blank"
-                                                    rel="noopener noreferrer"
-                                                    className="block relative group/visual"
-                                                >
-                                                    <div className="relative w-full aspect-[16/10] bg-[#1A1A1A] rounded-[1.5rem] md:rounded-[2.5rem] border border-white/5 shadow-2xl overflow-hidden group/mockup">
-                                                        <img
-                                                            src={urlFor(c.image)?.url()}
-                                                            alt={c.title}
-                                                            className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105"
-                                                        />
-                                                        <div className="absolute inset-0 bg-gradient-to-t from-[#0A0A0A]/40 to-transparent" />
-                                                        {/* External link indicator */}
-                                                        <div className="absolute top-6 right-6 w-12 h-12 rounded-full bg-black/40 backdrop-blur-md border border-white/10 flex items-center justify-center text-white opacity-0 group-hover:opacity-100 translate-y-2 group-hover:translate-y-0 transition-all duration-500">
-                                                            <ArrowRight className="-rotate-45" size={20} />
-                                                        </div>
-                                                    </div>
-                                                    <div className="absolute -inset-4 bg-primary/5 blur-3xl rounded-[3rem] -z-10 opacity-0 group-hover/visual:opacity-100 transition-opacity duration-1000" />
-                                                </a>
-                                            ) : (
-                                                <div className="relative group/visual">
-                                                    <div className="relative w-full aspect-[16/10] bg-[#1A1A1A] rounded-[1.5rem] md:rounded-[2.5rem] border border-white/5 shadow-2xl overflow-hidden">
-                                                        <img
-                                                            src={urlFor(c.image)?.url()}
-                                                            alt={c.title}
-                                                            className="w-full h-full object-cover"
-                                                        />
-                                                        <div className="absolute inset-0 bg-gradient-to-t from-[#0A0A0A]/40 to-transparent" />
-                                                    </div>
-                                                    <div className="absolute -inset-4 bg-primary/5 blur-3xl rounded-[3rem] -z-10 opacity-0 group-hover/visual:opacity-100 transition-opacity duration-1000" />
-                                                </div>
-                                            )}
+                                            <CaseImage
+                                                image={urlFor(c.image)?.url()}
+                                                title={c.title}
+                                                isScrollable={c.scrollAnimation}
+                                                url={c.caseUrl}
+                                            />
 
                                             <motion.div
                                                 initial={{ opacity: 0, y: 10 }}
