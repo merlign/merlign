@@ -250,7 +250,7 @@ const Cases = () => {
                                                         <img
                                                             src={urlFor(c.image)?.url()}
                                                             alt={c.title}
-                                                            className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110"
+                                                            className="w-full h-full object-cover transition-transform duration-1000 group-hover/visual:scale-110"
                                                         />
                                                         <div className="absolute inset-0 bg-gradient-to-t from-[#0A0A0A]/40 to-transparent" />
                                                         {/* External link indicator */}
@@ -266,7 +266,7 @@ const Cases = () => {
                                                         <img
                                                             src={urlFor(c.image)?.url()}
                                                             alt={c.title}
-                                                            className="w-full h-full object-cover transition-transform duration-1000 hover:scale-110"
+                                                            className="w-full h-full object-cover transition-transform duration-1000 group-hover/visual:scale-110"
                                                         />
                                                         <div className="absolute inset-0 bg-gradient-to-t from-[#0A0A0A]/40 to-transparent" />
                                                     </div>
