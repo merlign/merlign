@@ -96,12 +96,5 @@ export default defineType({
             type: 'url',
             description: 'De URL waar de foto naar moet linken (bijv. het dashboard of de live website).'
         }),
-        defineField({
-            name: 'scrollAnimation',
-            title: 'Auto-Scroll Animatie',
-            type: 'boolean',
-            description: 'Schakel dit in voor lange afbeeldingen om een glijdend effect te creëren op hover.',
-            initialValue: false
-        }),
     ]
 })
