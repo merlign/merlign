@@ -618,14 +618,14 @@ const ContactSection = ({ data }) => {
                     whileInView="whileInView"
                     viewport={{ once: true }}
                     variants={staggerContainer}
-                    className="text-left md:text-center space-y-10 md:space-y-16 mb-12 md:mb-20 w-full"
+                    className="text-center space-y-10 md:space-y-16 mb-12 md:mb-20 w-full"
                 >
-                    <SectionLabel className="md:justify-center">Plan Je Scan</SectionLabel>
+                    <SectionLabel className="justify-center">Plan Je Scan</SectionLabel>
                     <motion.h2 variants={fadeUp} className="font-sans font-bold text-[#F2F0E9] leading-tight tracking-tighter text-h2">
                         {headlineSans}{' '}
                         <span className="text-primary font-drama font-normal text-h2-serif">{headlineSerif}</span>
                     </motion.h2>
-                    <motion.p variants={fadeUp} className="font-sans text-[#F2F0E9]/85 text-base md:text-xl font-light leading-[1.8] italic max-w-3xl mx-auto border-b-2 border-white/5 pb-8 md:pb-10 text-center">
+                    <motion.p variants={fadeUp} className="font-sans text-[#F2F0E9]/85 text-base md:text-xl font-light leading-[1.8] italic max-w-3xl mx-auto border-b-2 border-white/5 pb-8 md:pb-10">
                         {subtitle}
                     </motion.p>
                 </motion.div>
