@@ -246,38 +246,30 @@ const Cases = () => {
                                                     rel="noopener noreferrer"
                                                     className="block relative group/visual"
                                                 >
-                                                    {c.category === 'websites' ? (
-                                                        <BrowserMockup image={urlFor(c.image)?.url()} title={c.title} />
-                                                    ) : (
-                                                        <div className="relative w-full aspect-[16/10] bg-[#1A1A1A] rounded-[1.5rem] md:rounded-[2.5rem] border border-white/5 shadow-2xl overflow-hidden group/mockup">
-                                                            <img
-                                                                src={urlFor(c.image)?.url()}
-                                                                alt={c.title}
-                                                                className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105"
-                                                            />
-                                                            <div className="absolute inset-0 bg-gradient-to-t from-[#0A0A0A]/40 to-transparent" />
-                                                            {/* External link indicator */}
-                                                            <div className="absolute top-6 right-6 w-12 h-12 rounded-full bg-black/40 backdrop-blur-md border border-white/10 flex items-center justify-center text-white opacity-0 group-hover:opacity-100 translate-y-2 group-hover:translate-y-0 transition-all duration-500">
-                                                                <ArrowRight className="-rotate-45" size={20} />
-                                                            </div>
+                                                    <div className="relative w-full aspect-[16/10] bg-[#1A1A1A] rounded-[1.5rem] md:rounded-[2.5rem] border border-white/5 shadow-2xl overflow-hidden group/mockup">
+                                                        <img
+                                                            src={urlFor(c.image)?.url()}
+                                                            alt={c.title}
+                                                            className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105"
+                                                        />
+                                                        <div className="absolute inset-0 bg-gradient-to-t from-[#0A0A0A]/40 to-transparent" />
+                                                        {/* External link indicator */}
+                                                        <div className="absolute top-6 right-6 w-12 h-12 rounded-full bg-black/40 backdrop-blur-md border border-white/10 flex items-center justify-center text-white opacity-0 group-hover:opacity-100 translate-y-2 group-hover:translate-y-0 transition-all duration-500">
+                                                            <ArrowRight className="-rotate-45" size={20} />
                                                         </div>
-                                                    )}
+                                                    </div>
                                                     <div className="absolute -inset-4 bg-primary/5 blur-3xl rounded-[3rem] -z-10 opacity-0 group-hover/visual:opacity-100 transition-opacity duration-1000" />
                                                 </a>
                                             ) : (
                                                 <div className="relative group/visual">
-                                                    {c.category === 'websites' ? (
-                                                        <BrowserMockup image={urlFor(c.image)?.url()} title={c.title} />
-                                                    ) : (
-                                                        <div className="relative w-full aspect-[16/10] bg-[#1A1A1A] rounded-[1.5rem] md:rounded-[2.5rem] border border-white/5 shadow-2xl overflow-hidden">
-                                                            <img
-                                                                src={urlFor(c.image)?.url()}
-                                                                alt={c.title}
-                                                                className="w-full h-full object-cover"
-                                                            />
-                                                            <div className="absolute inset-0 bg-gradient-to-t from-[#0A0A0A]/40 to-transparent" />
-                                                        </div>
-                                                    )}
+                                                    <div className="relative w-full aspect-[16/10] bg-[#1A1A1A] rounded-[1.5rem] md:rounded-[2.5rem] border border-white/5 shadow-2xl overflow-hidden">
+                                                        <img
+                                                            src={urlFor(c.image)?.url()}
+                                                            alt={c.title}
+                                                            className="w-full h-full object-cover"
+                                                        />
+                                                        <div className="absolute inset-0 bg-gradient-to-t from-[#0A0A0A]/40 to-transparent" />
+                                                    </div>
                                                     <div className="absolute -inset-4 bg-primary/5 blur-3xl rounded-[3rem] -z-10 opacity-0 group-hover/visual:opacity-100 transition-opacity duration-1000" />
                                                 </div>
                                             )}
