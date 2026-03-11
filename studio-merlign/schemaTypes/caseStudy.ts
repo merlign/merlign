@@ -27,6 +27,12 @@ export default defineType({
             },
         }),
         defineField({
+            name: 'logoUrl',
+            title: 'Logo Link URL',
+            type: 'url',
+            description: 'De URL waar het logo naar moet linken (bijv. de website van de klant).'
+        }),
+        defineField({
             name: 'category',
             title: 'Categorie',
             type: 'string',
@@ -78,11 +84,17 @@ export default defineType({
         }),
         defineField({
             name: 'image',
-            title: 'Mockup Afbeelding',
+            title: 'Hoofdafbeelding / Foto',
             type: 'image',
             options: { hotspot: true },
             readOnly: false,
-            description: 'Upload hier de hoofdafbeelding voor deze case.'
+            description: 'Upload hier de hoofdafbeelding of foto voor deze case.'
+        }),
+        defineField({
+            name: 'caseUrl',
+            title: 'Project Link URL',
+            type: 'url',
+            description: 'De URL waar de foto naar moet linken (bijv. het dashboard of de live website).'
         }),
     ]
 })
