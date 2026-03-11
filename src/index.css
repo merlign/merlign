@@ -13,8 +13,22 @@
   background-color: var(--background);
 }
 
+html,
+body,
 * {
   cursor: crosshair;
+}
+
+a,
+button,
+[role="button"],
+.interactive,
+a *,
+button *,
+input,
+select,
+textarea {
+  cursor: pointer;
 }
 
 body {
