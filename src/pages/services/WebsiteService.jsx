@@ -68,8 +68,8 @@ const WebsiteService = () => {
     return (
         <div className="bg-[var(--background)] min-h-screen">
             <SEO
-                title={data?.seoTitle || "Maatwerk website laten maken"}
-                description={data?.seoDescription || "Een website die écht voor je werkt. Ik bouw high-end sites die razendsnel zijn en meer leads opleveren. Meestal al binnen 72 uur online."}
+                title={data?.seoTitle || "High-end websites laten maken voor ondernemers | Merlign"}
+                description={data?.seoDescription || "Ik bouw websites die niet alleen mooi zijn, maar echt voor je werken. Razendsnel, SEO-geoptimaliseerd en gericht op conversie voor mkb en zzpers."}
                 path="/website"
             />
             <AnimatePresence mode="wait">
