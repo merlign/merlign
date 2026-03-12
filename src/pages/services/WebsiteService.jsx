@@ -68,8 +68,8 @@ const WebsiteService = () => {
     return (
         <div className="bg-[var(--background)] min-h-screen">
             <SEO
-                title={data?.seoTitle || "High-end websites laten maken voor ondernemers | Merlign"}
-                description={data?.seoDescription || "Ik bouw websites die niet alleen mooi zijn, maar echt voor je werken. Razendsnel, SEO-geoptimaliseerd en gericht op conversie voor mkb en zzpers."}
+                title={data?.seoTitle || "Een nieuwe website in 72 uur | Webdesign door Merlign"}
+                description={data?.seoDescription || "Je wacht al te lang op die nieuwe site. Ik bouw een strakke website die écht verkoopt en binnen 3 dagen live is. Geen gedoe, direct resultaat voor jouw business."}
                 path="/website"
             />
             <AnimatePresence mode="wait">

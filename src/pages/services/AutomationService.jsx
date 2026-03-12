@@ -68,8 +68,8 @@ const AutomationService = () => {
     return (
         <div className="bg-[var(--background)] min-h-screen">
             <SEO
-                title={data?.seoTitle || "AI-automatisering & workflow optimalisatie | Merlign"}
-                description={data?.seoDescription || "Bespaar uren per week. Ik automatiseer je bedrijfsprocessen met slimme AI-koppelingen zodat jij en je team weer kunnen focussen op groei."}
+                title={data?.seoTitle || "Ik zet je workflow op autopilot | AI-Automatisering"}
+                description={data?.seoDescription || "Ik neem je saaie, herhalende werk uit handen met slimme AI-koppelingen. Van administratie tot leads: ik bouw systemen die voor jóú werken terwijl jij onderneemt."}
                 path="/automatisering"
             />
             <AnimatePresence mode="wait">

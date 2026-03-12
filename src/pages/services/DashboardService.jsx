@@ -67,8 +67,8 @@ const DashboardService = () => {
     return (
         <div className="bg-[var(--background)] min-h-screen">
             <SEO
-                title={data?.seoTitle || "Maatwerk dashboards & data-insights voor MKB | Merlign"}
-                description={data?.seoDescription || "Krijg grip op je cijfers. Ik bouw dashboards die al je data van Ads, CRM en Sales samenbrengen in één overzichtelijk en actueel dashboard."}
+                title={data?.seoTitle || "Al je cijfers in één dashboard | Ik geef je direct Inzicht"}
+                description={data?.seoDescription || "Van omzet tot ads: ik bouw een simpel dashboard waardoor je precies ziet waar je winst maakt. Stop met gokken en krijg grip op je cijfers."}
                 path="/dashboard"
             />
             <AnimatePresence mode="wait">
