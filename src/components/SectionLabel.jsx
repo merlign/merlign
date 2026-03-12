@@ -13,7 +13,7 @@ const SectionLabel = ({ children, className = "" }) => (
         variants={fadeUp}
         className={`flex items-center ${className}`}
     >
-        <span className="font-mono text-[14px] md:text-[15px] uppercase tracking-[0.4em] text-[#F2F0E9]/60 font-bold italic">
+        <span className="font-mono text-[14px] md:text-[15px] uppercase tracking-[0.4em] text-[var(--text)]/60 font-bold italic">
             {children}
         </span>
     </motion.div>

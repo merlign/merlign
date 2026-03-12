@@ -65,7 +65,7 @@ const DashboardService = () => {
     })) : staticProcess;
 
     return (
-        <div className="bg-[#0A0A0A] min-h-screen">
+        <div className="bg-[var(--background)] min-h-screen">
             <SEO
                 title={data?.seoTitle || "Business dashboards & data inzicht"}
                 description={data?.seoDescription || "Stop met gissen naar je cijfers. Ik bouw dashboards die al je data van Ads, CRM en Sales samenbrengen in één duidelijk overzicht."}
@@ -78,7 +78,7 @@ const DashboardService = () => {
                         initial={{ opacity: 1 }}
                         exit={{ opacity: 0 }}
                         transition={{ duration: 0.5 }}
-                        className="fixed inset-0 bg-[#0A0A0A] z-[100] flex items-center justify-center page-loader"
+                        className="fixed inset-0 bg-[var(--background)] z-[100] flex items-center justify-center page-loader"
                     >
                         <motion.div
                             animate={{ opacity: [0.3, 0.6, 0.3] }}
@@ -111,12 +111,12 @@ const DashboardService = () => {
                                     <SectionLabel>Dashboard</SectionLabel>
                                     <motion.h1
                                         variants={fadeUp}
-                                        className="font-sans font-bold text-[#F2F0E9] text-h1"
+                                        className="font-sans font-bold text-[var(--text)] text-h1"
                                     >
                                         {heroSans}{' '}
                                         <span className="text-primary font-drama font-normal text-h1-serif">{heroSerif}</span>
                                     </motion.h1>
-                                    <motion.p variants={fadeUp} className="font-sans text-[#F2F0E9]/85 text-base md:text-xl font-light italic leading-[1.8] max-w-2xl">
+                                    <motion.p variants={fadeUp} className="font-sans text-[var(--text)]/85 text-base md:text-xl font-light italic leading-[1.8] max-w-2xl">
                                         {heroSubtitle}
                                     </motion.p>
                                     <motion.div variants={fadeUp} className="pt-4 text-left">
@@ -131,11 +131,11 @@ const DashboardService = () => {
                                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 md:gap-32 items-center">
                                     <div className="space-y-10 md:space-y-16 order-2 lg:order-1">
                                         <div className="space-y-6 md:space-y-10">
-                                            <h2 className="font-sans font-bold text-[#F2F0E9] text-h2">
+                                            <h2 className="font-sans font-bold text-[var(--text)] text-h2">
                                                 {data?.whyHeadlineSans || "Waarom ondernemers zonder"}{' '}
                                                 <span className="text-primary font-drama font-normal text-h2-serif">{data?.whyHeadlineSerif || "dashboard geld laten liggen."}</span>
                                             </h2>
-                                            <p className="font-sans text-[#F2F0E9]/85 text-base md:text-2xl font-light italic leading-[1.8]">
+                                            <p className="font-sans text-[var(--text)]/85 text-base md:text-2xl font-light italic leading-[1.8]">
                                                 {data?.whySubtitle || "Je kunt je bedrijf niet sturen als je niet weet wat er gebeurt. Een dashboard geeft je in één oogopslag wat je nodig hebt om de juiste beslissingen te nemen."}
                                             </p>
                                         </div>
@@ -149,8 +149,8 @@ const DashboardService = () => {
                                                     transition={{ delay: i * 0.1 }}
                                                     className="space-y-4"
                                                 >
-                                                    <h4 className="text-lg md:text-xl font-sans font-bold text-[#F2F0E9] tracking-tighter">{item.title}</h4>
-                                                    <p className="font-sans text-[#F2F0E9]/85 leading-[1.8] italic text-sm md:text-base whitespace-pre-wrap">{item.desc}</p>
+                                                    <h4 className="text-lg md:text-xl font-sans font-bold text-[var(--text)] tracking-tighter">{item.title}</h4>
+                                                    <p className="font-sans text-[var(--text)]/85 leading-[1.8] italic text-sm md:text-base whitespace-pre-wrap">{item.desc}</p>
                                                 </motion.div>
                                             ))}
                                         </div>
@@ -160,12 +160,12 @@ const DashboardService = () => {
                                         initial={{ opacity: 0, scale: 0.9 }}
                                         whileInView={{ opacity: 1, scale: 1 }}
                                         viewport={{ once: true }}
-                                        className="aspect-square bg-[#1A1A1A]/40 backdrop-blur-xl border border-white/5 rounded-[2.5rem] md:rounded-[4rem] relative overflow-hidden flex items-center justify-center p-8 md:p-16 shadow-sm hover:shadow-2xl transition-all duration-1000 order-1 lg:order-2"
+                                        className="aspect-square bg-[var(--paper)]/40 backdrop-blur-xl border border-[var(--border)] rounded-[2.5rem] md:rounded-[4rem] relative overflow-hidden flex items-center justify-center p-8 md:p-16 shadow-sm hover:shadow-2xl transition-all duration-1000 order-1 lg:order-2"
                                     >
                                         <div className="absolute top-0 right-0 w-80 h-80 bg-primary/20 rounded-full blur-[140px] translate-x-1/2 -translate-y-1/2 opacity-30" />
-                                        <div className="w-full h-auto border border-white/5 rounded-[2rem] md:rounded-[3rem] bg-[#1A1A1A]/60 backdrop-blur-3xl shadow-2xl flex flex-col p-8 md:p-12 space-y-10 md:space-y-16 relative group hover:border-primary/20 transition-all duration-1000">
+                                        <div className="w-full h-auto border border-[var(--border)] rounded-[2rem] md:rounded-[3rem] bg-[var(--paper)]/60 backdrop-blur-3xl shadow-2xl flex flex-col p-8 md:p-12 space-y-10 md:space-y-16 relative group hover:border-primary/20 transition-all duration-1000">
                                             <div className="flex justify-between items-center">
-                                                <div className="h-6 w-32 md:w-48 bg-white/5 rounded-full" />
+                                                <div className="h-6 w-32 md:w-48 bg-primary/5 rounded-full" />
                                                 <Activity size={24} className="text-primary animate-pulse" />
                                             </div>
                                             <div className="flex items-end gap-2 md:gap-3 h-32 md:h-64">
@@ -183,18 +183,18 @@ const DashboardService = () => {
                                                     </motion.div>
                                                 ))}
                                             </div>
-                                            <div className="grid grid-cols-3 gap-4 md:gap-8 border-t border-white/5 pt-10">
+                                            <div className="grid grid-cols-3 gap-4 md:gap-8 border-t border-[var(--border)] pt-10">
                                                 <div className="space-y-3">
-                                                    <div className="h-2 w-1/2 bg-white/5 rounded-full" />
+                                                    <div className="h-2 w-1/2 bg-primary/5 rounded-full" />
                                                     <div className="h-4 w-full bg-primary/20 rounded-full" />
                                                 </div>
                                                 <div className="space-y-3">
-                                                    <div className="h-2 w-1/2 bg-white/5 rounded-full" />
-                                                    <div className="h-4 w-full bg-white/5 rounded-full" />
+                                                    <div className="h-2 w-1/2 bg-primary/5 rounded-full" />
+                                                    <div className="h-4 w-full bg-primary/5 rounded-full" />
                                                 </div>
                                                 <div className="space-y-3">
-                                                    <div className="h-2 w-1/2 bg-white/5 rounded-full" />
-                                                    <div className="h-4 w-full bg-white/5 rounded-full" />
+                                                    <div className="h-2 w-1/2 bg-primary/5 rounded-full" />
+                                                    <div className="h-4 w-full bg-primary/5 rounded-full" />
                                                 </div>
                                             </div>
                                         </div>
@@ -205,7 +205,7 @@ const DashboardService = () => {
                                 <div className="space-y-16 md:space-y-24">
                                     <div className="text-center space-y-8">
                                         <SectionLabel className="justify-center">Hoe het werkt</SectionLabel>
-                                        <h2 className="font-sans font-bold text-[#F2F0E9] text-h2">
+                                        <h2 className="font-sans font-bold text-[var(--text)] text-h2">
                                             Zo werkt <span className="text-primary font-drama font-normal text-h2-serif">het.</span>
                                         </h2>
                                     </div>
@@ -217,7 +217,7 @@ const DashboardService = () => {
                                                 whileInView={{ opacity: 1, y: 0 }}
                                                 viewport={{ once: true }}
                                                 transition={{ delay: i * 0.1 }}
-                                                className="p-10 rounded-[2.5rem] bg-[#1A1A1A]/40 border border-white/5 space-y-8 group hover:bg-[#1A1A1A]/60 transition-all duration-700"
+                                                className="p-10 rounded-[2.5rem] bg-[var(--paper)]/40 border border-[var(--border)] space-y-8 group hover:bg-[var(--paper)]/60 transition-all duration-700"
                                             >
                                                 <div className="flex justify-between items-start">
                                                     <div className="w-14 h-14 rounded-2xl bg-primary/10 flex items-center justify-center text-primary group-hover:bg-primary group-hover:text-white transition-all duration-700 transform group-hover:scale-110 group-hover:rotate-3">
@@ -226,8 +226,8 @@ const DashboardService = () => {
                                                     <span className="font-mono text-4xl font-black text-white/5 group-hover:text-primary/10 transition-colors uppercase italic">{item.step}</span>
                                                 </div>
                                                 <div className="space-y-4">
-                                                    <h3 className="text-xl md:text-2xl font-sans font-bold text-[#F2F0E9] tracking-tighter">{item.title}</h3>
-                                                    <p className="font-sans text-[#F2F0E9]/85 leading-[1.8] italic">{item.desc}</p>
+                                                    <h3 className="text-xl md:text-2xl font-sans font-bold text-[var(--text)] tracking-tighter">{item.title}</h3>
+                                                    <p className="font-sans text-[var(--text)]/85 leading-[1.8] italic">{item.desc}</p>
                                                 </div>
                                             </motion.div>
                                         ))}
@@ -235,7 +235,7 @@ const DashboardService = () => {
                                 </div>
                                 <FAQ cmsFaqs={data?.faqs} />
                                 {/* Bottom CTA */}
-                                <div id="contact" className="py-20 md:py-32 border-t border-white/5 flex flex-col items-center">
+                                <div id="contact" className="py-20 md:py-32 border-t border-[var(--border)] flex flex-col items-center">
                                     <motion.div
                                         initial="initial"
                                         whileInView="whileInView"
@@ -245,12 +245,12 @@ const DashboardService = () => {
                                     >
                                         <SectionLabel className="md:justify-center">Start Vandaag</SectionLabel>
                                         <a href="#contact" className="group flex flex-col items-center">
-                                            <h2 className="font-sans font-bold text-[#F2F0E9] md:text-center text-h2">
+                                            <h2 className="font-sans font-bold text-[var(--text)] md:text-center text-h2">
                                                 {data?.ctaHeadlineSans || "Klaar om te"}{' '}
                                                 <span className="text-primary font-drama font-normal text-h2-serif">{data?.ctaHeadlineSerif || "sturen op cijfers?"}</span>
                                             </h2>
                                         </a>
-                                        <motion.p variants={fadeUp} className="font-sans text-[#F2F0E9]/85 text-base md:text-xl font-light leading-[1.8] italic max-w-3xl mx-auto border-b-2 border-white/5 pb-10 md:pb-12 text-center">
+                                        <motion.p variants={fadeUp} className="font-sans text-[var(--text)]/85 text-base md:text-xl font-light leading-[1.8] italic max-w-3xl mx-auto border-b-2 border-[var(--border)] pb-10 md:pb-12 text-center">
                                             {data?.ctaSubtitle || "Vraag een gratis check aan. In 20 minuten weet je wat een dashboard jou oplevert."}
                                         </motion.p>
                                     </motion.div>
@@ -298,11 +298,11 @@ const FAQ = ({ cmsFaqs }) => {
     const [openIndex, setOpenIndex] = React.useState(0);
 
     return (
-        <section className="py-20 md:py-32 border-t border-white/5">
+        <section className="py-20 md:py-32 border-t border-[var(--border)]">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 md:gap-20">
                 <div className="space-y-6">
                     <SectionLabel>FAQ</SectionLabel>
-                    <h2 className="font-sans font-bold text-[#F2F0E9] leading-tight tracking-tighter text-h2">
+                    <h2 className="font-sans font-bold text-[var(--text)] leading-tight tracking-tighter text-h2">
                         Veelgestelde vragen over <span className="text-primary font-drama font-normal text-h2-serif">dashboards.</span>
                     </h2>
                 </div>
@@ -311,16 +311,16 @@ const FAQ = ({ cmsFaqs }) => {
                     {questions.map((item, i) => (
                         <div
                             key={i}
-                            className={`rounded-[1.5rem] border transition-all duration-500 overflow-hidden ${openIndex === i ? 'bg-[#1A1A1A]/80 border-primary/20 shadow-sm' : 'bg-white/[0.01] border-white/5 hover:border-white/10'}`}
+                            className={`rounded-[1.5rem] border transition-all duration-500 overflow-hidden ${openIndex === i ? 'bg-[var(--paper)]/80 border-primary/20 shadow-sm' : 'bg-[var(--text)]/[0.01] border-[var(--border)] hover:border-[var(--text)]/10'}`}
                         >
                             <button
                                 onClick={() => setOpenIndex(openIndex === i ? -1 : i)}
                                 className="w-full px-6 py-6 flex items-center justify-between text-left group"
                             >
-                                <span className={`text-base md:text-lg font-sans font-bold transition-colors ${openIndex === i ? 'text-primary' : 'text-[#F2F0E9]/70'}`}>
+                                <span className={`text-base md:text-lg font-sans font-bold transition-colors ${openIndex === i ? 'text-primary' : 'text-[var(--text)]/70'}`}>
                                     {item.q}
                                 </span>
-                                <ChevronDown size={14} className={`transition-transform duration-500 ${openIndex === i ? 'rotate-180 text-primary' : 'text-[#F2F0E9]/20'}`} />
+                                <ChevronDown size={14} className={`transition-transform duration-500 ${openIndex === i ? 'rotate-180 text-primary' : 'text-[var(--text)]/20'}`} />
                             </button>
                             <AnimatePresence>
                                 {openIndex === i && (
@@ -330,7 +330,7 @@ const FAQ = ({ cmsFaqs }) => {
                                         exit={{ height: 0, opacity: 0 }}
                                         transition={{ duration: 0.4, ease: "circOut" }}
                                     >
-                                        <div className="px-6 pb-6 text-[#F2F0E9]/85 text-base font-sans font-light italic border-t border-white/5 pt-4 whitespace-pre-wrap">
+                                        <div className="px-6 pb-6 text-[var(--text)]/85 text-base font-sans font-light italic border-t border-[var(--border)] pt-4 whitespace-pre-wrap">
                                             {item.a}
                                         </div>
                                     </motion.div>

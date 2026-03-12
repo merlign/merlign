@@ -47,15 +47,15 @@ const Hero = ({ data }) => {
     const heroCtaAlt = data?.heroCtaAlt || "Bekijk diensten";
 
     return (
-        <section ref={heroRef} className="relative h-[100dvh] flex items-center bg-[#0A0A0A] overflow-hidden">
+        <section ref={heroRef} className="relative h-[100dvh] flex items-center bg-[var(--background)] overflow-hidden">
             {/* Grain Purple Gradient Background */}
-            <div className="absolute inset-0 z-0 bg-[#0A0A0A]">
+            <div className="absolute inset-0 z-0 bg-[var(--background)]">
                 <div className="absolute top-[-20%] right-[-10%] w-[70vw] h-[70vw] bg-primary/10 rounded-full blur-[140px]" />
                 <div className="absolute bottom-[-20%] left-[-10%] w-[60vw] h-[60vw] bg-primary/5 rounded-full blur-[120px]" />
             </div>
 
-            <div className="absolute inset-0 z-10 bg-gradient-to-tr from-primary/[0.04] via-transparent to-primary/[0.02]" />
-            <div className="absolute inset-0 z-10 bg-gradient-to-t from-[#0A0A0A] via-transparent to-transparent opacity-100" />
+            <div className="absolute inset-0 z-10 bg-gradient-to-tr from-primary/[0.05] via-transparent to-primary/[0.02]" />
+            <div className="absolute inset-0 z-10 bg-gradient-to-t from-[var(--background)] via-transparent to-transparent opacity-100" />
 
             <div className="relative z-20 w-full content-max-width section-px pt-24 md:pt-40">
                 <motion.div
@@ -73,7 +73,7 @@ const Hero = ({ data }) => {
                     </motion.p>
                     <motion.h1
                         variants={fadeUp}
-                        className="font-sans font-bold text-[#F2F0E9] text-h1"
+                        className="font-sans font-bold text-[var(--text)] text-h1"
                     >
                         {heroSans}{' '}
                         <span className="text-primary font-drama font-normal text-h1-serif">{heroSerif}</span>
@@ -82,7 +82,7 @@ const Hero = ({ data }) => {
                         variants={fadeUp}
                         className="flex flex-col md:flex-row items-start md:items-center gap-12"
                     >
-                        <p className="font-sans text-[#F2F0E9]/85 text-base md:text-xl font-light max-w-2xl leading-[1.7] italic">
+                        <p className="font-sans text-[var(--text)]/85 text-base md:text-xl font-light max-w-2xl leading-[1.7] italic">
                             {heroSubtitle}
                         </p>
                     </motion.div>
@@ -94,7 +94,7 @@ const Hero = ({ data }) => {
                             <span className="relative z-10 text-[12px] md:text-[14px] font-black italic tracking-[0.3em] uppercase">{heroCta}</span>
                             <div className="btn-bg bg-primary" />
                         </a>
-                        <a href="#wat-ik-bouw" className="btn-magnetic group bg-transparent border border-white/10 text-[#F2F0E9] px-10 md:px-12 py-5 md:py-6 rounded-full w-full sm:w-auto">
+                        <a href="#wat-ik-bouw" className="btn-magnetic group bg-transparent border border-[var(--border)] text-[var(--text)] px-10 md:px-12 py-5 md:py-6 rounded-full w-full sm:w-auto">
                             <span className="relative z-10 text-[12px] md:text-[14px] font-black italic tracking-[0.3em] uppercase">{heroCtaAlt}</span>
                             <div className="btn-bg bg-primary" />
                         </a>
@@ -113,7 +113,9 @@ const HomeAbout = ({ data }) => {
     const para2 = data?.aboutPara2 || "Ik heb een allergie voor traagheid en onnodige complexiteit. Geen eindeloze meetings, geen vaag advies. Ik bouw geen websites, ik bouw tools die je werk uit handen nemen omdat ik stop met handmatige gepruts. Dit is geen tijdprobleem, dit is een systeemprobleem.";
 
     return (
-        <section id="over-mij" className="section-py relative overflow-hidden border-y border-white/5 bg-[#0A0A0A]">
+        <section id="over-mij" className="section-py relative overflow-hidden border-y border-[var(--border)] bg-[var(--background)]">
+            <div className="absolute top-0 right-0 w-[50vw] h-[50vw] bg-primary/[0.04] rounded-full blur-[120px] -translate-y-1/2 translate-x-1/2 pointer-events-none" />
+            <div className="absolute bottom-0 left-0 w-[40vw] h-[40vw] bg-primary/[0.03] rounded-full blur-[100px] translate-y-1/2 -translate-x-1/4 pointer-events-none" />
             <div className="content-max-width section-px grid grid-cols-1 lg:grid-cols-2 gap-16 md:gap-32 items-center">
                 <motion.div
                     initial={{ opacity: 0, scale: 0.95 }}
@@ -122,7 +124,7 @@ const HomeAbout = ({ data }) => {
                     className="relative group lg:ml-0 order-first lg:order-none"
                 >
                     {/* The "Portal" Background */}
-                    <div className="aspect-[4/5] w-full max-w-[280px] md:max-w-[480px] mx-auto lg:mx-0 rounded-[2.5rem] overflow-visible bg-[#1A1A1A]/40 border border-white/5 relative shadow-2xl transition-all duration-700 group-hover:bg-[#1A1A1A]/60">
+                    <div className="aspect-[4/5] w-full max-w-[280px] md:max-w-[480px] mx-auto lg:mx-0 rounded-[2.5rem] overflow-visible bg-[var(--paper)]/40 border-[var(--border)] relative shadow-2xl transition-all duration-700 group-hover:bg-[var(--paper)]/60">
                         {/* Blueprint Grid Interior */}
                         <div className="absolute inset-8 rounded-[1.5rem] border border-primary/10 opacity-20 bg-[linear-gradient(to_right,#6366F1_1px,transparent_1px),linear-gradient(to_bottom,#6366F1_1px,transparent_1px)] bg-[size:20px_20px]" />
 
@@ -137,7 +139,7 @@ const HomeAbout = ({ data }) => {
                         />
 
                         {/* Glassmorphic "Technical" Overlay */}
-                        <div className="absolute inset-0 rounded-[2.5rem] border border-white/5 pointer-events-none z-20" />
+                        <div className="absolute inset-0 rounded-[2.5rem] border border-[var(--border)] pointer-events-none z-20" />
                     </div>
                 </motion.div>
 
@@ -151,25 +153,25 @@ const HomeAbout = ({ data }) => {
                     <SectionLabel>Wie ben ik?</SectionLabel>
                     <motion.h2
                         variants={fadeUp}
-                        className="font-sans font-bold text-[#F2F0E9] text-h2"
+                        className="font-sans font-bold text-[var(--text)] text-h2"
                     >
                         {headlineSans}{' '}
                         <span className="text-primary font-drama font-normal text-h2-serif">{headlineSerif}</span>
                     </motion.h2>
                     <div className="space-y-6">
-                        <p className="font-sans text-[#F2F0E9]/85 text-base md:text-xl font-light italic leading-[1.8] max-w-2xl">
+                        <p className="font-sans text-[var(--text)]/85 text-base md:text-xl font-light italic leading-[1.8] max-w-2xl">
                             {para1}
                         </p>
-                        <p className="font-sans text-[#F2F0E9]/85 text-base md:text-lg font-light leading-[1.8] max-w-2xl italic">
+                        <p className="font-sans text-[var(--text)]/85 text-base md:text-lg font-light leading-[1.8] max-w-2xl italic">
                             {para2}
                         </p>
                     </div>
                     <Link
                         to="/over-mij"
-                        className="inline-flex items-center gap-6 group text-[#F2F0E9]/60 hover:text-[#F2F0E9] transition-all uppercase tracking-[0.4em] font-mono font-black text-xs md:text-sm"
+                        className="inline-flex items-center gap-6 group text-[var(--text)]/60 hover:text-[var(--text)] transition-all uppercase tracking-[0.4em] font-mono font-black text-xs md:text-sm"
                     >
                         Lees mijn verhaal
-                        <div className="w-10 h-10 md:w-12 md:h-12 rounded-full border border-white/10 flex items-center justify-center group-hover:border-primary group-hover:bg-primary transition-all duration-500">
+                        <div className="w-10 h-10 md:w-12 md:h-12 rounded-full border-[var(--text)]/10 flex items-center justify-center group-hover:border-primary group-hover:bg-primary transition-all duration-500">
                             <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform group-hover:text-white" />
                         </div>
                     </Link>
@@ -234,7 +236,9 @@ const Services = ({ cmsServices, data }) => {
     });
 
     return (
-        <section id="wat-ik-bouw" className="py-32 bg-[#141414] relative overflow-hidden border-t border-white/5">
+        <section id="wat-ik-bouw" className="py-32 bg-[var(--paper)] relative overflow-hidden border-t border-[var(--border)]">
+            <div className="absolute top-1/2 left-0 w-[60vw] h-[60vw] bg-primary/[0.05] rounded-full blur-[140px] -translate-y-1/2 -translate-x-1/2 pointer-events-none" />
+            <div className="absolute bottom-0 right-0 w-[40vw] h-[40vw] bg-primary/[0.03] rounded-full blur-[100px] pointer-events-none" />
             {/* 2D Background Artifacts */}
             <div className="absolute inset-0 pointer-events-none overflow-hidden">
                 {[...Array(6)].map((_, i) => (
@@ -265,11 +269,11 @@ const Services = ({ cmsServices, data }) => {
                 >
                     <div className="space-y-8 md:space-y-12">
                         <SectionLabel>Diensten</SectionLabel>
-                        <motion.h2 variants={fadeUp} className="font-sans font-bold leading-tight text-[#F2F0E9] tracking-tighter text-h2">
+                        <motion.h2 variants={fadeUp} className="font-sans font-bold leading-tight text-[var(--text)] tracking-tighter text-h2">
                             {headlineSans} <span className="text-primary font-drama font-normal text-h2-serif">{headlineSerif}</span>
                         </motion.h2>
                     </div>
-                    <motion.p variants={fadeUp} className="font-sans text-[#F2F0E9]/85 max-w-md text-lg md:text-2xl pb-4 md:pb-6 italic leading-[1.8]">
+                    <motion.p variants={fadeUp} className="font-sans text-[var(--text)]/85 max-w-md text-lg md:text-2xl pb-4 md:pb-6 italic leading-[1.8]">
                         {subtitle}
                     </motion.p>
                 </motion.div>
@@ -284,7 +288,7 @@ const Services = ({ cmsServices, data }) => {
                             transition={{ duration: 0.8, delay: i * 0.15 }}
                             className="group relative h-full"
                         >
-                            <div className="bg-[#1A1A1A]/40 backdrop-blur-xl p-8 md:p-10 rounded-[2.5rem] border border-white/5 group-hover:border-primary/40 group-hover:bg-[#1A1A1A]/60 transition-all duration-700 flex flex-col h-full cursor-pointer shadow-sm hover:shadow-2xl overflow-hidden relative">
+                            <div className="bg-[var(--paper)]/40 backdrop-blur-xl p-8 md:p-10 rounded-[2.5rem] border border-[var(--border)] group-hover:border-primary/40 group-hover:bg-[var(--paper)]/60 transition-all duration-700 flex flex-col h-full cursor-pointer shadow-sm hover:shadow-2xl overflow-hidden relative">
                                 <div className="absolute top-0 right-0 w-64 h-64 bg-primary/10 rounded-full blur-[100px] translate-x-1/2 -translate-y-1/2 opacity-0 group-hover:opacity-100 transition-opacity duration-1000" />
                                 <div className="absolute bottom-0 left-0 w-32 h-32 bg-primary/5 rounded-full blur-[60px] translate-y-1/2 -translate-x-1/2 opacity-0 group-hover:opacity-100 transition-opacity duration-1000" />
 
@@ -296,18 +300,18 @@ const Services = ({ cmsServices, data }) => {
                                     <p className="font-mono text-xs md:text-[14px] text-primary uppercase tracking-[0.3em] font-bold">
                                         {s.subtitle}
                                     </p>
-                                    <h3 className="text-2xl md:text-4xl font-sans font-bold text-[#F2F0E9] leading-tight tracking-tight">
+                                    <h3 className="text-2xl md:text-4xl font-sans font-bold text-[var(--text)] leading-tight tracking-tight">
                                         {s.title}
                                     </h3>
-                                    <p className="font-sans text-[#F2F0E9]/85 font-light leading-[1.8] text-base md:text-xl pb-8 md:pb-12 italic">
+                                    <p className="font-sans text-[var(--text)]/85 font-light leading-[1.8] text-base md:text-xl pb-8 md:pb-12 italic">
                                         {s.desc}
                                     </p>
                                 </div>
 
-                                <div className="pt-8 md:pt-12 border-t border-white/5 mt-auto">
+                                <div className="pt-8 md:pt-12 border-t border-[var(--border)] mt-auto">
                                     <Link
                                         to={s.href}
-                                        className="btn-magnetic group w-full bg-transparent border border-white/10 text-[#F2F0E9]/50"
+                                        className="btn-magnetic group w-full bg-transparent border border-[var(--border)] text-[var(--text)]/50"
                                     >
                                         <span className="relative z-10">{s.cta}</span>
                                         <ArrowRight size={14} className="relative z-10 group-hover:translate-x-2 transition-transform" />
@@ -448,18 +452,18 @@ const Process = ({ data }) => {
     });
 
     return (
-        <section ref={containerRef} id="samenwerking" className="section-py relative border-b border-white/5 overflow-hidden">
+        <section ref={containerRef} id="samenwerking" className="section-py relative border-b border-[var(--border)] overflow-hidden">
             <div className="content-max-width section-px">
                 <div className="mb-24 md:mb-40 space-y-12 text-center">
                     <SectionLabel className="justify-center">Het Traject</SectionLabel>
-                    <h2 className="font-sans font-bold text-[#F2F0E9] leading-tight tracking-tighter text-h2">
+                    <h2 className="font-sans font-bold text-[var(--text)] leading-tight tracking-tighter text-h2">
                         {headlineSans} <span className="text-primary font-drama font-normal text-h2-serif">{headlineSerif}</span>
                     </h2>
                 </div>
 
                 <div className="relative">
                     {/* Vertical Progress Line */}
-                    <div className="absolute left-[20px] md:left-1/2 top-0 bottom-0 w-[1px] bg-white/5 -translate-x-1/2 hidden md:block" />
+                    <div className="absolute left-[20px] md:left-1/2 top-0 bottom-0 w-[1px] bg-[var(--text)]/5 -translate-x-1/2 hidden md:block" />
                     <motion.div
                         style={{ scaleY, originY: 0 }}
                         className="absolute left-[20px] md:left-1/2 top-0 bottom-0 w-[2px] bg-primary -translate-x-1/2 hidden md:block"
@@ -477,18 +481,18 @@ const Process = ({ data }) => {
                             >
                                 {/* Step Indicator */}
                                 <div className="absolute left-[8px] md:left-1/2 top-0 w-6 h-6 md:w-8 md:h-8 rounded-full bg-primary flex items-center justify-center z-20 -translate-x-1/2 -mt-1 shadow-lg shadow-primary/20 sm:left-[20px] md:left-1/2">
-                                    <div className="w-1.5 h-1.5 md:w-2 md:h-2 bg-white rounded-full animate-pulse" />
+                                    <div className="w-1.5 h-1.5 md:w-2 md:h-2 bg-[var(--background)] rounded-full animate-pulse" />
                                 </div>
-                                <div className="absolute left-[8px] md:hidden top-0 bottom-0 w-[1px] bg-white/10 -translate-x-1/2 z-10" />
+                                <div className="absolute left-[8px] md:hidden top-0 bottom-0 w-[1px] bg-[var(--text)]/10 -translate-x-1/2 z-10" />
 
                                 <div className="w-full md:w-1/2 space-y-6 md:px-0 pl-10 md:pl-0">
                                     <div className="flex items-center gap-4">
                                         <span className="font-mono text-primary text-[12px] font-black tracking-widest">{step.id}</span>
                                     </div>
-                                    <h3 className="text-2xl sm:text-3xl md:text-5xl lg:text-[58px] font-sans font-bold text-[#F2F0E9] tracking-tighter leading-tight">
+                                    <h3 className="text-2xl sm:text-3xl md:text-5xl lg:text-[58px] font-sans font-bold text-[var(--text)] tracking-tighter leading-tight">
                                         {step.title}
                                     </h3>
-                                    <p className="text-[#F2F0E9]/85 text-base md:text-xl font-sans font-light leading-[1.8] italic max-w-lg">
+                                    <p className="text-[var(--text)]/85 text-base md:text-xl font-sans font-light leading-[1.8] italic max-w-lg">
                                         {step.desc}
                                     </p>
                                 </div>
@@ -557,11 +561,11 @@ const FAQ = () => {
     const [openIndex, setOpenIndex] = useState(0);
 
     return (
-        <section id="vragen" className="section-py relative border-b border-white/5">
+        <section id="vragen" className="section-py relative border-b border-[var(--border)]">
             <div className="content-max-width section-px grid grid-cols-1 lg:grid-cols-2 gap-12 md:gap-20">
                 <div className="space-y-6">
                     <SectionLabel>Vragen</SectionLabel>
-                    <h2 className="font-sans font-bold text-[#F2F0E9] leading-tight tracking-tighter text-h2">
+                    <h2 className="font-sans font-bold text-[var(--text)] leading-tight tracking-tighter text-h2">
                         Alles wat je moet weten <span className="text-primary font-drama font-normal text-h2-serif">voordat we starten.</span>
                     </h2>
                 </div>
@@ -570,16 +574,16 @@ const FAQ = () => {
                     {allQuestions.map((item, i) => (
                         <div
                             key={i}
-                            className={`rounded-[1.5rem] border transition-all duration-500 overflow-hidden ${openIndex === i ? 'bg-[#1A1A1A]/80 border-primary/20 shadow-sm' : 'bg-white/[0.01] border-white/5 hover:border-white/10'}`}
+                            className={`rounded-[1.5rem] border transition-all duration-500 overflow-hidden ${openIndex === i ? 'bg-[var(--paper)]/80 border-primary/20 shadow-sm' : 'bg-[var(--text)]/[0.01] border-[var(--border)] hover:border-[var(--text)]/10'}`}
                         >
                             <button
                                 onClick={() => setOpenIndex(openIndex === i ? -1 : i)}
                                 className="w-full px-6 py-6 flex items-center justify-between text-left group"
                             >
-                                <span className={`text-base md:text-lg font-sans font-bold transition-colors ${openIndex === i ? 'text-primary' : 'text-[#F2F0E9]/70'}`}>
+                                <span className={`text-base md:text-lg font-sans font-bold transition-colors ${openIndex === i ? 'text-primary' : 'text-[var(--text)]/70'}`}>
                                     {item.q}
                                 </span>
-                                <ChevronDown size={14} className={`transition-transform duration-500 ${openIndex === i ? 'rotate-180 text-primary' : 'text-[#F2F0E9]/20'}`} />
+                                <ChevronDown size={14} className={`transition-transform duration-500 ${openIndex === i ? 'rotate-180 text-primary' : 'text-[var(--text)]/20'}`} />
                             </button>
                             <AnimatePresence>
                                 {openIndex === i && (
@@ -589,7 +593,7 @@ const FAQ = () => {
                                         exit={{ height: 0, opacity: 0 }}
                                         transition={{ duration: 0.4, ease: "circOut" }}
                                     >
-                                        <div className="px-6 pb-6 text-[#F2F0E9]/50 text-base font-sans font-light italic border-t border-white/5 pt-4 whitespace-pre-wrap">
+                                        <div className="px-6 pb-6 text-[var(--text)]/50 text-base font-sans font-light italic border-t border-[var(--border)] pt-4 whitespace-pre-wrap">
                                             {item.a}
                                         </div>
                                     </motion.div>
@@ -609,7 +613,7 @@ const ContactSection = ({ data }) => {
     const subtitle = data?.subtitle || "Kies het onderdeel waar je nu de meeste winst laat liggen. Ik kijk in 20 minuten met je mee waar de kansen zitten.";
 
     return (
-        <section id="contact" className="py-24 px-8 bg-[#0A0A0A] text-[#F2F0E9] relative overflow-hidden">
+        <section id="contact" className="py-24 px-8 bg-[var(--background)] text-[var(--text)] relative overflow-hidden">
             <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[1000px] h-[1000px] bg-primary/5 rounded-full blur-[200px]" />
 
             <div className="relative z-10 max-w-[1500px] mx-auto flex flex-col items-center">
@@ -621,11 +625,11 @@ const ContactSection = ({ data }) => {
                     className="text-center space-y-10 md:space-y-16 mb-12 md:mb-20 w-full"
                 >
                     <SectionLabel className="justify-center">Plan Je Scan</SectionLabel>
-                    <motion.h2 variants={fadeUp} className="font-sans font-bold text-[#F2F0E9] leading-tight tracking-tighter text-h2">
+                    <motion.h2 variants={fadeUp} className="font-sans font-bold text-[var(--text)] leading-tight tracking-tighter text-h2">
                         {headlineSans}{' '}
                         <span className="text-primary font-drama font-normal text-h2-serif">{headlineSerif}</span>
                     </motion.h2>
-                    <motion.p variants={fadeUp} className="font-sans text-[#F2F0E9]/85 text-base md:text-xl font-light leading-[1.8] italic max-w-3xl mx-auto border-b-2 border-white/5 pb-8 md:pb-10">
+                    <motion.p variants={fadeUp} className="font-sans text-[var(--text)]/85 text-base md:text-xl font-light leading-[1.8] italic max-w-3xl mx-auto border-b-2 border-[var(--border)] pb-8 md:pb-10">
                         {subtitle}
                     </motion.p>
                 </motion.div>
@@ -659,7 +663,7 @@ const Home = () => {
     }, []);
 
     return (
-        <div className="bg-[#0A0A0A] min-h-screen">
+        <div className="bg-[var(--background)] min-h-screen">
             <SEO
                 title={pageData?.seoTitle || "Design & AI-automatisering voor mkb en zzpers"}
                 description={pageData?.seoDescription || "Ik bouw websites die converteren, dashboards die inzicht geven en automatiseringen die tijd besparen. Geen gedoe, gewoon resultaat voor mkb en zzpers."}
@@ -672,7 +676,7 @@ const Home = () => {
                         initial={{ opacity: 1 }}
                         exit={{ opacity: 0 }}
                         transition={{ duration: 0.5 }}
-                        className="fixed inset-0 bg-[#0A0A0A] z-[100] flex items-center justify-center page-loader"
+                        className="fixed inset-0 bg-[var(--background)] z-[100] flex items-center justify-center page-loader"
                     >
                         <motion.div
                             animate={{ opacity: [0.3, 0.6, 0.3] }}

@@ -18,9 +18,9 @@ const Terms = () => {
                     className="max-w-5xl space-y-12"
                 >
                     <SectionLabel>Juridisch</SectionLabel>
-                    <h1 className="font-sans font-bold text-[#F2F0E9] text-h1 uppercase tracking-tighter">Algemene Voorwaarden</h1>
+                    <h1 className="font-sans font-bold text-[var(--text)] text-h1 uppercase tracking-tighter">Algemene Voorwaarden</h1>
 
-                    <div className="prose prose-invert max-w-4xl font-sans text-[#F2F0E9]/80 space-y-12 leading-relaxed">
+                    <div className="prose prose-invert max-w-4xl font-sans text-[var(--text)]/80 space-y-12 leading-relaxed">
                         <section className="bg-white/[0.02] p-8 rounded-[2rem] border border-white/5 space-y-4">
                             <p className="text-xl font-bold text-primary italic lowercase tracking-tight">Merlign</p>
                             <p className="font-mono text-sm uppercase tracking-widest text-[#F2F0E9]/60">

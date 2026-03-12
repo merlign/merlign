@@ -1,13 +1,14 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Link, useLocation } from 'react-router-dom';
-import { ChevronDown, Linkedin, ArrowRight, ArrowUpRight, Menu, X } from 'lucide-react';
+import { ChevronDown, Linkedin, ArrowRight, ArrowUpRight, Menu, X, Sun, Moon } from 'lucide-react';
 import WhatsAppWidget from './WhatsAppWidget';
 
-const Navbar = () => {
+const Navbar = ({ theme, toggleTheme }) => {
     const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
     const [isScrolled, setIsScrolled] = useState(false);
     const [isDienstenOpen, setIsDienstenOpen] = useState(false);
+    const [showHint, setShowHint] = useState(false);
     const { pathname } = useLocation();
 
     useEffect(() => {
@@ -16,11 +17,19 @@ const Navbar = () => {
         return () => window.removeEventListener('scroll', handleScroll);
     }, []);
 
-    // Close mobile menu on route change
     useEffect(() => {
         setIsMobileMenuOpen(false);
         setIsDienstenOpen(false);
     }, [pathname]);
+
+    useEffect(() => {
+        const timer = setTimeout(() => setShowHint(true), 1500);
+        const removeTimer = setTimeout(() => setShowHint(false), 8000); // 1.5s delay + 8s (4 pulses)
+        return () => {
+            clearTimeout(timer);
+            clearTimeout(removeTimer);
+        };
+    }, []);
 
     const scrollTo = (id) => {
         const el = document.getElementById(id);
@@ -42,7 +51,7 @@ const Navbar = () => {
     return (
         <>
             <div className="fixed top-4 md:top-6 left-0 w-full z-[100] px-4 md:px-20 pointer-events-none">
-                <nav className={`max-w-[1500px] mx-auto pointer-events-auto transition-all duration-700 ease-[cubic-bezier(0.25,0.46,0.45,0.94)] rounded-full border ${isScrolled ? 'bg-[#0A0A0A]/60 backdrop-blur-xl border-white/5 py-3 md:py-4 px-6 md:px-10 shadow-2xl' : 'bg-[#0A0A0A]/20 backdrop-blur-sm border-white/5 py-4 md:py-6 px-4'}`}>
+                <nav className={`max-w-[1500px] mx-auto pointer-events-auto transition-[padding,background-color,border-color,box-shadow] duration-500 ease-out rounded-full border ${isScrolled ? 'bg-[var(--background)]/60 backdrop-blur-xl border-[var(--border)] py-3 md:py-4 px-6 md:px-10 shadow-2xl' : 'bg-[var(--background)]/20 backdrop-blur-sm border-[var(--border)] py-4 md:py-6 px-4'}`}>
                     <div className="flex items-center justify-between">
                         <Link
                             to="/"
@@ -55,23 +64,23 @@ const Navbar = () => {
                             }}
                             className="relative z-10"
                         >
-                            <img src="/logo_merlign.png" alt="Merlign" className="h-5 md:h-6 transition-all duration-500 brightness-0 invert" />
+                            <img src="/logo_merlign.png" alt="Merlign" className={`h-5 md:h-6 transition-all duration-500 ${theme === 'dark' ? 'brightness-0 invert' : 'brightness-0'}`} />
                         </Link>
 
-                        <div className="hidden lg:flex items-center gap-10 font-sans text-[13px] uppercase tracking-widest text-[#F2F0E9]/60">
+                        <div className="hidden lg:flex items-center gap-10 font-sans text-[13px] uppercase tracking-widest text-[var(--text)]/60">
                             {/* Diensten Dropdown */}
                             <div
                                 className="relative group/diensten"
                                 onMouseEnter={() => setIsDienstenOpen(true)}
                                 onMouseLeave={() => setIsDienstenOpen(false)}
                             >
-                                <button className="hover:text-[#F2F0E9] transition-colors py-2 flex items-center gap-2 font-bold group font-sans text-[13px] uppercase tracking-widest">
+                                <button className="hover:text-[var(--text)] transition-colors py-2 flex items-center gap-2 font-bold group font-sans text-[13px] uppercase tracking-widest">
                                     Diensten
                                     <ChevronDown size={12} className="group-hover:rotate-180 transition-transform duration-500" />
                                 </button>
 
                                 <div className={`absolute top-full left-1/2 -translate-x-1/2 pt-4 transition-all duration-500 ${isDienstenOpen ? 'opacity-100 translate-y-0 pointer-events-auto' : 'opacity-0 translate-y-4 pointer-events-none'}`}>
-                                    <div className="bg-[#141414] border border-white/5 rounded-[2rem] p-6 shadow-2xl w-[280px] backdrop-blur-3xl">
+                                    <div className="bg-[var(--paper)] border-[var(--border)] rounded-[2rem] p-6 shadow-2xl w-[280px] backdrop-blur-3xl">
                                         <div className="space-y-2">
                                             {services.map((s, i) => (
                                                 <Link
@@ -79,8 +88,8 @@ const Navbar = () => {
                                                     to={s.href}
                                                     className="block p-4 rounded-[1.5rem] hover:bg-primary/10 transition-all group/item"
                                                 >
-                                                    <p className="text-[#F2F0E9] font-sans font-bold text-[13px] uppercase tracking-widest leading-none">{s.label}</p>
-                                                    <p className="text-[#F2F0E9]/60 font-sans text-[9px] uppercase tracking-widest mt-2">{s.desc}</p>
+                                                    <p className="text-[var(--text)] font-sans font-bold text-[13px] uppercase tracking-widest leading-none">{s.label}</p>
+                                                    <p className="text-[var(--text)]/60 font-sans text-[9px] uppercase tracking-widest mt-2">{s.desc}</p>
                                                 </Link>
                                             ))}
                                         </div>
@@ -89,7 +98,7 @@ const Navbar = () => {
                             </div>
 
                             {navLinks.map((link, i) => (
-                                <Link key={i} to={link.href} className="hover:text-[#F2F0E9] transition-colors py-2 relative group font-bold">
+                                <Link key={i} to={link.href} className="hover:text-[var(--text)] transition-colors py-2 relative group font-bold">
                                     {link.label}
                                     <span className="absolute bottom-0 left-0 w-0 h-[1px] bg-primary transition-all duration-500 group-hover:w-full" />
                                 </Link>
@@ -97,13 +106,20 @@ const Navbar = () => {
                         </div>
 
                         <div className="flex items-center gap-4 md:gap-6 relative z-10">
-                            <a href="#contact" className="hidden sm:block btn-magnetic group bg-white/5 text-white px-6 py-2.5 rounded-full overflow-hidden">
+                            <a href="#contact" className="hidden sm:block btn-magnetic group bg-[var(--text)]/5 text-[var(--text)] px-6 py-2.5 rounded-full border border-[var(--border)] overflow-hidden">
                                 <span className="relative z-10 text-[12px] font-bold uppercase tracking-widest">Gratis adviesgesprek</span>
                                 <div className="btn-bg bg-primary shadow-[0_0_20px_rgba(99,102,241,0.5)]" />
                             </a>
 
                             <button
-                                className="lg:hidden w-10 h-10 flex items-center justify-center text-[#F2F0E9]/60 hover:text-[#F2F0E9] transition-colors"
+                                onClick={(e) => toggleTheme(e)}
+                                className={`w-10 h-10 flex items-center justify-center text-[var(--text)]/60 hover:text-[var(--text)] transition-colors rounded-full bg-[var(--text)]/5 ${showHint ? 'animate-theme-hint' : ''}`}
+                            >
+                                {theme === 'dark' ? <Sun size={20} /> : <Moon size={20} />}
+                            </button>
+
+                            <button
+                                className="lg:hidden w-10 h-10 flex items-center justify-center text-[var(--text)]/60 hover:text-[var(--text)] transition-colors"
                                 onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
                             >
                                 {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
@@ -121,12 +137,12 @@ const Navbar = () => {
                         animate={{ opacity: 1, x: 0 }}
                         exit={{ opacity: 0, x: '100%' }}
                         transition={{ type: 'spring', damping: 25, stiffness: 200 }}
-                        className="fixed inset-0 z-[90] bg-[#0A0A0A] flex flex-col pt-32 px-8 lg:hidden"
+                        className="fixed inset-0 z-[90] bg-[var(--background)] flex flex-col pt-32 px-8 lg:hidden"
                     >
                         <div className="flex flex-col gap-8">
                             <div className="space-y-4">
                                 <button
-                                    className="flex items-center gap-4 text-[#F2F0E9] uppercase tracking-widest font-sans text-3xl font-bold py-2"
+                                    className="flex items-center gap-4 text-[var(--text)] uppercase tracking-widest font-sans text-3xl font-bold py-2"
                                     onClick={() => setIsDienstenOpen(!isDienstenOpen)}
                                 >
                                     Diensten
@@ -146,7 +162,7 @@ const Navbar = () => {
                                                     <Link
                                                         key={i}
                                                         to={s.href}
-                                                        className="text-xl md:text-2xl font-sans font-bold uppercase tracking-widest text-[#F2F0E9]/60 hover:text-[#F2F0E9] transition-colors pl-4"
+                                                        className="text-xl md:text-2xl font-sans font-bold uppercase tracking-widest text-[var(--text)]/60 hover:text-[var(--text)] transition-colors pl-4"
                                                         onClick={() => setIsMobileMenuOpen(false)}
                                                     >
                                                         {s.label}
@@ -163,7 +179,7 @@ const Navbar = () => {
                                     <Link
                                         key={i}
                                         to={link.href}
-                                        className="text-3xl font-sans font-bold text-[#F2F0E9] uppercase tracking-widest"
+                                        className="text-3xl font-sans font-bold text-[var(--text)] uppercase tracking-widest"
                                         onClick={() => setIsMobileMenuOpen(false)}
                                     >
                                         {link.label}
@@ -175,14 +191,14 @@ const Navbar = () => {
                         <div className="mt-auto pb-12 space-y-8">
                             <a
                                 href="#contact"
-                                className="w-full bg-primary text-white py-5 rounded-full font-mono text-[14px] uppercase tracking-[0.2em] font-bold flex items-center justify-center gap-4 group overflow-hidden relative"
+                                className="w-full bg-primary text-white py-5 rounded-full font-mono text-[14px] uppercase tracking-[0.2em] font-bold flex items-center justify-center gap-4 group border border-white/10 overflow-hidden relative"
                                 onClick={() => setIsMobileMenuOpen(false)}
                             >
                                 <span className="relative z-10">Gratis adviesgesprek</span>
                                 <ArrowRight size={18} className="relative z-10" />
                                 <div className="btn-bg bg-primary" />
                             </a>
-                            <div className="flex justify-center gap-8 text-[#F2F0E9]/20 font-mono text-[10px] uppercase tracking-[0.4em]">
+                            <div className="flex justify-center gap-8 text-[var(--text)]/20 font-mono text-[10px] uppercase tracking-[0.4em]">
                                 <span>© 2026</span>
                             </div>
                         </div>
@@ -193,16 +209,16 @@ const Navbar = () => {
     );
 };
 
-const Footer = ({ data }) => {
+const Footer = ({ data, theme }) => {
     const { pathname } = useLocation();
     const description = data?.footerDescription || "Websites, dashboards en automatiseringen voor ondernemers die vooruit willen.";
     const linkedinLink = data?.linkedin || "https://www.linkedin.com/in/merlijn-van-der-vleuten-1b9118267/";
 
     return (
-        <footer className="bg-[#141414] text-[#F2F0E9] pt-12 md:pt-20 pb-12 px-6 md:px-8 relative overflow-hidden">
+        <footer className="bg-[var(--paper)] text-[var(--text)] pt-12 md:pt-20 pb-12 px-6 md:px-8 relative overflow-hidden">
             <div className="absolute bottom-0 left-0 w-full h-[1px] bg-gradient-to-r from-transparent via-primary/20 to-transparent" />
             <div className="max-w-[1500px] mx-auto px-8 md:px-20 relative z-20">
-                <div className="grid grid-cols-1 md:grid-cols-4 gap-16 md:gap-32 border-b border-white/5 pb-10 md:pb-16">
+                <div className="grid grid-cols-1 md:grid-cols-4 gap-16 md:gap-32 border-b border-[var(--border)] pb-10 md:pb-16">
                     <div className="md:col-span-2 space-y-10 md:space-y-16">
                         <Link
                             to="/"
@@ -213,33 +229,33 @@ const Footer = ({ data }) => {
                                 }
                             }}
                         >
-                            <img src="/logo_merlign.png" alt="Merlign" className="h-8 brightness-0 invert" />
+                            <img src="/logo_merlign.png" alt="Merlign" className={`h-8 transition-all duration-500 ${theme === 'dark' ? 'brightness-0 invert' : 'brightness-0'}`} />
                         </Link>
                         <div className="space-y-8 text-left">
                             <div className="pt-4">
-                                <p className="font-sans text-[#F2F0E9]/60 italic text-lg max-w-md leading-relaxed">
+                                <p className="font-sans text-[var(--text)]/60 italic text-lg max-w-md leading-relaxed">
                                     {description}
                                 </p>
                             </div>
                         </div>
                     </div>
                     <div className="space-y-8 md:space-y-12 pt-8 md:pt-0">
-                        <h5 className="font-sans text-[12px] md:text-[14px] uppercase tracking-widest text-[#F2F0E9]/40 font-black italic">Archief</h5>
+                        <h5 className="font-sans text-[12px] md:text-[14px] uppercase tracking-widest text-[var(--text)]/40 font-black italic">Archief</h5>
                         <ul className="space-y-4 md:space-y-6 font-sans text-[14px] md:text-[15px] uppercase tracking-widest font-bold">
-                            <li><Link to="/over-mij" className="text-[#F2F0E9]/60 hover:text-primary transition-colors">Over mij</Link></li>
-                            <li><Link to="/cases" className="text-[#F2F0E9]/60 hover:text-primary transition-colors">Cases</Link></li>
-                            <li><Link to="/contact" className="text-[#F2F0E9]/60 hover:text-primary transition-colors">Contact</Link></li>
+                            <li><Link to="/over-mij" className="text-[var(--text)]/60 hover:text-primary transition-colors">Over mij</Link></li>
+                            <li><Link to="/cases" className="text-[var(--text)]/60 hover:text-primary transition-colors">Cases</Link></li>
+                            <li><Link to="/contact" className="text-[var(--text)]/60 hover:text-primary transition-colors">Contact</Link></li>
                         </ul>
                     </div>
                     <div className="space-y-8 md:space-y-12 pt-8 md:pt-0">
-                        <h5 className="font-sans text-[12px] md:text-[14px] uppercase tracking-widest text-[#F2F0E9]/40 font-black italic">Sociaal</h5>
+                        <h5 className="font-sans text-[12px] md:text-[14px] uppercase tracking-widest text-[var(--text)]/40 font-black italic">Sociaal</h5>
                         <ul className="space-y-4 md:space-y-6 font-sans text-[14px] md:text-[15px] uppercase tracking-widest font-bold">
-                            <li><a href={linkedinLink} target="_blank" rel="noopener noreferrer" className="text-[#F2F0E9]/60 hover:text-primary transition-colors">LinkedIn</a></li>
+                            <li><a href={linkedinLink} target="_blank" rel="noopener noreferrer" className="text-[var(--text)]/60 hover:text-primary transition-colors">LinkedIn</a></li>
                         </ul>
                     </div>
                 </div>
-                <div className="flex flex-col md:flex-row justify-between items-center gap-8 md:gap-12 pt-8 md:pt-10 border-t border-white/5">
-                    <div className="flex flex-col md:flex-row items-center gap-4 md:gap-8 font-mono text-[10px] md:text-[11px] uppercase tracking-[0.5em] font-black italic text-[#F2F0E9]/45">
+                <div className="flex flex-col md:flex-row justify-between items-center gap-8 md:gap-12 pt-8 md:pt-10 border-t border-[var(--border)]">
+                    <div className="flex flex-col md:flex-row items-center gap-4 md:gap-8 font-mono text-[10px] md:text-[11px] uppercase tracking-[0.5em] font-black italic text-[var(--text)]/45">
                         <div className="flex items-center gap-4">
                             <span>© 2026 MERLIJN VAN DER VLEUTEN</span>
                             <span className="opacity-40">|</span>
@@ -250,7 +266,7 @@ const Footer = ({ data }) => {
                             <span>Dennendreef 5-111, 5282 HK Boxtel</span>
                         </div>
                     </div>
-                    <div className="flex items-center gap-8 font-mono text-[10px] uppercase tracking-[0.4em] text-[#F2F0E9]/20">
+                    <div className="flex items-center gap-8 font-mono text-[10px] uppercase tracking-[0.4em] text-[var(--text)]/20">
                         <Link to="/privacy" className="hover:text-primary transition-colors italic">Privacy</Link>
                         <Link to="/terms" className="hover:text-primary transition-colors italic">Terms</Link>
                     </div>
@@ -265,6 +281,72 @@ import { getContactInfo } from '../lib/sanity';
 const Layout = ({ children }) => {
     const { pathname, hash } = useLocation();
     const [contactInfo, setContactInfo] = useState(null);
+    const [theme, setTheme] = useState(() => {
+        if (typeof document !== 'undefined') {
+            return document.documentElement.classList.contains('dark') ? 'dark' : 'light';
+        }
+        return 'dark';
+    });
+
+    useEffect(() => {
+        // Class is already set by index.html script, so we just sync state
+        const savedTheme = localStorage.getItem('theme') || 'dark';
+        if (savedTheme !== theme) {
+            setTheme(savedTheme);
+        }
+    }, []);
+
+    const toggleTheme = (e) => {
+        const x = e?.clientX ?? window.innerWidth / 2;
+        const y = e?.clientY ?? window.innerHeight / 2;
+        const endRadius = Math.hypot(
+            Math.max(x, window.innerWidth - x),
+            Math.max(y, window.innerHeight - y)
+        );
+
+        if (!document.startViewTransition) {
+            updateTheme();
+            return;
+        }
+
+        const transition = document.startViewTransition(() => {
+            updateTheme();
+        });
+
+        transition.ready.then(() => {
+            const clipPath = [
+                `circle(0px at ${x}px ${y}px)`,
+                `circle(${endRadius}px at ${x}px ${y}px)`,
+            ];
+            document.documentElement.animate(
+                {
+                    clipPath: clipPath,
+                },
+                {
+                    duration: 500,
+                    easing: 'ease-in-out',
+                    pseudoElement: '::view-transition-new(root)',
+                }
+            );
+        });
+    };
+
+    const updateTheme = () => {
+        const h = document.documentElement;
+        h.classList.add('no-transitions');
+        if (theme === 'dark') {
+            h.classList.remove('dark');
+            setTheme('light');
+            localStorage.setItem('theme', 'light');
+        } else {
+            h.classList.add('dark');
+            setTheme('dark');
+            localStorage.setItem('theme', 'dark');
+        }
+        // Force reflow
+        h.offsetHeight;
+        h.classList.remove('no-transitions');
+    };
 
     useEffect(() => {
         // Scroll to top or specific hash on route change
@@ -294,11 +376,11 @@ const Layout = ({ children }) => {
     }, [pathname, hash]);
 
     return (
-        <div className="bg-[#0A0A0A] text-[#F2F0E9] selection:bg-primary selection:text-black min-h-screen">
-            <Navbar />
+        <div className="bg-[var(--background)] text-[var(--text)] selection:bg-primary selection:text-white dark:selection:text-black min-h-screen">
+            <Navbar theme={theme} toggleTheme={toggleTheme} />
             <main>{children}</main>
             <WhatsAppWidget phoneNumber={contactInfo?.whatsappPhone || "31647693209"} />
-            <Footer data={contactInfo} />
+            <Footer data={contactInfo} theme={theme} />
         </div>
     );
 };

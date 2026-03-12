@@ -36,7 +36,7 @@ const About = () => {
     const introSerif = data?.introSerif || "Jouw sparringspartner.";
     const bioText = data?.bio?.[0]?.children?.[0]?.text || "Ik ben Merlijn. 10 jaar designer, nu ook bouwer van websites, dashboards en automatiseringen. Ik combineer wat andere freelancers niet combineren.";
     return (
-        <div className="bg-[#0A0A0A] min-h-screen">
+        <div className="bg-[var(--background)] min-h-screen">
             <SEO
                 title={data?.seoTitle || "Over Merlign | Senior design & tech specialist"}
                 description={data?.seoDescription || "Designer, bouwer en jouw sparringspartner. Ik gebruik 10 jaar design-ervaring en de nieuwste AI-tools om ondernemers, zzpers en het mkb echt verder te helpen."}
@@ -49,7 +49,7 @@ const About = () => {
                         initial={{ opacity: 1 }}
                         exit={{ opacity: 0 }}
                         transition={{ duration: 0.5 }}
-                        className="fixed inset-0 bg-[#0A0A0A] z-[200] flex items-center justify-center"
+                        className="fixed inset-0 bg-[var(--background)] z-[200] flex items-center justify-center"
                     >
                         <motion.div
                             animate={{ opacity: [0.3, 0.6, 0.3] }}
@@ -83,12 +83,12 @@ const About = () => {
                                     <SectionLabel>Over mij</SectionLabel>
                                     <motion.h1
                                         variants={fadeUp}
-                                        className="font-sans font-bold text-[#F2F0E9] text-h1 text-left"
+                                        className="font-sans font-bold text-[var(--text)] text-h1 text-left"
                                     >
                                         {introSans}{' '}
                                         <span className="text-primary font-drama font-normal text-h1-serif">{introSerif}</span>
                                     </motion.h1>
-                                    <motion.p variants={fadeUp} className="font-sans text-[#F2F0E9]/85 text-lg md:text-xl font-light italic leading-[1.8] max-w-2xl whitespace-pre-wrap">
+                                    <motion.p variants={fadeUp} className="font-sans text-[var(--text)]/85 text-lg md:text-xl font-light italic leading-[1.8] max-w-2xl whitespace-pre-wrap">
                                         {bioText}
                                     </motion.p>
                                     <motion.div variants={fadeUp} className="pt-12 md:pt-16">
@@ -102,7 +102,7 @@ const About = () => {
                         </section>
 
                         {/* Who am I Section */}
-                        <section className="section-py relative overflow-hidden border-y border-white/5">
+                        <section className="section-py relative overflow-hidden border-y border-[var(--border)]">
                             <div className="content-max-width section-px grid grid-cols-1 lg:grid-cols-2 gap-16 md:gap-32 items-center">
                                 <motion.div
                                     initial={{ opacity: 0, scale: 0.95 }}
@@ -110,7 +110,7 @@ const About = () => {
                                     viewport={{ once: true }}
                                     className="relative group lg:ml-0 order-first lg:order-none"
                                 >
-                                    <div className="aspect-[4/5] w-full max-w-[280px] md:max-w-[480px] mx-auto lg:mx-0 rounded-[2.5rem] overflow-visible bg-[#1A1A1A]/40 border border-white/5 relative shadow-2xl transition-all duration-700 group-hover:bg-[#1A1A1A]/60">
+                                    <div className="aspect-[4/5] w-full max-w-[280px] md:max-w-[480px] mx-auto lg:mx-0 rounded-[2.5rem] overflow-visible bg-[var(--paper)]/40 border border-[var(--border)] relative shadow-2xl transition-all duration-700 group-hover:bg-[var(--paper)]/60">
                                         <div className="absolute inset-8 rounded-[1.5rem] border border-primary/10 opacity-20 bg-[linear-gradient(to_right,#6366F1_1px,transparent_1px),linear-gradient(to_bottom,#6366F1_1px,transparent_1px)] bg-[size:20px_20px]" />
                                         <div className="absolute inset-0 bg-primary/20 blur-[100px] rounded-full scale-75 opacity-0 group-hover:opacity-100 transition-opacity duration-1000" />
                                         <motion.img
@@ -118,7 +118,7 @@ const About = () => {
                                             alt="Merlijn van der Vleuten - Senior Design & Tech Specialist bij Merlign"
                                             className="absolute bottom-0 left-[48%] -translate-x-1/2 w-auto h-[95%] max-w-none z-10 filter brightness-95 group-hover:brightness-110 group-hover:scale-105 transition-all duration-1000 ease-out pointer-events-none origin-bottom"
                                         />
-                                        <div className="absolute inset-0 rounded-[2.5rem] border border-white/5 pointer-events-none z-20" />
+                                        <div className="absolute inset-0 rounded-[2.5rem] border border-[var(--border)] pointer-events-none z-20" />
                                     </div>
                                 </motion.div>
 
@@ -133,12 +133,12 @@ const About = () => {
                                         <SectionLabel>Wie ik ben</SectionLabel>
                                         <motion.h2
                                             variants={fadeUp}
-                                            className="font-sans font-bold text-[#F2F0E9] text-h2"
+                                            className="font-sans font-bold text-[var(--text)] text-h2"
                                         >
                                             {data?.whoAmIHeadlineSans || "De perfecte mix tussen"} <span className="text-primary font-drama font-normal text-h2-serif">{data?.whoAmIHeadlineSerif || "vorm en functie."}</span>
                                         </motion.h2>
                                     </div>
-                                    <div className="space-y-8 font-sans text-[#F2F0E9]/85 text-lg md:text-2xl font-light italic leading-[1.8] whitespace-pre-wrap">
+                                    <div className="space-y-8 font-sans text-[var(--text)]/85 text-lg md:text-2xl font-light italic leading-[1.8] whitespace-pre-wrap">
                                         {data?.whoAmIParas && data.whoAmIParas.length > 0 ? data.whoAmIParas.map((para, i) => (
                                             <p key={i}>{para}</p>
                                         )) : (
@@ -154,11 +154,11 @@ const About = () => {
                         </section>
 
                         {/* Choice Section */}
-                        <section className="section-py border-t border-white/5">
+                        <section className="section-py border-t border-[var(--border)]">
                             <div className="content-max-width section-px">
                                 <div className="flex flex-col md:items-center text-left md:text-center space-y-8 mb-16 md:mb-24">
                                     <SectionLabel>Keuze</SectionLabel>
-                                    <h2 className="font-sans font-bold text-[#F2F0E9] md:text-center text-h2">
+                                    <h2 className="font-sans font-bold text-[var(--text)] md:text-center text-h2">
                                         {data?.choiceHeadlineSans || "Waarom ondernemers voor"} <span className="text-primary font-drama font-normal text-h2-serif">{data?.choiceHeadlineSerif || "mij kiezen."}</span>
                                     </h2>
                                 </div>
@@ -176,10 +176,10 @@ const About = () => {
                                             whileInView={{ opacity: 1, y: 0 }}
                                             viewport={{ once: true }}
                                             transition={{ delay: i * 0.1 }}
-                                            className="p-10 rounded-[2.5rem] bg-[#1A1A1A]/40 border border-white/5 space-y-6 hover:bg-[#1A1A1A]/60 transition-all duration-700"
+                                            className="p-10 rounded-[2.5rem] bg-[var(--paper)]/40 border border-[var(--border)] space-y-6 hover:bg-[var(--paper)]/60 transition-all duration-700"
                                         >
-                                            <h3 className="text-xl md:text-3xl font-sans font-bold text-[#F2F0E9] tracking-tighter">{item.title}</h3>
-                                            <p className="font-sans text-[#F2F0E9]/85 leading-[1.8] italic text-base md:text-lg whitespace-pre-wrap">{item.description || item.desc}</p>
+                                            <h3 className="text-xl md:text-3xl font-sans font-bold text-[var(--text)] tracking-tighter">{item.title}</h3>
+                                            <p className="font-sans text-[var(--text)]/85 leading-[1.8] italic text-base md:text-lg whitespace-pre-wrap">{item.description || item.desc}</p>
                                         </motion.div>
                                     ))}
                                 </div>
@@ -194,12 +194,12 @@ const About = () => {
 
                         {/* Bottom CTA Section */}
                         <section id="contact" className="section-px pt-20 pb-32">
-                            <div className="content-max-width border-t border-white/5 pt-20 flex flex-col items-center text-center">
+                            <div className="content-max-width border-t border-[var(--border)] pt-20 flex flex-col items-center text-center">
                                 <SectionLabel className="md:justify-center">Samenwerken</SectionLabel>
-                                <h2 className="font-sans font-bold text-[#F2F0E9] mt-8 md:text-center text-h2">
+                                <h2 className="font-sans font-bold text-[var(--text)] mt-8 md:text-center text-h2">
                                     {data?.ctaHeadlineSans || "Wil je"} <span className="text-primary font-drama font-normal text-h2-serif">{data?.ctaHeadlineSerif || "samenwerken?"}</span>
                                 </h2>
-                                <p className="font-sans text-[#F2F0E9]/40 text-lg md:text-2xl mt-8 mb-16 md:mb-24 italic max-w-2xl">
+                                <p className="font-sans text-[var(--text)]/40 text-lg md:text-2xl mt-8 mb-16 md:mb-24 italic max-w-2xl">
                                     {data?.ctaSubtitle || "Plan een gratis check. In 20 minuten weet je of we een match zijn."}
                                 </p>
                                 <ContactForm />

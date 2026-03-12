@@ -73,19 +73,19 @@ const ContactForm = ({ selectedUpgrade: initialUpgrade = null }) => {
                     <Check size={64} className="text-primary" />
                 </motion.div>
                 <div className="space-y-6">
-                    <h2 className="text-4xl md:text-[68px] font-sans font-bold text-[#F2F0E9] leading-tight tracking-tighter">
+                    <h2 className="text-4xl md:text-[68px] font-sans font-bold text-[var(--text)] leading-tight tracking-tighter">
                         Aanvraag ontvangen.
                     </h2>
-                    <p className="font-sans text-[#F2F0E9]/85 text-2xl md:text-3xl font-light italic leading-tight max-w-2xl mx-auto">
+                    <p className="font-sans text-[var(--text)]/85 text-2xl md:text-3xl font-light italic leading-tight max-w-2xl mx-auto">
                         Ik neem binnen 24 uur contact met je op. <br /> Tot snel.
                     </p>
                 </div>
                 <button
                     onClick={() => setIsSuccess(false)}
-                    className="btn-magnetic group bg-transparent text-[#F2F0E9]/30 px-10 py-5 rounded-full border border-white/10 mx-auto"
+                    className="btn-magnetic group bg-transparent text-[var(--text)]/30 px-10 py-5 rounded-full border-[var(--border)] mx-auto"
                 >
                     <span className="relative z-10 text-[12px] font-bold italic tracking-widest uppercase">Nog een aanvraag</span>
-                    <div className="btn-bg bg-white/5" />
+                    <div className="btn-bg bg-[var(--text)]/5" />
                 </button>
             </div>
         );
@@ -102,13 +102,13 @@ const ContactForm = ({ selectedUpgrade: initialUpgrade = null }) => {
                         viewport={{ once: true }}
                         transition={{ delay: i * 0.1 }}
                         onClick={() => setSelectedUpgrade(u.id)}
-                        className={`cursor-pointer p-6 md:p-8 rounded-[1.5rem] md:rounded-[2rem] border transition-all duration-700 group relative overflow-hidden flex items-center justify-between ${selectedUpgrade === u.id ? 'bg-primary border-primary shadow-lg scale-[1.02]' : 'bg-white/[0.02] border-white/5 hover:bg-white/[0.04]'}`}
+                        className={`cursor-pointer p-6 md:p-8 rounded-[1.5rem] md:rounded-[2rem] border transition-all duration-700 group relative overflow-hidden flex items-center justify-between ${selectedUpgrade === u.id ? 'bg-primary border-primary shadow-lg scale-[1.02]' : 'bg-[var(--text)]/[0.02] border-[var(--border)] hover:bg-[var(--text)]/[0.04]'}`}
                     >
                         <div className="space-y-1 md:space-y-2 relative z-10 pr-4">
-                            <h4 className={`text-lg md:text-2xl font-sans font-bold transition-all duration-500 ${selectedUpgrade === u.id ? 'text-white translate-x-2' : 'text-[#F2F0E9]'}`}>{u.title}</h4>
-                            <span className={`font-mono text-[9px] md:text-[11px] uppercase tracking-[0.2em] font-bold ${selectedUpgrade === u.id ? 'text-white/60' : 'text-[#F2F0E9]/45'}`}>{u.tag}</span>
+                            <h4 className={`text-lg md:text-2xl font-sans font-bold transition-all duration-500 ${selectedUpgrade === u.id ? 'text-white translate-x-2' : 'text-[var(--text)]'}`}>{u.title}</h4>
+                            <span className={`font-mono text-[9px] md:text-[11px] uppercase tracking-[0.2em] font-bold ${selectedUpgrade === u.id ? 'text-[var(--text)]/60' : 'text-[var(--text)]/45'}`}>{u.tag}</span>
                         </div>
-                        <div className={`w-8 h-8 md:w-10 md:h-10 rounded-full border flex items-center justify-center transition-all duration-700 shrink-0 ${selectedUpgrade === u.id ? 'bg-white border-white scale-110 shadow-lg' : 'border-white/10'}`}>
+                        <div className={`w-8 h-8 md:w-10 md:h-10 rounded-full border flex items-center justify-center transition-all duration-700 shrink-0 ${selectedUpgrade === u.id ? 'bg-white border-white scale-110 shadow-lg' : 'border-[var(--border)]'}`}>
                             {selectedUpgrade === u.id && <Check className="w-4 h-4 md:w-5 md:h-5 text-primary" />}
                         </div>
                     </motion.div>
@@ -119,7 +119,7 @@ const ContactForm = ({ selectedUpgrade: initialUpgrade = null }) => {
                 initial={{ opacity: 0, x: 20 }}
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true }}
-                className="lg:col-span-7 bg-[#1A1A1A]/40 backdrop-blur-xl p-8 md:p-10 rounded-[1.5rem] md:rounded-[2rem] border border-white/5 relative shadow-sm"
+                className="lg:col-span-7 bg-[var(--paper)]/40 backdrop-blur-xl p-8 md:p-10 rounded-[1.5rem] md:rounded-[2rem] border border-[var(--border)] relative shadow-sm"
             >
                 <form onSubmit={handleSubmit} className="space-y-8 md:space-y-10">
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-10">
@@ -129,12 +129,12 @@ const ContactForm = ({ selectedUpgrade: initialUpgrade = null }) => {
                             { label: 'Bedrijfsnaam', placeholder: 'Tesla Inc.', key: 'company', type: 'text' }
                         ].map((field, i) => (
                             <div key={i} className="space-y-2 md:space-y-3">
-                                <label className="font-mono text-[9px] md:text-[11px] uppercase tracking-[0.3em] text-[#F2F0E9]/45 block font-bold italic">{field.label}</label>
+                                <label className="font-mono text-[9px] md:text-[11px] uppercase tracking-[0.3em] text-[var(--text)]/45 block font-bold italic">{field.label}</label>
                                 <input
                                     required={field.key !== 'company'}
                                     type={field.type}
                                     placeholder={field.placeholder}
-                                    className="w-full bg-transparent border-b border-white/10 py-3 md:py-4 font-sans text-lg md:text-xl focus:outline-none focus:border-primary transition-all text-[#F2F0E9] placeholder:text-white/10"
+                                    className="w-full bg-transparent border-b border-[var(--border)] py-3 md:py-4 font-sans text-lg md:text-xl focus:outline-none focus:border-primary transition-all text-[var(--text)] placeholder:text-[var(--text)]/10"
                                     value={formData[field.key]}
                                     onChange={(e) => setFormData({ ...formData, [field.key]: e.target.value })}
                                 />
@@ -143,10 +143,10 @@ const ContactForm = ({ selectedUpgrade: initialUpgrade = null }) => {
                     </div>
 
                     <div className="space-y-2 md:space-y-3">
-                        <label className="font-mono text-[9px] md:text-[11px] uppercase tracking-[0.3em] text-[#F2F0E9]/45 block font-bold italic">Bericht (optioneel)</label>
+                        <label className="font-mono text-[9px] md:text-[11px] uppercase tracking-[0.3em] text-[var(--text)]/45 block font-bold italic">Bericht (optioneel)</label>
                         <textarea
                             placeholder="Laat weten wat er speelt..."
-                            className="w-full bg-transparent border-b border-white/10 py-3 md:py-4 font-sans text-lg md:text-xl focus:outline-none focus:border-primary transition-all text-[#F2F0E9] placeholder:text-white/10 min-h-[100px] resize-none"
+                            className="w-full bg-transparent border-b border-[var(--border)] py-3 md:py-4 font-sans text-lg md:text-xl focus:outline-none focus:border-primary transition-all text-[var(--text)] placeholder:text-[var(--text)]/10 min-h-[100px] resize-none"
                             value={formData.message}
                             onChange={(e) => setFormData({ ...formData, message: e.target.value })}
                         />

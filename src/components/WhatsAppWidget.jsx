@@ -80,11 +80,17 @@ const WhatsAppWidget = ({ phoneNumber = "31647693209" }) => {
             <AnimatePresence>
                 {!isOpen && !isTooltipDismissed && (
                     <motion.div
-                        initial={{ opacity: 0, y: 10, scale: 0.9 }}
-                        animate={{ opacity: 1, y: 0, scale: 1 }}
-                        exit={{ opacity: 0, y: 10, scale: 0.9 }}
-                        transition={{ delay: 1 }}
-                        className="bg-white px-5 py-3 rounded-2xl rounded-br-none shadow-2xl mb-2 relative hidden md:flex items-center gap-3 transition-all border border-black/5"
+                        initial={{ opacity: 0, y: 20, x: 20, scale: 0, transformOrigin: 'bottom right' }}
+                        animate={{ opacity: 1, y: 0, x: 0, scale: 1 }}
+                        exit={{ opacity: 0, scale: 0, x: 10, y: 10, transition: { duration: 0.2, delay: 0 } }}
+                        transition={{
+                            delay: 5,
+                            duration: 0.6,
+                            type: "spring",
+                            damping: 20,
+                            stiffness: 120
+                        }}
+                        className="bg-white px-5 py-3 rounded-2xl rounded-br-none shadow-2xl mb-2 relative hidden md:flex items-center gap-3 border border-black/5"
                     >
                         <p className="font-sans text-black text-[12px] font-bold uppercase tracking-widest whitespace-nowrap">
                             Vragen? Stel ze hier.
@@ -109,7 +115,7 @@ const WhatsAppWidget = ({ phoneNumber = "31647693209" }) => {
                         initial={{ opacity: 0, scale: 0.8, y: 20, transformOrigin: 'bottom right' }}
                         animate={{ opacity: 1, scale: 1, y: 0 }}
                         exit={{ opacity: 0, scale: 0.8, y: 20 }}
-                        className="w-[340px] md:w-[420px] h-[550px] bg-[#141414] border border-white/10 rounded-[2.5rem] shadow-2xl overflow-hidden flex flex-col backdrop-blur-2xl mb-4"
+                        className="w-[340px] md:w-[420px] h-[550px] bg-[var(--background)] border border-[var(--border)] rounded-[2.5rem] shadow-2xl overflow-hidden flex flex-col backdrop-blur-2xl mb-4"
                     >
                         {/* Header with Photo */}
                         <div className="bg-primary p-6 md:p-8 flex items-center justify-between shadow-lg relative z-10">
@@ -142,8 +148,8 @@ const WhatsAppWidget = ({ phoneNumber = "31647693209" }) => {
                                     className={`flex ${msg.role === 'user' ? 'justify-end' : 'justify-start'}`}
                                 >
                                     <div className={`max-w-[85%] p-4 rounded-2xl text-[13px] md:text-[14px] leading-relaxed font-sans shadow-sm ${msg.role === 'user'
-                                        ? 'bg-primary text-black font-bold rounded-tr-none'
-                                        : 'bg-white/5 border border-white/5 text-[#F2F0E9]/80 italic rounded-tl-none'
+                                        ? 'bg-primary text-white font-bold rounded-tr-none'
+                                        : 'bg-[var(--text)]/5 border border-[var(--border)] text-[var(--text)]/80 italic rounded-tl-none'
                                         }`}>
                                         {msg.text}
                                     </div>
@@ -155,7 +161,7 @@ const WhatsAppWidget = ({ phoneNumber = "31647693209" }) => {
                                     animate={{ opacity: 1, y: 0 }}
                                     className="flex justify-start"
                                 >
-                                    <div className="bg-white/5 border border-white/5 p-4 rounded-2xl rounded-tl-none flex gap-1.5">
+                                    <div className="bg-[var(--text)]/5 border border-[var(--border)] p-4 rounded-2xl rounded-tl-none flex gap-1.5">
                                         {[0, 1, 2].map((d) => (
                                             <motion.div
                                                 key={d}
@@ -171,7 +177,7 @@ const WhatsAppWidget = ({ phoneNumber = "31647693209" }) => {
                         </div>
 
                         {/* Action Container */}
-                        <div className="p-6 md:p-8 bg-black/20 border-t border-white/5 space-y-4">
+                        <div className="p-6 md:p-8 bg-[var(--text)]/[0.02] border-t border-[var(--border)] space-y-4">
                             <div className="relative">
                                 <textarea
                                     value={message}
@@ -183,12 +189,12 @@ const WhatsAppWidget = ({ phoneNumber = "31647693209" }) => {
                                     }}
                                     onChange={(e) => setMessage(e.target.value)}
                                     placeholder="Vraag iets aan de AI..."
-                                    className="w-full bg-white/5 border border-white/10 rounded-2xl p-4 pr-14 text-[#F2F0E9] font-sans text-sm focus:outline-none focus:border-primary transition-all min-h-[60px] max-h-[120px] resize-none"
+                                    className="w-full bg-[var(--text)]/5 border border-[var(--border)] rounded-2xl p-4 pr-14 text-[var(--text)] font-sans text-sm focus:outline-none focus:border-primary transition-all min-h-[60px] max-h-[120px] resize-none"
                                 />
                                 <button
                                     onClick={handleSend}
                                     disabled={!message.trim() || isTyping}
-                                    className={`absolute right-3 top-1/2 -translate-y-1/2 p-3 rounded-full transition-all ${message.trim() ? 'bg-primary text-black scale-100 shadow-lg' : 'bg-white/5 text-white/20 scale-90'}`}
+                                    className={`absolute right-3 top-1/2 -translate-y-1/2 p-3 rounded-full transition-all ${message.trim() ? 'bg-primary text-white scale-100 shadow-lg' : 'bg-[var(--text)]/5 text-[var(--text)]/20 scale-90'}`}
                                 >
                                     <Send size={16} />
                                 </button>
@@ -211,6 +217,9 @@ const WhatsAppWidget = ({ phoneNumber = "31647693209" }) => {
 
             {/* Toggle Button */}
             <motion.button
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ delay: 0.8, duration: 0.8, ease: "linear" }}
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
                 onClick={() => setIsOpen(!isOpen)}

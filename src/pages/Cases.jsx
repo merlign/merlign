@@ -63,7 +63,7 @@ const Cases = () => {
     ];
 
     return (
-        <div className="bg-[#0A0A0A] min-h-screen">
+        <div className="bg-[var(--background)] min-h-screen">
             <SEO
                 title={pageData?.seoTitle || "Portfolio & success stories | Resultaten van Merlign"}
                 description={pageData?.seoDescription || "Zie hoe ik andere ondernemers en bedrijven hielp met webdesign, dashboards en AI. Bekijk de meetbare resultaten van mijn samenwerkingen."}
@@ -76,7 +76,7 @@ const Cases = () => {
                         initial={{ opacity: 1 }}
                         exit={{ opacity: 0 }}
                         transition={{ duration: 0.5 }}
-                        className="fixed inset-0 bg-[#0A0A0A] z-[200] flex items-center justify-center"
+                        className="fixed inset-0 bg-[var(--background)] z-[200] flex items-center justify-center"
                     >
                         <motion.div
                             animate={{ opacity: [0.3, 0.6, 0.3] }}
@@ -108,11 +108,11 @@ const Cases = () => {
                                 <SectionLabel>Cases</SectionLabel>
                                 <motion.h1
                                     variants={fadeUp}
-                                    className="font-sans font-bold text-[#F2F0E9] text-h1"
+                                    className="font-sans font-bold text-[var(--text)] text-h1"
                                 >
                                     {pageData?.headlineSans || "Geen mooie praatjes."} <span className="text-primary font-drama font-normal text-h1-serif">{pageData?.headlineSerif || "Gewoon resultaten."}</span>
                                 </motion.h1>
-                                <motion.p variants={fadeUp} className="font-sans text-[#F2F0E9]/85 text-lg md:text-xl font-light italic leading-[1.8] max-w-2xl">
+                                <motion.p variants={fadeUp} className="font-sans text-[var(--text)]/85 text-lg md:text-xl font-light italic leading-[1.8] max-w-2xl">
                                     {pageData?.subtitle || "Wat ik heb gebouwd en welk meetbaar resultaat dat heeft opgeleverd."}
                                 </motion.p>
 
@@ -121,7 +121,7 @@ const Cases = () => {
                                     variants={fadeUp}
                                     className="flex flex-wrap items-center gap-4 md:gap-8 pt-4"
                                 >
-                                    <div className="flex flex-wrap gap-2 md:gap-4 bg-[#F2F0E9]/5 p-2 rounded-[1.5rem] border border-white/5 backdrop-blur-xl">
+                                    <div className="flex flex-wrap gap-2 md:gap-4 bg-[var(--text)]/[0.04] p-2 rounded-[1.5rem] border border-[var(--border)] backdrop-blur-xl">
                                         {filterOptions.map((option) => {
                                             const count = option.id === 'alle'
                                                 ? cases.length
@@ -131,7 +131,7 @@ const Cases = () => {
                                                 <button
                                                     key={option.id}
                                                     onClick={() => setSelectedFilter(option.id)}
-                                                    className={`px-6 md:px-8 py-3 md:py-4 rounded-full font-mono text-[10px] md:text-[11px] uppercase tracking-[0.2em] font-bold transition-all duration-500 relative overflow-hidden group ${selectedFilter === option.id ? 'text-white' : 'text-[#F2F0E9]/40 hover:text-[#F2F0E9]'}`}
+                                                    className={`px-6 md:px-8 py-3 md:py-4 rounded-full font-mono text-[10px] md:text-[11px] uppercase tracking-[0.2em] font-bold transition-all duration-500 relative overflow-hidden group hover:scale-[1.02] hover:-translate-y-0.5 active:scale-[0.98] ${selectedFilter === option.id ? 'text-white' : 'text-[var(--text)]/40 hover:text-[var(--text)]'}`}
                                                 >
                                                     <span className="relative z-10 flex items-center gap-2">
                                                         {option.label}
@@ -146,7 +146,7 @@ const Cases = () => {
                                                             transition={{ type: "spring", bounce: 0.2, duration: 0.6 }}
                                                         />
                                                     )}
-                                                    <div className="absolute inset-0 bg-white/5 scale-x-0 group-hover:scale-x-100 transition-transform origin-left duration-500" />
+                                                    <div className="absolute inset-0 bg-[var(--text)]/10 scale-x-0 group-hover:scale-x-100 transition-transform origin-left duration-500" />
                                                 </button>
                                             );
                                         })}
@@ -187,10 +187,10 @@ const Cases = () => {
                                                     </div>
                                                     <div className="flex flex-col">
                                                         <span className="font-mono text-[10px] uppercase tracking-[0.4em] text-primary/40 font-bold italic leading-none mb-2">Case Study</span>
-                                                        <span className="font-mono text-xs uppercase tracking-[0.2em] text-[#F2F0E9]/60 font-bold">{c.tag}</span>
+                                                        <span className="font-mono text-xs uppercase tracking-[0.2em] text-[var(--text)]/60 font-bold">{c.tag}</span>
                                                     </div>
                                                 </div>
-                                                <h2 className="font-sans font-bold text-[#F2F0E9] text-h2 leading-tight">
+                                                <h2 className="font-sans font-bold text-[var(--text)] text-h2 leading-tight">
                                                     {c.title}
                                                 </h2>
                                             </div>
@@ -199,41 +199,38 @@ const Cases = () => {
                                                 <div className="space-y-4">
                                                     <div className="flex items-center gap-3">
                                                         <div className="w-1 h-1 rounded-full bg-primary" />
-                                                        <h4 className="font-mono text-[10px] uppercase tracking-[0.4em] text-[#F2F0E9]/40 font-black italic">Situatie</h4>
+                                                        <h4 className="font-mono text-[10px] uppercase tracking-[0.4em] text-[var(--text)]/40 font-black italic">Situatie</h4>
                                                     </div>
-                                                    <p className="font-sans text-[#F2F0E9]/85 text-lg md:text-xl font-light italic leading-[1.8] pl-4">
+                                                    <p className="font-sans text-[var(--text)]/85 text-lg md:text-xl font-light italic leading-[1.8] pl-4">
                                                         {c.situatie}
                                                     </p>
                                                 </div>
                                                 <div className="space-y-4">
                                                     <div className="flex items-center gap-3">
                                                         <div className="w-1 h-1 rounded-full bg-primary" />
-                                                        <h4 className="font-mono text-[10px] uppercase tracking-[0.4em] text-[#F2F0E9]/40 font-black italic">Aanpak</h4>
+                                                        <h4 className="font-mono text-[10px] uppercase tracking-[0.4em] text-[var(--text)]/40 font-black italic">Aanpak</h4>
                                                     </div>
-                                                    <p className="font-sans text-[#F2F0E9]/85 text-lg md:text-xl font-light italic leading-[1.8] pl-4">
+                                                    <p className="font-sans text-[var(--text)]/85 text-lg md:text-xl font-light italic leading-[1.8] pl-4">
                                                         {c.aanpak}
                                                     </p>
                                                 </div>
                                             </div>
 
-                                            <div className="space-y-6 pt-8 border-t border-white/5">
-                                                <h4 className="font-mono text-[10px] uppercase tracking-[0.4em] text-primary font-black italic">Kernresultaten</h4>
-                                                <div className="grid grid-cols-1 gap-4">
-                                                    {c.results?.map((r, ri) => (
-                                                        <motion.div
-                                                            key={ri}
-                                                            initial={{ opacity: 0, x: -10 }}
-                                                            whileInView={{ opacity: 1, x: 0 }}
-                                                            transition={{ delay: ri * 0.1 }}
-                                                            className="flex items-start gap-4 p-4 rounded-2xl bg-white/[0.02] border border-white/5 group/res shadow-sm hover:border-white/10 transition-colors"
-                                                        >
-                                                            <div className="w-6 h-6 rounded-full bg-primary/10 flex items-center justify-center shrink-0 mt-0.5 group-hover/res:bg-primary/20 transition-colors">
-                                                                <Zap size={12} className="text-primary" />
-                                                            </div>
-                                                            <span className="font-sans text-[#F2F0E9]/80 text-sm md:text-base font-medium italic">{r}</span>
-                                                        </motion.div>
-                                                    ))}
-                                                </div>
+                                            <div className="grid grid-cols-1 gap-4 pt-8 border-t border-[var(--border)]">
+                                                {c.results?.map((r, ri) => (
+                                                    <motion.div
+                                                        key={ri}
+                                                        initial={{ opacity: 0, x: -10 }}
+                                                        whileInView={{ opacity: 1, x: 0 }}
+                                                        transition={{ delay: ri * 0.1 }}
+                                                        className="flex items-start gap-4 p-4 rounded-2xl bg-[var(--text)]/[0.02] border border-[var(--border)] group/res shadow-sm hover:border-[var(--text)]/10 transition-colors"
+                                                    >
+                                                        <div className="w-6 h-6 rounded-full bg-primary/10 flex items-center justify-center shrink-0 mt-0.5 group-hover/res:bg-primary/20 transition-colors">
+                                                            <Zap size={12} className="text-primary" />
+                                                        </div>
+                                                        <span className="font-sans text-[var(--text)]/80 text-sm md:text-base font-medium italic">{r}</span>
+                                                    </motion.div>
+                                                ))}
                                             </div>
                                         </div>
 
@@ -246,15 +243,15 @@ const Cases = () => {
                                                     rel="noopener noreferrer"
                                                     className="block relative group/visual"
                                                 >
-                                                    <div className="relative w-full aspect-[16/10] bg-[#1A1A1A] rounded-[1.5rem] md:rounded-[2.5rem] border border-white/5 shadow-2xl overflow-hidden group/mockup">
+                                                    <div className="relative w-full aspect-[16/10] bg-[#1A1A1A] rounded-[1.5rem] md:rounded-[2.5rem] border border-[var(--border)] shadow-2xl overflow-hidden group/mockup">
                                                         <img
                                                             src={urlFor(c.image)?.url()}
                                                             alt={c.title}
                                                             className="w-full h-full object-cover transition-transform duration-1000 group-hover/visual:scale-110"
                                                         />
-                                                        <div className="absolute inset-0 bg-gradient-to-t from-[#0A0A0A]/40 to-transparent" />
+                                                        <div className="absolute inset-0 bg-gradient-to-t from-[var(--background)]/40 to-transparent" />
                                                         {/* External link indicator */}
-                                                        <div className="absolute top-6 right-6 w-12 h-12 rounded-full bg-black/40 backdrop-blur-md border border-white/10 flex items-center justify-center text-white opacity-0 group-hover:opacity-100 translate-y-2 group-hover:translate-y-0 transition-all duration-500">
+                                                        <div className="absolute top-6 right-6 w-12 h-12 rounded-full bg-black/40 backdrop-blur-md border border-[var(--text)]/10 flex items-center justify-center text-white opacity-0 group-hover:opacity-100 translate-y-2 group-hover:translate-y-0 transition-all duration-500">
                                                             <ArrowRight className="-rotate-45" size={20} />
                                                         </div>
                                                     </div>
@@ -262,13 +259,13 @@ const Cases = () => {
                                                 </a>
                                             ) : (
                                                 <div className="relative group/visual">
-                                                    <div className="relative w-full aspect-[16/10] bg-[#1A1A1A] rounded-[1.5rem] md:rounded-[2.5rem] border border-white/5 shadow-2xl overflow-hidden">
+                                                    <div className="relative w-full aspect-[16/10] bg-[#1A1A1A] rounded-[1.5rem] md:rounded-[2.5rem] border border-[var(--border)] shadow-2xl overflow-hidden">
                                                         <img
                                                             src={urlFor(c.image)?.url()}
                                                             alt={c.title}
                                                             className="w-full h-full object-cover transition-transform duration-1000 group-hover/visual:scale-110"
                                                         />
-                                                        <div className="absolute inset-0 bg-gradient-to-t from-[#0A0A0A]/40 to-transparent" />
+                                                        <div className="absolute inset-0 bg-gradient-to-t from-[var(--background)]/40 to-transparent" />
                                                     </div>
                                                     <div className="absolute -inset-4 bg-primary/5 blur-3xl rounded-[3rem] -z-10 opacity-0 group-hover/visual:opacity-100 transition-opacity duration-1000" />
                                                 </div>
@@ -278,12 +275,12 @@ const Cases = () => {
                                                 initial={{ opacity: 0, y: 10 }}
                                                 whileInView={{ opacity: 1, y: 0 }}
                                                 viewport={{ once: true }}
-                                                className="px-8 md:px-12 py-10 rounded-[2.5rem] bg-[#1A1A1A]/20 border border-white/5 text-[#F2F0E9] space-y-8 relative overflow-hidden group/quote transition-all duration-700 hover:bg-[#1A1A1A]/40 shadow-sm"
+                                                className="px-8 md:px-12 py-10 rounded-[2.5rem] bg-[var(--paper)]/40 border border-[var(--border)] text-[var(--text)] space-y-8 relative overflow-hidden group/quote transition-all duration-700 hover:bg-[var(--text)]/5 shadow-sm hover:shadow-xl hover:-translate-y-1"
                                             >
-                                                <p className="text-lg md:text-2xl font-sans font-medium leading-[1.6] tracking-tight relative z-10 italic text-[#F2F0E9]/90">
+                                                <p className="text-lg md:text-2xl font-sans font-medium leading-[1.6] tracking-tight relative z-10 italic text-[var(--text)]/90">
                                                     "{c.quote}"
                                                 </p>
-                                                <div className="flex items-center justify-between relative z-10 pt-6 border-t border-white/5">
+                                                <div className="flex items-center justify-between relative z-10 pt-6 border-t border-[var(--border)]">
                                                     <div className="flex items-center gap-4">
                                                         {c.authorImage ? (
                                                             <img
@@ -326,21 +323,21 @@ const Cases = () => {
                             </motion.div>
 
                             {/* Bottom CTA */}
-                            <div id="contact" className="py-20 md:py-32 border-t border-white/5 flex flex-col items-center text-center">
+                            <div id="contact" className="py-20 md:py-32 border-t border-[var(--border)] flex flex-col items-center text-center">
                                 <SectionLabel className="md:justify-center">Volgende succes</SectionLabel>
-                                <h2 className="font-sans font-bold text-[#F2F0E9] mt-8 text-h2">
+                                <h2 className="font-sans font-bold text-[var(--text)] mt-8 text-h2">
                                     Jouw bedrijf <span className="text-primary font-drama font-normal text-h2-serif">hier?</span>
                                 </h2>
-                                <p className="font-sans text-[#F2F0E9]/85 text-lg md:text-2xl mt-8 mb-16 md:mb-24 italic max-w-2xl">
+                                <p className="font-sans text-[var(--text)]/85 text-lg md:text-2xl mt-8 mb-16 md:mb-24 italic max-w-2xl">
                                     Plan een gratis check. In 20 minuten weet je wat ik voor jou kan doen.
                                 </p>
                                 <ContactForm />
                             </div>
                         </div>
-                    </motion.div>
+                    </motion.div >
                 )}
-            </AnimatePresence>
-        </div>
+            </AnimatePresence >
+        </div >
     );
 };
 

@@ -34,7 +34,7 @@ const ContactPage = () => {
     const contactEmail = data?.email || "contact@merlign.com";
     const linkedinLink = data?.linkedin || "https://www.linkedin.com/in/merlijn-van-der-vleuten-1b9118267/";
     return (
-        <div className="bg-[#0A0A0A] min-h-screen">
+        <div className="bg-[var(--background)] min-h-screen">
             <SEO
                 title={data?.seoTitle || "Gratis adviesgesprek | Plan je digital scan"}
                 description={data?.seoDescription || "Zullen we even bellen? Plan een gratis scan van 20 minuten met mij in. Direct weten wat er beter kan op je website of in je bedrijfsprocessen."}
@@ -47,7 +47,7 @@ const ContactPage = () => {
                         initial={{ opacity: 1 }}
                         exit={{ opacity: 0 }}
                         transition={{ duration: 0.5 }}
-                        className="fixed inset-0 bg-[#0A0A0A] z-[200] flex items-center justify-center"
+                        className="fixed inset-0 bg-[var(--background)] z-[200] flex items-center justify-center"
                     >
                         <motion.div
                             animate={{ opacity: [0.3, 0.6, 0.3] }}
@@ -80,17 +80,17 @@ const ContactPage = () => {
                                     <SectionLabel>Contact</SectionLabel>
                                     <motion.h1
                                         variants={fadeUp}
-                                        className="font-sans font-bold text-[#F2F0E9] md:text-center text-h1"
+                                        className="font-sans font-bold text-[var(--text)] md:text-center text-h1"
                                     >
                                         {headlineSans}{' '}
                                         <span className="text-primary font-drama font-normal text-h1-serif">{headlineSerif}</span>
                                     </motion.h1>
-                                    <motion.p variants={fadeUp} className="font-sans text-[#F2F0E9]/80 text-lg md:text-xl font-light italic leading-relaxed max-w-2xl text-center">
+                                    <motion.p variants={fadeUp} className="font-sans text-[var(--text)]/80 text-lg md:text-xl font-light italic leading-relaxed max-w-2xl text-center">
                                         {subtitle}
                                     </motion.p>
                                 </motion.div>
 
-                                <div className="pt-12 md:pt-24 border-t border-white/5">
+                                <div className="pt-12 md:pt-24 border-t border-[var(--border)]">
                                     <ContactForm />
                                 </div>
 
@@ -106,15 +106,15 @@ const ContactPage = () => {
                                             whileInView={{ opacity: 1, y: 0 }}
                                             viewport={{ once: true }}
                                             transition={{ delay: i * 0.1 }}
-                                            className="flex items-center justify-between p-8 md:p-12 rounded-[2.5rem] bg-[#1A1A1A]/20 backdrop-blur-xl border border-white/5 group hover:bg-[#1A1A1A]/40 hover:border-primary/20 transition-all duration-700"
+                                            className="flex items-center justify-between p-8 md:p-12 rounded-[2.5rem] bg-[var(--paper)]/20 backdrop-blur-xl border-[var(--border)] group hover:bg-[var(--paper)]/40 hover:border-primary/20 transition-all duration-700"
                                         >
                                             <div className="flex items-center gap-6">
                                                 <div className="w-12 h-12 md:w-16 md:h-16 rounded-full bg-primary/10 border border-primary/10 flex items-center justify-center text-primary group-hover:bg-primary group-hover:text-white transition-all duration-700">
                                                     {item.icon}
                                                 </div>
                                                 <div className="text-left space-y-1">
-                                                    <span className="font-mono text-[10px] md:text-[12px] uppercase tracking-[0.4em] text-[#F2F0E9]/20 font-bold italic block">{item.label}</span>
-                                                    <span className="text-lg md:text-2xl font-sans font-bold text-[#F2F0E9]/70 group-hover:text-primary transition-colors duration-500 tracking-tighter">{item.value}</span>
+                                                    <span className="font-mono text-[10px] md:text-[12px] uppercase tracking-[0.4em] text-[var(--text)]/20 font-bold italic block">{item.label}</span>
+                                                    <span className="text-lg md:text-2xl font-sans font-bold text-[var(--text)]/70 group-hover:text-primary transition-colors duration-500 tracking-tighter">{item.value}</span>
                                                 </div>
                                             </div>
                                         </motion.a>
