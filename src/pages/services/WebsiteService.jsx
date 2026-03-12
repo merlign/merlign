@@ -121,7 +121,7 @@ const WebsiteService = () => {
                                         {heroSubtitle}
                                     </motion.p>
                                     <motion.div variants={fadeUp} className="pt-4 text-left">
-                                        <a href="#contact" className="btn-magnetic group inline-flex bg-primary text-white border-transparent px-10 md:px-12 py-5 md:py-6 rounded-full shadow-[0_0_20px_rgba(79,70,229,0.3)]">
+                                        <a href="#contact" className="btn-magnetic group inline-flex bg-primary text-white border-transparent px-10 md:px-12 py-5 md:py-6 rounded-full shadow-[0_0_20px_rgba(99,102,241,0.3)]">
                                             <span className="relative z-10 text-[12px] md:text-[14px] font-black italic tracking-[0.3em] uppercase">Vraag een gratis check aan</span>
                                             <div className="btn-bg bg-primary" />
                                         </a>
@@ -192,7 +192,7 @@ const WebsiteService = () => {
                                                 y: [-5, 5, -5]
                                             }}
                                             transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
-                                            className="absolute bottom-16 right-16 md:bottom-24 md:right-24 w-16 h-16 md:w-20 md:h-20 bg-primary rounded-full flex items-center justify-center shadow-[0_0_40px_rgba(79,70,229,0.5)] group hover:scale-110 transition-transform duration-700"
+                                            className="absolute bottom-16 right-16 md:bottom-24 md:right-24 w-16 h-16 md:w-20 md:h-20 bg-primary rounded-full flex items-center justify-center shadow-[0_0_40px_rgba(99,102,241,0.5)] group hover:scale-110 transition-transform duration-700"
                                         >
                                             <MousePointerClick size={24} className="text-black md:scale-125" />
                                         </motion.div>

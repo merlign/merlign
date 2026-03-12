@@ -7,7 +7,7 @@ export default {
   theme: {
     extend: {
       colors: {
-        primary: "#4F46E5", // Electric Indigo
+        primary: "#6366F1", // Indigo Sparkle
         accent: "#10B981",  // Success Green
         dark: "#0D0D12",    // Obsidian
         background: "#FAF8F5", // Ivory

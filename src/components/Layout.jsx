@@ -99,7 +99,7 @@ const Navbar = () => {
                         <div className="flex items-center gap-4 md:gap-6 relative z-10">
                             <a href="#contact" className="hidden sm:block btn-magnetic group bg-white/5 text-white px-6 py-2.5 rounded-full overflow-hidden">
                                 <span className="relative z-10 text-[12px] font-bold uppercase tracking-widest">Gratis adviesgesprek</span>
-                                <div className="btn-bg bg-primary shadow-[0_0_20px_rgba(79,70,229,0.5)]" />
+                                <div className="btn-bg bg-primary shadow-[0_0_20px_rgba(99,102,241,0.5)]" />
                             </a>
 
                             <button

@@ -68,7 +68,7 @@ const ContactForm = ({ selectedUpgrade: initialUpgrade = null }) => {
                 <motion.div
                     initial={{ scale: 0.5, opacity: 0 }}
                     animate={{ scale: 1, opacity: 1 }}
-                    className="w-32 h-32 bg-primary/20 rounded-full flex items-center justify-center mx-auto border border-primary/50 shadow-[0_0_80px_rgba(79,70,229,0.4)]"
+                    className="w-32 h-32 bg-primary/20 rounded-full flex items-center justify-center mx-auto border border-primary/50 shadow-[0_0_80px_rgba(99,102,241,0.4)]"
                 >
                     <Check size={64} className="text-primary" />
                 </motion.div>
