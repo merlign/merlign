@@ -102,14 +102,25 @@ const ContactForm = ({ selectedUpgrade: initialUpgrade = null }) => {
                         viewport={{ once: true }}
                         transition={{ delay: i * 0.1 }}
                         onClick={() => setSelectedUpgrade(u.id)}
-                        className={`cursor-pointer p-6 md:p-8 rounded-[1.5rem] md:rounded-[2rem] border transition-all duration-700 group relative overflow-hidden flex items-center justify-between ${selectedUpgrade === u.id ? 'bg-primary border-primary shadow-lg scale-[1.02]' : 'bg-[var(--text)]/[0.02] border-[var(--border)] hover:bg-[var(--text)]/[0.04]'}`}
+                        className={`cursor-pointer p-6 md:p-8 rounded-[1.5rem] md:rounded-[2rem] border transition-all duration-500 group relative overflow-hidden flex items-center justify-between ${selectedUpgrade === u.id ? 'bg-primary border-primary shadow-[0_10px_40px_-10px_rgba(99,102,241,0.5)]' : 'bg-[var(--text)]/[0.02] border-[var(--border)] hover:bg-[var(--text)]/[0.04]'}`}
                     >
                         <div className="space-y-1 md:space-y-2 relative z-10 pr-4">
-                            <h4 className={`text-lg md:text-2xl font-sans font-bold transition-all duration-500 ${selectedUpgrade === u.id ? 'text-white translate-x-2' : 'text-[var(--text)]'}`}>{u.title}</h4>
-                            <span className={`font-mono text-[9px] md:text-[11px] uppercase tracking-[0.2em] font-bold ${selectedUpgrade === u.id ? 'text-[var(--text)]/60' : 'text-[var(--text)]/45'}`}>{u.tag}</span>
+                            <h4 className={`text-lg md:text-2xl font-sans font-bold transition-transform duration-500 ${selectedUpgrade === u.id ? 'text-white translate-x-1' : 'text-[var(--text)]'}`}>{u.title}</h4>
+                            <span className={`font-mono text-[9px] md:text-[11px] uppercase tracking-[0.2em] font-bold transition-colors duration-500 ${selectedUpgrade === u.id ? 'text-white/60' : 'text-[var(--text)]/45'}`}>{u.tag}</span>
                         </div>
-                        <div className={`w-8 h-8 md:w-10 md:h-10 rounded-full border flex items-center justify-center transition-all duration-700 shrink-0 ${selectedUpgrade === u.id ? 'bg-white border-white scale-110 shadow-lg' : 'border-[var(--border)]'}`}>
-                            {selectedUpgrade === u.id && <Check className="w-4 h-4 md:w-5 md:h-5 text-primary" />}
+                        <div className={`w-8 h-8 md:w-10 md:h-10 rounded-full border flex items-center justify-center transition-all duration-500 shrink-0 ${selectedUpgrade === u.id ? 'bg-white border-white scale-110 shadow-lg' : 'border-[var(--border)]'}`}>
+                            <AnimatePresence mode="wait">
+                                {selectedUpgrade === u.id && (
+                                    <motion.div
+                                        initial={{ scale: 0, rotate: -45 }}
+                                        animate={{ scale: 1, rotate: 0 }}
+                                        exit={{ scale: 0, rotate: 45 }}
+                                        transition={{ duration: 0.3, ease: "backOut" }}
+                                    >
+                                        <Check className="w-4 h-4 md:w-5 md:h-5 text-primary" />
+                                    </motion.div>
+                                )}
+                            </AnimatePresence>
                         </div>
                     </motion.div>
                 ))}
