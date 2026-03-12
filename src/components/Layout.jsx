@@ -343,8 +343,6 @@ const Layout = ({ children }) => {
             setTheme('dark');
             localStorage.setItem('theme', 'dark');
         }
-        // Force reflow
-        h.offsetHeight;
         h.classList.remove('no-transitions');
     };
 
