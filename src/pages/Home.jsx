@@ -669,14 +669,38 @@ const Home = () => {
                 description={pageData?.seoDescription || "Ik bouw websites die converteren, dashboards die inzicht geven en automatiseringen die tijd besparen. Geen gedoe, gewoon resultaat voor mkb en zzpers."}
                 path="/"
             />
-            <div className="content-fade-in">
-                <Hero data={pageData} />
-                <Services cmsServices={pageData?.features} data={pageData} />
-                <HomeAbout data={pageData} />
-                <Process data={pageData} />
-                <FAQ />
-                <ContactSection data={contactInfo} />
-            </div>
+            <AnimatePresence mode="wait">
+                {!pageData ? (
+                    <motion.div
+                        key="loader"
+                        initial={{ opacity: 1 }}
+                        exit={{ opacity: 0 }}
+                        transition={{ duration: 0.5 }}
+                        className="fixed inset-0 bg-[var(--background)] z-[100] flex items-center justify-center page-loader"
+                    >
+                        <motion.div
+                            animate={{ opacity: [0.3, 0.6, 0.3] }}
+                            transition={{ duration: 2, repeat: Infinity }}
+                            className="w-12 h-12 border border-primary/20 rounded-full"
+                        />
+                    </motion.div>
+                ) : (
+                    <motion.div
+                        key="content"
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        transition={{ duration: 0.8, ease: "easeOut" }}
+                        className="content-fade-in"
+                    >
+                        <Hero data={pageData} />
+                        <Services cmsServices={pageData?.features} data={pageData} />
+                        <HomeAbout data={pageData} />
+                        <Process data={pageData} />
+                        <FAQ />
+                        <ContactSection data={contactInfo} />
+                    </motion.div>
+                )}
+            </AnimatePresence>
         </div>
     );
 };
