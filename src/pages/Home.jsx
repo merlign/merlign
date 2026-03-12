@@ -50,8 +50,8 @@ const Hero = ({ data }) => {
         <section ref={heroRef} className="relative h-[100dvh] flex items-center bg-[var(--background)] overflow-hidden">
             {/* Grain Purple Gradient Background */}
             <div className="absolute inset-0 z-0 bg-[var(--background)]">
-                <div className="absolute top-[-20%] right-[-10%] w-[70vw] h-[70vw] bg-primary/10 rounded-full blur-[140px]" />
-                <div className="absolute bottom-[-20%] left-[-10%] w-[60vw] h-[60vw] bg-primary/5 rounded-full blur-[120px]" />
+                <div className="absolute top-[-20%] right-[-10%] w-[70vw] h-[70vw] bg-primary/10 rounded-full blur-[60px] md:blur-[140px]" />
+                <div className="absolute bottom-[-20%] left-[-10%] w-[60vw] h-[60vw] bg-primary/5 rounded-full blur-[40px] md:blur-[120px]" />
             </div>
 
             <div className="absolute inset-0 z-10 bg-gradient-to-tr from-primary/[0.05] via-transparent to-primary/[0.02]" />
@@ -114,8 +114,8 @@ const HomeAbout = ({ data }) => {
 
     return (
         <section id="over-mij" className="section-py relative overflow-hidden border-y border-[var(--border)] bg-[var(--background)]">
-            <div className="absolute top-0 right-0 w-[50vw] h-[50vw] bg-primary/[0.04] rounded-full blur-[120px] -translate-y-1/2 translate-x-1/2 pointer-events-none" />
-            <div className="absolute bottom-0 left-0 w-[40vw] h-[40vw] bg-primary/[0.03] rounded-full blur-[100px] translate-y-1/2 -translate-x-1/4 pointer-events-none" />
+            <div className="absolute top-0 right-0 w-[50vw] h-[50vw] bg-primary/[0.04] rounded-full blur-[60px] md:blur-[120px] -translate-y-1/2 translate-x-1/2 pointer-events-none" />
+            <div className="absolute bottom-0 left-0 w-[40vw] h-[40vw] bg-primary/[0.03] rounded-full blur-[40px] md:blur-[100px] translate-y-1/2 -translate-x-1/4 pointer-events-none" />
             <div className="content-max-width section-px grid grid-cols-1 lg:grid-cols-2 gap-16 md:gap-32 items-center">
                 <motion.div
                     initial={{ opacity: 0, scale: 0.95 }}
@@ -237,8 +237,8 @@ const Services = ({ cmsServices, data }) => {
 
     return (
         <section id="wat-ik-bouw" className="py-32 bg-[var(--paper)] relative overflow-hidden border-t border-[var(--border)]">
-            <div className="absolute top-1/2 left-0 w-[60vw] h-[60vw] bg-primary/[0.05] rounded-full blur-[140px] -translate-y-1/2 -translate-x-1/2 pointer-events-none" />
-            <div className="absolute bottom-0 right-0 w-[40vw] h-[40vw] bg-primary/[0.03] rounded-full blur-[100px] pointer-events-none" />
+            <div className="absolute top-1/2 left-0 w-[60vw] h-[60vw] bg-primary/[0.05] rounded-full blur-[60px] md:blur-[140px] -translate-y-1/2 -translate-x-1/2 pointer-events-none" />
+            <div className="absolute bottom-0 right-0 w-[40vw] h-[40vw] bg-primary/[0.03] rounded-full blur-[40px] md:blur-[100px] pointer-events-none" />
             {/* 2D Background Artifacts */}
             <div className="absolute inset-0 pointer-events-none overflow-hidden">
                 {[...Array(6)].map((_, i) => (
@@ -288,9 +288,9 @@ const Services = ({ cmsServices, data }) => {
                             transition={{ duration: 0.8, delay: i * 0.15 }}
                             className="group relative h-full"
                         >
-                            <div className="bg-[var(--paper)]/40 backdrop-blur-xl p-8 md:p-10 rounded-[2.5rem] border border-[var(--border)] group-hover:border-primary/40 group-hover:bg-[var(--paper)]/60 transition-all duration-700 flex flex-col h-full cursor-pointer shadow-sm hover:shadow-2xl overflow-hidden relative">
-                                <div className="absolute top-0 right-0 w-64 h-64 bg-primary/10 rounded-full blur-[100px] translate-x-1/2 -translate-y-1/2 opacity-0 group-hover:opacity-100 transition-opacity duration-1000" />
-                                <div className="absolute bottom-0 left-0 w-32 h-32 bg-primary/5 rounded-full blur-[60px] translate-y-1/2 -translate-x-1/2 opacity-0 group-hover:opacity-100 transition-opacity duration-1000" />
+                            <div className="bg-[var(--paper)]/40 backdrop-blur-md md:backdrop-blur-xl p-8 md:p-10 rounded-[2.5rem] border border-[var(--border)] group-hover:border-primary/40 group-hover:bg-[var(--paper)]/60 transition-all duration-700 flex flex-col h-full cursor-pointer shadow-sm hover:shadow-2xl overflow-hidden relative">
+                                <div className="absolute top-0 right-0 w-64 h-64 bg-primary/10 rounded-full blur-[40px] md:blur-[100px] translate-x-1/2 -translate-y-1/2 opacity-0 group-hover:opacity-100 transition-opacity duration-1000" />
+                                <div className="absolute bottom-0 left-0 w-32 h-32 bg-primary/5 rounded-full blur-[30px] md:blur-[60px] translate-y-1/2 -translate-x-1/2 opacity-0 group-hover:opacity-100 transition-opacity duration-1000" />
 
                                 <div className="w-14 h-14 md:w-20 md:h-20 bg-primary/10 rounded-2xl flex items-center justify-center mb-10 md:mb-16 text-primary group-hover:bg-primary group-hover:text-white transition-all duration-700 transform group-hover:scale-110 group-hover:rotate-3">
                                     {React.cloneElement(s.icon, { size: 28, className: "group-hover:scale-110 transition-transform duration-500" })}
