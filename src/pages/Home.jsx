@@ -90,13 +90,13 @@ const Hero = ({ data }) => {
                         variants={fadeUp}
                         className="flex flex-wrap items-center gap-4 md:gap-6 pt-2"
                     >
-                        <a href="#contact" className="btn-magnetic group bg-primary text-white border-transparent px-10 md:px-12 py-5 md:py-6 rounded-full shadow-[0_0_20px_rgba(201,168,76,0.3)] w-full sm:w-auto">
+                        <a href="#contact" className="btn-magnetic group bg-primary text-white border-transparent px-10 md:px-12 py-5 md:py-6 rounded-full shadow-[0_0_20px_rgba(79,70,229,0.3)] w-full sm:w-auto">
                             <span className="relative z-10 text-[12px] md:text-[14px] font-black italic tracking-[0.3em] uppercase">{heroCta}</span>
-                            <div className="btn-bg bg-[#F2F0E9]" />
+                            <div className="btn-bg bg-primary" />
                         </a>
                         <a href="#wat-ik-bouw" className="btn-magnetic group bg-transparent border border-white/10 text-[#F2F0E9] px-10 md:px-12 py-5 md:py-6 rounded-full w-full sm:w-auto">
                             <span className="relative z-10 text-[12px] md:text-[14px] font-black italic tracking-[0.3em] uppercase">{heroCtaAlt}</span>
-                            <div className="btn-bg bg-[#F2F0E9]" />
+                            <div className="btn-bg bg-primary" />
                         </a>
                     </motion.div>
                 </motion.div>
@@ -124,7 +124,7 @@ const HomeAbout = ({ data }) => {
                     {/* The "Portal" Background */}
                     <div className="aspect-[4/5] w-full max-w-[280px] md:max-w-[480px] mx-auto lg:mx-0 rounded-[2.5rem] overflow-visible bg-[#1A1A1A]/40 border border-white/5 relative shadow-2xl transition-all duration-700 group-hover:bg-[#1A1A1A]/60">
                         {/* Blueprint Grid Interior */}
-                        <div className="absolute inset-8 rounded-[1.5rem] border border-primary/10 opacity-20 bg-[linear-gradient(to_right,#C9A84C_1px,transparent_1px),linear-gradient(to_bottom,#C9A84C_1px,transparent_1px)] bg-[size:20px_20px]" />
+                        <div className="absolute inset-8 rounded-[1.5rem] border border-primary/10 opacity-20 bg-[linear-gradient(to_right,#4F46E5_1px,transparent_1px),linear-gradient(to_bottom,#4F46E5_1px,transparent_1px)] bg-[size:20px_20px]" />
 
                         {/* Glowing Aura Behind Him */}
                         <div className="absolute inset-0 bg-primary/20 blur-[100px] rounded-full scale-75 opacity-0 group-hover:opacity-100 transition-opacity duration-1000" />
@@ -170,7 +170,7 @@ const HomeAbout = ({ data }) => {
                     >
                         Lees mijn verhaal
                         <div className="w-10 h-10 md:w-12 md:h-12 rounded-full border border-white/10 flex items-center justify-center group-hover:border-primary group-hover:bg-primary transition-all duration-500">
-                            <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform group-hover:text-black" />
+                            <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform group-hover:text-white" />
                         </div>
                     </Link>
                 </motion.div>
@@ -311,7 +311,7 @@ const Services = ({ cmsServices, data }) => {
                                     >
                                         <span className="relative z-10">{s.cta}</span>
                                         <ArrowRight size={14} className="relative z-10 group-hover:translate-x-2 transition-transform" />
-                                        <div className="btn-bg bg-primary shadow-[0_0_20px_rgba(201,168,76,0.3)]" />
+                                        <div className="btn-bg bg-primary shadow-[0_0_20px_rgba(79,70,229,0.3)]" />
                                     </Link>
                                 </div>
                             </div>

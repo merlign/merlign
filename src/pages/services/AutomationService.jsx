@@ -121,9 +121,9 @@ const AutomationService = () => {
                                         {heroSubtitle}
                                     </motion.p>
                                     <motion.div variants={fadeUp} className="pt-4">
-                                        <a href="#contact" className="btn-magnetic group flex md:inline-flex bg-primary text-white border-transparent px-8 md:px-12 py-5 md:py-6 rounded-full shadow-[0_0_20px_rgba(201,168,76,0.3)]">
+                                        <a href="#contact" className="btn-magnetic group flex md:inline-flex bg-primary text-white border-transparent px-8 md:px-12 py-5 md:py-6 rounded-full shadow-[0_0_20px_rgba(79,70,229,0.3)]">
                                             <span className="relative z-10 text-[11px] md:text-[14px] font-black italic tracking-[0.15em] md:tracking-[0.3em] uppercase">Vraag een gratis check aan</span>
-                                            <div className="btn-bg bg-[#F2F0E9]" />
+                                            <div className="btn-bg bg-primary" />
                                         </a>
                                     </motion.div>
                                 </motion.div>

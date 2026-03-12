@@ -105,8 +105,8 @@ const ContactForm = ({ selectedUpgrade: initialUpgrade = null }) => {
                         className={`cursor-pointer p-6 md:p-8 rounded-[1.5rem] md:rounded-[2rem] border transition-all duration-700 group relative overflow-hidden flex items-center justify-between ${selectedUpgrade === u.id ? 'bg-primary border-primary shadow-lg scale-[1.02]' : 'bg-white/[0.02] border-white/5 hover:bg-white/[0.04]'}`}
                     >
                         <div className="space-y-1 md:space-y-2 relative z-10 pr-4">
-                            <h4 className={`text-lg md:text-2xl font-sans font-bold transition-all duration-500 ${selectedUpgrade === u.id ? 'text-black translate-x-2' : 'text-[#F2F0E9]'}`}>{u.title}</h4>
-                            <span className={`font-mono text-[9px] md:text-[11px] uppercase tracking-[0.2em] font-bold ${selectedUpgrade === u.id ? 'text-black/60' : 'text-[#F2F0E9]/45'}`}>{u.tag}</span>
+                            <h4 className={`text-lg md:text-2xl font-sans font-bold transition-all duration-500 ${selectedUpgrade === u.id ? 'text-white translate-x-2' : 'text-[#F2F0E9]'}`}>{u.title}</h4>
+                            <span className={`font-mono text-[9px] md:text-[11px] uppercase tracking-[0.2em] font-bold ${selectedUpgrade === u.id ? 'text-white/60' : 'text-[#F2F0E9]/45'}`}>{u.tag}</span>
                         </div>
                         <div className={`w-8 h-8 md:w-10 md:h-10 rounded-full border flex items-center justify-center transition-all duration-700 shrink-0 ${selectedUpgrade === u.id ? 'bg-white border-white scale-110 shadow-lg' : 'border-white/10'}`}>
                             {selectedUpgrade === u.id && <Check className="w-4 h-4 md:w-5 md:h-5 text-primary" />}
@@ -156,13 +156,13 @@ const ContactForm = ({ selectedUpgrade: initialUpgrade = null }) => {
                         <button
                             type="submit"
                             disabled={!selectedUpgrade || isSending}
-                            className={`btn-magnetic group w-full bg-primary text-black py-6 md:py-8 rounded-full shadow-xl shadow-primary/20 flex items-center justify-center gap-4 ${(!selectedUpgrade || isSending) ? 'opacity-30 cursor-not-allowed' : ''}`}
+                            className={`btn-magnetic group w-full bg-primary text-white py-6 md:py-8 rounded-full shadow-xl shadow-primary/20 flex items-center justify-center gap-4 ${(!selectedUpgrade || isSending) ? 'opacity-30 cursor-not-allowed' : ''}`}
                         >
                             <span className="relative z-10 text-[12px] md:text-[14px] font-black italic tracking-[0.4em] uppercase">
-                                {isSending ? 'Verzenden...' : 'Aanvraag versturen'}
+                                {isSending ? 'Verzenden...' : 'Aanvraag verzenden'}
                             </span>
                             {!isSending && <ArrowRight size={20} className="relative z-10 group-hover:translate-x-3 transition-transform" />}
-                            <div className="btn-bg bg-[#F2F0E9]" />
+                            <div className="btn-bg bg-primary" />
                         </button>
                     </div>
                 </form>

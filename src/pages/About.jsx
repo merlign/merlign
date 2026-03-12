@@ -92,9 +92,9 @@ const About = () => {
                                         {bioText}
                                     </motion.p>
                                     <motion.div variants={fadeUp} className="pt-12 md:pt-16">
-                                        <a href="#contact" className="btn-magnetic group inline-flex bg-primary text-white border-transparent px-10 md:px-12 py-5 md:py-6 rounded-full shadow-[0_0_20px_rgba(201,168,76,0.3)]">
+                                        <a href="#contact" className="btn-magnetic group inline-flex bg-primary text-white border-transparent px-10 md:px-12 py-5 md:py-6 rounded-full shadow-[0_0_20px_rgba(79,70,229,0.3)]">
                                             <span className="relative z-10 text-[12px] md:text-[14px] font-black italic tracking-[0.3em] uppercase">Vraag een gratis check aan</span>
-                                            <div className="btn-bg bg-[#F2F0E9]" />
+                                            <div className="btn-bg bg-primary" />
                                         </a>
                                     </motion.div>
                                 </motion.div>
@@ -111,7 +111,7 @@ const About = () => {
                                     className="relative group lg:ml-0 order-first lg:order-none"
                                 >
                                     <div className="aspect-[4/5] w-full max-w-[280px] md:max-w-[480px] mx-auto lg:mx-0 rounded-[2.5rem] overflow-visible bg-[#1A1A1A]/40 border border-white/5 relative shadow-2xl transition-all duration-700 group-hover:bg-[#1A1A1A]/60">
-                                        <div className="absolute inset-8 rounded-[1.5rem] border border-primary/10 opacity-20 bg-[linear-gradient(to_right,#C9A84C_1px,transparent_1px),linear-gradient(to_bottom,#C9A84C_1px,transparent_1px)] bg-[size:20px_20px]" />
+                                        <div className="absolute inset-8 rounded-[1.5rem] border border-primary/10 opacity-20 bg-[linear-gradient(to_right,#4F46E5_1px,transparent_1px),linear-gradient(to_bottom,#4F46E5_1px,transparent_1px)] bg-[size:20px_20px]" />
                                         <div className="absolute inset-0 bg-primary/20 blur-[100px] rounded-full scale-75 opacity-0 group-hover:opacity-100 transition-opacity duration-1000" />
                                         <motion.img
                                             src="/merlijn-new.png"
@@ -184,9 +184,9 @@ const About = () => {
                                     ))}
                                 </div>
                                 <motion.div variants={fadeUp} className="pt-12 md:pt-20 text-center">
-                                    <a href="#contact" className="btn-magnetic group inline-flex bg-primary text-white border-transparent px-10 md:px-12 py-5 md:py-6 rounded-full shadow-[0_0_20px_rgba(201,168,76,0.3)]">
+                                    <a href="#contact" className="btn-magnetic group inline-flex bg-primary text-white border-transparent px-10 md:px-12 py-5 md:py-6 rounded-full shadow-[0_0_20px_rgba(79,70,229,0.3)]">
                                         <span className="relative z-10 text-[12px] md:text-[14px] font-black italic tracking-[0.3em] uppercase">Vraag een gratis check aan</span>
-                                        <div className="btn-bg bg-[#F2F0E9]" />
+                                        <div className="btn-bg bg-primary" />
                                     </a>
                                 </motion.div>
                             </div>

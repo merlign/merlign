@@ -214,7 +214,7 @@ const WhatsAppWidget = ({ phoneNumber = "31647693209" }) => {
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
                 onClick={() => setIsOpen(!isOpen)}
-                className={`w-14 h-14 md:w-16 md:h-16 rounded-full flex items-center justify-center shadow-2xl transition-all duration-700 relative group overflow-hidden ${isOpen ? 'bg-white' : 'bg-primary shadow-[0_0_30px_rgba(201,168,76,0.3)]'}`}
+                className={`w-14 h-14 md:w-16 md:h-16 rounded-full flex items-center justify-center shadow-2xl transition-all duration-700 relative group overflow-hidden ${isOpen ? 'bg-white' : 'bg-primary shadow-[0_0_30px_rgba(79,70,229,0.3)]'}`}
             >
                 <div className="absolute inset-0 rounded-full bg-primary/40 animate-ping opacity-20 pointer-events-none" />
                 <div className="absolute inset-0 bg-gradient-to-tr from-black/20 via-transparent to-white/10 opacity-50" />

@@ -99,7 +99,7 @@ const Navbar = () => {
                         <div className="flex items-center gap-4 md:gap-6 relative z-10">
                             <a href="#contact" className="hidden sm:block btn-magnetic group bg-white/5 text-white px-6 py-2.5 rounded-full overflow-hidden">
                                 <span className="relative z-10 text-[12px] font-bold uppercase tracking-widest">Gratis adviesgesprek</span>
-                                <div className="btn-bg bg-primary shadow-[0_0_20px_rgba(201,168,76,0.5)]" />
+                                <div className="btn-bg bg-primary shadow-[0_0_20px_rgba(79,70,229,0.5)]" />
                             </a>
 
                             <button
@@ -175,12 +175,12 @@ const Navbar = () => {
                         <div className="mt-auto pb-12 space-y-8">
                             <a
                                 href="#contact"
-                                className="w-full bg-primary text-[#0A0A0A] py-5 rounded-full font-mono text-[14px] uppercase tracking-[0.2em] font-bold flex items-center justify-center gap-4 group overflow-hidden relative"
+                                className="w-full bg-primary text-white py-5 rounded-full font-mono text-[14px] uppercase tracking-[0.2em] font-bold flex items-center justify-center gap-4 group overflow-hidden relative"
                                 onClick={() => setIsMobileMenuOpen(false)}
                             >
                                 <span className="relative z-10">Gratis adviesgesprek</span>
                                 <ArrowRight size={18} className="relative z-10" />
-                                <div className="btn-bg bg-[#F2F0E9]" />
+                                <div className="btn-bg bg-primary" />
                             </a>
                             <div className="flex justify-center gap-8 text-[#F2F0E9]/20 font-mono text-[10px] uppercase tracking-[0.4em]">
                                 <span>© 2026</span>

@@ -131,11 +131,11 @@ const Cases = () => {
                                                 <button
                                                     key={option.id}
                                                     onClick={() => setSelectedFilter(option.id)}
-                                                    className={`px-6 md:px-8 py-3 md:py-4 rounded-full font-mono text-[10px] md:text-[11px] uppercase tracking-[0.2em] font-bold transition-all duration-500 relative overflow-hidden group ${selectedFilter === option.id ? 'text-black' : 'text-[#F2F0E9]/40 hover:text-[#F2F0E9]'}`}
+                                                    className={`px-6 md:px-8 py-3 md:py-4 rounded-full font-mono text-[10px] md:text-[11px] uppercase tracking-[0.2em] font-bold transition-all duration-500 relative overflow-hidden group ${selectedFilter === option.id ? 'text-white' : 'text-[#F2F0E9]/40 hover:text-[#F2F0E9]'}`}
                                                 >
                                                     <span className="relative z-10 flex items-center gap-2">
                                                         {option.label}
-                                                        <span className={`text-[8px] opacity-40 ${selectedFilter === option.id ? 'text-black/60' : 'text-primary'}`}>
+                                                        <span className={`text-[8px] opacity-40 ${selectedFilter === option.id ? 'text-white/60' : 'text-primary'}`}>
                                                             ({count})
                                                         </span>
                                                     </span>
