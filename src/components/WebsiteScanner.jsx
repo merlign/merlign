@@ -117,35 +117,35 @@ const WebsiteScanner = () => {
     };
 
     return (
-        <section className="py-12 md:py-20 relative overflow-hidden">
+        <section className="py-6 md:py-12 relative overflow-hidden">
             <div className="content-max-width section-px relative z-10 flex justify-center">
-                <div className="w-full max-w-3xl bg-white/[0.01] border border-white/5 backdrop-blur-sm rounded-[2.5rem] p-6 md:p-12 relative overflow-hidden">
-                    <div className="max-w-xl mx-auto text-center space-y-4 mb-10 relative z-10">
-                        <h2 className="text-2xl md:text-3xl font-sans font-bold text-[var(--text)]">
+                <div className="w-full max-w-4xl bg-white/[0.02] border border-white/5 backdrop-blur-sm rounded-[3rem] p-8 md:p-16 relative overflow-hidden">
+                    <div className="max-w-2xl mx-auto text-center space-y-6 mb-12 relative z-10">
+                        <h2 className="text-3xl md:text-5xl font-sans font-bold text-[var(--text)]">
                             Gratis <span className="text-primary font-drama font-normal italic">website scan.</span>
                         </h2>
-                        <p className="text-xs md:text-sm font-sans text-[var(--text)]/40 font-light italic max-w-sm mx-auto">
+                        <p className="text-sm md:text-base font-sans text-[var(--text)]/40 font-light italic max-w-sm mx-auto">
                             Ontdek binnen 30 seconden waar je leads verliest.
                         </p>
                     </div>
 
-                    <div className="max-w-xl mx-auto relative z-20">
-                        <form onSubmit={handleScan} className="relative mb-8">
-                            <div className="relative flex items-center bg-white/[0.02] border border-white/5 p-1.5 rounded-full focus-within:border-primary/30 transition-all">
+                    <div className="max-w-2xl mx-auto relative z-20">
+                        <form onSubmit={handleScan} className="relative mb-12">
+                            <div className="relative flex items-center bg-white/[0.03] border border-white/10 p-2 rounded-full focus-within:border-primary/40 transition-all shadow-lg">
                                 <input
                                     type="text"
                                     value={url}
                                     onChange={(e) => setUrl(e.target.value)}
                                     placeholder="jouwsite.nl"
-                                    className="flex-grow bg-transparent border-none px-5 py-2.5 font-sans text-sm focus:outline-none text-[var(--text)] placeholder:text-[var(--text)]/20"
+                                    className="flex-grow bg-transparent border-none px-6 py-3 font-sans text-base focus:outline-none text-[var(--text)] placeholder:text-[var(--text)]/20"
                                     disabled={isScanning}
                                 />
                                 <button
                                     type="submit"
                                     disabled={isScanning || !url}
-                                    className="bg-primary text-black px-5 py-2.5 rounded-full font-black uppercase tracking-widest italic flex items-center gap-2 disabled:opacity-50 disabled:cursor-not-allowed hover:scale-[1.02] active:scale-95 transition-all text-[10px]"
+                                    className="bg-primary text-black px-6 py-3 rounded-full font-black uppercase tracking-widest italic flex items-center gap-3 disabled:opacity-50 disabled:cursor-not-allowed hover:scale-[1.02] active:scale-95 transition-all text-xs"
                                 >
-                                    {isScanning ? <Loader2 className="animate-spin" size={14} /> : <Zap size={14} />}
+                                    {isScanning ? <Loader2 className="animate-spin" size={16} /> : <Zap size={16} />}
                                     {isScanning ? 'Scannen' : 'Scan'}
                                 </button>
                             </div>
@@ -157,10 +157,10 @@ const WebsiteScanner = () => {
                                     initial={{ opacity: 0, y: 5 }}
                                     animate={{ opacity: 1, y: 0 }}
                                     exit={{ opacity: 0 }}
-                                    className="p-4 rounded-2xl bg-red-500/5 border border-red-500/10 flex items-center gap-3 text-red-400/80 mb-6"
+                                    className="p-5 rounded-[2rem] bg-red-500/5 border border-red-500/10 flex items-center gap-4 text-red-400/80 mb-8"
                                 >
-                                    <AlertCircle size={14} className="shrink-0" />
-                                    <p className="font-sans text-[11px] italic">{error}</p>
+                                    <AlertCircle size={16} className="shrink-0" />
+                                    <p className="font-sans text-sm italic">{error}</p>
                                 </motion.div>
                             )}
 
@@ -170,8 +170,8 @@ const WebsiteScanner = () => {
                                     animate={{ opacity: 1 }}
                                     className="space-y-4"
                                 >
-                                    <div className="bg-white/[0.01] border border-white/5 p-5 rounded-2xl font-mono text-[10px] text-[var(--text)]/30 whitespace-pre-wrap italic leading-relaxed h-[180px] overflow-y-auto custom-scrollbar">
-                                        {streamedText || "AI analyseert..."}
+                                    <div className="bg-white/[0.01] border border-white/5 p-6 rounded-[2rem] font-mono text-xs text-[var(--text)]/30 whitespace-pre-wrap italic leading-relaxed h-[200px] overflow-y-auto custom-scrollbar">
+                                        {streamedText || "AI analyseert de content..."}
                                     </div>
                                 </motion.div>
                             )}
@@ -181,16 +181,16 @@ const WebsiteScanner = () => {
                                     ref={reportRef}
                                     initial={{ opacity: 0, scale: 0.98 }}
                                     animate={{ opacity: 1, scale: 1 }}
-                                    className="space-y-8 relative z-10"
+                                    className="space-y-10 relative z-10"
                                 >
-                                    <div className="flex items-center gap-6">
-                                        <div className="relative shrink-0 w-16 h-16">
+                                    <div className="flex items-center gap-8">
+                                        <div className="relative shrink-0 w-20 h-20">
                                             <svg className="w-full h-full rotate-[-90deg]">
-                                                <circle cx="50%" cy="50%" r="45%" stroke="currentColor" strokeWidth="4" fill="transparent" className="text-white/5" />
+                                                <circle cx="50%" cy="50%" r="45%" stroke="currentColor" strokeWidth="5" fill="transparent" className="text-white/5" />
                                                 <motion.circle
                                                     cx="50%" cy="50%" r="45%"
                                                     stroke="currentColor"
-                                                    strokeWidth="4"
+                                                    strokeWidth="5"
                                                     fill="transparent"
                                                     strokeDasharray="100 100"
                                                     strokeDashoffset={100 - (report.score * 10)}
@@ -200,45 +200,45 @@ const WebsiteScanner = () => {
                                                 />
                                             </svg>
                                             <div className="absolute inset-0 flex items-center justify-center">
-                                                <span className="text-xl font-mono font-black italic">{report.score}</span>
+                                                <span className="text-2xl font-mono font-black italic">{report.score}</span>
                                             </div>
                                         </div>
 
-                                        <div className="space-y-1">
-                                            <h3 className="text-sm font-sans font-bold text-[var(--text)]">Eerste indruk</h3>
-                                            <p className="text-xs font-sans font-light italic text-[var(--text)]/50 leading-relaxed">
+                                        <div className="space-y-2">
+                                            <h3 className="text-lg font-sans font-bold text-[var(--text)]">Eerste indruk</h3>
+                                            <p className="text-sm md:text-base font-sans font-light italic text-[var(--text)]/50 leading-relaxed max-w-lg">
                                                 {report.firstImpression}
                                             </p>
                                         </div>
                                     </div>
 
-                                    <div className="grid grid-cols-1 md:grid-cols-2 gap-6 pt-6 border-t border-white/5">
-                                        <div className="space-y-3">
-                                            <h4 className="text-[10px] font-mono uppercase tracking-[0.2em] font-black text-primary/60">Bottlenecks</h4>
-                                            <ul className="space-y-2">
+                                    <div className="grid grid-cols-1 md:grid-cols-2 gap-10 pt-10 border-t border-white/5">
+                                        <div className="space-y-4">
+                                            <h4 className="text-xs font-mono uppercase tracking-[0.2em] font-black text-primary/60">Conversie Bottlenecks</h4>
+                                            <ul className="space-y-3">
                                                 {report.bottlenecks.map((item, i) => (
-                                                    <li key={i} className="flex gap-2 text-[11px] font-sans text-[var(--text)]/60 italic leading-snug">
+                                                    <li key={i} className="flex gap-3 text-sm font-sans text-[var(--text)]/60 italic leading-relaxed">
                                                         <span className="text-primary/40">•</span> {item}
                                                     </li>
                                                 ))}
                                             </ul>
                                         </div>
 
-                                        <div className="space-y-3">
-                                            <h4 className="text-[10px] font-mono uppercase tracking-[0.2em] font-black text-primary/60">Grootste Kans</h4>
-                                            <p className="text-[11px] font-sans text-[var(--text)]/60 italic leading-snug">
+                                        <div className="space-y-4">
+                                            <h4 className="text-xs font-mono uppercase tracking-[0.2em] font-black text-primary/60">Grootste Kans</h4>
+                                            <p className="text-sm font-sans text-[var(--text)]/60 italic leading-relaxed p-6 bg-primary/5 rounded-[1.5rem] border border-primary/10">
                                                 {report.missedOpp}
                                             </p>
                                         </div>
                                     </div>
 
-                                    <div className="pt-8 flex flex-col items-center space-y-4 border-t border-white/5">
-                                        <p className="text-xs font-sans font-bold italic text-primary/80">
+                                    <div className="pt-12 flex flex-col items-center space-y-6 border-t border-white/5">
+                                        <p className="text-sm md:text-base font-sans font-bold italic text-primary/80 text-center max-w-md">
                                             {report.ctaText}
                                         </p>
-                                        <a href="/contact" className="bg-primary/10 hover:bg-primary text-primary hover:text-black border border-primary/20 px-6 py-3 rounded-full font-black uppercase tracking-widest italic flex items-center gap-3 transition-all text-[10px]">
-                                            Check inplannen
-                                            <ArrowRight size={14} />
+                                        <a href="/contact" className="btn-magnetic group bg-primary text-black px-8 py-4 rounded-full font-black uppercase tracking-widest italic flex items-center gap-4 shadow-xl text-xs">
+                                            Gratis check inplannen
+                                            <ArrowRight size={16} />
                                         </a>
                                     </div>
                                 </motion.div>
