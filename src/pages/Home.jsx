@@ -17,6 +17,7 @@ import { Link } from 'react-router-dom';
 import SectionLabel from '../components/SectionLabel';
 import ContactForm from '../components/ContactForm';
 import SEO from '../components/SEO';
+import WebsiteScanner from '../components/WebsiteScanner';
 import { getHomePageData, getFaqs, getContactInfo } from '../lib/sanity';
 
 gsap.registerPlugin(ScrollTrigger);
@@ -660,6 +661,7 @@ const Home = () => {
                     >
                         <Hero data={pageData} />
                         <Services cmsServices={pageData?.features} data={pageData} />
+                        <WebsiteScanner />
                         <HomeAbout data={pageData} />
                         <Process data={pageData} />
                         <FAQ data={faqs} />
