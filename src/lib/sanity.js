@@ -1,9 +1,20 @@
 import { createClient } from '@sanity/client'
 import imageUrlBuilder from '@sanity/image-url'
 
+// Helper to get env variables in both Vite and Node.js environments
+const getEnv = (key) => {
+    if (typeof import.meta !== 'undefined' && import.meta.env && import.meta.env[key]) {
+        return import.meta.env[key];
+    }
+    if (typeof process !== 'undefined' && process.env && process.env[key]) {
+        return process.env[key];
+    }
+    return '';
+};
+
 export const client = createClient({
-    projectId: import.meta.env.VITE_SANITY_PROJECT_ID,
-    dataset: import.meta.env.VITE_SANITY_DATASET || 'production',
+    projectId: getEnv('VITE_SANITY_PROJECT_ID') || '1r5lk62n',
+    dataset: getEnv('VITE_SANITY_DATASET') || 'production',
     useCdn: true,
     apiVersion: '2023-05-03',
 })
