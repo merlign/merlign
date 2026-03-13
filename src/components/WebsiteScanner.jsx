@@ -118,12 +118,11 @@ const WebsiteScanner = () => {
         <section className="py-20 md:py-32 border-t border-[var(--border)] overflow-hidden">
             <div className="content-max-width section-px">
                 <div className="max-w-4xl mx-auto text-center space-y-8 mb-16">
-                    <SectionLabel className="justify-center">Website Scanner</SectionLabel>
                     <h2 className="text-h2 font-sans font-bold text-[var(--text)]">
-                        Ontdek je conversie <span className="text-primary font-drama font-normal text-h2-serif">lekken.</span>
+                        Doe de gratis <span className="text-primary font-drama font-normal text-h2-serif text-h1-serif">website scan.</span>
                     </h2>
-                    <p className="text-lg md:text-xl font-sans text-[var(--text)]/60 font-light italic max-w-2xl mx-auto">
-                        Voer je URL in en laat Claude je site direct analyseren op conversie-kansen.
+                    <p className="text-lg md:text-xl font-sans text-[var(--text)]/60 font-light italic max-w-2xl mx-auto text-center">
+                        Ontdek binnen 30 seconden waar je leads verliest. Claude analyseert je content en geeft je direct 3 concrete verbeterpunten voor meer conversie.
                     </p>
                 </div>
 
