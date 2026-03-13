@@ -16,7 +16,8 @@ const routes = [
     { path: '/cases', type: 'cases' },
     { path: '/contact', type: 'contact' },
     { path: '/privacy', type: 'simple', title: 'Privacy Policy — Merlign' },
-    { path: '/terms', type: 'simple', title: 'Terms of Service — Merlign' }
+    { path: '/terms', type: 'simple', title: 'Terms of Service — Merlign' },
+    { path: '/72h-sprint', type: 'simple', title: 'Het 72-uurs Protocol — Merlign' }
 ];
 
 async function generate() {
