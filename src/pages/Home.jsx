@@ -508,56 +508,7 @@ const Process = ({ data }) => {
     );
 };
 
-const FAQ = () => {
-    // 1. DIT ZIJN JE STANDAARD VRAGEN (FALLBACK)
-    const staticQuestions = [
-        {
-            q: "Heb ik zelf technische kennis nodig?",
-            a: "Totaal niet. Ik neem het volledige proces uit handen: van design en code tot de laatste API-koppeling. Jij krijgt een systeem dat simpel werkt, zodat jij je kunt focussen op je business terwijl de techniek op de achtergrond voor je draait."
-        },
-        {
-            q: "Ik heb al een website, wat nu?",
-            a: "Geen probleem. We kunnen je huidige site optimaliseren voor meer conversie, of we voegen specifiek de dashboards en automatiseringen toe aan je bestaande systeem. Ik bouw modulaire oplossingen die overal op aansluiten."
-        },
-        {
-            q: "Hoeveel tijd kost een samenwerking mij?",
-            a: "Minimaal. We starten met een check van 20 minuten. Daarna neem ik het zware werk over. Ik werk in korte sprints en jij geeft alleen feedback op de mijlpalen. Zo bouwen we high-end resultaat zonder dat het jouw agenda overneemt."
-        },
-        {
-            q: "Moet ik alles (website, dashboard, automatisering) in één keer doen?",
-            a: "Zeker niet. De meeste ondernemers beginnen met de grootste tijdvreter of het herstellen van hun 'digitale voordeur'. We pakken eerst het proces aan dat je nu de meeste winst of tijd oplevert. Opschalen kan altijd."
-        }
-    ];
-
-    // 2. DIT IS HOE JE HET CMS KOPPELT
-    const [cmsQuestions, setCmsQuestions] = useState([]);
-    const [loading, setLoading] = useState(false); // Optioneel: toon een loader
-
-    useEffect(() => {
-        const fetchCmsData = async () => {
-            setLoading(true);
-            try {
-                const data = await getFaqs();
-                if (data && data.length > 0) {
-                    // Map Sanity schema to local schema
-                    const mappedFaqs = data.map(item => ({
-                        q: item.question,
-                        a: item.answer
-                    }));
-                    setCmsQuestions(mappedFaqs);
-                }
-            } catch (err) {
-                console.error("CMS Error:", err);
-            } finally {
-                setLoading(false);
-            }
-        };
-        fetchCmsData();
-    }, []);
-
-    // Only use CMS data if available to avoid duplicates; otherwise fall back to static
-    const allQuestions = cmsQuestions.length > 0 ? cmsQuestions : staticQuestions;
-
+const FAQ = ({ data }) => {
     const [openIndex, setOpenIndex] = useState(0);
 
     return (
@@ -571,7 +522,7 @@ const FAQ = () => {
                 </div>
 
                 <div className="space-y-4">
-                    {allQuestions.map((item, i) => (
+                    {data.map((item, i) => (
                         <div
                             key={i}
                             className={`rounded-[1.5rem] border transition-all duration-500 overflow-hidden ${openIndex === i ? 'bg-[var(--paper)]/80 border-primary/20 shadow-sm' : 'bg-[var(--text)]/[0.01] border-[var(--border)] hover:border-[var(--text)]/10'}`}
@@ -645,16 +596,30 @@ const ContactSection = ({ data }) => {
 const Home = () => {
     const [pageData, setPageData] = useState(null);
     const [contactInfo, setContactInfo] = useState(null);
+    const [faqs, setFaqs] = useState([]);
 
     useEffect(() => {
         const fetchPageData = async () => {
             try {
-                const [home, contact] = await Promise.all([
+                const [home, contact, faqList] = await Promise.all([
                     getHomePageData(),
-                    getContactInfo()
+                    getContactInfo(),
+                    getFaqs()
                 ]);
                 setPageData(home);
                 setContactInfo(contact);
+
+                if (faqList && faqList.length > 0) {
+                    setFaqs(faqList.map(item => ({ q: item.question, a: item.answer })));
+                } else {
+                    // Fallback to static if needed
+                    setFaqs([
+                        { q: "Heb ik zelf technische kennis nodig?", a: "Totaal niet. Ik neem het volledige proces uit handen: van design en code tot de laatste API-koppeling. Jij krijgt een systeem dat simpel werkt, zodat jij je kunt focussen op je business terwijl de techniek op de achtergrond voor je draait." },
+                        { q: "Ik heb al een website, wat nu?", a: "Geen probleem. We kunnen je huidige site optimaliseren voor meer conversie, of we voegen specifiek de dashboards en automatiseringen toe aan je bestaande systeem. Ik bouw modulaire oplossingen die overal op aansluiten." },
+                        { q: "Hoeveel tijd kost een samenwerking mij?", a: "Minimaal. We starten met een check van 20 minuten. Daarna neem ik het zware werk over. Ik werk in korte sprints en jij geeft alleen feedback op de mijlpalen. Zo bouwen we high-end resultaat zonder dat het jouw agenda overneemt." },
+                        { q: "Moet ik alles (website, dashboard, automatisering) in één keer doen?", a: "Zeker niet. De meeste ondernemers beginnen met de grootste tijdvreter of het herstellen van hun 'digitale voordeur'. We pakken eerst het proces aan dat je nu de meeste winst of tijd oplevert. Opschalen kan altijd." }
+                    ]);
+                }
             } catch (err) {
                 console.error("Sanity Fetch Error:", err);
             }
@@ -668,6 +633,7 @@ const Home = () => {
                 title={pageData?.seoTitle || "Design & AI-automatisering voor mkb en zzpers"}
                 description={pageData?.seoDescription || "Ik bouw websites die converteren, dashboards die inzicht geven en automatiseringen die tijd besparen. Geen gedoe, gewoon resultaat voor mkb en zzpers."}
                 path="/"
+                faqs={faqs}
             />
             <AnimatePresence mode="wait">
                 {!pageData ? (
@@ -696,7 +662,7 @@ const Home = () => {
                         <Services cmsServices={pageData?.features} data={pageData} />
                         <HomeAbout data={pageData} />
                         <Process data={pageData} />
-                        <FAQ />
+                        <FAQ data={faqs} />
                         <ContactSection data={contactInfo} />
                     </motion.div>
                 )}

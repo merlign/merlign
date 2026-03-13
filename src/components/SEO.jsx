@@ -1,7 +1,7 @@
 import React from 'react';
 import { Helmet } from 'react-helmet-async';
 
-const SEO = ({ title, description, path = "", type = "website" }) => {
+const SEO = ({ title, description, path = "", type = "website", services = [], faqs = [] }) => {
     const siteName = "Merlign";
     const fullTitle = title.includes(siteName) ? title : `${title} | ${siteName}`;
     const url = `https://merlign.com${path}`;
@@ -67,6 +67,47 @@ const SEO = ({ title, description, path = "", type = "website" }) => {
         ]
     };
 
+    // Service Schema
+    const serviceSchemas = services.map(service => ({
+        "@context": "https://schema.org",
+        "@type": "Service",
+        "serviceType": service.name,
+        "provider": {
+            "@type": "ProfessionalService",
+            "name": "Merlign",
+            "url": "https://merlign.com"
+        },
+        "description": service.description,
+        "areaServed": "NL",
+        "hasOfferCatalog": {
+            "@type": "OfferCatalog",
+            "name": service.name,
+            "itemListElement": service.features?.map((f, i) => ({
+                "@type": "Offer",
+                "itemOffered": {
+                    "@type": "Service",
+                    "name": f.title,
+                    "description": f.desc
+                },
+                "position": i + 1
+            })) || []
+        }
+    }));
+
+    // FAQ Schema
+    const faqSchema = faqs.length > 0 ? {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": faqs.map(faq => ({
+            "@type": "Question",
+            "name": faq.q,
+            "acceptedAnswer": {
+                "@type": "Answer",
+                "text": faq.a
+            }
+        }))
+    } : null;
+
     return (
         <Helmet>
             {/* Standard SEO */}
@@ -100,6 +141,16 @@ const SEO = ({ title, description, path = "", type = "website" }) => {
             <script type="application/ld+json">
                 {JSON.stringify(businessSchema)}
             </script>
+            {serviceSchemas.map((schema, i) => (
+                <script key={`service-${i}`} type="application/ld+json">
+                    {JSON.stringify(schema)}
+                </script>
+            ))}
+            {faqSchema && (
+                <script type="application/ld+json">
+                    {JSON.stringify(faqSchema)}
+                </script>
+            )}
         </Helmet>
     );
 };

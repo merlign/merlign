@@ -2,10 +2,10 @@ import { createClient } from '@sanity/client'
 import imageUrlBuilder from '@sanity/image-url'
 
 export const client = createClient({
-    projectId: '1r5lk62n',
-    dataset: 'production',
-    useCdn: true, // `false` als je de allernieuwste data wilt, `true` voor extra snelheid
-    apiVersion: '2023-05-03', // Of een recentere datum
+    projectId: import.meta.env.VITE_SANITY_PROJECT_ID,
+    dataset: import.meta.env.VITE_SANITY_DATASET || 'production',
+    useCdn: true,
+    apiVersion: '2023-05-03',
 })
 
 const builder = imageUrlBuilder(client)

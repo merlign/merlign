@@ -30,24 +30,41 @@ const ContactForm = ({ selectedUpgrade: initialUpgrade = null }) => {
         if (!selectedUpgrade || !trimmedEmail || isSending) return;
         setIsSending(true);
 
+        const sanitize = (str) => {
+            if (!str) return '';
+            return str
+                .replace(/&/g, '&amp;')
+                .replace(/</g, '&lt;')
+                .replace(/>/g, '&gt;')
+                .replace(/"/g, '&quot;')
+                .replace(/'/g, '&#039;');
+        };
+
         const templateParams = {
-            from_name: trimmedName,
-            reply_to: trimmedEmail,
-            to_email: trimmedEmail, // Added for auto-reply templates
-            user_email: trimmedEmail, // Added for auto-reply templates
-            email: trimmedEmail, // Added for auto-reply templates
-            company: formData.company?.trim(),
-            message: formData.message,
+            from_name: sanitize(trimmedName),
+            reply_to: sanitize(trimmedEmail),
+            to_email: sanitize(trimmedEmail),
+            user_email: sanitize(trimmedEmail),
+            email: sanitize(trimmedEmail),
+            company: sanitize(formData.company?.trim()),
+            message: sanitize(formData.message),
             upgrade_choice: upgrades.find(u => u.id === selectedUpgrade)?.title || selectedUpgrade
         };
 
         try {
+            const serviceId = import.meta.env.VITE_EMAILJS_SERVICE_ID;
+            const templateId = import.meta.env.VITE_EMAILJS_TEMPLATE_ID;
+            const autoReplyTemplateId = import.meta.env.VITE_EMAILJS_AUTO_REPLY_TEMPLATE_ID;
+            const publicKey = import.meta.env.VITE_EMAILJS_PUBLIC_KEY;
+
             // 1. Send main notification to you (critical)
-            await emailjs.send('service_qdlv6x6', 'template_ibof6py', templateParams, 'kWXpmJZNrXzXz9PHt');
+            await emailjs.send(serviceId, templateId, templateParams, publicKey);
 
             // 2. Send confirmation to client (non-critical, don't block success if it fails)
             try {
-                await emailjs.send('service_qdlv6x6', 'template_z48xd8j', templateParams, 'kWXpmJZNrXzXz9PHt');
+                if (autoReplyTemplateId) {
+                    await emailjs.send(serviceId, autoReplyTemplateId, templateParams, publicKey);
+                }
             } catch (err) {
                 console.warn('Auto-reply failed, but main email was sent:', err);
             }

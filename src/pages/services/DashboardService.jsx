@@ -70,6 +70,12 @@ const DashboardService = () => {
                 title={data?.seoTitle || "Al je cijfers in één dashboard | Ik geef je direct Inzicht"}
                 description={data?.seoDescription || "Van omzet tot ads: ik bouw een simpel dashboard waardoor je precies ziet waar je winst maakt. Stop met gokken en krijg grip op je cijfers."}
                 path="/dashboard"
+                services={[{
+                    name: "Business Intelligence Dashboards",
+                    description: data?.heroSubtitle || "Ik bouw een dashboard dat al je belangrijkste cijfers op één plek zet. Altijd inzichtelijk, op je telefoon of laptop.",
+                    features: features
+                }]}
+                faqs={data?.faqs?.length > 0 ? data.faqs.map(f => ({ q: f.question, a: f.answer })) : staticFeatures.map(f => ({ q: f.title, a: f.desc }))}
             />
             <AnimatePresence mode="wait">
                 {!data ? (

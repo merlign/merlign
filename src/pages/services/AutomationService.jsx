@@ -71,6 +71,12 @@ const AutomationService = () => {
                 title={data?.seoTitle || "Ik zet je workflow op autopilot | AI-Automatisering"}
                 description={data?.seoDescription || "Ik neem je saaie, herhalende werk uit handen met slimme AI-koppelingen. Van administratie tot leads: ik bouw systemen die voor jóú werken terwijl jij onderneemt."}
                 path="/automatisering"
+                services={[{
+                    name: "AI & Workflow Automation",
+                    description: data?.heroSubtitle || "Ik automatiseer de repetitieve taken in jouw bedrijf. Van leadopvolging tot administratie. Jij besteedt je tijd aan wat telt.",
+                    features: features
+                }]}
+                faqs={data?.faqs?.length > 0 ? data.faqs.map(f => ({ q: f.question, a: f.answer })) : staticFeatures.map(f => ({ q: f.title, a: f.desc }))}
             />
             <AnimatePresence mode="wait">
                 {!data ? (

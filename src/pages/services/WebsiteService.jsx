@@ -71,6 +71,12 @@ const WebsiteService = () => {
                 title={data?.seoTitle || "Een nieuwe website in 72 uur | Webdesign door Merlign"}
                 description={data?.seoDescription || "Je wacht al te lang op die nieuwe site. Ik bouw een strakke website die écht verkoopt en binnen 3 dagen live is. Geen gedoe, direct resultaat voor jouw business."}
                 path="/website"
+                services={[{
+                    name: "Website Design & Development",
+                    description: data?.heroSubtitle || "Niet alleen mooi. Gebouwd om bezoekers te overtuigen en te laten converteren. Klaar in 72 uur.",
+                    features: features
+                }]}
+                faqs={data?.faqs?.length > 0 ? data.faqs.map(f => ({ q: f.question, a: f.answer })) : staticFeatures.map(f => ({ q: f.title, a: f.desc }))} // Use staticFeatures as fallback for FAQ schema if no CMS FAQs
             />
             <AnimatePresence mode="wait">
                 {!data ? (
