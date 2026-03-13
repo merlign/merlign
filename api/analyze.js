@@ -19,7 +19,7 @@ export default async function handler(req) {
     }
 
     try {
-        const response = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:streamGenerateContent?alt=sse&key=${apiKey}`, {
+        const response = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash-latest:streamGenerateContent?alt=sse&key=${apiKey}`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -57,6 +57,12 @@ export default async function handler(req) {
                 },
             }),
         });
+
+        if (!response.ok) {
+            const errorText = await response.text();
+            console.error('Gemini API Error:', errorText);
+            return new Response(`AI Provider Error: ${response.status}`, { status: response.status });
+        }
 
         return new Response(response.body, {
             headers: {
