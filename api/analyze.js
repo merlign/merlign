@@ -61,7 +61,17 @@ export default async function handler(req) {
         if (!response.ok) {
             const errorText = await response.text();
             console.error('Gemini API Error:', errorText);
-            return new Response(`AI Provider Error: ${response.status}`, { status: response.status });
+
+            let availableModels = 'unknown';
+            try {
+                const listRes = await fetch(`https://generativelanguage.googleapis.com/v1beta/models?key=${apiKey}`);
+                const listData = await listRes.json();
+                availableModels = listData.models?.map(m => m.name.split('/').pop()).join(', ') || 'none';
+            } catch (e) {
+                availableModels = 'error-fetching-list';
+            }
+
+            return new Response(`AI Provider Error: ${response.status}. Available: ${availableModels}`, { status: response.status });
         }
 
         return new Response(response.body, {
