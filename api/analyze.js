@@ -19,7 +19,7 @@ export default async function handler(req) {
     }
 
     try {
-        const response = await fetch(`https://generativelanguage.googleapis.com/v1/models/gemini-1.5-flash:streamGenerateContent?alt=sse&key=${apiKey}`, {
+        const response = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:streamGenerateContent?alt=sse&key=${apiKey}`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -61,17 +61,7 @@ export default async function handler(req) {
         if (!response.ok) {
             const errorText = await response.text();
             console.error('Gemini API Error:', errorText);
-
-            let availableModels = 'unknown';
-            try {
-                const listRes = await fetch(`https://generativelanguage.googleapis.com/v1beta/models?key=${apiKey}`);
-                const listData = await listRes.json();
-                availableModels = listData.models?.map(m => m.name.split('/').pop()).join(', ') || 'none';
-            } catch (e) {
-                availableModels = 'error-fetching-list';
-            }
-
-            return new Response(`AI Provider Error: ${response.status}. Available: ${availableModels}`, { status: response.status });
+            return new Response(`AI Provider Error: ${response.status}`, { status: response.status });
         }
 
         return new Response(response.body, {
