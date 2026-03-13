@@ -117,164 +117,165 @@ const WebsiteScanner = () => {
     };
 
     return (
-        <section className="py-24 md:py-40 relative overflow-hidden bg-[#0A0B14] border-y border-white/5">
-            {/* Subtle glow background for the entire section */}
-            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full bg-primary/3 blur-[160px] pointer-events-none" />
+        <section className="py-20 md:py-32 relative overflow-hidden">
+            <div className="content-max-width section-px relative z-10 flex justify-center">
+                <div className="w-full max-w-5xl bg-white/[0.03] border border-white/10 backdrop-blur-2xl rounded-[3rem] md:rounded-[4rem] p-10 md:p-20 relative overflow-hidden shadow-2xl">
+                    {/* Interior glow effects */}
+                    <div className="absolute top-0 right-0 w-80 h-80 bg-primary/10 rounded-full blur-[100px] -translate-y-1/2 translate-x-1/2 pointer-events-none" />
+                    <div className="absolute bottom-0 left-0 w-64 h-64 bg-primary/5 rounded-full blur-[80px] translate-y-1/2 -translate-x-1/2 pointer-events-none" />
 
-            <div className="content-max-width section-px relative z-10">
-                <div className="max-w-4xl mx-auto text-center space-y-8 mb-16">
-                    <h2 className="text-h2 font-sans font-bold text-[var(--text)]">
-                        Doe de gratis <span className="text-primary font-drama font-normal text-h2-serif text-h1-serif">website scan.</span>
-                    </h2>
-                    <p className="text-lg md:text-xl font-sans text-[var(--text)]/60 font-light italic max-w-2xl mx-auto text-center">
-                        Ontdek binnen 30 seconden waar je leads verliest. Onze AI analyseert je content en geeft je direct 3 concrete verbeterpunten voor meer conversie.
-                    </p>
-                </div>
+                    <div className="max-w-3xl mx-auto text-center space-y-8 mb-16 relative z-10">
+                        <h2 className="text-h2 font-sans font-bold text-[var(--text)] text-3xl md:text-5xl lg:text-7xl">
+                            Doe de gratis <span className="text-primary font-drama font-normal text-h2-serif text-h1-serif">website scan.</span>
+                        </h2>
+                        <p className="text-base md:text-lg font-sans text-[var(--text)]/60 font-light italic max-w-xl mx-auto text-center">
+                            Ontdek binnen 30 seconden waar je leads verliest. Onze AI analyseert je content en geeft je direct 3 concrete verbeterpunten voor meer conversie.
+                        </p>
+                    </div>
 
-                <div className="max-w-3xl mx-auto relative z-10">
-                    <form onSubmit={handleScan} className="relative group mb-12">
-                        <div className="absolute inset-0 bg-primary/5 blur-xl group-hover:bg-primary/10 transition-all rounded-full" />
-                        <div className="relative flex items-center bg-[var(--paper)]/40 border border-[var(--border)] p-2 rounded-full focus-within:border-primary/50 transition-all shadow-xl">
-                            <input
-                                type="text"
-                                value={url}
-                                onChange={(e) => setUrl(e.target.value)}
-                                placeholder="jouwsite.nl"
-                                className="flex-grow bg-transparent border-none px-6 py-4 font-sans text-lg focus:outline-none text-[var(--text)] placeholder:text-[var(--text)]/20"
-                                disabled={isScanning}
-                            />
-                            <button
-                                type="submit"
-                                disabled={isScanning || !url}
-                                className="bg-primary text-black px-8 py-4 rounded-full font-black uppercase tracking-widest italic flex items-center gap-3 disabled:opacity-50 disabled:cursor-not-allowed hover:scale-[1.02] active:scale-95 transition-all shadow-lg"
-                            >
-                                {isScanning ? (
-                                    <>
-                                        <Loader2 className="animate-spin" size={20} />
-                                        Scannen...
-                                    </>
-                                ) : (
-                                    <>
-                                        Scan
-                                        <ArrowRight size={20} />
-                                    </>
-                                )}
-                            </button>
-                        </div>
-                    </form>
+                    <div className="max-w-2xl mx-auto relative z-20">
+                        <form onSubmit={handleScan} className="relative group mb-12">
+                            <div className="absolute inset-0 bg-primary/5 blur-xl group-hover:bg-primary/10 transition-all rounded-full" />
+                            <div className="relative flex items-center bg-[var(--paper)]/40 border border-[var(--border)] p-2 rounded-full focus-within:border-primary/50 transition-all shadow-xl">
+                                <input
+                                    type="text"
+                                    value={url}
+                                    onChange={(e) => setUrl(e.target.value)}
+                                    placeholder="jouwsite.nl"
+                                    className="flex-grow bg-transparent border-none px-6 py-4 font-sans text-base md:text-lg focus:outline-none text-[var(--text)] placeholder:text-[var(--text)]/20"
+                                    disabled={isScanning}
+                                />
+                                <button
+                                    type="submit"
+                                    disabled={isScanning || !url}
+                                    className="bg-primary text-black px-6 md:px-8 py-3 md:py-4 rounded-full font-black uppercase tracking-widest italic flex items-center gap-3 disabled:opacity-50 disabled:cursor-not-allowed hover:scale-[1.02] active:scale-95 transition-all shadow-lg text-xs md:text-sm"
+                                >
+                                    {isScanning ? (
+                                        <>
+                                            <Loader2 className="animate-spin" size={18} />
+                                            Scannen...
+                                        </>
+                                    ) : (
+                                        <>
+                                            Scan
+                                            <ArrowRight size={18} />
+                                        </>
+                                    )}
+                                </button>
+                            </div>
+                        </form>
 
-                    <AnimatePresence mode="wait">
-                        {error && (
-                            <motion.div
-                                initial={{ opacity: 0, y: 10 }}
-                                animate={{ opacity: 1, y: 0 }}
-                                exit={{ opacity: 0 }}
-                                className="bg-red-500/10 border border-red-500/20 p-6 rounded-[2rem] flex items-center gap-4 text-red-400 mb-8"
-                            >
-                                <AlertCircle className="shrink-0" />
-                                <p className="font-sans font-medium italic">{error}</p>
-                            </motion.div>
-                        )}
+                        <AnimatePresence mode="wait">
+                            {error && (
+                                <motion.div
+                                    initial={{ opacity: 0, y: 10 }}
+                                    animate={{ opacity: 1, y: 0 }}
+                                    exit={{ opacity: 0 }}
+                                    className="bg-red-500/10 border border-red-500/20 p-6 rounded-[2rem] flex items-center gap-4 text-red-400 mb-8"
+                                >
+                                    <AlertCircle className="shrink-0" />
+                                    <p className="font-sans font-medium italic text-sm">{error}</p>
+                                </motion.div>
+                            )}
 
-                        {scanStep === 'analyzing' && !report && (
-                            <motion.div
-                                initial={{ opacity: 0 }}
-                                animate={{ opacity: 1 }}
-                                className="space-y-6"
-                            >
-                                <div className="flex items-center gap-3 text-primary animate-pulse">
-                                    <Zap size={20} />
-                                    <span className="font-mono text-sm uppercase tracking-widest font-black italic">AI analyseert...</span>
-                                </div>
-                                <div className="bg-[var(--paper)]/40 border border-[var(--border)] p-8 rounded-[2rem] font-mono text-sm text-[var(--text)]/60 whitespace-pre-wrap italic leading-relaxed h-[300px] overflow-y-auto custom-scrollbar">
-                                    {streamedText || "Wachten op AI respons..."}
-                                </div>
-                            </motion.div>
-                        )}
+                            {scanStep === 'analyzing' && !report && (
+                                <motion.div
+                                    initial={{ opacity: 0 }}
+                                    animate={{ opacity: 1 }}
+                                    className="space-y-6"
+                                >
+                                    <div className="flex items-center gap-3 text-primary animate-pulse">
+                                        <Zap size={18} />
+                                        <span className="font-mono text-xs uppercase tracking-widest font-black italic">AI analyseert...</span>
+                                    </div>
+                                    <div className="bg-[var(--paper)]/40 border border-[var(--border)] p-6 rounded-[2rem] font-mono text-[11px] md:text-xs text-[var(--text)]/60 whitespace-pre-wrap italic leading-relaxed h-[250px] overflow-y-auto custom-scrollbar">
+                                        {streamedText || "Wachten op AI respons..."}
+                                    </div>
+                                </motion.div>
+                            )}
 
-                        {scanStep === 'result' && report && (
-                            <motion.div
-                                ref={reportRef}
-                                initial={{ opacity: 0, scale: 0.95 }}
-                                animate={{ opacity: 1, scale: 1 }}
-                                className="bg-[var(--paper)]/60 border border-[var(--border)] p-8 md:p-12 rounded-[3rem] shadow-2xl space-y-12 relative overflow-hidden"
-                            >
-                                <div className="absolute top-0 right-0 w-64 h-64 bg-primary/10 rounded-full blur-[100px] -translate-y-1/2 translate-x-1/2" />
+                            {scanStep === 'result' && report && (
+                                <motion.div
+                                    ref={reportRef}
+                                    initial={{ opacity: 0, scale: 0.95 }}
+                                    animate={{ opacity: 1, scale: 1 }}
+                                    className="space-y-12 relative z-10"
+                                >
+                                    <div className="flex flex-col md:flex-row gap-8 items-center md:items-start text-center md:text-left">
+                                        {/* Score Circle */}
+                                        <div className="relative shrink-0 w-24 h-24 md:w-32 md:h-32">
+                                            <svg className="w-full h-full rotate-[-90deg]">
+                                                <circle cx="50%" cy="50%" r="45%" stroke="currentColor" strokeWidth="6" fill="transparent" className="text-[var(--border)]" />
+                                                <motion.circle
+                                                    cx="50%" cy="50%" r="45%"
+                                                    stroke="currentColor"
+                                                    strokeWidth="6"
+                                                    fill="transparent"
+                                                    strokeDasharray="100 100"
+                                                    strokeDashoffset={100 - (report.score * 10)}
+                                                    className={report.score <= 4 ? "text-red-500" : report.score <= 6 ? "text-orange-500" : "text-emerald-500"}
+                                                    initial={{ strokeDashoffset: 100 }}
+                                                    animate={{ strokeDashoffset: 100 - (report.score * 10) }}
+                                                    transition={{ duration: 1.5, ease: "easeOut" }}
+                                                />
+                                            </svg>
+                                            <div className="absolute inset-0 flex flex-col items-center justify-center">
+                                                <span className="text-3xl md:text-4xl font-mono font-black italic">{report.score}</span>
+                                                <span className="text-[8px] uppercase font-black opacity-40 tracking-widest">/ 10</span>
+                                            </div>
+                                        </div>
 
-                                <div className="flex flex-col md:flex-row gap-12 items-center md:items-start text-center md:text-left">
-                                    {/* Score Circle */}
-                                    <div className="relative shrink-0 w-32 h-32 md:w-40 md:h-40">
-                                        <svg className="w-full h-full rotate-[-90deg]">
-                                            <circle cx="50%" cy="50%" r="45%" stroke="currentColor" strokeWidth="8" fill="transparent" className="text-[var(--border)]" />
-                                            <motion.circle
-                                                cx="50%" cy="50%" r="45%"
-                                                stroke="currentColor"
-                                                strokeWidth="8"
-                                                fill="transparent"
-                                                strokeDasharray="100 100"
-                                                strokeDashoffset={100 - (report.score * 10)}
-                                                className={report.score <= 4 ? "text-red-500" : report.score <= 6 ? "text-orange-500" : "text-emerald-500"}
-                                                initial={{ strokeDashoffset: 100 }}
-                                                animate={{ strokeDashoffset: 100 - (report.score * 10) }}
-                                                transition={{ duration: 1.5, ease: "easeOut" }}
-                                            />
-                                        </svg>
-                                        <div className="absolute inset-0 flex flex-col items-center justify-center">
-                                            <span className="text-4xl md:text-5xl font-mono font-black italic">{report.score}</span>
-                                            <span className="text-[10px] uppercase font-black opacity-40 tracking-widest">/ 10</span>
+                                        <div className="space-y-3">
+                                            <div className="inline-block px-3 py-1 rounded-full bg-primary/10 border border-primary/20 text-primary font-mono text-[8px] uppercase tracking-widest font-black italic">
+                                                {report.scoreLabel}
+                                            </div>
+                                            <h3 className="text-2xl font-sans font-bold text-[var(--text)] leading-tight">Eerste indruk</h3>
+                                            <p className="text-base font-sans font-light italic text-[var(--text)]/80 leading-relaxed">
+                                                {report.firstImpression}
+                                            </p>
                                         </div>
                                     </div>
 
-                                    <div className="space-y-4">
-                                        <div className="inline-block px-4 py-1 rounded-full bg-primary/10 border border-primary/20 text-primary font-mono text-[10px] uppercase tracking-widest font-black italic">
-                                            {report.scoreLabel}
+                                    <div className="grid grid-cols-1 md:grid-cols-2 gap-8 pt-8 border-t border-[var(--border)]">
+                                        <div className="space-y-4">
+                                            <h4 className="flex items-center gap-2 text-lg font-sans font-bold text-[var(--text)]">
+                                                <AlertCircle size={18} className="text-primary" />
+                                                Bottlenecks
+                                            </h4>
+                                            <ul className="space-y-3">
+                                                {report.bottlenecks.map((item, i) => (
+                                                    <li key={i} className="flex gap-3 group">
+                                                        <span className="font-mono text-primary/40 font-black italic text-xs">0{i + 1}</span>
+                                                        <span className="font-sans text-[var(--text)]/70 italic leading-relaxed text-sm group-hover:text-[var(--text)] transition-colors">{item}</span>
+                                                    </li>
+                                                ))}
+                                            </ul>
                                         </div>
-                                        <h3 className="text-3xl font-sans font-bold text-[var(--text)] leading-tight">Eerste indruk</h3>
-                                        <p className="text-lg font-sans font-light italic text-[var(--text)]/80 leading-relaxed max-w-xl">
-                                            {report.firstImpression}
+
+                                        <div className="space-y-4">
+                                            <h4 className="flex items-center gap-2 text-lg font-sans font-bold text-[var(--text)]">
+                                                <BarChart3 size={18} className="text-primary" />
+                                                Gemiste kans
+                                            </h4>
+                                            <p className="font-sans text-[var(--text)]/70 italic leading-relaxed text-sm p-5 bg-primary/5 rounded-2xl border border-primary/10">
+                                                {report.missedOpp}
+                                            </p>
+                                        </div>
+                                    </div>
+
+                                    <div className="pt-10 flex flex-col items-center space-y-6 border-t border-[var(--border)]">
+                                        <p className="text-lg font-sans font-bold italic text-primary text-center">
+                                            {report.ctaText}
                                         </p>
+                                        <a href="/contact" className="btn-magnetic group bg-primary text-black px-10 py-5 rounded-full font-black uppercase tracking-widest italic flex items-center gap-4 shadow-2xl text-xs">
+                                            Gratis check inplannen
+                                            <ArrowRight size={18} />
+                                        </a>
                                     </div>
-                                </div>
-
-                                <div className="grid grid-cols-1 md:grid-cols-2 gap-12 pt-8 border-t border-[var(--border)]">
-                                    <div className="space-y-6">
-                                        <h4 className="flex items-center gap-3 text-xl font-sans font-bold text-[var(--text)]">
-                                            <AlertCircle size={20} className="text-primary" />
-                                            Conversie Bottlenecks
-                                        </h4>
-                                        <ul className="space-y-4">
-                                            {report.bottlenecks.map((item, i) => (
-                                                <li key={i} className="flex gap-4 group">
-                                                    <span className="font-mono text-primary/40 font-black italic">0{i + 1}</span>
-                                                    <span className="font-sans text-[var(--text)]/70 italic leading-relaxed group-hover:text-[var(--text)] transition-colors">{item}</span>
-                                                </li>
-                                            ))}
-                                        </ul>
-                                    </div>
-
-                                    <div className="space-y-6">
-                                        <h4 className="flex items-center gap-3 text-xl font-sans font-bold text-[var(--text)]">
-                                            <BarChart3 size={20} className="text-primary" />
-                                            Grootste gemiste kans
-                                        </h4>
-                                        <p className="font-sans text-[var(--text)]/70 italic leading-relaxed p-6 bg-primary/5 rounded-2xl border border-primary/10">
-                                            {report.missedOpp}
-                                        </p>
-                                    </div>
-                                </div>
-
-                                <div className="pt-12 flex flex-col items-center space-y-6 border-t border-[var(--border)]">
-                                    <p className="text-xl font-sans font-bold italic text-primary text-center">
-                                        {report.ctaText}
-                                    </p>
-                                    <a href="/contact" className="btn-magnetic group bg-primary text-black px-12 py-6 rounded-full font-black uppercase tracking-widest italic flex items-center gap-4 shadow-2xl">
-                                        Gratis check inplannen
-                                        <ArrowRight size={20} />
-                                    </a>
-                                </div>
-                            </motion.div>
-                        )}
-                    </AnimatePresence>
+                                </motion.div>
+                            )}
+                        </AnimatePresence>
+                    </div>
                 </div>
             </div>
         </section>
