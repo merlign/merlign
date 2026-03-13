@@ -14,7 +14,8 @@ const ContactForm = ({ selectedUpgrade: initialUpgrade = null }) => {
     const [selectedUpgrade, setSelectedUpgrade] = useState(initialUpgrade || 'website');
     const [isSending, setIsSending] = useState(false);
     const [isSuccess, setIsSuccess] = useState(false);
-    const [formData, setFormData] = useState({ name: '', email: '', company: '', message: '' });
+    const [formData, setFormData] = useState({ name: '', email: '', company: '', message: '', website_hp: '' });
+    const [lastSubmitTime, setLastSubmitTime] = useState(0);
 
     const upgrades = [
         { id: 'website', title: "Website die écht verkoopt", tag: "Klaar in 72u" },
@@ -27,8 +28,23 @@ const ContactForm = ({ selectedUpgrade: initialUpgrade = null }) => {
         const trimmedEmail = formData.email?.trim();
         const trimmedName = formData.name?.trim();
 
+        // Anti-spam: check honeypot
+        if (formData.website_hp) {
+            console.warn("Spam bot detected via honeypot.");
+            setIsSuccess(true); // Fake success for the bot
+            return;
+        }
+
+        // Anti-spam: rate limiting (client-side)
+        const now = Date.now();
+        if (now - lastSubmitTime < 5000) { // 5 second cooldown
+            alert("Rustig aan! Je heb net al een aanvraag gestuurd.");
+            return;
+        }
+
         if (!selectedUpgrade || !trimmedEmail || isSending) return;
         setIsSending(true);
+        setLastSubmitTime(now);
 
         const sanitize = (str) => {
             if (!str) return '';
@@ -177,6 +193,18 @@ const ContactForm = ({ selectedUpgrade: initialUpgrade = null }) => {
                             className="w-full bg-transparent border-b border-[var(--border)] py-3 md:py-4 font-sans text-lg md:text-xl focus:outline-none focus:border-primary transition-all text-[var(--text)] placeholder:text-[var(--text)]/10 min-h-[100px] resize-none"
                             value={formData.message}
                             onChange={(e) => setFormData({ ...formData, message: e.target.value })}
+                        />
+                    </div>
+
+                    {/* Honeypot field - hidden from users */}
+                    <div style={{ display: 'none' }} aria-hidden="true">
+                        <input
+                            type="text"
+                            name="website_hp"
+                            tabIndex="-1"
+                            value={formData.website_hp}
+                            onChange={(e) => setFormData({ ...formData, website_hp: e.target.value })}
+                            autoComplete="off"
                         />
                     </div>
 
