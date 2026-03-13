@@ -1,7 +1,7 @@
 import React from 'react';
 import { Helmet } from 'react-helmet-async';
 
-const SEO = ({ title, description, path = "", type = "website", services = [], faqs = [] }) => {
+const SEO = ({ title, description, path = "", type = "website", services = [], faqs = [], noindex = false }) => {
     const siteName = "Merlign";
     const fullTitle = title.includes(siteName) ? title : `${title} | ${siteName}`;
     const url = `https://merlign.com${path}`;
@@ -114,7 +114,11 @@ const SEO = ({ title, description, path = "", type = "website", services = [], f
             <title>{fullTitle}</title>
             <meta name="description" content={description} />
             <link rel="canonical" href={url} />
-            <meta name="robots" content="index, follow" />
+            {noindex ? (
+                <meta name="robots" content="noindex, nofollow" />
+            ) : (
+                <meta name="robots" content="index, follow" />
+            )}
 
             {/* Google Search Console Verification - Replace with real code when available */}
             <meta name="google-site-verification" content="r3hVpGRHUOO4mx2O30EZ6eyUYx62mJBLucBDW9cLPZI" />
