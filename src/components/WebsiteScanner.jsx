@@ -63,7 +63,8 @@ const WebsiteScanner = () => {
             });
 
             if (!analyzeRes.ok) {
-                throw new Error("Analyse mislukt. Probeer het later opnieuw.");
+                const errorText = await analyzeRes.text();
+                throw new Error(`Analyse mislukt: ${errorText || analyzeRes.statusText}`);
             }
 
             const reader = analyzeRes.body.getReader();
