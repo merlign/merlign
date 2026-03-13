@@ -7,6 +7,7 @@ import { Link } from 'react-router-dom';
 
 import { getServicePageData } from '../../lib/sanity';
 import SEO from '../../components/SEO';
+import WebsiteScanner from '../../components/WebsiteScanner';
 
 const fadeUp = {
     initial: { opacity: 0, y: 30 },
@@ -204,6 +205,8 @@ const WebsiteService = () => {
                                         </motion.div>
                                     </motion.div>
                                 </div>
+
+                                <WebsiteScanner />
 
                                 {/* Process Section */}
                                 <div className="space-y-16 md:space-y-24">
