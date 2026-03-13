@@ -76,18 +76,19 @@ const WebsiteScanner = () => {
                 if (done) break;
 
                 const chunk = decoder.decode(value);
-                // Claude SSE format handling
                 const lines = chunk.split('\n');
                 for (const line of lines) {
                     if (line.startsWith('data: ')) {
                         try {
                             const data = JSON.parse(line.slice(6));
-                            if (data.type === 'content_block_delta' && data.delta.text) {
-                                fullText += data.delta.text;
+                            // Gemini SSE format extraction
+                            const text = data.candidates?.[0]?.content?.parts?.[0]?.text;
+                            if (text) {
+                                fullText += text;
                                 setStreamedText(fullText);
                             }
                         } catch (e) {
-                            // Skip invalid JSON chunks
+                            // Skip invalid chunks
                         }
                     }
                 }
@@ -95,7 +96,7 @@ const WebsiteScanner = () => {
 
             // 4. Parse final JSON
             try {
-                // Find potential JSON block if Claude included any text around it
+                // Find potential JSON block if AI included any text around it
                 const jsonMatch = fullText.match(/\{[\s\S]*\}/);
                 const jsonStr = jsonMatch ? jsonMatch[0] : fullText;
                 const parsedReport = JSON.parse(jsonStr);
@@ -123,7 +124,7 @@ const WebsiteScanner = () => {
                         Doe de gratis <span className="text-primary font-drama font-normal text-h2-serif text-h1-serif">website scan.</span>
                     </h2>
                     <p className="text-lg md:text-xl font-sans text-[var(--text)]/60 font-light italic max-w-2xl mx-auto text-center">
-                        Ontdek binnen 30 seconden waar je leads verliest. Claude analyseert je content en geeft je direct 3 concrete verbeterpunten voor meer conversie.
+                        Ontdek binnen 30 seconden waar je leads verliest. Onze AI analyseert je content en geeft je direct 3 concrete verbeterpunten voor meer conversie.
                     </p>
                 </div>
 
@@ -180,7 +181,7 @@ const WebsiteScanner = () => {
                             >
                                 <div className="flex items-center gap-3 text-primary animate-pulse">
                                     <Zap size={20} />
-                                    <span className="font-mono text-sm uppercase tracking-widest font-black italic">Claude analyseert...</span>
+                                    <span className="font-mono text-sm uppercase tracking-widest font-black italic">AI analyseert...</span>
                                 </div>
                                 <div className="bg-[var(--paper)]/40 border border-[var(--border)] p-8 rounded-[2rem] font-mono text-sm text-[var(--text)]/60 whitespace-pre-wrap italic leading-relaxed h-[300px] overflow-y-auto custom-scrollbar">
                                     {streamedText || "Wachten op AI respons..."}
