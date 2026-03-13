@@ -17,7 +17,9 @@ const WebsiteScanner = () => {
     const [streamedText, setStreamedText] = useState('');
     const [report, setReport] = useState(null);
     const [error, setError] = useState(null);
+    const [progress, setProgress] = useState(0);
     const reportRef = useRef(null);
+    const progressInterval = useRef(null);
 
     const handleScan = async (e) => {
         e.preventDefault();
@@ -33,6 +35,16 @@ const WebsiteScanner = () => {
         setError(null);
         setStreamedText('');
         setReport(null);
+        setProgress(10);
+
+        // Start artificial progress animation
+        if (progressInterval.current) clearInterval(progressInterval.current);
+        progressInterval.current = setInterval(() => {
+            setProgress(prev => {
+                if (prev < 90) return prev + Math.random() * 2;
+                return prev;
+            });
+        }, 300);
 
         try {
             // 1. Fetch via allorigins
@@ -102,6 +114,8 @@ const WebsiteScanner = () => {
                 const parsedReport = JSON.parse(jsonStr);
                 setReport(parsedReport);
                 setScanStep('result');
+                setProgress(100);
+                if (progressInterval.current) clearInterval(progressInterval.current);
             } catch (e) {
                 console.error("JSON Parse Error:", e, fullText);
                 throw new Error("Kon het analyserapport niet verwerken.");
@@ -111,10 +125,19 @@ const WebsiteScanner = () => {
             console.error("Scan Error:", err);
             setError(err.message);
             setScanStep('idle');
+            setProgress(0);
+            if (progressInterval.current) clearInterval(progressInterval.current);
         } finally {
             setIsScanning(false);
         }
     };
+
+    // Cleanup interval on unmount
+    useEffect(() => {
+        return () => {
+            if (progressInterval.current) clearInterval(progressInterval.current);
+        };
+    }, []);
 
     return (
         <section className="py-6 md:py-12 relative overflow-hidden">
@@ -161,6 +184,29 @@ const WebsiteScanner = () => {
                                 >
                                     <AlertCircle size={16} className="shrink-0" />
                                     <p className="font-sans text-sm italic">{error}</p>
+                                </motion.div>
+                            )}
+
+                            {isScanning && (
+                                <motion.div
+                                    initial={{ opacity: 0 }}
+                                    animate={{ opacity: 1 }}
+                                    className="mb-8 space-y-3"
+                                >
+                                    <div className="flex justify-between items-end">
+                                        <span className="text-[10px] font-mono uppercase tracking-[0.2em] font-black text-primary animate-pulse">
+                                            {scanStep === 'fetching' ? 'Website inladen...' : 'AI analyseert content...'}
+                                        </span>
+                                        <span className="text-[10px] font-mono font-black italic text-primary/60">{Math.round(progress)}%</span>
+                                    </div>
+                                    <div className="h-1 w-full bg-white/5 rounded-full overflow-hidden">
+                                        <motion.div
+                                            className="h-full bg-primary shadow-[0_0_15px_rgba(99,102,241,0.5)]"
+                                            initial={{ width: 0 }}
+                                            animate={{ width: `${progress}%` }}
+                                            transition={{ duration: 0.5, ease: "easeOut" }}
+                                        />
+                                    </div>
                                 </motion.div>
                             )}
 
