@@ -117,8 +117,11 @@ const WebsiteScanner = () => {
     };
 
     return (
-        <section className="py-20 md:py-32 border-t border-[var(--border)] overflow-hidden">
-            <div className="content-max-width section-px">
+        <section className="py-24 md:py-40 relative overflow-hidden bg-[#0A0B14] border-y border-white/5">
+            {/* Subtle glow background for the entire section */}
+            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full bg-primary/3 blur-[160px] pointer-events-none" />
+
+            <div className="content-max-width section-px relative z-10">
                 <div className="max-w-4xl mx-auto text-center space-y-8 mb-16">
                     <h2 className="text-h2 font-sans font-bold text-[var(--text)]">
                         Doe de gratis <span className="text-primary font-drama font-normal text-h2-serif text-h1-serif">website scan.</span>
