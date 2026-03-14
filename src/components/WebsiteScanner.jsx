@@ -64,35 +64,41 @@ const WebsiteScanner = () => {
             const reader = analyzeRes.body.getReader();
             const decoder = new TextDecoder();
             let fullText = '';
+            let buffer = '';
 
             while (true) {
                 const { done, value } = await reader.read();
                 if (done) break;
 
-                const chunk = decoder.decode(value);
-                const lines = chunk.split('\n');
+                // Use stream: true to handle partial multi-byte characters
+                buffer += decoder.decode(value, { stream: true });
+
+                // Process only full lines from the buffer
+                const lines = buffer.split('\n');
+                // Keep the last partial line in the buffer
+                buffer = lines.pop() || '';
+
                 for (const line of lines) {
-                    if (line.startsWith('data: ')) {
-                        try {
-                            const data = JSON.parse(line.slice(6));
-                            let text = '';
+                    const trimmedLine = line.trim();
+                    if (!trimmedLine || !trimmedLine.startsWith('data: ')) continue;
 
-                            // Anthropic SSE format
-                            if (data.type === 'content_block_delta' && data.delta?.type === 'text_delta') {
-                                text = data.delta.text;
-                            }
-                            // Fallback for Gemini structure just in case
-                            else if (data.candidates?.[0]?.content?.parts?.[0]?.text) {
-                                text = data.candidates[0].content.parts[0].text;
-                            }
+                    try {
+                        const data = JSON.parse(trimmedLine.slice(6));
+                        let text = '';
 
-                            if (text) {
-                                fullText += text;
-                                setStreamedText(fullText);
-                            }
-                        } catch (e) {
-                            // Skip invalid chunks
+                        if (data.type === 'content_block_delta' && data.delta?.type === 'text_delta') {
+                            text = data.delta.text;
+                        } else if (data.candidates?.[0]?.content?.parts?.[0]?.text) {
+                            text = data.candidates[0].content.parts[0].text;
                         }
+
+                        if (text) {
+                            fullText += text;
+                            const currentFullText = fullText;
+                            setStreamedText(currentFullText);
+                        }
+                    } catch (e) {
+                        // Skip invalid JSON chunks
                     }
                 }
             }
