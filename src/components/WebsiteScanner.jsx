@@ -105,6 +105,35 @@ const WebsiteScanner = () => {
             });
         }, 300);
 
+        // 1. Check for Test Mode
+        if (cleanUrl.toLowerCase().includes('test') || cleanUrl.toLowerCase().includes('demo')) {
+            setTimeout(() => {
+                setScanStep('analyzing');
+                setStreamedText('Deel van demo analyse wordt geladen...');
+
+                setTimeout(() => {
+                    const mockReport = {
+                        score: 4,
+                        scoreLabel: "Matig",
+                        firstImpression: "Dit is een TEST SCAN. De homepage oogt overzichtelijk maar mist een duidelijke commerciële 'punch' die de bezoeker direct activeert.",
+                        bottlenecks: [
+                            "Duidelijke prijsstelling ontbreekt op de eerste vouw.",
+                            "De call-to-action knoppen vallen weg tegen de achtergrond.",
+                            "Social proof (reviews) zijn niet prominent genoeg aanwezig."
+                        ],
+                        missedOpp: "Het implementeren van een interactieve quiz zou de conversie met naar schatting 15% verhogen.",
+                        ctaText: "TEST: Je verliest leads door een gebrek aan urgentie."
+                    };
+                    setReport(mockReport);
+                    setScanStep('result');
+                    setProgress(100);
+                    setIsScanning(false);
+                    if (progressInterval.current) clearInterval(progressInterval.current);
+                }, 2000);
+            }, 1000);
+            return;
+        }
+
         try {
             setScanStep('analyzing');
 
