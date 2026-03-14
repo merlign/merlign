@@ -15,6 +15,9 @@ const WebsiteScanner = () => {
     const [url, setUrl] = useState('');
     const [isScanning, setIsScanning] = useState(false);
     const [scanStep, setScanStep] = useState('idle'); // idle, fetching, analyzing, result
+    const [streamedText, setStreamedText] = useState('');
+    const [report, setReport] = useState(null);
+    const [error, setError] = useState(null);
     const [progress, setProgress] = useState(0);
     const [leadCaptured, setLeadCaptured] = useState(false);
     const [isModalOpen, setIsModalOpen] = useState(false);
