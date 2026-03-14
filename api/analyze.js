@@ -56,7 +56,7 @@ export default async function handler(req) {
                 'content-type': 'application/json',
             },
             body: JSON.stringify({
-                model: 'claude-3-5-haiku-20241022',
+                model: 'claude-3-haiku-20240307',
                 max_tokens: 1000,
                 temperature: 0.7,
                 stream: true,
@@ -89,7 +89,7 @@ REGELS:
             if (response.status === 429) {
                 return new Response('De scanner heeft even pauze nodig (te veel gelijktijdige aanvragen). Probeer het over exact 1 minuut nog een keer.', { status: 429 });
             }
-            return new Response(`AI Provider Error: ${response.status}`, { status: response.status });
+            return new Response(`AI Provider Error: ${response.status} - ${errorText}`, { status: response.status });
         }
 
         return new Response(response.body, {
