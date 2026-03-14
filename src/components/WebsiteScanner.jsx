@@ -75,8 +75,17 @@ const WebsiteScanner = () => {
                     if (line.startsWith('data: ')) {
                         try {
                             const data = JSON.parse(line.slice(6));
-                            // Gemini SSE format extraction
-                            const text = data.candidates?.[0]?.content?.parts?.[0]?.text;
+                            let text = '';
+
+                            // Anthropic SSE format
+                            if (data.type === 'content_block_delta' && data.delta?.type === 'text_delta') {
+                                text = data.delta.text;
+                            }
+                            // Fallback for Gemini structure just in case
+                            else if (data.candidates?.[0]?.content?.parts?.[0]?.text) {
+                                text = data.candidates[0].content.parts[0].text;
+                            }
+
                             if (text) {
                                 fullText += text;
                                 setStreamedText(fullText);
