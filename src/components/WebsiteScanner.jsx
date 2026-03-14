@@ -47,31 +47,13 @@ const WebsiteScanner = () => {
         }, 300);
 
         try {
-            // 1. Fetch via allorigins
-            const proxyUrl = `https://api.allorigins.win/get?url=${encodeURIComponent(cleanUrl)}`;
-            const response = await fetch(proxyUrl);
-            const data = await response.json();
-
-            if (!data.contents) {
-                throw new Error("Kon de website content niet ophalen. Controleer de URL.");
-            }
-
-            // 2. Extract innerText (first 3000 chars)
-            const parser = new DOMParser();
-            const doc = parser.parseFromString(data.contents, 'text/html');
-            const textContent = doc.body.innerText.replace(/\s+/g, ' ').trim().substring(0, 3000);
-
-            if (textContent.length < 50) {
-                throw new Error("Te weinig content gevonden op de pagina om te analyseren.");
-            }
-
             setScanStep('analyzing');
 
-            // 3. Call serverless function with streaming
+            // 1. Call serverless function with the URL
             const analyzeRes = await fetch('/api/analyze', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({ content: textContent })
+                body: JSON.stringify({ url: cleanUrl })
             });
 
             if (!analyzeRes.ok) {

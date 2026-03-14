@@ -7,10 +7,38 @@ export default async function handler(req) {
         return new Response('Method not allowed', { status: 405 });
     }
 
-    const { content } = await req.json();
+    const { url } = await req.json();
 
-    if (!content) {
-        return new Response('Content is required', { status: 400 });
+    if (!url) {
+        return new Response('URL is required', { status: 400 });
+    }
+
+    let textContent = '';
+    try {
+        const urlFetchRes = await fetch(url, {
+            headers: {
+                'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36'
+            }
+        });
+        if (urlFetchRes.ok) {
+            const html = await urlFetchRes.text();
+            // Basic regex to strip tags and scripts, not perfect but okay for Edge runtime
+            textContent = html
+                .replace(/<script\b[^<]*(?:(?!<\/script>)<[^<]*)*<\/script>/gi, ' ')
+                .replace(/<style\b[^<]*(?:(?!<\/style>)<[^<]*)*<\/style>/gi, ' ')
+                .replace(/<[^>]+>/g, ' ')
+                .replace(/\s+/g, ' ')
+                .trim()
+                .substring(0, 3000);
+        }
+    } catch (e) {
+        console.error('Failed to fetch URL content server-side:', e);
+        // Fallback to minimal content if fetch fails so AI can still generate *something* based on the URL context
+        textContent = `Website URL: ${url}. Kon de inhoud niet direct ophalen wegens beveiligingsinstellingen. Baseer je scan op de URL zelf en algemene aannames voor dit type bedrijf.`;
+    }
+
+    if (!textContent || textContent.length < 10) {
+        textContent = `Website URL: ${url}. (Geen content gevonden).`;
     }
 
     const apiKey = process.env.GOOGLE_GEMINI_API_KEY;
@@ -46,7 +74,7 @@ export default async function handler(req) {
                 - Schrijf in het Nederlands
 
                 Website content:
-                ${content}`,
+                ${textContent}`,
                             },
                         ],
                     },
