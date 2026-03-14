@@ -58,7 +58,7 @@ const WebsiteScanner = () => {
 
             if (!analyzeRes.ok) {
                 const errorText = await analyzeRes.text();
-                throw new Error(`Analyse mislukt: ${errorText || analyzeRes.statusText}`);
+                throw new Error(errorText || "Er is een onbekende fout opgetreden bij de analyse.");
             }
 
             const reader = analyzeRes.body.getReader();
