@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Search, Zap, Shield, BarChart3, ArrowRight, RefreshCw, Smartphone, Globe, AlertCircle, Loader2, Lock, Mail, User, CheckCircle2 } from 'lucide-react';
+import { Search, Zap, Shield, BarChart3, ArrowRight, RefreshCw, Smartphone, Globe, AlertCircle, Loader2, Lock, Mail, User, CheckCircle2, X } from 'lucide-react';
 import emailjs from '@emailjs/browser';
 import SectionLabel from './SectionLabel';
 
@@ -458,9 +458,9 @@ const WebsiteScanner = () => {
                             <div className="absolute top-6 right-6">
                                 <button
                                     onClick={() => setIsModalOpen(false)}
-                                    className="p-2 hover:bg-gray-100 rounded-full transition-colors text-gray-400"
+                                    className="p-2 hover:bg-gray-100 rounded-full transition-colors text-gray-400 hover:text-gray-600 group"
                                 >
-                                    <AlertCircle className="rotate-45" size={24} />
+                                    <X size={24} className="group-hover:rotate-90 transition-transform duration-300" />
                                 </button>
                             </div>
 
