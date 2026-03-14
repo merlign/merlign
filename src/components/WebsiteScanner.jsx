@@ -393,10 +393,10 @@ const WebsiteScanner = () => {
                                                     <div className="w-16 h-16 bg-white/10 rounded-full flex items-center justify-center mx-auto mb-4 backdrop-blur-xl border border-white/20">
                                                         <Lock className="text-white" size={24} />
                                                     </div>
-                                                    <div className="space-y-2">
-                                                        <h3 className="text-xl md:text-2xl font-sans font-bold text-white uppercase tracking-tight">Analyse succesvol</h3>
-                                                        <p className="text-white/70 text-sm md:text-base max-w-xs mx-auto">
-                                                            Je website is geanalyseerd. Ontgrendel de volledige feedback en de groeistrategie.
+                                                    <div className="space-y-3 drop-shadow-2xl">
+                                                        <h3 className="text-2xl md:text-3xl font-sans font-bold text-white uppercase tracking-tight">Rapport staat klaar</h3>
+                                                        <p className="text-white font-medium text-sm md:text-base max-w-sm mx-auto leading-relaxed px-4">
+                                                            We hebben de kritieke bottlenecks gevonden die je conversie remmen. Ontgrendel het volledige rapport om te zien waar je leads verliest.
                                                         </p>
                                                     </div>
                                                     <button
