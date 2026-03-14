@@ -210,7 +210,7 @@ const DashboardService = () => {
                                 {/* Process Section */}
                                 <div className="space-y-16 md:space-y-24">
                                     <div className="text-center space-y-8">
-                                        <SectionLabel className="justify-center">Hoe het werkt</SectionLabel>
+
                                         <h2 className="font-sans font-bold text-[var(--text)] text-h2">
                                             Zo werkt <span className="text-primary font-drama font-normal text-h2-serif">het.</span>
                                         </h2>
