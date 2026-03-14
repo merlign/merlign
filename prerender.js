@@ -17,7 +17,7 @@ const routes = [
     { path: '/contact', type: 'contact' },
     { path: '/privacy', type: 'simple', title: 'Privacy Policy — Merlign' },
     { path: '/terms', type: 'simple', title: 'Terms of Service — Merlign' },
-    { path: '/72h-sprint', type: 'simple', title: 'Het 72-uurs Protocol — Merlign' }
+    { path: '/72h-sprint', type: 'simple', title: 'Het 72-uurs Protocol — Merlign', noindex: true }
 ];
 
 async function generate() {
@@ -128,7 +128,8 @@ async function generate() {
     <meta name="google-site-verification" content="r3hVpGRHUOO4mx2O30EZ6eyUYx62mJBLucBDW9cLPZI">
     <meta property="og:title" content="${routeTitle}">
     <meta property="og:description" content="${routeDesc}">
-    <link rel="canonical" href="https://merlign.com${route.path === '/' ? '' : route.path}">`;
+    <link rel="canonical" href="https://merlign.com${route.path === '/' ? '' : route.path}">
+    ${route.noindex ? '<meta name="robots" content="noindex, nofollow">' : '<meta name="robots" content="index, follow">'}`;
 
         finalHtml = finalHtml.replace('</head>', `${metaTags}\n</head>`);
 
