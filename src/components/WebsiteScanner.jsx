@@ -476,11 +476,6 @@ const WebsiteScanner = () => {
                                                             ))}
                                                         </div>
 
-                                                        <div className="pt-6 border-t border-white/5 relative z-10 text-center">
-                                                            <p className="text-emerald-300 font-drama italic text-lg md:text-xl leading-tight">
-                                                                "{report.ctaText}"
-                                                            </p>
-                                                        </div>
                                                     </div>
 
                                                     {/* Direct Support Nudge */}
