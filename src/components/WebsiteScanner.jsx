@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Search, Zap, Shield, BarChart3, ArrowRight, RefreshCw, Smartphone, Globe, AlertCircle, Loader2 } from 'lucide-react';
+import { Search, Zap, Shield, BarChart3, ArrowRight, RefreshCw, Smartphone, Globe, AlertCircle, Loader2, Lock, Mail, User, CheckCircle2 } from 'lucide-react';
+import emailjs from '@emailjs/browser';
 import SectionLabel from './SectionLabel';
 
 const fadeUp = {
@@ -18,8 +19,68 @@ const WebsiteScanner = () => {
     const [report, setReport] = useState(null);
     const [error, setError] = useState(null);
     const [progress, setProgress] = useState(0);
+    const [leadCaptured, setLeadCaptured] = useState(false);
+    const [leadForm, setLeadForm] = useState({ name: '', email: '' });
+    const [isSubmittingLead, setIsSubmittingLead] = useState(false);
     const reportRef = useRef(null);
     const progressInterval = useRef(null);
+
+    const handleLeadSubmit = async (e) => {
+        e.preventDefault();
+        setIsSubmittingLead(true);
+
+        try {
+            // Send email via EmailJS
+            await emailjs.send(
+                import.meta.env.VITE_EMAILJS_SERVICE_ID,
+                import.meta.env.VITE_EMAILJS_TEMPLATE_ID,
+                {
+                    from_name: leadForm.name,
+                    from_email: leadForm.email,
+                    subject: `Website Scan Rapport: ${url}`,
+                    message: `
+                        Nieuwe scan aanvraag voor: ${url}
+                        Naam: ${leadForm.name}
+                        Email: ${leadForm.email}
+                        
+                        RESULTATEN:
+                        Score: ${report.score}/10
+                        Label: ${report.scoreLabel}
+                        
+                        EERSTE INDRUK:
+                        ${report.firstImpression}
+                        
+                        BOTTLENECKS:
+                        1. ${report.bottlenecks[0]}
+                        2. ${report.bottlenecks[1]}
+                        3. ${report.bottlenecks[2]}
+                        
+                        GROOTSTE KANS:
+                        ${report.missedOpp}
+                        
+                        URGENTIE:
+                        ${report.ctaText}
+                    `
+                },
+                import.meta.env.VITE_EMAILJS_PUBLIC_KEY
+            );
+
+            setLeadCaptured(true);
+
+            // Scroll to the revealed results
+            setTimeout(() => {
+                reportRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }, 100);
+
+        } catch (err) {
+            console.error("Lead submission error:", err);
+            // Even if email fails, we show results to not block the user, 
+            // but in production you'd want better error handling.
+            setLeadCaptured(true);
+        } finally {
+            setIsSubmittingLead(false);
+        }
+    };
 
     const handleScan = async (e) => {
         e.preventDefault();
@@ -254,47 +315,116 @@ const WebsiteScanner = () => {
                                         </div>
 
                                         <div className="space-y-3">
-                                            <h3 className="text-xl font-sans font-bold text-white tracking-tight">Analyse resultaat</h3>
+                                            <h3 className="text-xl font-sans font-bold text-white tracking-tight">Kwaliteitsscore</h3>
                                             <p className="text-sm md:text-base font-sans font-medium text-white/95 leading-relaxed max-w-lg">
                                                 {report.firstImpression}
                                             </p>
                                         </div>
                                     </div>
 
-                                    <div className="grid grid-cols-1 md:grid-cols-2 gap-10 pt-10 border-t border-white/10">
-                                        <div className="space-y-4">
-                                            <h4 className="text-xs font-mono uppercase tracking-[0.2em] font-black text-white/60">Conversie Bottlenecks</h4>
-                                            <ul className="space-y-4">
-                                                {report.bottlenecks.map((item, i) => (
-                                                    <li key={i} className="flex items-start gap-4 p-5 rounded-2xl bg-black/40 border border-white/10 text-[15px] font-sans text-white leading-relaxed shadow-lg">
-                                                        <span className="text-primary/70 font-mono text-xs font-black mt-1">0{i + 1}</span>
-                                                        <span>{item}</span>
-                                                    </li>
-                                                ))}
-                                            </ul>
-                                        </div>
+                                    {!leadCaptured ? (
+                                        <div className="relative pt-10 border-t border-white/10 overflow-hidden">
+                                            {/* Blurred/Locked Content Preview */}
+                                            <div className="grid grid-cols-1 md:grid-cols-2 gap-10 opacity-20 blur-md pointer-events-none select-none">
+                                                <div className="space-y-4">
+                                                    <h4 className="text-xs font-mono uppercase tracking-[0.2em] font-black text-white/60">Conversie Bottlenecks</h4>
+                                                    <div className="h-20 bg-black/40 rounded-2xl"></div>
+                                                    <div className="h-20 bg-black/40 rounded-2xl"></div>
+                                                </div>
+                                                <div className="space-y-4">
+                                                    <h4 className="text-xs font-mono uppercase tracking-[0.2em] font-black text-white/60">Grootste Kans</h4>
+                                                    <div className="h-40 bg-black/40 rounded-[2rem]"></div>
+                                                </div>
+                                            </div>
 
-                                        <div className="space-y-4">
-                                            <h4 className="text-xs font-mono uppercase tracking-[0.2em] font-black text-white/60">Grootste Kans</h4>
-                                            <div className="text-[15px] font-sans font-medium text-white leading-relaxed p-6 bg-black/60 rounded-[2rem] border border-white/10 shadow-lg min-h-[140px] flex items-center">
-                                                {report.missedOpp}
+                                            {/* Lead Form Overlay */}
+                                            <div className="absolute inset-0 flex items-center justify-center p-6 z-20">
+                                                <motion.div
+                                                    initial={{ opacity: 0, scale: 0.9 }}
+                                                    animate={{ opacity: 1, scale: 1 }}
+                                                    className="w-full max-w-md bg-white rounded-[2.5rem] p-8 md:p-10 shadow-2xl text-center"
+                                                >
+                                                    <div className="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-6">
+                                                        <Lock className="text-primary" size={28} />
+                                                    </div>
+                                                    <h3 className="text-xl md:text-2xl font-sans font-bold text-gray-900 mb-2">Ontvang het volledige rapport</h3>
+                                                    <p className="text-gray-500 text-sm md:text-base mb-8 leading-relaxed px-4">
+                                                        We hebben je content geanalyseerd. Laat je gegevens achter om alle verbeterpunten en de groeistrategie direct in je mailbox te ontvangen.
+                                                    </p>
+
+                                                    <form onSubmit={handleLeadSubmit} className="space-y-4">
+                                                        <div className="relative">
+                                                            <User className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400" size={18} />
+                                                            <input
+                                                                required
+                                                                type="text"
+                                                                placeholder="Voornaam"
+                                                                value={leadForm.name}
+                                                                onChange={(e) => setLeadForm({ ...leadForm, name: e.target.value })}
+                                                                className="w-full bg-gray-50 border border-gray-100 rounded-full py-4 pl-12 pr-6 text-gray-900 focus:outline-none focus:ring-2 focus:ring-primary/20 transition-all font-sans"
+                                                            />
+                                                        </div>
+                                                        <div className="relative">
+                                                            <Mail className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400" size={18} />
+                                                            <input
+                                                                required
+                                                                type="email"
+                                                                placeholder="Emailadres"
+                                                                value={leadForm.email}
+                                                                onChange={(e) => setLeadForm({ ...leadForm, email: e.target.value })}
+                                                                className="w-full bg-gray-50 border border-gray-100 rounded-full py-4 pl-12 pr-6 text-gray-900 focus:outline-none focus:ring-2 focus:ring-primary/20 transition-all font-sans"
+                                                            />
+                                                        </div>
+                                                        <button
+                                                            type="submit"
+                                                            disabled={isSubmittingLead}
+                                                            className="w-full bg-primary text-white font-black uppercase tracking-widest py-4 rounded-full flex items-center justify-center gap-3 hover:scale-[1.02] active:scale-98 transition-all shadow-xl shadow-primary/20"
+                                                        >
+                                                            {isSubmittingLead ? <Loader2 className="animate-spin" size={20} /> : <Zap size={18} />}
+                                                            {isSubmittingLead ? 'Bezig...' : 'Ontgrendel resultaten'}
+                                                        </button>
+                                                    </form>
+                                                </motion.div>
                                             </div>
                                         </div>
-                                    </div>
+                                    ) : (
+                                        <>
+                                            <div className="grid grid-cols-1 md:grid-cols-2 gap-10 pt-10 border-t border-white/10">
+                                                <div className="space-y-4">
+                                                    <h4 className="text-xs font-mono uppercase tracking-[0.2em] font-black text-white/60">Conversie Bottlenecks</h4>
+                                                    <ul className="space-y-4">
+                                                        {report.bottlenecks.map((item, i) => (
+                                                            <li key={i} className="flex items-start gap-4 p-5 rounded-2xl bg-black/40 border border-white/10 text-[15px] font-sans text-white leading-relaxed shadow-lg">
+                                                                <span className="text-primary/70 font-mono text-xs font-black mt-1">0{i + 1}</span>
+                                                                <span>{item}</span>
+                                                            </li>
+                                                        ))}
+                                                    </ul>
+                                                </div>
 
-                                    <div className="pt-10 flex flex-col items-center space-y-10">
-                                        <div className="flex flex-col items-center">
-                                            <p className="text-xs font-mono uppercase tracking-[0.3em] font-black text-white/40 mb-4">Urgentie</p>
-                                            <div className="px-8 py-5 rounded-3xl md:rounded-full bg-white/10 border border-white/10 text-white font-drama italic text-xl md:text-2xl text-center shadow-2xl backdrop-blur-sm leading-tight">
-                                                "{report.ctaText}"
+                                                <div className="space-y-4">
+                                                    <h4 className="text-xs font-mono uppercase tracking-[0.2em] font-black text-white/60">Grootste Kans</h4>
+                                                    <div className="text-[15px] font-sans font-medium text-white leading-relaxed p-6 bg-black/60 rounded-[2rem] border border-white/10 shadow-lg min-h-[140px] flex items-center">
+                                                        {report.missedOpp}
+                                                    </div>
+                                                </div>
                                             </div>
-                                        </div>
 
-                                        <a href="/contact" className="btn-magnetic group bg-white text-primary px-8 py-4 rounded-full font-black uppercase tracking-widest italic flex items-center gap-4 shadow-[0_0_30px_rgba(255,255,255,0.3)] text-xs">
-                                            Gratis check inplannen
-                                            <ArrowRight size={16} />
-                                        </a>
-                                    </div>
+                                            <div className="pt-10 flex flex-col items-center space-y-10">
+                                                <div className="flex flex-col items-center">
+                                                    <p className="text-xs font-mono uppercase tracking-[0.3em] font-black text-white/40 mb-4">Urgentie</p>
+                                                    <div className="px-8 py-5 rounded-3xl md:rounded-full bg-white/10 border border-white/10 text-white font-drama italic text-xl md:text-2xl text-center shadow-2xl backdrop-blur-sm leading-tight text-emerald-300">
+                                                        "{report.ctaText}"
+                                                    </div>
+                                                </div>
+
+                                                <a href="/contact" className="btn-magnetic group bg-white text-primary px-8 py-4 rounded-full font-black uppercase tracking-widest italic flex items-center gap-4 shadow-[0_0_30px_rgba(255,255,255,0.3)] text-xs">
+                                                    Gratis adviesgesprek
+                                                    <ArrowRight size={16} />
+                                                </a>
+                                            </div>
+                                        </>
+                                    )}
                                 </motion.div>
                             )}
                         </AnimatePresence>
