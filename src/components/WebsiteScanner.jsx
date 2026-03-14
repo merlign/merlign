@@ -146,22 +146,23 @@ const WebsiteScanner = () => {
 
                     <div className="max-w-2xl mx-auto relative z-20">
                         <form onSubmit={handleScan} className={`relative ${scanStep !== 'idle' || error ? 'mb-12' : ''}`}>
-                            <div className="relative flex flex-col sm:flex-row items-stretch sm:items-center bg-black/40 border border-white/10 p-2 rounded-2xl sm:rounded-full focus-within:border-white/30 focus-within:bg-black/60 transition-all shadow-xl gap-2 sm:gap-0">
+                            <div className="relative flex flex-row items-center bg-black/40 border border-white/10 p-1.5 sm:p-2 rounded-full focus-within:border-white/30 focus-within:bg-black/60 transition-all shadow-xl gap-2 sm:gap-0">
                                 <input
                                     type="text"
                                     value={url}
                                     onChange={(e) => setUrl(e.target.value)}
                                     placeholder="jouwsite.nl"
-                                    className="flex-grow bg-transparent border-none px-6 py-4 sm:py-3 font-sans text-base focus:outline-none text-white placeholder:text-white/50 text-center sm:text-left"
+                                    className="flex-grow bg-transparent border-none px-4 sm:px-6 py-3 font-sans text-sm sm:text-base focus:outline-none text-white placeholder:text-white/50 text-left min-w-0"
                                     disabled={isScanning}
                                 />
                                 <button
                                     type="submit"
                                     disabled={isScanning || !url}
-                                    className="bg-white text-primary px-8 py-4 sm:py-3 rounded-[1rem] sm:rounded-full font-black uppercase tracking-widest flex items-center justify-center gap-3 disabled:opacity-50 disabled:cursor-not-allowed hover:scale-[1.02] active:scale-95 transition-all text-xs shadow-md"
+                                    className="bg-white text-primary shrink-0 px-6 sm:px-8 py-3 rounded-full font-black uppercase tracking-widest flex items-center justify-center gap-2 sm:gap-3 disabled:opacity-50 disabled:cursor-not-allowed hover:scale-[1.02] active:scale-95 transition-all text-[10px] sm:text-xs shadow-md"
                                 >
                                     {isScanning ? <Loader2 className="animate-spin" size={16} /> : <Zap size={16} />}
-                                    {isScanning ? 'Scannen' : 'Scan'}
+                                    <span className="hidden sm:inline">{isScanning ? 'Scannen' : 'Scan'}</span>
+                                    <span className="sm:hidden">{isScanning ? 'Bezig' : 'Scan'}</span>
                                 </button>
                             </div>
                         </form>
