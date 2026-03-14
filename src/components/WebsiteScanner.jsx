@@ -137,6 +137,11 @@ const WebsiteScanner = () => {
                             "Er zijn te weinig bewijzen (zoals ervaringen van klanten) die vertrouwen wekken."
                         ],
                         missedOpp: "Als je een duidelijke 'nu beginnen' knop toevoegt bovenaan de pagina, zul je waarschijnlijk direct meer aanvragen krijgen.",
+                        actionTitle: "Directe verbeteringen",
+                        actionSteps: [
+                            "Zet je belangrijkste aanbod in één zin bovenaan de pagina.",
+                            "Voeg 3 logo's of teksten toe van klanten die al blij met je zijn."
+                        ],
                         ctaText: "TEST: Je loopt op dit moment echt klanten mis."
                     };
                     setReport(mockReport);
@@ -444,11 +449,38 @@ const WebsiteScanner = () => {
                                                 </div>
                                             </div>
 
-                                            <div className="pt-10 flex flex-col items-center space-y-10">
-                                                <div className="flex flex-col items-center">
-                                                    <p className="text-xs font-mono uppercase tracking-[0.3em] font-black text-white/40 mb-4">Actie vereist</p>
-                                                    <div className="px-8 py-5 rounded-3xl md:rounded-full bg-white/10 border border-white/10 text-white font-drama italic text-xl md:text-2xl text-center shadow-2xl backdrop-blur-sm leading-tight text-emerald-300">
-                                                        "{report.ctaText}"
+                                            <div className="pt-10 flex flex-col items-center space-y-12">
+                                                <div className="flex flex-col items-center w-full">
+                                                    <p className="text-xs font-mono uppercase tracking-[0.3em] font-black text-white/40 mb-6">Actieplan</p>
+
+                                                    <div className="w-full max-w-xl bg-black/40 border border-white/10 rounded-[2.5rem] p-8 md:p-10 space-y-8 overflow-hidden relative text-left">
+                                                        <div className="absolute top-0 right-0 w-32 h-32 bg-emerald-500/10 blur-[60px] rounded-full"></div>
+
+                                                        <div className="space-y-2 relative z-10">
+                                                            <h4 className="text-xl md:text-2xl font-sans font-bold text-white tracking-tight leading-tight">
+                                                                {report.actionTitle || "Aan de slag"}
+                                                            </h4>
+                                                            <p className="text-sm text-white/50 font-mono uppercase tracking-widest">Eerste stappen</p>
+                                                        </div>
+
+                                                        <div className="space-y-4 relative z-10">
+                                                            {report.actionSteps?.map((step, idx) => (
+                                                                <div key={idx} className="flex items-start gap-4 group">
+                                                                    <div className="w-6 h-6 rounded-full bg-emerald-500/20 border border-emerald-500/30 flex items-center justify-center shrink-0 mt-1">
+                                                                        <CheckCircle2 className="text-emerald-400" size={14} />
+                                                                    </div>
+                                                                    <p className="text-white/90 font-medium text-[15px] leading-relaxed">
+                                                                        {step}
+                                                                    </p>
+                                                                </div>
+                                                            ))}
+                                                        </div>
+
+                                                        <div className="pt-6 border-t border-white/5 relative z-10 text-center">
+                                                            <p className="text-emerald-300 font-drama italic text-lg md:text-xl leading-tight">
+                                                                "{report.ctaText}"
+                                                            </p>
+                                                        </div>
                                                     </div>
                                                 </div>
 

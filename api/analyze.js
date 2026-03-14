@@ -72,7 +72,9 @@ export default async function handler(req) {
                   "firstImpression": "<max 2 scherpe zinnen over wat een bezoeker direct voelt/denkt>",
                   "bottlenecks": ["<begrijpelijk verbeterpunt 1>", "<begrijpelijk verbeterpunt 2>", "<begrijpelijk verbeterpunt 3>"],
                   "missedOpp": "<grootste gemiste kans in begrijpelijke taal>",
-                  "ctaText": "<korte waarschuwing, max 8 woorden>"
+                  "actionTitle": "<pakkende naam voor wat er nu moet gebeuren>",
+                  "actionSteps": ["<concrete eerste stap 1>", "<concrete eerste stap 2>"],
+                  "ctaText": "<korte krachtige afsluiter, max 8 woorden>"
                 }
 
                 REGEL: Wees eerlijk en hard, maar praat zoals je tegen een goede vriend zou praten die een bedrijf heeft.`,
