@@ -19,7 +19,7 @@ const WebsiteScanner = () => {
     const [report, setReport] = useState(null);
     const [error, setError] = useState(null);
     const [progress, setProgress] = useState(0);
-    const [leadCaptured, setLeadCaptured] = useState(false);
+    const [leadCaptured, setLeadCaptured] = useState(true); // Temporarily true to bypass lead gate
     const [isModalOpen, setIsModalOpen] = useState(false);
     const [leadForm, setLeadForm] = useState({ name: '', email: '' });
     const [isSubmittingLead, setIsSubmittingLead] = useState(false);
