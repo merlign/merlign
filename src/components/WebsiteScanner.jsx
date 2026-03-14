@@ -145,7 +145,7 @@ const WebsiteScanner = () => {
                     </div>
 
                     <div className="max-w-2xl mx-auto relative z-20">
-                        <form onSubmit={handleScan} className="relative mb-12">
+                        <form onSubmit={handleScan} className={`relative ${scanStep !== 'idle' || error ? 'mb-12' : ''}`}>
                             <div className="relative flex flex-col sm:flex-row items-stretch sm:items-center bg-black/40 border border-white/10 p-2 rounded-2xl sm:rounded-full focus-within:border-white/30 focus-within:bg-black/60 transition-all shadow-xl gap-2 sm:gap-0">
                                 <input
                                     type="text"
