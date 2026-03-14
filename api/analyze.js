@@ -30,7 +30,7 @@ export default async function handler(req) {
                 .replace(/<[^>]+>/g, ' ')
                 .replace(/\s+/g, ' ')
                 .trim()
-                .substring(0, 3000);
+                .substring(0, 12000);
         }
     } catch (e) {
         console.error('Failed to fetch URL content server-side:', e);
