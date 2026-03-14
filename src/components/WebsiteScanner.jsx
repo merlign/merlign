@@ -135,8 +135,8 @@ const WebsiteScanner = () => {
             <div className="content-max-width section-px relative z-10 flex justify-center">
                 <div className="w-full max-w-4xl bg-primary shadow-2xl border border-white/10 rounded-[2rem] sm:rounded-[3rem] p-6 sm:p-10 md:p-16 relative overflow-hidden">
                     <div className="max-w-2xl mx-auto text-center space-y-6 mb-12 relative z-10">
-                        <h2 className="font-sans font-bold text-white text-h2 leading-tight">
-                            Doe de gratis <span className="text-white font-drama font-normal text-h2-serif">website scan.</span>
+                        <h2 className="font-sans font-bold text-white text-3xl sm:text-4xl md:text-5xl leading-tight">
+                            Doe de gratis <span className="text-white font-drama font-normal text-4xl sm:text-5xl md:text-6xl italic">website scan.</span>
                         </h2>
                         <p className="text-sm md:text-base font-sans text-white/80 font-light italic max-w-sm mx-auto">
                             Ontdek binnen 30 seconden waar je leads verliest.
@@ -145,7 +145,7 @@ const WebsiteScanner = () => {
 
                     <div className="max-w-2xl mx-auto relative z-20">
                         <form onSubmit={handleScan} className="relative mb-12">
-                            <div className="relative flex flex-col sm:flex-row items-stretch sm:items-center bg-black/10 border border-white/20 p-2 rounded-2xl sm:rounded-full focus-within:border-white/50 focus-within:bg-black/20 transition-all shadow-xl gap-2 sm:gap-0">
+                            <div className="relative flex flex-col sm:flex-row items-stretch sm:items-center bg-black/40 border border-white/10 p-2 rounded-2xl sm:rounded-full focus-within:border-white/30 focus-within:bg-black/60 transition-all shadow-xl gap-2 sm:gap-0">
                                 <input
                                     type="text"
                                     value={url}
