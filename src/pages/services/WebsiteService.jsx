@@ -205,13 +205,9 @@ const WebsiteService = () => {
                                         </motion.div>
                                     </motion.div>
                                 </div>
-                            </div>
-                        </div>
 
-                        <WebsiteScanner />
+                                <WebsiteScanner />
 
-                        <div className="pb-20 md:pb-32 relative overflow-hidden">
-                            <div className="content-max-width section-px space-y-20 md:space-y-40 relative z-10 mt-20 md:mt-40">
                                 {/* Process Section */}
                                 <div className="space-y-16 md:space-y-24">
                                     <div className="text-center space-y-8">
@@ -272,7 +268,7 @@ const WebsiteService = () => {
                     </motion.div>
                 )}
             </AnimatePresence>
-        </div >
+        </div>
     );
 };
 
