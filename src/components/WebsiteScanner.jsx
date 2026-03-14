@@ -396,14 +396,14 @@ const WebsiteScanner = () => {
                                                     <div className="space-y-3 drop-shadow-2xl">
                                                         <h3 className="text-2xl md:text-3xl font-sans font-bold text-white uppercase tracking-tight">Rapport staat klaar</h3>
                                                         <p className="text-white font-medium text-sm md:text-base max-w-sm mx-auto leading-relaxed px-4">
-                                                            We hebben de kritieke bottlenecks gevonden die je conversie remmen. Ontgrendel het volledige rapport om te zien waar je leads verliest.
+                                                            We hebben precies gevonden waar mensen nu op je website afhaken. Bekijk je persoonlijke analyse om te zien hoe je direct meer aanvragen krijgt.
                                                         </p>
                                                     </div>
                                                     <button
                                                         onClick={() => setIsModalOpen(true)}
                                                         className="bg-white text-primary px-10 py-4 rounded-full font-black uppercase tracking-widest flex items-center gap-4 mx-auto hover:scale-[1.05] active:scale-95 transition-all shadow-[0_0_40px_rgba(255,255,255,0.3)]"
                                                     >
-                                                        Volledig rapport ontgrendelen
+                                                        Mijn analyse bekijken
                                                         <ArrowRight size={18} />
                                                     </button>
                                                 </motion.div>
@@ -486,7 +486,7 @@ const WebsiteScanner = () => {
                                 </div>
                                 <h3 className="text-2xl md:text-3xl font-sans font-bold text-gray-900 tracking-tight">Waar mogen we de analyse naartoe sturen?</h3>
                                 <p className="text-gray-500 text-sm md:text-base leading-relaxed px-4">
-                                    We hebben het volledige marketing-rapport voor je klaarstaan. Vul je gegevens in en we sturen het direct naar je toe.
+                                    We hebben het volledige verbeterplan voor je klaarstaan. Vul je gegevens in en we sturen het direct naar je toe.
                                 </p>
 
                                 <form onSubmit={handleLeadSubmit} className="space-y-4 pt-4">
