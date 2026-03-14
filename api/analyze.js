@@ -90,9 +90,9 @@ export default async function handler(req) {
             const errorText = await response.text();
             console.error('Gemini API Error:', errorText);
             if (response.status === 429) {
-                return new Response(`De scanner is momenteel erg druk. Detail: ${errorText}`, { status: 429 });
+                return new Response('De scanner heeft even pauze nodig (te veel gelijktijdige aanvragen). Probeer het over exact 1 minuut nog een keer.', { status: 429 });
             }
-            return new Response(`AI Provider Error: ${response.status} - ${errorText}`, { status: response.status });
+            return new Response(`AI Provider Error: ${response.status}`, { status: response.status });
         }
 
         return new Response(response.body, {
