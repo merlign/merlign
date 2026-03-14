@@ -117,15 +117,15 @@ const WebsiteScanner = () => {
                 setTimeout(() => {
                     const mockReport = {
                         score: 4,
-                        scoreLabel: "Matig",
-                        firstImpression: "Dit is een TEST SCAN. De homepage oogt overzichtelijk maar mist een duidelijke commerciële 'punch' die de bezoeker direct activeert.",
+                        scoreLabel: "Kan beter",
+                        firstImpression: "Dit is een TEST SCAN. Je website ziet er netjes uit, maar het is niet direct duidelijk wat een bezoeker nu precies moet doen om klant te worden.",
                         bottlenecks: [
-                            "Duidelijke prijsstelling ontbreekt op de eerste vouw.",
-                            "De call-to-action knoppen vallen weg tegen de achtergrond.",
-                            "Social proof (reviews) zijn niet prominent genoeg aanwezig."
+                            "Het is niet meteen duidelijk wat je verkoopt of aanbiedt.",
+                            "Bezoekers moeten te veel scrollen om bij je contactgegevens te komen.",
+                            "Er zijn te weinig bewijzen (zoals ervaringen van klanten) die vertrouwen wekken."
                         ],
-                        missedOpp: "Het implementeren van een interactieve quiz zou de conversie met naar schatting 15% verhogen.",
-                        ctaText: "TEST: Je verliest leads door een gebrek aan urgentie."
+                        missedOpp: "Als je een duidelijke 'nu beginnen' knop toevoegt bovenaan de pagina, zul je waarschijnlijk direct meer aanvragen krijgen.",
+                        ctaText: "TEST: Je loopt op dit moment echt klanten mis."
                     };
                     setReport(mockReport);
                     setScanStep('result');
@@ -345,7 +345,7 @@ const WebsiteScanner = () => {
                                         </div>
 
                                         <div className="space-y-3">
-                                            <h3 className="text-xl font-sans font-bold text-white tracking-tight">Kwaliteitsscore</h3>
+                                            <h3 className="text-xl font-sans font-bold text-white tracking-tight">Analyseoverzicht</h3>
                                             <p className="text-sm md:text-base font-sans font-medium text-white/95 leading-relaxed max-w-lg">
                                                 {report.firstImpression}
                                             </p>
@@ -363,7 +363,7 @@ const WebsiteScanner = () => {
                                                 }}
                                             >
                                                 <div className="space-y-6">
-                                                    <h4 className="text-xs font-mono uppercase tracking-[0.2em] font-black text-white/60">Conversie Bottlenecks</h4>
+                                                    <h4 className="text-xs font-mono uppercase tracking-[0.2em] font-black text-white/60">Belangrijke verbeterpunten</h4>
                                                     <div className="space-y-3">
                                                         {[1, 2, 3].map(i => (
                                                             <div key={i} className="h-16 bg-white/10 rounded-2xl border border-white/5 flex items-center px-4 gap-4">
@@ -374,7 +374,7 @@ const WebsiteScanner = () => {
                                                     </div>
                                                 </div>
                                                 <div className="space-y-6">
-                                                    <h4 className="text-xs font-mono uppercase tracking-[0.2em] font-black text-white/60">Grootste Kans</h4>
+                                                    <h4 className="text-xs font-mono uppercase tracking-[0.2em] font-black text-white/60">Grootste groeikans</h4>
                                                     <div className="p-6 bg-white/10 rounded-[2rem] border border-white/5 space-y-4">
                                                         <div className="h-2 w-full bg-white/20 rounded-full" />
                                                         <div className="h-2 w-3/4 bg-white/10 rounded-full" />
@@ -413,7 +413,7 @@ const WebsiteScanner = () => {
                                         <>
                                             <div className="grid grid-cols-1 md:grid-cols-2 gap-10 pt-10 border-t border-white/10">
                                                 <div className="space-y-4">
-                                                    <h4 className="text-xs font-mono uppercase tracking-[0.2em] font-black text-white/60">Conversie Bottlenecks</h4>
+                                                    <h4 className="text-xs font-mono uppercase tracking-[0.2em] font-black text-white/60">Belangrijke verbeterpunten</h4>
                                                     <ul className="space-y-4">
                                                         {report.bottlenecks.map((item, i) => (
                                                             <li key={i} className="flex items-start gap-4 p-5 rounded-2xl bg-black/40 border border-white/10 text-[15px] font-sans text-white leading-relaxed shadow-lg">
@@ -425,7 +425,7 @@ const WebsiteScanner = () => {
                                                 </div>
 
                                                 <div className="space-y-4">
-                                                    <h4 className="text-xs font-mono uppercase tracking-[0.2em] font-black text-white/60">Grootste Kans</h4>
+                                                    <h4 className="text-xs font-mono uppercase tracking-[0.2em] font-black text-white/60">Grootste groeikans</h4>
                                                     <div className="text-[15px] font-sans font-medium text-white leading-relaxed p-6 bg-black/60 rounded-[2rem] border border-white/10 shadow-lg min-h-[140px] flex items-center">
                                                         {report.missedOpp}
                                                     </div>
@@ -434,7 +434,7 @@ const WebsiteScanner = () => {
 
                                             <div className="pt-10 flex flex-col items-center space-y-10">
                                                 <div className="flex flex-col items-center">
-                                                    <p className="text-xs font-mono uppercase tracking-[0.3em] font-black text-white/40 mb-4">Urgentie</p>
+                                                    <p className="text-xs font-mono uppercase tracking-[0.3em] font-black text-white/40 mb-4">Actie vereist</p>
                                                     <div className="px-8 py-5 rounded-3xl md:rounded-full bg-white/10 border border-white/10 text-white font-drama italic text-xl md:text-2xl text-center shadow-2xl backdrop-blur-sm leading-tight text-emerald-300">
                                                         "{report.ctaText}"
                                                     </div>
