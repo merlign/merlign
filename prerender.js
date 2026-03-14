@@ -41,15 +41,34 @@ async function generate() {
                 seoContent += `<h1>${data.heroSans || ''} ${data.heroSerif || ''}</h1>`;
                 seoContent += `<p>${data.heroSubtitle || ''}</p>`;
 
-                if (route.name === 'Website') {
-                    seoContent += `<h2>Veelgestelde vragen over websites</h2>`;
-                    seoContent += `<div><b>Waarom React/Vite?</b> Veel bureaus gebruiken WordPress omdat het makkelijk is voor henzelf, maar het is vaak zwaar en traag...</div>`;
-                } else if (route.name === 'Automation') {
-                    seoContent += `<h2>Veelgestelde vragen over automatisering</h2>`;
-                    seoContent += `<div><b>Waarom n8n?</b> Zapier is prima voor simpele taken, maar wordt extreem duur...</div>`;
-                } else if (route.name === 'Dashboard') {
-                    seoContent += `<h2>Veelgestelde vragen over dashboards</h2>`;
-                    seoContent += `<div><b>Data bronnen combineren?</b> Ja, dat is juist de kracht van een custom dashboard...</div>`;
+                // Inject features
+                if (data.features?.length > 0) {
+                    seoContent += `<h2>Onze aanpak voor ${route.name}</h2><ul>`;
+                    data.features.forEach(f => {
+                        seoContent += `<li><h3>${f.title}</h3><p>${f.description}</p></li>`;
+                    });
+                    seoContent += `</ul>`;
+                }
+
+                // Inject FAQs
+                if (data.faqs?.length > 0) {
+                    seoContent += `<h2>Veelgestelde vragen</h2>`;
+                    data.faqs.forEach(f => {
+                        seoContent += `<div><h3>${f.question}</h3><p>${f.answer}</p></div>`;
+                    });
+                } else {
+                    // Static fallbacks for each service
+                    if (route.name === 'Website') {
+                        seoContent += `<h2>Veelgestelde vragen over websites</h2>`;
+                        seoContent += `<div><b>Waarom React/Vite?</b> Veel bureaus gebruiken WordPress omdat het makkelijk is voor henzelf, maar het is vaak zwaar en traag...</div>`;
+                        seoContent += `<div><b>Klaar in 72 uur?</b> Ja, door een strakke workflow en focus op wat echt telt voor conversie...</div>`;
+                    } else if (route.name === 'Automation') {
+                        seoContent += `<h2>Veelgestelde vragen over automatisering</h2>`;
+                        seoContent += `<div><b>Waarom n8n?</b> Zapier is prima voor simpele taken, maar wordt extreem duur...</div>`;
+                    } else if (route.name === 'Dashboard') {
+                        seoContent += `<h2>Veelgestelde vragen over dashboards</h2>`;
+                        seoContent += `<div><b>Data bronnen combineren?</b> Ja, dat is juist de kracht van een custom dashboard...</div>`;
+                    }
                 }
             }
         } else if (route.type === 'home') {
@@ -59,6 +78,14 @@ async function generate() {
 
             seoContent += `<h1>Cinematic Landing Pages & AI Automatisering</h1>`;
             seoContent += `<p>${routeDesc}</p>`;
+
+            seoContent += `<h2>Diensten</h2>`;
+            seoContent += `<ul>
+                <li>Website ontwerp & realisatie</li>
+                <li>Data dashboards & insights</li>
+                <li>AI & Workflow automatisering</li>
+            </ul>`;
+
             faqs.forEach(f => {
                 seoContent += `<div><h3>${f.question}</h3><p>${f.answer}</p></div>`;
             });
@@ -67,16 +94,19 @@ async function generate() {
             routeTitle = about?.seoTitle || "Over Merlign — Design & Strategie";
             routeDesc = about?.seoDescription || "Lees meer over de visie van Merlijn op design en automatisering.";
             seoContent += `<h1>Over Merlign</h1>`;
+            seoContent += `<p>Merlijn is een senior digitaal strateeg met meer dan 10 jaar ervaring in design en ontwikkeling.</p>`;
         } else if (route.type === 'cases') {
             const cases = await client.fetch(`*[_type == "casesPage"][0]`);
             routeTitle = cases?.seoTitle || "Projecten & Successen — Merlign";
             routeDesc = cases?.seoDescription || "Bekijk de projecten die ik heb uitgevoerd.";
             seoContent += `<h1>Projecten & Successen</h1>`;
+            seoContent += `<p>Bekijk onze recente cases op het gebied van webdesign en automatisering.</p>`;
         } else if (route.type === 'contact') {
             const contact = await client.fetch(`*[_type == "contactInfo"][0]`);
             routeTitle = contact?.seoTitle || "Contact opnemen — Merlign";
             routeDesc = contact?.seoDescription || "Heb je een vraag of wil je direct een gratis check inplannen?";
             seoContent += `<h1>Contact opnemen</h1>`;
+            seoContent += `<p>Plan direct een afspraak in of stel je vraag via de website.</p>`;
         } else if (route.type === 'simple') {
             routeTitle = route.title;
             routeDesc = "Lees onze voorwaarden.";
