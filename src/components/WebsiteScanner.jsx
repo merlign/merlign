@@ -355,15 +355,31 @@ const WebsiteScanner = () => {
                                     {!leadCaptured ? (
                                         <div className="relative pt-10 border-t border-white/10 overflow-hidden min-h-[450px]">
                                             {/* Blurred/Locked Content Preview */}
-                                            <div className="grid grid-cols-1 md:grid-cols-2 gap-10 opacity-20 blur-md pointer-events-none select-none">
-                                                <div className="space-y-4">
+                                            <div
+                                                className="grid grid-cols-1 md:grid-cols-2 gap-10 opacity-30 blur-[6px] pointer-events-none select-none"
+                                                style={{
+                                                    maskImage: 'linear-gradient(to bottom, black 0%, rgba(0,0,0,0.4) 50%, transparent 100%)',
+                                                    WebkitMaskImage: 'linear-gradient(to bottom, black 0%, rgba(0,0,0,0.4) 50%, transparent 100%)'
+                                                }}
+                                            >
+                                                <div className="space-y-6">
                                                     <h4 className="text-xs font-mono uppercase tracking-[0.2em] font-black text-white/60">Conversie Bottlenecks</h4>
-                                                    <div className="h-20 bg-black/40 rounded-2xl"></div>
-                                                    <div className="h-20 bg-black/40 rounded-2xl"></div>
+                                                    <div className="space-y-3">
+                                                        {[1, 2, 3].map(i => (
+                                                            <div key={i} className="h-16 bg-white/10 rounded-2xl border border-white/5 flex items-center px-4 gap-4">
+                                                                <div className="w-6 h-6 rounded-full bg-white/10 shrink-0" />
+                                                                <div className="h-2 w-full bg-white/10 rounded-full" />
+                                                            </div>
+                                                        ))}
+                                                    </div>
                                                 </div>
-                                                <div className="space-y-4">
+                                                <div className="space-y-6">
                                                     <h4 className="text-xs font-mono uppercase tracking-[0.2em] font-black text-white/60">Grootste Kans</h4>
-                                                    <div className="h-40 bg-black/40 rounded-[2rem]"></div>
+                                                    <div className="p-6 bg-white/10 rounded-[2rem] border border-white/5 space-y-4">
+                                                        <div className="h-2 w-full bg-white/20 rounded-full" />
+                                                        <div className="h-2 w-3/4 bg-white/10 rounded-full" />
+                                                        <div className="h-2 w-1/2 bg-white/10 rounded-full" />
+                                                    </div>
                                                 </div>
                                             </div>
 
