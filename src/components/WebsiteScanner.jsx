@@ -23,6 +23,7 @@ const WebsiteScanner = () => {
     const [isModalOpen, setIsModalOpen] = useState(false);
     const [leadForm, setLeadForm] = useState({ name: '', email: '' });
     const [isSubmittingLead, setIsSubmittingLead] = useState(false);
+    const [isSent, setIsSent] = useState(false);
     const reportRef = useRef(null);
     const progressInterval = useRef(null);
 
@@ -36,48 +37,46 @@ const WebsiteScanner = () => {
                 import.meta.env.VITE_EMAILJS_SERVICE_ID,
                 import.meta.env.VITE_EMAILJS_TEMPLATE_ID,
                 {
-                    from_name: leadForm.name,
-                    from_email: leadForm.email,
-                    subject: `Website Scan Rapport: ${url}`,
+                    to_name: leadForm.name,
+                    to_email: leadForm.email,
+                    from_name: "Merlijn",
+                    reply_to: "contact@merlign.com",
+                    subject: `Jouw Website Verbeterplan voor ${url}`,
                     message: `
-                        Nieuwe scan aanvraag voor: ${url}
-                        Naam: ${leadForm.name}
-                        Email: ${leadForm.email}
+                        Hoi ${leadForm.name},
                         
-                        RESULTATEN:
-                        Score: ${report.score}/10
-                        Label: ${report.scoreLabel}
+                        Je hebt zojuist een scan gedaan voor ${url}. Hier zijn de belangrijkste punten uit je verbeterplan:
                         
-                        EERSTE INDRUK:
+                        RESULTAAT: ${report.score}/10 (${report.scoreLabel})
+                        
+                        HOE JE SITE NU OVERKOMT:
                         ${report.firstImpression}
                         
-                        BOTTLENECKS:
+                        BELANGRIJKSTE VERBETERPUNTEN:
                         1. ${report.bottlenecks[0]}
                         2. ${report.bottlenecks[1]}
                         3. ${report.bottlenecks[2]}
                         
-                        GROOTSTE KANS:
+                        GROOTSTE GROEIKANS:
                         ${report.missedOpp}
                         
-                        URGENTIE:
+                        ACTIE VEREIST:
                         ${report.ctaText}
+                        
+                        Wil je hier eens rustig over doorpraten? Plan dan een gratis adviesgesprek in via de website.
+                        
+                        Met vriendelijke groet,
+                        Merlijn
                     `
                 },
                 import.meta.env.VITE_EMAILJS_PUBLIC_KEY
             );
 
-            setLeadCaptured(true);
-
-            // Scroll to the revealed results
-            setTimeout(() => {
-                reportRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' });
-            }, 100);
+            setIsSent(true);
 
         } catch (err) {
             console.error("Lead submission error:", err);
-            // Even if email fails, we show results to not block the user, 
-            // but in production you'd want better error handling.
-            setLeadCaptured(true);
+            // Show error in modal? For now just log
         } finally {
             setIsSubmittingLead(false);
         }
@@ -481,47 +480,85 @@ const WebsiteScanner = () => {
                             </div>
 
                             <div className="text-center space-y-6">
-                                <div className="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-2">
-                                    <Mail className="text-primary" size={28} />
-                                </div>
-                                <h3 className="text-2xl md:text-3xl font-sans font-bold text-gray-900 tracking-tight">Waar mogen we de analyse naartoe sturen?</h3>
-                                <p className="text-gray-500 text-sm md:text-base leading-relaxed px-4">
-                                    We hebben het volledige verbeterplan voor je klaarstaan. Vul je gegevens in en we sturen het direct naar je toe.
-                                </p>
+                                <AnimatePresence mode="wait">
+                                    {!isSent ? (
+                                        <motion.div
+                                            key="form"
+                                            initial={{ opacity: 0, y: 10 }}
+                                            animate={{ opacity: 1, y: 0 }}
+                                            exit={{ opacity: 0, y: -10 }}
+                                            className="space-y-6"
+                                        >
+                                            <div className="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-2">
+                                                <Mail className="text-primary" size={28} />
+                                            </div>
+                                            <h3 className="text-2xl md:text-3xl font-sans font-bold text-gray-900 tracking-tight">Waar mogen we de analyse naartoe sturen?</h3>
+                                            <p className="text-gray-500 text-sm md:text-base leading-relaxed px-4">
+                                                We hebben het volledige verbeterplan voor je klaarstaan. Vul je gegevens in en we sturen het direct naar je toe.
+                                            </p>
 
-                                <form onSubmit={handleLeadSubmit} className="space-y-4 pt-4">
-                                    <div className="relative">
-                                        <User className="absolute left-6 top-1/2 -translate-y-1/2 text-gray-400" size={20} />
-                                        <input
-                                            required
-                                            type="text"
-                                            placeholder="Je voornaam"
-                                            value={leadForm.name}
-                                            onChange={(e) => setLeadForm({ ...leadForm, name: e.target.value })}
-                                            className="w-full bg-gray-50 border border-gray-100 rounded-full py-5 pl-14 pr-8 text-gray-900 focus:outline-none focus:ring-4 focus:ring-primary/10 transition-all font-sans text-lg"
-                                        />
-                                    </div>
-                                    <div className="relative">
-                                        <Mail className="absolute left-6 top-1/2 -translate-y-1/2 text-gray-400" size={20} />
-                                        <input
-                                            required
-                                            type="email"
-                                            placeholder="Je emailadres"
-                                            value={leadForm.email}
-                                            onChange={(e) => setLeadForm({ ...leadForm, email: e.target.value })}
-                                            className="w-full bg-gray-50 border border-gray-100 rounded-full py-5 pl-14 pr-8 text-gray-900 focus:outline-none focus:ring-4 focus:ring-primary/10 transition-all font-sans text-lg"
-                                        />
-                                    </div>
-                                    <button
-                                        type="submit"
-                                        disabled={isSubmittingLead}
-                                        className="w-full bg-primary text-white font-black uppercase tracking-widest py-5 rounded-full flex items-center justify-center gap-4 hover:scale-[1.02] active:scale-98 transition-all shadow-2xl shadow-primary/30"
-                                    >
-                                        {isSubmittingLead ? <Loader2 className="animate-spin" size={24} /> : <Zap size={20} />}
-                                        {isSubmittingLead ? 'Bezig met versturen...' : 'Ontvang mijn rapport'}
-                                    </button>
-                                </form>
-                                <p className="text-[10px] text-gray-400 italic">Nooit spam. Alleen vlijmscherp advies.</p>
+                                            <form onSubmit={handleLeadSubmit} className="space-y-4 pt-4 text-left">
+                                                <div className="relative">
+                                                    <User className="absolute left-6 top-1/2 -translate-y-1/2 text-gray-400" size={20} />
+                                                    <input
+                                                        required
+                                                        type="text"
+                                                        placeholder="Je voornaam"
+                                                        value={leadForm.name}
+                                                        onChange={(e) => setLeadForm({ ...leadForm, name: e.target.value })}
+                                                        className="w-full bg-gray-50 border border-gray-100 rounded-full py-5 pl-14 pr-8 text-gray-900 focus:outline-none focus:ring-4 focus:ring-primary/10 transition-all font-sans text-lg"
+                                                    />
+                                                </div>
+                                                <div className="relative">
+                                                    <Mail className="absolute left-6 top-1/2 -translate-y-1/2 text-gray-400" size={20} />
+                                                    <input
+                                                        required
+                                                        type="email"
+                                                        placeholder="Je emailadres"
+                                                        value={leadForm.email}
+                                                        onChange={(e) => setLeadForm({ ...leadForm, email: e.target.value })}
+                                                        className="w-full bg-gray-50 border border-gray-100 rounded-full py-5 pl-14 pr-8 text-gray-900 focus:outline-none focus:ring-4 focus:ring-primary/10 transition-all font-sans text-lg"
+                                                    />
+                                                </div>
+                                                <button
+                                                    type="submit"
+                                                    disabled={isSubmittingLead}
+                                                    className="w-full bg-primary text-white font-black uppercase tracking-widest py-5 rounded-full flex items-center justify-center gap-4 hover:scale-[1.02] active:scale-98 transition-all shadow-2xl shadow-primary/30"
+                                                >
+                                                    {isSubmittingLead ? <Loader2 className="animate-spin" size={24} /> : <Zap size={20} />}
+                                                    {isSubmittingLead ? 'Bezig met versturen...' : 'Ontvang mijn rapport'}
+                                                </button>
+                                            </form>
+                                            <p className="text-[10px] text-gray-400 italic">Nooit spam. Alleen vlijmscherp advies.</p>
+                                        </motion.div>
+                                    ) : (
+                                        <motion.div
+                                            key="success"
+                                            initial={{ opacity: 0, scale: 0.9 }}
+                                            animate={{ opacity: 1, scale: 1 }}
+                                            className="py-8 space-y-6"
+                                        >
+                                            <div className="w-20 h-20 bg-emerald-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                                                <CheckCircle2 className="text-emerald-500" size={40} />
+                                            </div>
+                                            <h3 className="text-3xl font-sans font-bold text-gray-900 tracking-tight">Verzonden!</h3>
+                                            <div className="space-y-4">
+                                                <p className="text-gray-600 text-lg leading-relaxed">
+                                                    Hoi {leadForm.name}, je verbeterplan is onderweg naar <strong>{leadForm.email}</strong>.
+                                                </p>
+                                                <p className="text-gray-500 text-sm">
+                                                    Check ook even je spam-folder als je over 2 minuten nog niks hebt ontvangen.
+                                                </p>
+                                            </div>
+                                            <button
+                                                onClick={() => setIsModalOpen(false)}
+                                                className="bg-gray-900 text-white px-8 py-4 rounded-full font-bold transition-all hover:bg-black"
+                                            >
+                                                Sluiten
+                                            </button>
+                                        </motion.div>
+                                    )}
+                                </AnimatePresence>
                             </div>
                         </motion.div>
                     </div>
