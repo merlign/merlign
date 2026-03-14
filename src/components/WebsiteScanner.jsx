@@ -133,10 +133,10 @@ const WebsiteScanner = () => {
     return (
         <section className="py-6 md:py-12 relative overflow-hidden">
             <div className="content-max-width section-px relative z-10 flex justify-center">
-                <div className="w-full max-w-4xl bg-primary shadow-[0_0_80px_rgba(99,102,241,0.5)] rounded-[2rem] sm:rounded-[3rem] p-6 sm:p-10 md:p-16 relative overflow-hidden">
+                <div className="w-full max-w-4xl bg-primary shadow-2xl border border-white/10 rounded-[2rem] sm:rounded-[3rem] p-6 sm:p-10 md:p-16 relative overflow-hidden">
                     <div className="max-w-2xl mx-auto text-center space-y-6 mb-12 relative z-10">
                         <h2 className="font-sans font-bold text-white text-h2 leading-tight">
-                            Gratis <span className="text-white font-drama font-normal text-h2-serif">website scan.</span>
+                            Doe de gratis <span className="text-white font-drama font-normal text-h2-serif">website scan.</span>
                         </h2>
                         <p className="text-sm md:text-base font-sans text-white/80 font-light italic max-w-sm mx-auto">
                             Ontdek binnen 30 seconden waar je leads verliest.
