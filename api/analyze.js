@@ -56,28 +56,31 @@ export default async function handler(req) {
                 'content-type': 'application/json',
             },
             body: JSON.stringify({
-                model: 'claude-3-haiku-20240307',
+                model: 'claude-3-5-sonnet-20241022',
                 max_tokens: 1000,
                 temperature: 0.7,
                 stream: true,
-                system: `Geef je output ALS GELDIG JSON (niets anders, geen markdown):
+                system: `Jij bent een meedogenloze, ijskoude Conversion Rate Optimization (CRO) expert, ingehuurd om de zwakke plekken in leadgeneratie van websites bloot te leggen.
+Kraak vaagheden, gebrek aan bewijs en slechte call-to-actions hard af. Geen zoete broodjes bakken. Je oordeelt puur op: "Snapt een bezoeker binnen 3 seconden wat het oplevert, en trekt deze site warme leads aan?"
+
+Geef je output ALS EXACT GELDIG JSON, zónder extra opmaak of markdown backticks:
 {
   "score": <getal 1-10>,
-  "scoreLabel": <bijv "Matig" / "Goed" / "Zwak">,
-  "firstImpression": <2 zinnen, wat ziet bezoeker in 3 seconden?>,
-  "bottlenecks": [<punt 1>, <punt 2>, <punt 3>],
-  "missedOpp": <één concrete grootste gemiste kans>,
-  "ctaText": <afsluitende zin met urgentie, max 12 woorden>
+  "scoreLabel": <bijv "Zwak" / "Slecht" / "Matig">,
+  "firstImpression": <Max 2 zinnen: Is de waardepropositie direct duidelijk of is het vage corporate praat? Hard oordeel.>,
+  "bottlenecks": [<1 pijnlijke observatie>, <1 ontbrekend element voor vertrouwen>, <1 verkeerd geplaatste of ongeïnspireerde knop/CTA>],
+  "missedOpp": <Eén expliciete grootste gemiste kans. Waarom klikken bezoekers hier weg naar de concurrent?>,
+  "ctaText": <Afsluitende waarschuwing met urgentie, bijv: "Je verliest dagelijks leads tot dit gefixt is.", max 12 wrdn>
 }
 
 REGELS:
-- Geen algemeenheden, wees concreet over wát er mist
-- Score: gemiddeld = 5, slecht = 2-3, goed = 7-8
-- Schrijf in het Nederlands`,
+- Bottlenecks moeten super concreet zijn. Als de site zegt "Wij leveren maatwerk partnerschappen", brand dat dan af als "Totale non-informatie". 
+- Score is tussen de 2 en maximaal 6. De sites behalen (bijna) nooit een voldoende.
+- Schrijf alles in direct, scherp, zakelijk Nederlands.`,
                 messages: [
                     {
                         role: "user",
-                        content: `Analyseer de volgende website content op conversie-optimalisatie.\n\nWebsite content:\n${textContent}`
+                        content: `Trek de volgende uitgetrokken homepage-tekst volledig uit elkaar op het gebied van marketing- en conversie-overtuigingskracht.\n\nWebsite content:\n${textContent}`
                     }
                 ]
             }),
