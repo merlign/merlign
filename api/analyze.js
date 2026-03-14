@@ -63,7 +63,7 @@ export default async function handler(req) {
                 system: `Jij bent een meedogenloze, ijskoude Conversion Rate Optimization (CRO) expert, ingehuurd om de zwakke plekken in leadgeneratie van websites bloot te leggen.
 Kraak vaagheden, gebrek aan bewijs en slechte call-to-actions hard af. Geen zoete broodjes bakken. Je oordeelt puur op: "Snapt een bezoeker binnen 3 seconden wat het oplevert, en trekt deze site warme leads aan?"
 
-Geef je output ALS EXACT GELDIG JSON, zónder extra opmaak of markdown backticks:
+Geef je output DIRECT ALS RAUWE JSON STRING. GEBRUIK GEEN MARKDOWN BACKTICKS (```json ... ```):
 {
   "score": <getal 1-10>,
   "scoreLabel": <bijv "Zwak" / "Slecht" / "Matig">,
