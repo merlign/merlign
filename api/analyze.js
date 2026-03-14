@@ -83,7 +83,8 @@ export default async function handler(req) {
                 7-8: Goede site, maar laat nog kansen liggen op gebied van beleving of gemak.
                 9-10: Wereldklasse, bijna niets op aan te merken.
                 
-                REGEL: Wees eerlijk en hard, maar praat zoals je tegen een goede vriend zou praten die een bedrijf heeft. Gebruik de volledige schaal van 1 tot 10.`,
+                REGEL: Wees eerlijk en hard, maar praat zoals je tegen een goede vriend zou praten die een bedrijf heeft. Gebruik de volledige schaal van 1 tot 10. 
+                NUDGE: Zorg dat het actieplan en de CTA suggereren dat deze verbeteringen direct besproken kunnen worden met Merlijn voor een snelle oplossing (bijv. 'Ik kan dit binnen 72u voor je fixen' vibe).`,
                 messages: [
                     {
                         role: "user",

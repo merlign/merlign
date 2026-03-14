@@ -482,10 +482,26 @@ const WebsiteScanner = () => {
                                                             </p>
                                                         </div>
                                                     </div>
+
+                                                    {/* Direct Support Nudge */}
+                                                    <motion.div
+                                                        initial={{ opacity: 0, y: 10 }}
+                                                        whileInView={{ opacity: 1, y: 0 }}
+                                                        transition={{ delay: 0.3 }}
+                                                        className="w-full max-w-xl p-6 bg-primary/10 border border-primary/20 rounded-[2rem] flex flex-col md:flex-row items-center gap-6"
+                                                    >
+                                                        <div className="w-12 h-12 rounded-full overflow-hidden border border-primary/30 shrink-0">
+                                                            <img src="/merlijn-portrait.png" alt="Merlijn" className="w-full h-full object-cover" />
+                                                        </div>
+                                                        <div className="text-center md:text-left space-y-1">
+                                                            <p className="text-white font-sans font-bold text-sm">Zullen we dit samen fixen?</p>
+                                                            <p className="text-[var(--text)]/60 font-sans text-xs italic">Ik help je dit binnen 72 uur op te lossen in een sprint.</p>
+                                                        </div>
+                                                    </motion.div>
                                                 </div>
 
                                                 <a href="/contact" className="btn-magnetic group bg-white text-primary px-8 py-4 rounded-full font-black uppercase tracking-widest italic flex items-center gap-4 shadow-[0_0_30px_rgba(255,255,255,0.3)] text-xs">
-                                                    Gratis adviesgesprek
+                                                    Plan een gratis check
                                                     <ArrowRight size={16} />
                                                 </a>
                                             </div>
