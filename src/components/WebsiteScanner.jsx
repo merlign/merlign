@@ -133,9 +133,9 @@ const WebsiteScanner = () => {
     return (
         <section className="py-6 md:py-12 relative overflow-hidden">
             <div className="content-max-width section-px relative z-10 flex justify-center">
-                <div className="w-full max-w-4xl bg-white/[0.02] border border-white/5 backdrop-blur-sm rounded-[3rem] p-8 md:p-16 relative overflow-hidden">
+                <div className="w-full max-w-4xl bg-primary/5 border border-primary/20 shadow-[0_0_100px_-20px_rgba(99,102,241,0.2)] backdrop-blur-xl rounded-[2rem] sm:rounded-[3rem] p-6 sm:p-10 md:p-16 relative overflow-hidden">
                     <div className="max-w-2xl mx-auto text-center space-y-6 mb-12 relative z-10">
-                        <h2 className="font-sans font-bold text-[var(--text)] text-h2">
+                        <h2 className="font-sans font-bold text-[var(--text)] text-h2 leading-tight">
                             Gratis <span className="text-primary font-drama font-normal text-h2-serif">website scan.</span>
                         </h2>
                         <p className="text-sm md:text-base font-sans text-[var(--text)]/40 font-light italic max-w-sm mx-auto">
@@ -145,19 +145,19 @@ const WebsiteScanner = () => {
 
                     <div className="max-w-2xl mx-auto relative z-20">
                         <form onSubmit={handleScan} className="relative mb-12">
-                            <div className="relative flex items-center bg-white/[0.03] border border-white/10 p-2 rounded-full focus-within:border-primary/40 transition-all shadow-lg">
+                            <div className="relative flex flex-col sm:flex-row items-stretch sm:items-center bg-white/[0.03] border border-white/10 p-2 rounded-2xl sm:rounded-full focus-within:border-primary/40 focus-within:bg-white/[0.05] transition-all shadow-lg gap-2 sm:gap-0">
                                 <input
                                     type="text"
                                     value={url}
                                     onChange={(e) => setUrl(e.target.value)}
                                     placeholder="jouwsite.nl"
-                                    className="flex-grow bg-transparent border-none px-6 py-3 font-sans text-base focus:outline-none text-[var(--text)] placeholder:text-[var(--text)]/20"
+                                    className="flex-grow bg-transparent border-none px-6 py-4 sm:py-3 font-sans text-base focus:outline-none text-[var(--text)] placeholder:text-[var(--text)]/20 text-center sm:text-left"
                                     disabled={isScanning}
                                 />
                                 <button
                                     type="submit"
                                     disabled={isScanning || !url}
-                                    className="bg-primary text-black px-6 py-3 rounded-full font-black uppercase tracking-widest italic flex items-center gap-3 disabled:opacity-50 disabled:cursor-not-allowed hover:scale-[1.02] active:scale-95 transition-all text-xs"
+                                    className="bg-primary text-white px-8 py-4 sm:py-3 rounded-[1rem] sm:rounded-full font-black uppercase tracking-widest flex items-center justify-center gap-3 disabled:opacity-50 disabled:cursor-not-allowed hover:scale-[1.02] active:scale-95 transition-all text-xs shadow-md"
                                 >
                                     {isScanning ? <Loader2 className="animate-spin" size={16} /> : <Zap size={16} />}
                                     {isScanning ? 'Scannen' : 'Scan'}
