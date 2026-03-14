@@ -99,9 +99,13 @@ const WebsiteScanner = () => {
 
             // 4. Parse final JSON
             try {
-                // Find potential JSON block if AI included any text around it
-                const jsonMatch = fullText.match(/\{[\s\S]*\}/);
-                const jsonStr = jsonMatch ? jsonMatch[0] : fullText;
+                // Find potential JSON block and clean it aggressively
+                let cleanText = fullText.trim();
+                // Remove markdown code blocks if present
+                cleanText = cleanText.replace(/```json/g, '').replace(/```/g, '').trim();
+
+                const jsonMatch = cleanText.match(/\{[\s\S]*\}/);
+                const jsonStr = jsonMatch ? jsonMatch[0] : cleanText;
                 const parsedReport = JSON.parse(jsonStr);
                 setReport(parsedReport);
                 setScanStep('result');
