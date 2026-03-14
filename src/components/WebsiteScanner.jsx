@@ -131,7 +131,7 @@ const WebsiteScanner = () => {
     }, []);
 
     return (
-        <section className="py-6 md:py-12 relative overflow-hidden">
+        <section className="py-12 md:py-24 relative z-0">
             <div className="content-max-width section-px relative z-10 flex justify-center">
                 <div className="w-full max-w-4xl bg-gradient-to-b from-[#6a6df4] to-[#4c4edf] shadow-[0_30px_60px_-15px_rgba(99,102,241,0.4)] border border-white/15 rounded-[2rem] sm:rounded-[3rem] p-6 sm:p-10 md:p-16 relative overflow-hidden">
                     <div className="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-[0.03] mix-blend-overlay pointer-events-none"></div>
