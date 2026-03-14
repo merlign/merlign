@@ -67,8 +67,8 @@ export default async function handler(req) {
 
                 JSON-STRUCTUUR:
                 {
-                  "score": <getal 2-6>,
-                  "scoreLabel": "Slecht" | "Zwak" | "Matig",
+                  "score": <getal 1-10>,
+                  "scoreLabel": "Slecht" | "Zwak" | "Matig" | "Voldoende" | "Goed" | "Uitzonderlijk",
                   "firstImpression": "<max 2 scherpe zinnen over wat een bezoeker direct voelt/denkt>",
                   "bottlenecks": ["<begrijpelijk verbeterpunt 1>", "<begrijpelijk verbeterpunt 2>", "<begrijpelijk verbeterpunt 3>"],
                   "missedOpp": "<grootste gemiste kans in begrijpelijke taal>",
@@ -77,7 +77,13 @@ export default async function handler(req) {
                   "ctaText": "<korte krachtige afsluiter, max 8 woorden>"
                 }
 
-                REGEL: Wees eerlijk en hard, maar praat zoals je tegen een goede vriend zou praten die een bedrijf heeft.`,
+                SCORING GIDS:
+                1-3: Ernstige fouten, geen duidelijke boodschap, onbetrouwbaar.
+                4-6: Basis is aanwezig, maar mist overtuigingskracht en helderheid.
+                7-8: Goede site, maar laat nog kansen liggen op gebied van beleving of gemak.
+                9-10: Wereldklasse, bijna niets op aan te merken.
+                
+                REGEL: Wees eerlijk en hard, maar praat zoals je tegen een goede vriend zou praten die een bedrijf heeft. Gebruik de volledige schaal van 1 tot 10.`,
                 messages: [
                     {
                         role: "user",

@@ -128,8 +128,8 @@ const WebsiteScanner = () => {
 
                 setTimeout(() => {
                     const mockReport = {
-                        score: 4,
-                        scoreLabel: "Kan beter",
+                        score: 6,
+                        scoreLabel: "Voldoende",
                         firstImpression: "Dit is een TEST SCAN. Je website ziet er netjes uit, maar het is niet direct duidelijk wat een bezoeker nu precies moet doen om klant te worden.",
                         bottlenecks: [
                             "Het is niet meteen duidelijk wat je verkoopt of aanbiedt.",
@@ -351,13 +351,13 @@ const WebsiteScanner = () => {
                                                     fill="transparent"
                                                     strokeDasharray="100 100"
                                                     strokeDashoffset={100 - (report.score * 10)}
-                                                    className={report.score <= 4 ? "text-red-300" : report.score <= 6 ? "text-yellow-300" : "text-emerald-300"}
+                                                    className={report.score <= 3 ? "text-red-400" : report.score <= 6 ? "text-yellow-400" : "text-emerald-400"}
                                                     initial={{ strokeDashoffset: 100 }}
                                                     animate={{ strokeDashoffset: 100 - (report.score * 10) }}
                                                 />
                                             </svg>
                                             <div className="absolute inset-0 flex items-center justify-center">
-                                                <span className="text-2xl font-mono font-black italic text-white">{report.score}</span>
+                                                <span className="text-2xl font-mono font-black italic text-white">{report.score}/10</span>
                                             </div>
                                         </div>
 
