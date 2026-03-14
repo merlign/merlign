@@ -15,11 +15,9 @@ const WebsiteScanner = () => {
     const [url, setUrl] = useState('');
     const [isScanning, setIsScanning] = useState(false);
     const [scanStep, setScanStep] = useState('idle'); // idle, fetching, analyzing, result
-    const [streamedText, setStreamedText] = useState('');
-    const [report, setReport] = useState(null);
-    const [error, setError] = useState(null);
     const [progress, setProgress] = useState(0);
     const [leadCaptured, setLeadCaptured] = useState(false);
+    const [isModalOpen, setIsModalOpen] = useState(false);
     const [leadForm, setLeadForm] = useState({ name: '', email: '' });
     const [isSubmittingLead, setIsSubmittingLead] = useState(false);
     const reportRef = useRef(null);
@@ -340,50 +338,26 @@ const WebsiteScanner = () => {
                                             {/* Lead Form Overlay */}
                                             <div className="absolute inset-0 flex items-center justify-center p-6 z-20">
                                                 <motion.div
-                                                    initial={{ opacity: 0, scale: 0.9 }}
-                                                    animate={{ opacity: 1, scale: 1 }}
-                                                    className="w-full max-w-md bg-white rounded-[2.5rem] p-8 md:p-10 shadow-2xl text-center"
+                                                    initial={{ opacity: 0, y: 20 }}
+                                                    animate={{ opacity: 1, y: 0 }}
+                                                    className="text-center space-y-6"
                                                 >
-                                                    <div className="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-6">
-                                                        <Lock className="text-primary" size={28} />
+                                                    <div className="w-16 h-16 bg-white/10 rounded-full flex items-center justify-center mx-auto mb-4 backdrop-blur-xl border border-white/20">
+                                                        <Lock className="text-white" size={24} />
                                                     </div>
-                                                    <h3 className="text-xl md:text-2xl font-sans font-bold text-gray-900 mb-2">Ontvang het volledige rapport</h3>
-                                                    <p className="text-gray-500 text-sm md:text-base mb-8 leading-relaxed px-4">
-                                                        We hebben je content geanalyseerd. Laat je gegevens achter om alle verbeterpunten en de groeistrategie direct in je mailbox te ontvangen.
-                                                    </p>
-
-                                                    <form onSubmit={handleLeadSubmit} className="space-y-4">
-                                                        <div className="relative">
-                                                            <User className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400" size={18} />
-                                                            <input
-                                                                required
-                                                                type="text"
-                                                                placeholder="Voornaam"
-                                                                value={leadForm.name}
-                                                                onChange={(e) => setLeadForm({ ...leadForm, name: e.target.value })}
-                                                                className="w-full bg-gray-50 border border-gray-100 rounded-full py-4 pl-12 pr-6 text-gray-900 focus:outline-none focus:ring-2 focus:ring-primary/20 transition-all font-sans"
-                                                            />
-                                                        </div>
-                                                        <div className="relative">
-                                                            <Mail className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400" size={18} />
-                                                            <input
-                                                                required
-                                                                type="email"
-                                                                placeholder="Emailadres"
-                                                                value={leadForm.email}
-                                                                onChange={(e) => setLeadForm({ ...leadForm, email: e.target.value })}
-                                                                className="w-full bg-gray-50 border border-gray-100 rounded-full py-4 pl-12 pr-6 text-gray-900 focus:outline-none focus:ring-2 focus:ring-primary/20 transition-all font-sans"
-                                                            />
-                                                        </div>
-                                                        <button
-                                                            type="submit"
-                                                            disabled={isSubmittingLead}
-                                                            className="w-full bg-primary text-white font-black uppercase tracking-widest py-4 rounded-full flex items-center justify-center gap-3 hover:scale-[1.02] active:scale-98 transition-all shadow-xl shadow-primary/20"
-                                                        >
-                                                            {isSubmittingLead ? <Loader2 className="animate-spin" size={20} /> : <Zap size={18} />}
-                                                            {isSubmittingLead ? 'Bezig...' : 'Ontgrendel resultaten'}
-                                                        </button>
-                                                    </form>
+                                                    <div className="space-y-2">
+                                                        <h3 className="text-xl md:text-2xl font-sans font-bold text-white uppercase tracking-tight">Analyse succesvol</h3>
+                                                        <p className="text-white/70 text-sm md:text-base max-w-xs mx-auto">
+                                                            Je website is geanalyseerd. Ontgrendel de volledige feedback en de groeistrategie.
+                                                        </p>
+                                                    </div>
+                                                    <button
+                                                        onClick={() => setIsModalOpen(true)}
+                                                        className="bg-white text-primary px-10 py-4 rounded-full font-black uppercase tracking-widest flex items-center gap-4 mx-auto hover:scale-[1.05] active:scale-95 transition-all shadow-[0_0_40px_rgba(255,255,255,0.3)]"
+                                                    >
+                                                        Volledig rapport ontgrendelen
+                                                        <ArrowRight size={18} />
+                                                    </button>
                                                 </motion.div>
                                             </div>
                                         </div>
@@ -431,6 +405,80 @@ const WebsiteScanner = () => {
                     </div>
                 </div>
             </div>
+
+            {/* Lead Modal */}
+            <AnimatePresence>
+                {isModalOpen && (
+                    <div className="fixed inset-0 z-[100] flex items-center justify-center p-6">
+                        <motion.div
+                            initial={{ opacity: 0 }}
+                            animate={{ opacity: 1 }}
+                            exit={{ opacity: 0 }}
+                            onClick={() => setIsModalOpen(false)}
+                            className="absolute inset-0 bg-black/80 backdrop-blur-xl"
+                        />
+                        <motion.div
+                            initial={{ opacity: 0, scale: 0.9, y: 20 }}
+                            animate={{ opacity: 1, scale: 1, y: 0 }}
+                            exit={{ opacity: 0, scale: 0.9, y: 20 }}
+                            className="relative w-full max-w-lg bg-white rounded-[3rem] p-10 md:p-12 shadow-2xl overflow-hidden"
+                        >
+                            <div className="absolute top-6 right-6">
+                                <button
+                                    onClick={() => setIsModalOpen(false)}
+                                    className="p-2 hover:bg-gray-100 rounded-full transition-colors text-gray-400"
+                                >
+                                    <AlertCircle className="rotate-45" size={24} />
+                                </button>
+                            </div>
+
+                            <div className="text-center space-y-6">
+                                <div className="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-2">
+                                    <Mail className="text-primary" size={28} />
+                                </div>
+                                <h3 className="text-2xl md:text-3xl font-sans font-bold text-gray-900 tracking-tight">Waar mogen we de analyse naartoe sturen?</h3>
+                                <p className="text-gray-500 text-sm md:text-base leading-relaxed px-4">
+                                    We hebben het volledige marketing-rapport voor je klaarstaan. Vul je gegevens in en we sturen het direct naar je toe.
+                                </p>
+
+                                <form onSubmit={handleLeadSubmit} className="space-y-4 pt-4">
+                                    <div className="relative">
+                                        <User className="absolute left-6 top-1/2 -translate-y-1/2 text-gray-400" size={20} />
+                                        <input
+                                            required
+                                            type="text"
+                                            placeholder="Je voornaam"
+                                            value={leadForm.name}
+                                            onChange={(e) => setLeadForm({ ...leadForm, name: e.target.value })}
+                                            className="w-full bg-gray-50 border border-gray-100 rounded-full py-5 pl-14 pr-8 text-gray-900 focus:outline-none focus:ring-4 focus:ring-primary/10 transition-all font-sans text-lg"
+                                        />
+                                    </div>
+                                    <div className="relative">
+                                        <Mail className="absolute left-6 top-1/2 -translate-y-1/2 text-gray-400" size={20} />
+                                        <input
+                                            required
+                                            type="email"
+                                            placeholder="Je emailadres"
+                                            value={leadForm.email}
+                                            onChange={(e) => setLeadForm({ ...leadForm, email: e.target.value })}
+                                            className="w-full bg-gray-50 border border-gray-100 rounded-full py-5 pl-14 pr-8 text-gray-900 focus:outline-none focus:ring-4 focus:ring-primary/10 transition-all font-sans text-lg"
+                                        />
+                                    </div>
+                                    <button
+                                        type="submit"
+                                        disabled={isSubmittingLead}
+                                        className="w-full bg-primary text-white font-black uppercase tracking-widest py-5 rounded-full flex items-center justify-center gap-4 hover:scale-[1.02] active:scale-98 transition-all shadow-2xl shadow-primary/30"
+                                    >
+                                        {isSubmittingLead ? <Loader2 className="animate-spin" size={24} /> : <Zap size={20} />}
+                                        {isSubmittingLead ? 'Bezig met versturen...' : 'Ontvang mijn rapport'}
+                                    </button>
+                                </form>
+                                <p className="text-[10px] text-gray-400 italic">Nooit spam. Alleen vlijmscherp advies.</p>
+                            </div>
+                        </motion.div>
+                    </div>
+                )}
+            </AnimatePresence>
         </section>
     );
 };
