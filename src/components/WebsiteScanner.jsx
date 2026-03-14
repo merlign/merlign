@@ -356,10 +356,10 @@ const WebsiteScanner = () => {
                                         <div className="relative pt-10 border-t border-white/10 overflow-hidden min-h-[450px]">
                                             {/* Blurred/Locked Content Preview */}
                                             <div
-                                                className="grid grid-cols-1 md:grid-cols-2 gap-10 opacity-30 blur-[6px] pointer-events-none select-none"
+                                                className="grid grid-cols-1 md:grid-cols-2 gap-10 opacity-50 blur-[4px] pointer-events-none select-none"
                                                 style={{
-                                                    maskImage: 'linear-gradient(to bottom, black 0%, rgba(0,0,0,0.4) 50%, transparent 100%)',
-                                                    WebkitMaskImage: 'linear-gradient(to bottom, black 0%, rgba(0,0,0,0.4) 50%, transparent 100%)'
+                                                    maskImage: 'linear-gradient(to bottom, black 0%, rgba(0,0,0,0.6) 60%, transparent 100%)',
+                                                    WebkitMaskImage: 'linear-gradient(to bottom, black 0%, rgba(0,0,0,0.6) 60%, transparent 100%)'
                                                 }}
                                             >
                                                 <div className="space-y-6">
