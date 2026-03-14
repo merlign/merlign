@@ -253,9 +253,9 @@ const WebsiteScanner = () => {
                                             </div>
                                         </div>
 
-                                        <div className="space-y-2">
-                                            <h3 className="text-lg font-sans font-bold text-white">Eerste indruk</h3>
-                                            <p className="text-sm md:text-base font-sans font-light italic text-white/80 leading-relaxed max-w-lg">
+                                        <div className="space-y-3">
+                                            <h3 className="text-xl font-sans font-bold text-white tracking-tight">Analyse resultaat</h3>
+                                            <p className="text-sm md:text-base font-sans font-medium text-white/95 leading-relaxed max-w-lg">
                                                 {report.firstImpression}
                                             </p>
                                         </div>
@@ -264,10 +264,10 @@ const WebsiteScanner = () => {
                                     <div className="grid grid-cols-1 md:grid-cols-2 gap-10 pt-10 border-t border-white/10">
                                         <div className="space-y-4">
                                             <h4 className="text-xs font-mono uppercase tracking-[0.2em] font-black text-white/60">Conversie Bottlenecks</h4>
-                                            <ul className="space-y-3">
+                                            <ul className="space-y-4">
                                                 {report.bottlenecks.map((item, i) => (
-                                                    <li key={i} className="flex items-start gap-4 p-4 rounded-2xl bg-black/10 border border-white/5 text-sm font-sans text-white/90 italic leading-relaxed">
-                                                        <span className="text-white/40 font-mono text-xs font-black mt-1">0{i + 1}</span>
+                                                    <li key={i} className="flex items-start gap-4 p-5 rounded-2xl bg-black/40 border border-white/10 text-[15px] font-sans text-white leading-relaxed shadow-lg">
+                                                        <span className="text-primary/70 font-mono text-xs font-black mt-1">0{i + 1}</span>
                                                         <span>{item}</span>
                                                     </li>
                                                 ))}
@@ -276,16 +276,20 @@ const WebsiteScanner = () => {
 
                                         <div className="space-y-4">
                                             <h4 className="text-xs font-mono uppercase tracking-[0.2em] font-black text-white/60">Grootste Kans</h4>
-                                            <p className="text-sm font-sans text-white/90 italic leading-relaxed p-6 bg-black/10 rounded-[1.5rem] border border-white/5">
+                                            <div className="text-[15px] font-sans font-medium text-white leading-relaxed p-6 bg-black/60 rounded-[2rem] border border-white/10 shadow-lg min-h-[140px] flex items-center">
                                                 {report.missedOpp}
-                                            </p>
+                                            </div>
                                         </div>
                                     </div>
 
-                                    <div className="pt-12 flex flex-col items-center space-y-6 border-t border-white/10">
-                                        <p className="text-sm md:text-base font-sans font-bold italic text-white text-center max-w-md">
-                                            {report.ctaText}
-                                        </p>
+                                    <div className="pt-10 flex flex-col items-center space-y-10">
+                                        <div className="flex flex-col items-center">
+                                            <p className="text-xs font-mono uppercase tracking-[0.3em] font-black text-white/40 mb-4">Urgentie</p>
+                                            <div className="px-8 py-5 rounded-3xl md:rounded-full bg-white/10 border border-white/10 text-white font-drama italic text-xl md:text-2xl text-center shadow-2xl backdrop-blur-sm leading-tight">
+                                                "{report.ctaText}"
+                                            </div>
+                                        </div>
+
                                         <a href="/contact" className="btn-magnetic group bg-white text-primary px-8 py-4 rounded-full font-black uppercase tracking-widest italic flex items-center gap-4 shadow-[0_0_30px_rgba(255,255,255,0.3)] text-xs">
                                             Gratis check inplannen
                                             <ArrowRight size={16} />
