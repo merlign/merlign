@@ -52,7 +52,7 @@ const Hero = ({ data }) => {
     return (
         <section ref={heroRef} className="relative h-[100dvh] flex items-center bg-[var(--background)] overflow-hidden">
             {/* Cinematic Background Layer */}
-            <div className="absolute inset-0 z-0 pointer-events-none overflow-hidden">
+            <div className="absolute inset-0 z-[-1] pointer-events-none overflow-hidden">
                 {/* Clean Moving Grid */}
                 <motion.div
                     animate={{
@@ -74,19 +74,18 @@ const Hero = ({ data }) => {
                 {/* Floating Service Icons (Curated constellation for better balance) */}
                 <div className="absolute inset-y-0 right-0 w-full md:w-[70%] overflow-visible pointer-events-none md:-translate-x-5">
                     {[
-                        { icon: <Zap size={44} />, x: '75%', y: '12%', delay: 0 },
-                        { icon: <Database size={38} />, x: '88%', y: '35%', delay: 1.5 },
-                        { icon: <Activity size={40} />, x: '60%', y: '25%', delay: 3 },
-                        { icon: <Search size={36} />, x: '85%', y: '65%', delay: 4.5 },
-                        { icon: <LayoutIcon size={42} />, x: '55%', y: '75%', delay: 2 },
-                        { icon: <MousePointerClick size={32} />, x: '65%', y: '50%', delay: 1 },
+                        { icon: <Zap size={32} />, mdSize: 44, x: '75%', y: '12%', delay: 0 },
+                        { icon: <Database size={28} />, mdSize: 38, x: '88%', y: '35%', delay: 1.5 },
+                        { icon: <Activity size={30} />, mdSize: 40, x: '55%', y: '25%', delay: 3 },
+                        { icon: <Search size={26} />, mdSize: 36, x: '85%', y: '65%', delay: 4.5 },
+                        { icon: <LayoutIcon size={32} />, mdSize: 42, x: '55%', y: '75%', delay: 2 },
+                        { icon: <MousePointerClick size={24} />, mdSize: 32, x: '65%', y: '50%', delay: 1 },
                     ].map((node, i) => (
                         <motion.div
                             key={i}
                             initial={{ opacity: 0, scale: 0.8 }}
                             animate={{
-                                opacity: [0.35, 0.6, 0.35],
-                                scale: [1, 1.05, 1],
+                                opacity: [0.15, 0.35, 0.15],
                                 x: [0, 30, 0],
                                 y: [15, -15, 15]
                             }}
@@ -96,15 +95,22 @@ const Hero = ({ data }) => {
                                 delay: node.delay,
                                 ease: "easeInOut"
                             }}
-                            className="absolute text-primary"
+                            className="absolute text-primary opacity-20 md:opacity-100"
                             style={{ left: node.x, top: node.y }}
                         >
-                            <div className="p-8 md:p-10 rounded-[2.5rem] bg-primary/10 border border-primary/20 backdrop-blur-2xl shadow-[0_0_50px_rgba(var(--primary-rgb),0.1)] relative">
+                            <motion.div
+                                animate={{ opacity: [0.4, 0.8, 0.4] }}
+                                transition={{ duration: 4, repeat: Infinity }}
+                                className="p-6 md:p-10 rounded-[2rem] md:rounded-[2.5rem] bg-primary/5 border border-primary/10 backdrop-blur-3xl shadow-[0_0_50px_rgba(var(--primary-rgb),0.1)] relative"
+                            >
                                 <div className="absolute inset-0 bg-primary/20 blur-[50px] rounded-full opacity-30" />
-                                <div className="relative z-10 opacity-90 transition-all duration-700">
-                                    {node.icon}
+                                <div className="relative z-10 opacity-90">
+                                    {React.cloneElement(node.icon, {
+                                        size: undefined,
+                                        className: `w-6 h-6 md:w-10 md:h-10`
+                                    })}
                                 </div>
-                            </div>
+                            </motion.div>
                         </motion.div>
                     ))}
                 </div>
