@@ -72,7 +72,7 @@ const Hero = ({ data }) => {
                 />
 
                 {/* Floating Service Icons (Curated constellation for better balance) */}
-                <div className="absolute inset-y-0 right-0 w-full md:w-[70%] overflow-visible pointer-events-none">
+                <div className="absolute inset-y-0 right-0 w-full md:w-[70%] overflow-visible pointer-events-none md:-translate-x-5">
                     {[
                         { icon: <Zap size={44} />, x: '75%', y: '12%', delay: 0 },
                         { icon: <Database size={38} />, x: '88%', y: '35%', delay: 1.5 },
