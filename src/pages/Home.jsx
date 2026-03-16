@@ -72,66 +72,41 @@ const Hero = ({ data }) => {
                     }}
                 />
 
-                {/* Automation Ecosystem (Right-aligned Focus) */}
-                <div className="absolute inset-y-0 right-0 w-full md:w-[60%] overflow-visible">
-                    {/* Central Business Hub */}
-                    <motion.div
-                        initial={{ opacity: 0, scale: 0.8 }}
-                        animate={{
-                            opacity: [0.3, 0.6, 0.3],
-                            scale: [1, 1.05, 1],
-                        }}
-                        transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
-                        className="absolute right-[10%] lg:right-[15%] top-1/2 -translate-y-1/2 z-10"
-                    >
-                        <div className="p-12 md:p-20 rounded-[4rem] bg-primary/10 border-2 border-primary/20 backdrop-blur-3xl shadow-[0_0_100px_rgba(var(--primary-rgb),0.15)] relative group">
-                            <Building size={64} className="text-primary" />
-                            <div className="absolute -inset-8 border border-primary/10 rounded-[4.5rem] animate-[ping_5s_linear_infinite]" />
-                            <div className="absolute -inset-16 border border-primary/5 rounded-[5rem] animate-[ping_8s_linear_infinite]" />
-                            <p className="absolute -bottom-16 left-1/2 -translate-x-1/2 font-mono text-[10px] uppercase tracking-[0.5em] text-primary font-black italic opacity-40 whitespace-nowrap">Business Empire</p>
-                        </div>
-                    </motion.div>
-
-                    {/* Orbiting Ecosystem Nodes - Pushed further right */}
+                {/* Floating Service Icons (Enhanced & Right-aligned) */}
+                <div className="absolute inset-y-0 right-0 w-full md:w-[65%] overflow-visible">
                     {[
-                        { icon: <Activity size={24} />, x: '45%', y: '20%', delay: 0 },
-                        { icon: <Database size={20} />, x: '55%', y: '70%', delay: 1.5 },
-                        { icon: <LayoutIcon size={22} />, x: '75%', y: '15%', delay: 3 },
-                        { icon: <Search size={20} />, x: '88%', y: '40%', delay: 4.5 },
-                        { icon: <MousePointerClick size={18} />, x: '35%', y: '50%', delay: 2 },
+                        { icon: <Activity size={42} />, x: '25%', y: '15%', delay: 0 },
+                        { icon: <Database size={36} />, x: '65%', y: '25%', delay: 1.5 },
+                        { icon: <LayoutIcon size={40} />, x: '45%', y: '65%', delay: 3 },
+                        { icon: <Search size={38} />, x: '82%', y: '40%', delay: 4.5 },
+                        { icon: <MousePointerClick size={34} />, x: '15%', y: '75%', delay: 2 },
+                        { icon: <Zap size={40} />, x: '75%', y: '10%', delay: 1 },
                     ].map((node, i) => (
-                        <div key={i}>
-                            {/* Visual Connection (Static Dash) */}
-                            <svg className="absolute inset-0 w-full h-full opacity-5">
-                                <line
-                                    x1={node.x} y1={node.y}
-                                    x2="85%" y2="50%"
-                                    stroke="currentColor" strokeWidth="1" strokeDasharray="4 4"
-                                    className="text-primary"
-                                />
-                            </svg>
-
-                            <motion.div
-                                initial={{ opacity: 0, scale: 0.8 }}
-                                animate={{
-                                    opacity: [0.2, 0.5, 0.2],
-                                    scale: [1, 1.1, 1],
-                                    y: [0, -15, 0]
-                                }}
-                                transition={{
-                                    duration: 8 + i,
-                                    repeat: Infinity,
-                                    delay: node.delay,
-                                    ease: "easeInOut"
-                                }}
-                                className="absolute text-primary"
-                                style={{ left: node.x, top: node.y }}
-                            >
-                                <div className="p-5 rounded-[1.8rem] bg-primary/5 border border-primary/10 backdrop-blur-lg shadow-xl">
+                        <motion.div
+                            key={i}
+                            initial={{ opacity: 0, scale: 0.8 }}
+                            animate={{
+                                opacity: [0.25, 0.5, 0.25],
+                                scale: [1, 1.1, 1],
+                                x: [0, 40, 0],
+                                y: [0, -40, 0]
+                            }}
+                            transition={{
+                                duration: 12 + i * 2,
+                                repeat: Infinity,
+                                delay: node.delay,
+                                ease: "easeInOut"
+                            }}
+                            className="absolute text-primary"
+                            style={{ left: node.x, top: node.y }}
+                        >
+                            <div className="p-8 md:p-10 rounded-[2.5rem] bg-white/[0.03] border border-white/10 backdrop-blur-xl shadow-2xl relative">
+                                <div className="absolute inset-0 bg-primary/10 blur-3xl rounded-full opacity-40" />
+                                <div className="relative z-10 opacity-70 group-hover:opacity-100 transition-opacity duration-700">
                                     {node.icon}
                                 </div>
-                            </motion.div>
-                        </div>
+                            </div>
+                        </motion.div>
                     ))}
                 </div>
 
