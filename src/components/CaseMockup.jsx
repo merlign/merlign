@@ -16,7 +16,7 @@ export const BrowserMockup = ({ image, title }) => {
                     </div>
                     <div className="mx-auto bg-white/5 rounded-md px-4 py-1 flex items-center gap-2">
                         <Globe size={10} className="text-white/20" />
-                        <span className="text-[10px] text-white/20 font-mono tracking-wider truncate max-w-[150px]">
+                        <span className="text-[11px] text-white/20 font-sans font-bold truncate max-w-[150px]">
                             {title || 'merlign.com'}
                         </span>
                     </div>
@@ -136,7 +136,7 @@ export const AutomationMockup = ({ logos = [], title }) => {
                 {/* Status Bar */}
                 <div className="absolute bottom-6 left-1/2 -translate-x-1/2 flex items-center gap-4 bg-white/5 backdrop-blur-md px-6 py-2 rounded-full border border-white/5">
                     <div className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
-                    <span className="font-mono text-[10px] uppercase tracking-[0.2em] text-[#F2F0E9]/40 italic">Process Optimized</span>
+                    <span className="font-sans text-xs font-bold text-[#F2F0E9]/40">Proces Geoptimaliseerd</span>
                 </div>
             </div>
             {/* Glow effect */}

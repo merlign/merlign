@@ -117,7 +117,7 @@ const ContactForm = ({ selectedUpgrade: initialUpgrade = null }) => {
                     onClick={() => setIsSuccess(false)}
                     className="btn-magnetic group bg-transparent text-[var(--text)]/30 px-10 py-5 rounded-full border-[var(--border)] mx-auto"
                 >
-                    <span className="relative z-10 text-[16px] font-bold">Nog een aanvraag</span>
+                    <span className="relative z-10 text-[18px] font-bold">Nog een aanvraag</span>
                     <div className="btn-bg bg-[var(--text)]/5" />
                 </button>
             </div>
@@ -139,7 +139,7 @@ const ContactForm = ({ selectedUpgrade: initialUpgrade = null }) => {
                     >
                         <div className="space-y-1 md:space-y-2 relative z-10 pr-4">
                             <h4 className={`text-lg md:text-2xl font-sans font-bold transition-transform duration-500 ${selectedUpgrade === u.id ? 'text-white translate-x-1' : 'text-[var(--text)]'}`}>{u.title}</h4>
-                            <span className={`font-sans text-[12px] md:text-[14px] font-bold transition-colors duration-500 ${selectedUpgrade === u.id ? 'text-white/60' : 'text-primary/60'}`}>{u.tag}</span>
+                            <span className={`font-sans text-[15px] md:text-[17px] font-bold transition-colors duration-500 ${selectedUpgrade === u.id ? 'text-white/60' : 'text-primary'}`}>{u.tag}</span>
                         </div>
                         <div className={`w-8 h-8 md:w-10 md:h-10 rounded-full border flex items-center justify-center transition-all duration-500 shrink-0 ${selectedUpgrade === u.id ? 'bg-white border-white scale-110 shadow-lg' : 'border-[var(--border)]'}`}>
                             <AnimatePresence mode="wait">
@@ -173,7 +173,9 @@ const ContactForm = ({ selectedUpgrade: initialUpgrade = null }) => {
                             { label: 'Bedrijfsnaam', placeholder: 'Tesla Inc.', key: 'company', type: 'text' }
                         ].map((field, i) => (
                             <div key={i} className="space-y-2 md:space-y-3">
-                                <label className="font-sans text-[13px] md:text-[15px] text-primary block font-bold tracking-tight">{field.label}</label>
+                                <p className="font-sans text-lg md:text-xl text-primary block font-bold tracking-tight">
+                                    {field.label}
+                                </p>
                                 <input
                                     required={field.key !== 'company'}
                                     type={field.type}
@@ -187,7 +189,7 @@ const ContactForm = ({ selectedUpgrade: initialUpgrade = null }) => {
                     </div>
 
                     <div className="space-y-2 md:space-y-3">
-                        <label className="font-sans text-[13px] md:text-[15px] text-primary block font-bold tracking-tight">Bericht (optioneel)</label>
+                        <label className="font-sans text-[16px] md:text-[18px] text-primary block font-bold tracking-tight">Bericht (optioneel)</label>
                         <textarea
                             placeholder="Laat weten wat er speelt..."
                             className="w-full bg-transparent border-b border-[var(--border)] py-3 md:py-4 font-sans text-lg md:text-xl focus:outline-none focus:border-primary transition-all text-[var(--text)] placeholder:text-[var(--text)]/10 min-h-[100px] resize-none"

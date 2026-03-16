@@ -18,7 +18,7 @@ const Privacy = () => {
                     className="max-w-5xl space-y-12"
                 >
                     <SectionLabel>Juridisch</SectionLabel>
-                    <h1 className="font-sans font-bold text-[#F2F0E9] text-h1 uppercase tracking-tighter">Privacyverklaring</h1>
+                    <h1 className="font-sans font-bold text-[#F2F0E9] text-h1 tracking-tighter">Privacyverklaring</h1>
 
                     <div className="prose prose-invert max-w-4xl font-sans text-[#F2F0E9]/80 space-y-12 leading-relaxed">
                         <section className="space-y-6">
@@ -68,7 +68,7 @@ const Privacy = () => {
                                     <li>Merlign</li>
                                     <li>Dennendreef 5-111</li>
                                     <li>5282 HK Boxtel</li>
-                                    <li className="font-mono text-sm tracking-widest text-[#F2F0E9]/60 uppercase pt-2">KVK: 75629887</li>
+                                    <li className="font-sans text-sm font-bold text-[#F2F0E9]/60 pt-2">KVK: 75629887</li>
                                 </ul>
                             </div>
 

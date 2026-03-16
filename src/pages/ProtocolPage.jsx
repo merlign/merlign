@@ -117,7 +117,7 @@ const ProtocolPage = () => {
                                             {step.icon}
                                         </div>
                                         <div className="text-right">
-                                            <span className="font-mono text-xs text-primary uppercase tracking-widest font-black block mb-1">{step.day}</span>
+                                            <span className="font-sans text-lg text-primary font-bold block mb-1">{step.day}</span>
                                             <span className="font-sans text-base text-[var(--text)]/40 italic">{step.time}</span>
                                         </div>
                                     </div>
@@ -170,7 +170,7 @@ const ProtocolPage = () => {
                             <p className="text-xl font-sans font-light italic text-[var(--text)]/60">Laten we vandaag nog die 72 uur in laten gaan.</p>
                         </div>
                         <a href="/contact" className="btn-magnetic group bg-primary text-white px-12 py-6 rounded-full flex items-center gap-4">
-                            <span className="relative z-10 text-sm font-black uppercase tracking-widest italic">Plan je intake</span>
+                            <span className="relative z-10 text-lg font-bold">Plan je intake</span>
                             <ArrowRight size={20} className="relative z-10 group-hover:translate-x-2 transition-transform" />
                             <div className="btn-bg bg-primary shadow-[0_0_30px_rgba(99,102,241,0.4)]" />
                         </a>

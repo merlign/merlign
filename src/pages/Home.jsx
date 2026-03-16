@@ -175,11 +175,11 @@ const Hero = ({ data }) => {
                         className="flex flex-wrap items-center gap-4 md:gap-6 pt-2"
                     >
                         <a href="#contact" className="btn-magnetic group bg-primary text-white border-transparent px-10 md:px-12 py-5 md:py-6 rounded-full shadow-[0_0_20px_rgba(99,102,241,0.3)] w-full sm:w-auto">
-                            <span className="relative z-10 text-[12px] md:text-[14px] font-black italic tracking-[0.3em] uppercase">{heroCta}</span>
+                            <span className="relative z-10 text-[16px] md:text-[18px] font-bold">{heroCta}</span>
                             <div className="btn-bg bg-primary" />
                         </a>
                         <a href="#wat-ik-bouw" className="btn-magnetic group bg-transparent border border-[var(--border)] text-[var(--text)] px-10 md:px-12 py-5 md:py-6 rounded-full w-full sm:w-auto">
-                            <span className="relative z-10 text-[12px] md:text-[14px] font-black italic tracking-[0.3em] uppercase">{heroCtaAlt}</span>
+                            <span className="relative z-10 text-[16px] md:text-[18px] font-bold">{heroCtaAlt}</span>
                             <div className="btn-bg bg-primary" />
                         </a>
                     </motion.div>
@@ -254,7 +254,7 @@ const HomeAbout = ({ data }) => {
                     </div>
                     <Link
                         to="/over-mij"
-                        className="inline-flex items-center gap-6 group text-[var(--text)]/60 hover:text-[var(--text)] transition-all uppercase tracking-[0.4em] font-mono font-black text-xs md:text-sm"
+                        className="inline-flex items-center gap-6 group text-[var(--text)]/60 hover:text-[var(--text)] transition-all font-sans font-bold text-sm md:text-base"
                     >
                         Lees mijn verhaal
                         <div className="w-10 h-10 md:w-12 md:h-12 rounded-full border-[var(--text)]/10 flex items-center justify-center group-hover:border-primary group-hover:bg-primary transition-all duration-500">
@@ -383,7 +383,7 @@ const Services = ({ cmsServices, data }) => {
                                 </div>
 
                                 <div className="space-y-6 md:space-y-8 flex-grow relative z-10">
-                                    <p className="font-sans text-[14px] md:text-[16px] text-primary font-bold tracking-tight">
+                                    <p className="font-sans text-lg md:text-xl text-primary font-bold tracking-tight">
                                         {s.subtitle}
                                     </p>
                                     <h3 className="text-2xl md:text-4xl font-sans font-bold text-[var(--text)] leading-tight tracking-tight">
@@ -573,7 +573,7 @@ const Process = ({ data }) => {
 
                                 <div className="w-full md:w-1/2 space-y-6 md:px-0 pl-10 md:pl-0">
                                     <div className="flex items-center gap-4">
-                                        <span className="font-sans text-primary text-[15px] font-bold tracking-tight">{step.id}</span>
+                                        <span className="font-sans text-primary text-[18px] font-bold tracking-tight">{step.id}</span>
                                     </div>
                                     <h3 className="text-2xl sm:text-3xl md:text-5xl lg:text-[58px] font-sans font-bold text-[var(--text)] tracking-tighter leading-tight">
                                         {step.title}

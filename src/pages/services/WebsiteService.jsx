@@ -129,7 +129,7 @@ const WebsiteService = () => {
                                     </motion.p>
                                     <motion.div variants={fadeUp} className="pt-4 text-left">
                                         <a href="#contact" className="btn-magnetic group inline-flex bg-primary text-white border-transparent px-10 md:px-12 py-5 md:py-6 rounded-full shadow-[0_0_20px_rgba(99,102,241,0.3)]">
-                                            <span className="relative z-10 text-[12px] md:text-[14px] font-black italic tracking-[0.3em] uppercase">Vraag een gratis check aan</span>
+                                            <span className="relative z-10 text-[16px] md:text-[18px] font-bold">Vraag een gratis check aan</span>
                                             <div className="btn-bg bg-primary" />
                                         </a>
                                     </motion.div>
@@ -230,11 +230,11 @@ const WebsiteService = () => {
                                                     <div className="w-14 h-14 rounded-2xl bg-primary/10 flex items-center justify-center text-primary group-hover:bg-primary group-hover:text-white transition-all duration-700 transform group-hover:scale-110 group-hover:rotate-3">
                                                         {React.cloneElement(item.icon, { className: "group-hover:scale-110 transition-transform duration-500" })}
                                                     </div>
-                                                    <span className="font-mono text-4xl font-black text-white/5 group-hover:text-primary/10 transition-colors uppercase italic">{item.step}</span>
+                                                    <span className="font-sans text-4xl font-bold text-white/5 group-hover:text-primary/10 transition-colors">{item.step}</span>
                                                 </div>
                                                 <div className="space-y-4">
                                                     <h3 className="text-xl md:text-2xl font-sans font-bold text-[var(--text)] tracking-tighter">{item.title}</h3>
-                                                    <p className="font-sans text-[var(--text)]/85 leading-[1.8] italic">{item.desc}</p>
+                                                    <p className="font-sans text-base md:text-lg text-[var(--text)]/85 leading-[1.8]">{item.desc}</p>
                                                 </div>
                                             </motion.div>
                                         ))}

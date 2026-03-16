@@ -327,7 +327,7 @@ const WebsiteScanner = () => {
                                     animate={{ opacity: 1 }}
                                     className="space-y-4"
                                 >
-                                    <div className="bg-black/10 border border-white/10 p-6 rounded-[2rem] font-mono text-xs text-white/70 whitespace-pre-wrap italic leading-relaxed h-[200px] overflow-y-auto custom-scrollbar">
+                                    <div className="bg-black/10 border border-white/10 p-6 rounded-[2rem] font-sans text-sm font-bold text-white/70 whitespace-pre-wrap leading-relaxed h-[200px] overflow-y-auto custom-scrollbar">
                                         {streamedText || "AI analyseert de content..."}
                                     </div>
                                 </motion.div>
@@ -357,7 +357,7 @@ const WebsiteScanner = () => {
                                                 />
                                             </svg>
                                             <div className="absolute inset-0 flex items-center justify-center">
-                                                <span className="text-2xl font-mono font-black italic text-white">{report.score}/10</span>
+                                                <span className="text-xl font-sans font-bold text-white">{report.score}/10</span>
                                             </div>
                                         </div>
 
@@ -380,7 +380,7 @@ const WebsiteScanner = () => {
                                                 }}
                                             >
                                                 <div className="space-y-6">
-                                                    <h4 className="text-xs font-mono uppercase tracking-[0.2em] font-black text-white/60">Belangrijke verbeterpunten</h4>
+                                                    <h4 className="text-sm font-sans font-bold text-white/60">Belangrijke verbeterpunten</h4>
                                                     <div className="space-y-3">
                                                         {[1, 2, 3].map(i => (
                                                             <div key={i} className="h-16 bg-white/10 rounded-2xl border border-white/5 flex items-center px-4 gap-4">
@@ -391,7 +391,7 @@ const WebsiteScanner = () => {
                                                     </div>
                                                 </div>
                                                 <div className="space-y-6">
-                                                    <h4 className="text-xs font-mono uppercase tracking-[0.2em] font-black text-white/60">Grootste groeikans</h4>
+                                                    <h4 className="text-sm font-sans font-bold text-white/60">Grootste groeikans</h4>
                                                     <div className="p-6 bg-white/10 rounded-[2rem] border border-white/5 space-y-4">
                                                         <div className="h-2 w-full bg-white/20 rounded-full" />
                                                         <div className="h-2 w-3/4 bg-white/10 rounded-full" />
@@ -418,7 +418,7 @@ const WebsiteScanner = () => {
                                                     </div>
                                                     <button
                                                         onClick={() => setIsModalOpen(true)}
-                                                        className="bg-white text-primary px-10 py-4 rounded-full font-black uppercase tracking-widest flex items-center gap-4 mx-auto hover:scale-[1.05] active:scale-95 transition-all shadow-[0_0_40px_rgba(255,255,255,0.3)]"
+                                                        className="bg-white text-primary px-10 py-5 rounded-full font-bold text-lg flex items-center gap-4 mx-auto hover:scale-[1.05] active:scale-95 transition-all shadow-[0_0_40px_rgba(255,255,255,0.3)]"
                                                     >
                                                         Mijn analyse bekijken
                                                         <ArrowRight size={18} />
@@ -434,7 +434,7 @@ const WebsiteScanner = () => {
                                                     <ul className="space-y-4">
                                                         {report.bottlenecks.map((item, i) => (
                                                             <li key={i} className="flex items-start gap-4 p-5 rounded-2xl bg-black/40 border border-white/10 text-[15px] font-sans text-white leading-relaxed shadow-lg">
-                                                                <span className="text-primary/70 font-mono text-xs font-black mt-1">0{i + 1}</span>
+                                                                <span className="text-primary/70 font-sans text-sm font-bold mt-1">0{i + 1}</span>
                                                                 <span>{item}</span>
                                                             </li>
                                                         ))}
@@ -460,7 +460,7 @@ const WebsiteScanner = () => {
                                                             <h4 className="text-xl md:text-2xl font-sans font-bold text-white tracking-tight leading-tight">
                                                                 {report.actionTitle || "Aan de slag"}
                                                             </h4>
-                                                            <p className="text-sm text-white/50 font-mono uppercase tracking-widest">Eerste stappen</p>
+                                                            <p className="text-base text-white/50 font-sans font-bold">Eerste stappen</p>
                                                         </div>
 
                                                         <div className="space-y-4 relative z-10">
@@ -579,7 +579,7 @@ const WebsiteScanner = () => {
                                                 <button
                                                     type="submit"
                                                     disabled={isSubmittingLead}
-                                                    className="w-full bg-primary text-white font-black uppercase tracking-widest py-5 rounded-full flex items-center justify-center gap-4 hover:scale-[1.02] active:scale-98 transition-all shadow-2xl shadow-primary/30"
+                                                    className="w-full bg-primary text-white font-bold text-lg py-5 rounded-full flex items-center justify-center gap-4 hover:scale-[1.02] active:scale-98 transition-all shadow-2xl shadow-primary/30"
                                                 >
                                                     {isSubmittingLead ? <Loader2 className="animate-spin" size={24} /> : <Zap size={20} />}
                                                     {isSubmittingLead ? 'Bezig met versturen...' : 'Ontvang mijn rapport'}

@@ -131,7 +131,7 @@ const Cases = () => {
                                                 <button
                                                     key={option.id}
                                                     onClick={() => setSelectedFilter(option.id)}
-                                                    className={`px-6 md:px-8 py-3 md:py-4 rounded-full font-mono text-[10px] md:text-[11px] uppercase tracking-[0.2em] font-bold transition-all duration-500 relative overflow-hidden group hover:scale-[1.02] hover:-translate-y-0.5 active:scale-[0.98] ${selectedFilter === option.id ? 'text-white' : 'text-[var(--text)]/40 hover:text-[var(--text)]'}`}
+                                                    className={`px-6 md:px-8 py-3 md:py-4 rounded-full font-sans text-sm md:text-base font-bold transition-all duration-500 relative overflow-hidden group hover:scale-[1.02] hover:-translate-y-0.5 active:scale-[0.98] ${selectedFilter === option.id ? 'text-white' : 'text-[var(--text)]/40 hover:text-[var(--text)]'}`}
                                                 >
                                                     <span className="relative z-10 flex items-center gap-2">
                                                         {option.label}
@@ -173,7 +173,7 @@ const Cases = () => {
                                     >
                                         {/* Vertical Index Number (Desktop) */}
                                         <div className="hidden lg:block absolute -left-32 top-0 mt-2">
-                                            <span className="font-mono text-[100px] font-black text-white/[0.03] leading-none select-none">
+                                            <span className="font-sans text-[100px] font-bold text-white/[0.03] leading-none select-none">
                                                 {(i + 1).toString().padStart(2, '0')}
                                             </span>
                                         </div>
@@ -186,8 +186,8 @@ const Cases = () => {
                                                         {getIcon(c.category)}
                                                     </div>
                                                     <div className="flex flex-col">
-                                                        <span className="font-mono text-[10px] uppercase tracking-[0.4em] text-primary/40 font-bold italic leading-none mb-2">Case Study</span>
-                                                        <span className="font-mono text-xs uppercase tracking-[0.2em] text-[var(--text)]/60 font-bold">{c.tag}</span>
+                                                        <span className="font-sans text-lg text-primary font-bold block mb-1">Case study</span>
+                                                        <span className="font-sans text-sm text-[var(--text)]/60 font-bold">{c.tag}</span>
                                                     </div>
                                                 </div>
                                                 <h2 className="font-sans font-bold text-[var(--text)] text-h2 leading-tight">
@@ -199,7 +199,7 @@ const Cases = () => {
                                                 <div className="space-y-4">
                                                     <div className="flex items-center gap-3">
                                                         <div className="w-1 h-1 rounded-full bg-primary" />
-                                                        <h4 className="font-mono text-[10px] uppercase tracking-[0.4em] text-[var(--text)]/40 font-black italic">Situatie</h4>
+                                                        <h4 className="font-sans text-base text-primary/60 font-bold">Situatie</h4>
                                                     </div>
                                                     <p className="font-sans text-[var(--text)]/85 text-lg md:text-xl font-light italic leading-[1.8] pl-4">
                                                         {c.situatie}
@@ -208,7 +208,7 @@ const Cases = () => {
                                                 <div className="space-y-4">
                                                     <div className="flex items-center gap-3">
                                                         <div className="w-1 h-1 rounded-full bg-primary" />
-                                                        <h4 className="font-mono text-[10px] uppercase tracking-[0.4em] text-[var(--text)]/40 font-black italic">Aanpak</h4>
+                                                        <h4 className="font-sans text-base text-primary/60 font-bold">Aanpak</h4>
                                                     </div>
                                                     <p className="font-sans text-[var(--text)]/85 text-lg md:text-xl font-light italic leading-[1.8] pl-4">
                                                         {c.aanpak}
@@ -289,12 +289,12 @@ const Cases = () => {
                                                                 className="w-10 h-10 md:w-12 md:h-12 rounded-full object-cover border border-primary/20"
                                                             />
                                                         ) : (
-                                                            <div className="w-10 h-10 md:w-12 md:h-12 rounded-full border border-primary/20 bg-primary/5 flex items-center justify-center font-mono text-sm uppercase font-black italic text-primary group-hover/quote:bg-primary/10 transition-colors">
+                                                            <div className="w-10 h-10 md:w-12 md:h-12 rounded-full border border-primary/20 bg-primary/5 flex items-center justify-center font-sans text-sm font-bold text-primary group-hover/quote:bg-primary/10 transition-colors">
                                                                 {c.author?.charAt?.(0) || 'M'}
                                                             </div>
                                                         )}
                                                         <div className="space-y-0.5">
-                                                            <p className="font-mono text-[10px] uppercase tracking-[0.4em] font-black text-primary leading-none">{c.author || 'Merlign client'}</p>
+                                                            <p className="font-sans text-base font-bold text-primary leading-none">{c.author || 'Merlign client'}</p>
                                                         </div>
                                                     </div>
 

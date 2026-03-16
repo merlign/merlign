@@ -80,12 +80,12 @@ const ContactPage = () => {
                                     <SectionLabel>Contact</SectionLabel>
                                     <motion.h1
                                         variants={fadeUp}
-                                        className="font-sans font-bold text-[var(--text)] md:text-center text-h1"
+                                        className="font-sans font-bold text-[var(--text)] md:text-center text-h1 tracking-tighter"
                                     >
                                         {headlineSans}{' '}
                                         <span className="text-primary font-drama font-normal text-h1-serif">{headlineSerif}</span>
                                     </motion.h1>
-                                    <motion.p variants={fadeUp} className="font-sans text-[var(--text)]/80 text-lg md:text-xl font-light italic leading-relaxed max-w-2xl text-center">
+                                    <motion.p variants={fadeUp} className="font-sans text-[var(--text)]/80 text-lg md:text-xl font-light leading-relaxed max-w-2xl text-center">
                                         {subtitle}
                                     </motion.p>
                                 </motion.div>
@@ -94,7 +94,10 @@ const ContactPage = () => {
                                     <ContactForm />
                                 </div>
 
-                                <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12">
+                                <p className="font-sans text-base font-bold text-[#F2F0E9]/60">
+                                    E-mail: contact@merlign.com<br />
+                                    Website: www.merlign.com
+                                </p>    <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12">
                                     {[
                                         { icon: <Mail className="w-6 h-6 md:w-8 md:h-8" />, label: "E-mail", value: contactEmail, href: `mailto:${contactEmail}` },
                                         { icon: <Linkedin className="w-6 h-6 md:w-8 md:h-8" />, label: "LinkedIn", value: "Merlijn van der Vleuten", href: linkedinLink }
@@ -113,7 +116,7 @@ const ContactPage = () => {
                                                     {item.icon}
                                                 </div>
                                                 <div className="text-left space-y-1">
-                                                    <span className="font-mono text-[10px] md:text-[12px] uppercase tracking-[0.4em] text-[var(--text)]/20 font-bold italic block">{item.label}</span>
+                                                    <span className="font-sans text-xs font-bold text-[#F2F0E9]/40">{item.label}</span>
                                                     <span className="text-lg md:text-2xl font-sans font-bold text-[var(--text)]/70 group-hover:text-primary transition-colors duration-500 tracking-tighter">{item.value}</span>
                                                 </div>
                                             </div>
