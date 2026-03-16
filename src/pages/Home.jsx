@@ -48,14 +48,56 @@ const Hero = ({ data }) => {
 
     return (
         <section ref={heroRef} className="relative h-[100dvh] flex items-center bg-[var(--background)] overflow-hidden">
-            {/* Grain Purple Gradient Background */}
-            <div className="absolute inset-0 z-0 bg-[var(--background)]">
-                <div className="absolute top-[-20%] right-[-10%] w-[70vw] h-[70vw] bg-primary/10 rounded-full blur-[60px] md:blur-[140px]" />
-                <div className="absolute bottom-[-20%] left-[-10%] w-[60vw] h-[60vw] bg-primary/5 rounded-full blur-[40px] md:blur-[120px]" />
-            </div>
+            {/* Cinematic Background Layer */}
+            <div className="absolute inset-0 z-0 pointer-events-none overflow-hidden">
+                {/* Subtle Moving Grid */}
+                <div
+                    className="absolute inset-0 opacity-[0.03]"
+                    style={{
+                        backgroundImage: `radial-gradient(var(--text) 1px, transparent 1px)`,
+                        backgroundSize: '40px 40px',
+                    }}
+                />
 
-            <div className="absolute inset-0 z-10 bg-gradient-to-tr from-primary/[0.05] via-transparent to-primary/[0.02]" />
-            <div className="absolute inset-0 z-10 bg-gradient-to-t from-[var(--background)] via-transparent to-transparent opacity-100" />
+                {/* Floating Service Nodes */}
+                <div className="absolute inset-0">
+                    {[
+                        { icon: <Activity size={24} />, x: '15%', y: '20%', delay: 0 },
+                        { icon: <Database size={20} />, x: '80%', y: '15%', delay: 2 },
+                        { icon: <Layout size={22} />, x: '75%', y: '70%', delay: 4 },
+                        { icon: <MousePointerClick size={18} />, x: '10%', y: '60%', delay: 1 },
+                        { icon: <Search size={20} />, x: '45%', y: '85%', delay: 3 },
+                    ].map((node, i) => (
+                        <motion.div
+                            key={i}
+                            initial={{ opacity: 0, scale: 0.5 }}
+                            animate={{
+                                opacity: [0.1, 0.3, 0.1],
+                                scale: [1, 1.1, 1],
+                                x: [0, 20, 0],
+                                y: [0, -20, 0]
+                            }}
+                            transition={{
+                                duration: 8 + i,
+                                repeat: Infinity,
+                                delay: node.delay,
+                                ease: "easeInOut"
+                            }}
+                            className="absolute text-primary"
+                            style={{ left: node.x, top: node.y }}
+                        >
+                            <div className="p-4 rounded-2xl bg-primary/5 border border-primary/10 backdrop-blur-sm">
+                                {node.icon}
+                            </div>
+                        </motion.div>
+                    ))}
+                </div>
+
+                {/* Cinematic Ambient Glows */}
+                <div className="absolute top-[-10%] right-[-5%] w-[70vw] h-[70vw] bg-primary/10 rounded-full blur-[140px] opacity-40" />
+                <div className="absolute bottom-[-20%] left-[-10%] w-[60vw] h-[60vw] bg-primary/5 rounded-full blur-[120px] opacity-30" />
+                <div className="absolute inset-0 bg-gradient-to-t from-[var(--background)] via-transparent to-transparent opacity-100" />
+            </div>
 
             <div className="relative z-20 w-full content-max-width section-px pt-24 md:pt-40">
                 <motion.div
@@ -65,30 +107,33 @@ const Hero = ({ data }) => {
                     variants={staggerContainer}
                     className="max-w-5xl space-y-12"
                 >
-                    <motion.div variants={fadeUp} className="flex items-center gap-4 mb-2">
+                    <motion.div variants={fadeUp} className="flex items-center mb-4">
                         <a
                             href="https://www.google.com/maps/place/Merlign+%7C+Design+%26+AI-Automation/@51.5902753,5.3160696,12z/data=!4m16!1m9!3m8!1s0x8d5c2e16236f30d5:0x815a7cd4e7b502c3!2sMerlign+%7C+Design+%26+AI-Automation!8m2!3d51.5902753!4d5.3160696!9m1!1b1!16s%2Fg%2F11vshfk6q9"
                             target="_blank"
                             rel="noopener noreferrer"
-                            className="flex items-center gap-3 py-1 origin-left hover:opacity-80 transition-opacity"
+                            className="group flex items-center bg-white/[0.03] border border-white/10 backdrop-blur-md rounded-2xl p-1.5 md:p-2 pr-4 md:pr-6 hover:bg-white/[0.06] hover:border-white/20 transition-all duration-500 shadow-2xl"
                         >
-                            <div className="w-8 h-8 md:w-10 md:h-10 rounded-full bg-white flex items-center justify-center p-1.5 md:p-2 shadow-xl border border-white/10">
-                                <svg viewBox="0 0 24 24" className="w-full h-full">
-                                    <path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4" />
-                                    <path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853" />
-                                    <path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l3.66-2.84z" fill="#FBBC05" />
-                                    <path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335" />
-                                </svg>
-                            </div>
-                            <div className="flex flex-col justify-center">
-                                <div className="flex items-center gap-1 mb-0.5">
-                                    {[...Array(5)].map((_, i) => (
-                                        <svg key={i} className="w-4 h-4 md:w-5 md:h-5 text-[#FBB03B] fill-current" viewBox="0 0 20 20">
-                                            <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
-                                        </svg>
-                                    ))}
-                                    <span className="text-[var(--text)] font-sans text-sm md:text-[18px] font-bold ml-1.5 md:ml-2 tracking-tight italic opacity-40">5/5</span>
+                            <div className="flex items-center gap-3 px-2 md:px-3">
+                                <div className="w-6 h-6 md:w-8 md:h-8 flex items-center justify-center">
+                                    <svg viewBox="0 0 24 24" className="w-full h-full">
+                                        <path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4" />
+                                        <path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853" />
+                                        <path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l3.66-2.84z" fill="#FBBC05" />
+                                        <path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335" />
+                                    </svg>
                                 </div>
+                                <span className="text-[var(--text)] font-sans text-lg md:text-2xl font-black italic tracking-tighter">5.0</span>
+                            </div>
+
+                            <div className="w-px h-6 bg-white/10 mx-2" />
+
+                            <div className="flex items-center gap-1 ml-2">
+                                {[...Array(5)].map((_, i) => (
+                                    <svg key={i} className="w-3 h-3 md:w-5 md:h-5 text-[#FBB03B] fill-current group-hover:scale-110 transition-transform duration-300" style={{ transitionDelay: `${i * 50}ms` }} viewBox="0 0 20 20">
+                                        <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                                    </svg>
+                                ))}
                             </div>
                         </a>
                     </motion.div>
