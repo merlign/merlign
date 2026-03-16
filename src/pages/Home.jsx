@@ -9,6 +9,8 @@ import {
     Zap,
     Clock3,
     Activity,
+    Database,
+    Search,
     LineChart,
     ChevronDown,
     MousePointerClick
@@ -64,7 +66,7 @@ const Hero = ({ data }) => {
                     {[
                         { icon: <Activity size={24} />, x: '15%', y: '20%', delay: 0 },
                         { icon: <Database size={20} />, x: '80%', y: '15%', delay: 2 },
-                        { icon: <Layout size={22} />, x: '75%', y: '70%', delay: 4 },
+                        { icon: <LayoutIcon size={22} />, x: '75%', y: '70%', delay: 4 },
                         { icon: <MousePointerClick size={18} />, x: '10%', y: '60%', delay: 1 },
                         { icon: <Search size={20} />, x: '45%', y: '85%', delay: 3 },
                     ].map((node, i) => (
