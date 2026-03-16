@@ -13,7 +13,9 @@ import {
     Search,
     LineChart,
     ChevronDown,
-    MousePointerClick
+    MousePointerClick,
+    Building,
+    Layers
 } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import SectionLabel from '../components/SectionLabel';
@@ -71,8 +73,8 @@ const Hero = ({ data }) => {
                 />
 
                 {/* Automation Ecosystem (Right-aligned Focus) */}
-                <div className="absolute inset-y-0 right-0 w-full md:w-1/2 overflow-visible">
-                    {/* Central System Heart */}
+                <div className="absolute inset-y-0 right-0 w-full md:w-[60%] overflow-visible">
+                    {/* Central Business Hub */}
                     <motion.div
                         initial={{ opacity: 0, scale: 0.8 }}
                         animate={{
@@ -80,30 +82,30 @@ const Hero = ({ data }) => {
                             scale: [1, 1.05, 1],
                         }}
                         transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
-                        className="absolute right-[15%] lg:right-[20%] top-1/2 -translate-y-1/2 z-10"
+                        className="absolute right-[10%] lg:right-[15%] top-1/2 -translate-y-1/2 z-10"
                     >
-                        <div className="p-10 md:p-16 rounded-[3.5rem] bg-primary/10 border-2 border-primary/20 backdrop-blur-2xl shadow-[0_0_80px_rgba(var(--primary-rgb),0.15)] relative group">
-                            <Zap size={56} className="text-primary" />
-                            <div className="absolute -inset-6 border border-primary/10 rounded-[4rem] animate-[ping_5s_linear_infinite]" />
-                            <div className="absolute -inset-12 border border-primary/5 rounded-[4.5rem] animate-[ping_8s_linear_infinite]" />
-                            <p className="absolute -bottom-12 left-1/2 -translate-x-1/2 font-mono text-[9px] uppercase tracking-[0.5em] text-primary font-black italic opacity-40 whitespace-nowrap">Integrated Core</p>
+                        <div className="p-12 md:p-20 rounded-[4rem] bg-primary/10 border-2 border-primary/20 backdrop-blur-3xl shadow-[0_0_100px_rgba(var(--primary-rgb),0.15)] relative group">
+                            <Building size={64} className="text-primary" />
+                            <div className="absolute -inset-8 border border-primary/10 rounded-[4.5rem] animate-[ping_5s_linear_infinite]" />
+                            <div className="absolute -inset-16 border border-primary/5 rounded-[5rem] animate-[ping_8s_linear_infinite]" />
+                            <p className="absolute -bottom-16 left-1/2 -translate-x-1/2 font-mono text-[10px] uppercase tracking-[0.5em] text-primary font-black italic opacity-40 whitespace-nowrap">Business Empire</p>
                         </div>
                     </motion.div>
 
-                    {/* Orbiting Ecosystem Nodes */}
+                    {/* Orbiting Ecosystem Nodes - Pushed further right */}
                     {[
-                        { icon: <Activity size={24} />, x: '10%', y: '25%', delay: 0 },
-                        { icon: <Database size={20} />, x: '25%', y: '65%', delay: 1.5 },
-                        { icon: <LayoutIcon size={22} />, x: '45%', y: '15%', delay: 3 },
-                        { icon: <Search size={20} />, x: '55%', y: '80%', delay: 4.5 },
-                        { icon: <MousePointerClick size={18} />, x: '5%', y: '45%', delay: 2 },
+                        { icon: <Activity size={24} />, x: '45%', y: '20%', delay: 0 },
+                        { icon: <Database size={20} />, x: '55%', y: '70%', delay: 1.5 },
+                        { icon: <LayoutIcon size={22} />, x: '75%', y: '15%', delay: 3 },
+                        { icon: <Search size={20} />, x: '88%', y: '40%', delay: 4.5 },
+                        { icon: <MousePointerClick size={18} />, x: '35%', y: '50%', delay: 2 },
                     ].map((node, i) => (
                         <div key={i}>
                             {/* Visual Connection (Static Dash) */}
                             <svg className="absolute inset-0 w-full h-full opacity-5">
                                 <line
                                     x1={node.x} y1={node.y}
-                                    x2="80%" y2="50%"
+                                    x2="85%" y2="50%"
                                     stroke="currentColor" strokeWidth="1" strokeDasharray="4 4"
                                     className="text-primary"
                                 />
