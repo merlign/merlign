@@ -712,7 +712,7 @@ const Home = () => {
             <SEO
                 title={pageData?.seoTitle || "Design & AI-automatisering voor mkb en zzpers"}
                 description={pageData?.seoDescription || "Ik bouw websites die converteren, dashboards die inzicht geven en automatiseringen die tijd besparen. Geen gedoe, gewoon resultaat voor mkb en zzpers."}
-                path="/"
+                path=""
                 faqs={faqs}
             />
             <AnimatePresence mode="wait">

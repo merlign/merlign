@@ -67,7 +67,7 @@ const ProtocolPage = () => {
             <SEO
                 title="Het 72-uurs Protocol"
                 description="Hoe ik in 3 dagen een high-end, cinematieke website voor je bouw."
-                noindex={true}
+                path="/72h-sprint"
             />
 
             {/* Hero Section */}
