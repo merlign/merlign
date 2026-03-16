@@ -157,7 +157,7 @@ const About = () => {
                         <section className="section-py border-t border-[var(--border)]">
                             <div className="content-max-width section-px">
                                 <div className="flex flex-col md:items-center text-left md:text-center space-y-8 mb-16 md:mb-24">
-                                    <SectionLabel>Keuze</SectionLabel>
+
                                     <h2 className="font-sans font-bold text-[var(--text)] md:text-center text-h2">
                                         {data?.choiceHeadlineSans || "Waarom ondernemers voor"} <span className="text-primary font-drama font-normal text-h2-serif">{data?.choiceHeadlineSerif || "mij kiezen."}</span>
                                     </h2>
