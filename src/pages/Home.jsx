@@ -47,7 +47,6 @@ const Hero = ({ data }) => {
     const heroSerif = data?.heroSerif || "je huidige team.";
     const heroSubtitle = data?.heroSubtitle || "Ik bouw de systemen die het werk van je overnemen. Een website die zelf leads vangt, een dashboard voor direct overzicht, of slimme hulpjes voor je dagelijkse taken. Jij richt je op de groei, ik regel de techniek.";
     const heroCta = data?.heroCta || "Gratis adviesgesprek";
-    const heroLabel = data?.heroLabel || "Senior Digitaal Strateeg · 10+ jaar Designer";
     const heroCtaAlt = data?.heroCtaAlt || "Bekijk diensten";
 
     return (
@@ -72,27 +71,27 @@ const Hero = ({ data }) => {
                     }}
                 />
 
-                {/* Floating Service Icons (Enhanced & Right-aligned) */}
-                <div className="absolute inset-y-0 right-0 w-full md:w-[65%] overflow-visible">
+                {/* Floating Service Icons (Curated constellation for better balance) */}
+                <div className="absolute inset-y-0 right-0 w-full md:w-[70%] overflow-visible pointer-events-none">
                     {[
-                        { icon: <Activity size={42} />, x: '25%', y: '15%', delay: 0 },
-                        { icon: <Database size={36} />, x: '65%', y: '25%', delay: 1.5 },
-                        { icon: <LayoutIcon size={40} />, x: '45%', y: '65%', delay: 3 },
-                        { icon: <Search size={38} />, x: '82%', y: '40%', delay: 4.5 },
-                        { icon: <MousePointerClick size={34} />, x: '15%', y: '75%', delay: 2 },
-                        { icon: <Zap size={40} />, x: '75%', y: '10%', delay: 1 },
+                        { icon: <Zap size={44} />, x: '75%', y: '12%', delay: 0 },
+                        { icon: <Database size={38} />, x: '88%', y: '35%', delay: 1.5 },
+                        { icon: <Activity size={40} />, x: '60%', y: '25%', delay: 3 },
+                        { icon: <Search size={36} />, x: '85%', y: '65%', delay: 4.5 },
+                        { icon: <LayoutIcon size={42} />, x: '55%', y: '75%', delay: 2 },
+                        { icon: <MousePointerClick size={32} />, x: '65%', y: '50%', delay: 1 },
                     ].map((node, i) => (
                         <motion.div
                             key={i}
                             initial={{ opacity: 0, scale: 0.8 }}
                             animate={{
-                                opacity: [0.25, 0.5, 0.25],
-                                scale: [1, 1.1, 1],
-                                x: [0, 40, 0],
-                                y: [0, -40, 0]
+                                opacity: [0.35, 0.6, 0.35],
+                                scale: [1, 1.05, 1],
+                                x: [0, 30, 0],
+                                y: [15, -15, 15]
                             }}
                             transition={{
-                                duration: 12 + i * 2,
+                                duration: 10 + i * 2,
                                 repeat: Infinity,
                                 delay: node.delay,
                                 ease: "easeInOut"
@@ -100,9 +99,9 @@ const Hero = ({ data }) => {
                             className="absolute text-primary"
                             style={{ left: node.x, top: node.y }}
                         >
-                            <div className="p-8 md:p-10 rounded-[2.5rem] bg-white/[0.03] border border-white/10 backdrop-blur-xl shadow-2xl relative">
-                                <div className="absolute inset-0 bg-primary/10 blur-3xl rounded-full opacity-40" />
-                                <div className="relative z-10 opacity-70 group-hover:opacity-100 transition-opacity duration-700">
+                            <div className="p-8 md:p-10 rounded-[2.5rem] bg-primary/10 border border-primary/20 backdrop-blur-2xl shadow-[0_0_50px_rgba(var(--primary-rgb),0.1)] relative">
+                                <div className="absolute inset-0 bg-primary/20 blur-[50px] rounded-full opacity-30" />
+                                <div className="relative z-10 opacity-90 transition-all duration-700">
                                     {node.icon}
                                 </div>
                             </div>
@@ -234,12 +233,6 @@ const HomeAbout = ({ data }) => {
                 >
                     <div className="space-y-4">
                         <SectionLabel>Wie ben ik?</SectionLabel>
-                        <motion.p
-                            variants={fadeUp}
-                            className="font-mono text-[10px] md:text-[12px] uppercase tracking-[0.4em] text-primary font-black italic"
-                        >
-                            Senior Digitaal Strateeg · 10+ jaar Designer
-                        </motion.p>
                     </div>
                     <motion.h2
                         variants={fadeUp}
