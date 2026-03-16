@@ -52,7 +52,7 @@ const Hero = ({ data }) => {
         <section ref={heroRef} className="relative h-[100dvh] flex items-center bg-[var(--background)] overflow-hidden">
             {/* Cinematic Background Layer */}
             <div className="absolute inset-0 z-0 pointer-events-none overflow-hidden">
-                {/* Enhanced Moving Grid */}
+                {/* Clean Moving Grid */}
                 <motion.div
                     animate={{
                         x: [0, -40, 0],
@@ -70,43 +70,70 @@ const Hero = ({ data }) => {
                     }}
                 />
 
-                {/* Floating Service Nodes - Enhanced Visibility */}
-                <div className="absolute inset-0">
+                {/* Automation Ecosystem (Right-aligned Focus) */}
+                <div className="absolute inset-y-0 right-0 w-full md:w-1/2 overflow-visible">
+                    {/* Central System Heart */}
+                    <motion.div
+                        initial={{ opacity: 0, scale: 0.8 }}
+                        animate={{
+                            opacity: [0.3, 0.6, 0.3],
+                            scale: [1, 1.05, 1],
+                        }}
+                        transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
+                        className="absolute right-[15%] lg:right-[20%] top-1/2 -translate-y-1/2 z-10"
+                    >
+                        <div className="p-10 md:p-16 rounded-[3.5rem] bg-primary/10 border-2 border-primary/20 backdrop-blur-2xl shadow-[0_0_80px_rgba(var(--primary-rgb),0.15)] relative group">
+                            <Zap size={56} className="text-primary" />
+                            <div className="absolute -inset-6 border border-primary/10 rounded-[4rem] animate-[ping_5s_linear_infinite]" />
+                            <div className="absolute -inset-12 border border-primary/5 rounded-[4.5rem] animate-[ping_8s_linear_infinite]" />
+                            <p className="absolute -bottom-12 left-1/2 -translate-x-1/2 font-mono text-[9px] uppercase tracking-[0.5em] text-primary font-black italic opacity-40 whitespace-nowrap">Integrated Core</p>
+                        </div>
+                    </motion.div>
+
+                    {/* Orbiting Ecosystem Nodes */}
                     {[
-                        { icon: <Activity size={28} />, x: '12%', y: '15%', delay: 0 },
-                        { icon: <Database size={24} />, x: '85%', y: '20%', delay: 2 },
-                        { icon: <LayoutIcon size={26} />, x: '78%', y: '75%', delay: 4 },
-                        { icon: <MousePointerClick size={22} />, x: '8%', y: '65%', delay: 1 },
-                        { icon: <Search size={24} />, x: '42%', y: '88%', delay: 3 },
+                        { icon: <Activity size={24} />, x: '10%', y: '25%', delay: 0 },
+                        { icon: <Database size={20} />, x: '25%', y: '65%', delay: 1.5 },
+                        { icon: <LayoutIcon size={22} />, x: '45%', y: '15%', delay: 3 },
+                        { icon: <Search size={20} />, x: '55%', y: '80%', delay: 4.5 },
+                        { icon: <MousePointerClick size={18} />, x: '5%', y: '45%', delay: 2 },
                     ].map((node, i) => (
-                        <motion.div
-                            key={i}
-                            initial={{ opacity: 0, scale: 0.8 }}
-                            animate={{
-                                opacity: [0.3, 0.6, 0.3],
-                                scale: [1, 1.15, 1],
-                                x: [0, 30, 0],
-                                y: [0, -30, 0]
-                            }}
-                            transition={{
-                                duration: 10 + i * 2,
-                                repeat: Infinity,
-                                delay: node.delay,
-                                ease: "easeInOut"
-                            }}
-                            className="absolute text-primary"
-                            style={{ left: node.x, top: node.y }}
-                        >
-                            <div className="p-6 rounded-[2rem] bg-primary/10 border border-primary/20 backdrop-blur-md shadow-[0_0_30px_rgba(var(--primary-rgb),0.1)] relative">
-                                {node.icon}
-                            </div>
-                        </motion.div>
+                        <div key={i}>
+                            {/* Visual Connection (Static Dash) */}
+                            <svg className="absolute inset-0 w-full h-full opacity-5">
+                                <line
+                                    x1={node.x} y1={node.y}
+                                    x2="80%" y2="50%"
+                                    stroke="currentColor" strokeWidth="1" strokeDasharray="4 4"
+                                    className="text-primary"
+                                />
+                            </svg>
+
+                            <motion.div
+                                initial={{ opacity: 0, scale: 0.8 }}
+                                animate={{
+                                    opacity: [0.2, 0.5, 0.2],
+                                    scale: [1, 1.1, 1],
+                                    y: [0, -15, 0]
+                                }}
+                                transition={{
+                                    duration: 8 + i,
+                                    repeat: Infinity,
+                                    delay: node.delay,
+                                    ease: "easeInOut"
+                                }}
+                                className="absolute text-primary"
+                                style={{ left: node.x, top: node.y }}
+                            >
+                                <div className="p-5 rounded-[1.8rem] bg-primary/5 border border-primary/10 backdrop-blur-lg shadow-xl">
+                                    {node.icon}
+                                </div>
+                            </motion.div>
+                        </div>
                     ))}
                 </div>
 
-                {/* Cinematic Ambient Glows */}
-                <div className="absolute top-[-10%] right-[-5%] w-[70vw] h-[70vw] bg-primary/15 rounded-full blur-[140px] opacity-50" />
-                <div className="absolute bottom-[-20%] left-[-10%] w-[60vw] h-[60vw] bg-primary/10 rounded-full blur-[120px] opacity-40" />
+                {/* Grounding Layer */}
                 <div className="absolute inset-0 bg-gradient-to-t from-[var(--background)] via-transparent to-transparent opacity-100" />
             </div>
 
