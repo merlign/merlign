@@ -541,7 +541,7 @@ const Process = ({ data }) => {
         <section ref={containerRef} id="samenwerking" className="section-py relative border-b border-[var(--border)] overflow-hidden">
             <div className="content-max-width section-px">
                 <div className="mb-24 md:mb-40 space-y-12 text-center">
-                    <SectionLabel className="justify-center">Het traject</SectionLabel>
+                    <SectionLabel className="justify-center">Werkwijze</SectionLabel>
                     <h2 className="font-sans font-bold text-[var(--text)] leading-tight tracking-tighter text-h2">
                         {headlineSans} <span className="text-primary font-drama font-normal text-h2-serif">{headlineSerif}</span>
                     </h2>
