@@ -1,4 +1,4 @@
-import React from 'react';
+import React from 'react'; // Refresh build state
 import { motion, AnimatePresence } from 'framer-motion';
 import { Check, ArrowRight, MousePointerClick, Activity, Search, Database, Layout, ChevronDown } from 'lucide-react';
 import SectionLabel from '../../components/SectionLabel';
