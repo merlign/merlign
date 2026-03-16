@@ -139,7 +139,6 @@ const ContactForm = ({ selectedUpgrade: initialUpgrade = null }) => {
                     >
                         <div className="space-y-1 md:space-y-2 relative z-10 pr-4">
                             <h4 className={`text-lg md:text-2xl font-sans font-bold transition-transform duration-500 ${selectedUpgrade === u.id ? 'text-white translate-x-1' : 'text-[var(--text)]'}`}>{u.title}</h4>
-                            <span className={`font-sans text-[15px] md:text-[17px] font-bold transition-colors duration-500 ${selectedUpgrade === u.id ? 'text-white/60' : 'text-primary'}`}>{u.tag}</span>
                         </div>
                         <div className={`w-8 h-8 md:w-10 md:h-10 rounded-full border flex items-center justify-center transition-all duration-500 shrink-0 ${selectedUpgrade === u.id ? 'bg-white border-white scale-110 shadow-lg' : 'border-[var(--border)]'}`}>
                             <AnimatePresence mode="wait">
