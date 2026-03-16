@@ -195,13 +195,6 @@ const About = () => {
                         {/* Bottom CTA Section */}
                         <section id="contact" className="section-px pt-20 pb-32">
                             <div className="content-max-width border-t border-[var(--border)] pt-20 flex flex-col items-center text-center">
-                                <motion.div
-                                    initial={{ opacity: 0 }}
-                                    whileInView={{ opacity: 1 }}
-                                    viewport={{ once: true }}
-                                >
-                                    <SectionLabel className="md:justify-center">Samenwerken</SectionLabel>
-                                </motion.div>
                                 <h2 className="font-sans font-bold text-[var(--text)] mt-8 md:text-center text-h2">
                                     {data?.ctaHeadlineSans || "Wil je"} <span className="text-primary font-drama font-normal text-h2-serif">{data?.ctaHeadlineSerif || "samenwerken?"}</span>
                                 </h2>
@@ -214,7 +207,7 @@ const About = () => {
                     </motion.div>
                 )}
             </AnimatePresence>
-        </div>
+        </div >
     );
 };
 

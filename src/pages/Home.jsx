@@ -541,7 +541,7 @@ const Process = ({ data }) => {
         <section ref={containerRef} id="samenwerking" className="section-py relative border-b border-[var(--border)] overflow-hidden">
             <div className="content-max-width section-px">
                 <div className="mb-24 md:mb-40 space-y-12 text-center">
-                    <SectionLabel className="justify-center">Het Traject</SectionLabel>
+                    <SectionLabel className="justify-center">Het traject</SectionLabel>
                     <h2 className="font-sans font-bold text-[var(--text)] leading-tight tracking-tighter text-h2">
                         {headlineSans} <span className="text-primary font-drama font-normal text-h2-serif">{headlineSerif}</span>
                     </h2>
@@ -661,7 +661,6 @@ const ContactSection = ({ data }) => {
                     variants={staggerContainer}
                     className="text-center space-y-10 md:space-y-16 mb-12 md:mb-20 w-full"
                 >
-                    <SectionLabel className="justify-center">Plan Je Scan</SectionLabel>
                     <motion.h2 variants={fadeUp} className="font-sans font-bold text-[var(--text)] leading-tight tracking-tighter text-h2">
                         {headlineSans}{' '}
                         <span className="text-primary font-drama font-normal text-h2-serif">{headlineSerif}</span>

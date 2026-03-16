@@ -81,7 +81,7 @@ const ProtocolPage = () => {
                         animate="whileInView"
                         className="max-w-4xl space-y-8"
                     >
-                        <SectionLabel>Operationeel Protocol</SectionLabel>
+                        <SectionLabel>Operationeel protocol</SectionLabel>
                         <motion.h1
                             variants={fadeUp}
                             className="text-h1 font-sans font-bold text-[var(--text)]"

@@ -241,7 +241,7 @@ const AutomationService = () => {
                                         variants={staggerContainer}
                                         className="text-center space-y-10 md:space-y-16 mb-16 md:mb-24 w-full"
                                     >
-                                        <SectionLabel className="md:justify-center">Start Vandaag</SectionLabel>
+
                                         <a href="#contact" className="group flex flex-col items-center">
                                             <h2 className="font-sans font-bold text-[var(--text)] md:text-center text-h2">
                                                 {data?.ctaHeadlineSans || "Klaar om je tijd"}{' '}
