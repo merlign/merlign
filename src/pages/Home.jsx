@@ -52,35 +52,44 @@ const Hero = ({ data }) => {
         <section ref={heroRef} className="relative h-[100dvh] flex items-center bg-[var(--background)] overflow-hidden">
             {/* Cinematic Background Layer */}
             <div className="absolute inset-0 z-0 pointer-events-none overflow-hidden">
-                {/* Subtle Moving Grid */}
-                <div
-                    className="absolute inset-0 opacity-[0.03]"
+                {/* Enhanced Moving Grid */}
+                <motion.div
+                    animate={{
+                        x: [0, -40, 0],
+                        y: [0, -40, 0]
+                    }}
+                    transition={{
+                        duration: 30,
+                        repeat: Infinity,
+                        ease: "linear"
+                    }}
+                    className="absolute inset-0 opacity-[0.08]"
                     style={{
-                        backgroundImage: `radial-gradient(var(--text) 1px, transparent 1px)`,
-                        backgroundSize: '40px 40px',
+                        backgroundImage: `radial-gradient(var(--text) 1.5px, transparent 1.5px)`,
+                        backgroundSize: '60px 60px',
                     }}
                 />
 
-                {/* Floating Service Nodes */}
+                {/* Floating Service Nodes - Enhanced Visibility */}
                 <div className="absolute inset-0">
                     {[
-                        { icon: <Activity size={24} />, x: '15%', y: '20%', delay: 0 },
-                        { icon: <Database size={20} />, x: '80%', y: '15%', delay: 2 },
-                        { icon: <LayoutIcon size={22} />, x: '75%', y: '70%', delay: 4 },
-                        { icon: <MousePointerClick size={18} />, x: '10%', y: '60%', delay: 1 },
-                        { icon: <Search size={20} />, x: '45%', y: '85%', delay: 3 },
+                        { icon: <Activity size={28} />, x: '12%', y: '15%', delay: 0 },
+                        { icon: <Database size={24} />, x: '85%', y: '20%', delay: 2 },
+                        { icon: <LayoutIcon size={26} />, x: '78%', y: '75%', delay: 4 },
+                        { icon: <MousePointerClick size={22} />, x: '8%', y: '65%', delay: 1 },
+                        { icon: <Search size={24} />, x: '42%', y: '88%', delay: 3 },
                     ].map((node, i) => (
                         <motion.div
                             key={i}
-                            initial={{ opacity: 0, scale: 0.5 }}
+                            initial={{ opacity: 0, scale: 0.8 }}
                             animate={{
-                                opacity: [0.1, 0.3, 0.1],
-                                scale: [1, 1.1, 1],
-                                x: [0, 20, 0],
-                                y: [0, -20, 0]
+                                opacity: [0.3, 0.6, 0.3],
+                                scale: [1, 1.15, 1],
+                                x: [0, 30, 0],
+                                y: [0, -30, 0]
                             }}
                             transition={{
-                                duration: 8 + i,
+                                duration: 10 + i * 2,
                                 repeat: Infinity,
                                 delay: node.delay,
                                 ease: "easeInOut"
@@ -88,7 +97,7 @@ const Hero = ({ data }) => {
                             className="absolute text-primary"
                             style={{ left: node.x, top: node.y }}
                         >
-                            <div className="p-4 rounded-2xl bg-primary/5 border border-primary/10 backdrop-blur-sm">
+                            <div className="p-6 rounded-[2rem] bg-primary/10 border border-primary/20 backdrop-blur-md shadow-[0_0_30px_rgba(var(--primary-rgb),0.1)] relative">
                                 {node.icon}
                             </div>
                         </motion.div>
@@ -96,8 +105,8 @@ const Hero = ({ data }) => {
                 </div>
 
                 {/* Cinematic Ambient Glows */}
-                <div className="absolute top-[-10%] right-[-5%] w-[70vw] h-[70vw] bg-primary/10 rounded-full blur-[140px] opacity-40" />
-                <div className="absolute bottom-[-20%] left-[-10%] w-[60vw] h-[60vw] bg-primary/5 rounded-full blur-[120px] opacity-30" />
+                <div className="absolute top-[-10%] right-[-5%] w-[70vw] h-[70vw] bg-primary/15 rounded-full blur-[140px] opacity-50" />
+                <div className="absolute bottom-[-20%] left-[-10%] w-[60vw] h-[60vw] bg-primary/10 rounded-full blur-[120px] opacity-40" />
                 <div className="absolute inset-0 bg-gradient-to-t from-[var(--background)] via-transparent to-transparent opacity-100" />
             </div>
 
