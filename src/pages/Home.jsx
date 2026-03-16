@@ -383,7 +383,7 @@ const Services = ({ cmsServices, data }) => {
                                 </div>
 
                                 <div className="space-y-6 md:space-y-8 flex-grow relative z-10">
-                                    <p className="font-mono text-xs md:text-[14px] text-primary uppercase tracking-[0.3em] font-bold">
+                                    <p className="font-sans text-[14px] md:text-[16px] text-primary font-bold tracking-tight">
                                         {s.subtitle}
                                     </p>
                                     <h3 className="text-2xl md:text-4xl font-sans font-bold text-[var(--text)] leading-tight tracking-tight">
@@ -573,7 +573,7 @@ const Process = ({ data }) => {
 
                                 <div className="w-full md:w-1/2 space-y-6 md:px-0 pl-10 md:pl-0">
                                     <div className="flex items-center gap-4">
-                                        <span className="font-mono text-primary text-[12px] font-black tracking-widest">{step.id}</span>
+                                        <span className="font-sans text-primary text-[15px] font-bold tracking-tight">{step.id}</span>
                                     </div>
                                     <h3 className="text-2xl sm:text-3xl md:text-5xl lg:text-[58px] font-sans font-bold text-[var(--text)] tracking-tighter leading-tight">
                                         {step.title}

@@ -93,7 +93,7 @@ const About = () => {
                                     </motion.p>
                                     <motion.div variants={fadeUp} className="pt-12 md:pt-16">
                                         <a href="#contact" className="btn-magnetic group inline-flex bg-primary text-white border-transparent px-10 md:px-12 py-5 md:py-6 rounded-full shadow-[0_0_20px_rgba(99,102,241,0.3)]">
-                                            <span className="relative z-10 text-[12px] md:text-[14px] font-black italic tracking-[0.3em] uppercase">Vraag een gratis check aan</span>
+                                            <span className="relative z-10 text-[16px] md:text-[18px] font-bold">Vraag een gratis check aan</span>
                                             <div className="btn-bg bg-primary" />
                                         </a>
                                     </motion.div>
@@ -185,7 +185,7 @@ const About = () => {
                                 </div>
                                 <motion.div variants={fadeUp} className="pt-12 md:pt-20 text-center">
                                     <a href="#contact" className="btn-magnetic group inline-flex bg-primary text-white border-transparent px-10 md:px-12 py-5 md:py-6 rounded-full shadow-[0_0_20px_rgba(99,102,241,0.3)]">
-                                        <span className="relative z-10 text-[12px] md:text-[14px] font-black italic tracking-[0.3em] uppercase">Vraag een gratis check aan</span>
+                                        <span className="relative z-10 text-[16px] md:text-[18px] font-bold">Vraag een gratis check aan</span>
                                         <div className="btn-bg bg-primary" />
                                     </a>
                                 </motion.div>

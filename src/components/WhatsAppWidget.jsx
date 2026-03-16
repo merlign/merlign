@@ -92,7 +92,7 @@ const WhatsAppWidget = ({ phoneNumber = "31647693209" }) => {
                         }}
                         className="bg-white px-5 py-3 rounded-2xl rounded-br-none shadow-2xl mb-2 relative hidden md:flex items-center gap-3 border border-black/5"
                     >
-                        <p className="font-sans text-black text-[12px] font-bold uppercase tracking-widest whitespace-nowrap">
+                        <p className="font-sans text-black text-[14px] font-bold whitespace-nowrap">
                             Vragen? Stel ze hier.
                         </p>
                         <button
@@ -127,7 +127,7 @@ const WhatsAppWidget = ({ phoneNumber = "31647693209" }) => {
                                     <span className="absolute bottom-0 right-0 w-3.5 h-3.5 bg-green-500 rounded-full border-2 border-primary shadow-sm" />
                                 </div>
                                 <div className="text-white">
-                                    <h4 className="font-sans font-black text-sm uppercase tracking-widest leading-none">Merlijn AI</h4>
+                                    <h4 className="font-sans font-bold text-base leading-none">Merlijn AI</h4>
                                 </div>
                             </div>
                             <button
@@ -207,7 +207,7 @@ const WhatsAppWidget = ({ phoneNumber = "31647693209" }) => {
                                 <div className="flex items-center justify-center w-8 h-8 rounded-full bg-white/20">
                                     <MessageCircle className="text-white fill-white" size={18} />
                                 </div>
-                                <span className="text-[11px] font-black uppercase tracking-[0.2em] text-white">Spreek de echte Merlijn</span>
+                                <span className="text-[14px] font-bold text-white">Spreek de echte Merlijn</span>
                                 <ArrowRight size={14} className="text-white/50 group-hover:text-white group-hover:translate-x-1 transition-all" />
                             </button>
                         </div>

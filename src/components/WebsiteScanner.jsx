@@ -276,7 +276,7 @@ const WebsiteScanner = () => {
                                 <button
                                     type="submit"
                                     disabled={isScanning || !url}
-                                    className="bg-white text-primary shrink-0 px-6 sm:px-8 py-3 rounded-full font-black uppercase tracking-widest flex items-center justify-center gap-2 sm:gap-3 disabled:opacity-50 disabled:cursor-not-allowed hover:scale-[1.02] active:scale-95 transition-all text-[10px] sm:text-xs shadow-md"
+                                    className="bg-white text-primary shrink-0 px-6 sm:px-8 py-3 rounded-full font-bold flex items-center justify-center gap-2 sm:gap-3 disabled:opacity-50 disabled:cursor-not-allowed hover:scale-[1.02] active:scale-95 transition-all text-[15px] sm:text-[17px] shadow-md"
                                 >
                                     {isScanning ? <Loader2 className="animate-spin" size={16} /> : <Zap size={16} />}
                                     <span className="hidden sm:inline">{isScanning ? 'Scannen' : 'Scan'}</span>
@@ -305,10 +305,10 @@ const WebsiteScanner = () => {
                                     className="mb-8 space-y-3"
                                 >
                                     <div className="flex justify-between items-end">
-                                        <span className="text-[10px] font-mono uppercase tracking-[0.2em] font-black text-white animate-pulse">
+                                        <span className="text-[13px] font-sans font-bold text-white animate-pulse">
                                             {scanStep === 'fetching' ? 'Website inladen...' : 'AI analyseert content...'}
                                         </span>
-                                        <span className="text-[10px] font-mono font-black italic text-white/80">{Math.round(progress)}%</span>
+                                        <span className="text-[13px] font-sans font-bold italic text-white/80">{Math.round(progress)}%</span>
                                     </div>
                                     <div className="h-1 w-full bg-black/20 rounded-full overflow-hidden">
                                         <motion.div
@@ -411,7 +411,7 @@ const WebsiteScanner = () => {
                                                         <Lock className="text-white" size={24} />
                                                     </div>
                                                     <div className="space-y-3 drop-shadow-2xl">
-                                                        <h3 className="text-2xl md:text-3xl font-sans font-bold text-white uppercase tracking-tight">Rapport staat klaar</h3>
+                                                        <h3 className="text-2xl md:text-3xl font-sans font-bold text-white tracking-tight">Rapport staat klaar</h3>
                                                         <p className="text-white font-medium text-sm md:text-base max-w-sm mx-auto leading-relaxed px-4">
                                                             We hebben precies gevonden waar mensen nu op je website afhaken. Bekijk je persoonlijke analyse om te zien hoe je direct meer aanvragen krijgt.
                                                         </p>
@@ -430,7 +430,7 @@ const WebsiteScanner = () => {
                                         <>
                                             <div className="grid grid-cols-1 md:grid-cols-2 gap-10 pt-10 border-t border-white/10">
                                                 <div className="space-y-4">
-                                                    <h4 className="text-xs font-mono uppercase tracking-[0.2em] font-black text-white/60">Belangrijke verbeterpunten</h4>
+                                                    <h4 className="text-[14px] font-sans text-white/60 font-bold tracking-tight">Belangrijke verbeterpunten</h4>
                                                     <ul className="space-y-4">
                                                         {report.bottlenecks.map((item, i) => (
                                                             <li key={i} className="flex items-start gap-4 p-5 rounded-2xl bg-black/40 border border-white/10 text-[15px] font-sans text-white leading-relaxed shadow-lg">
@@ -442,7 +442,7 @@ const WebsiteScanner = () => {
                                                 </div>
 
                                                 <div className="space-y-4">
-                                                    <h4 className="text-xs font-mono uppercase tracking-[0.2em] font-black text-white/60">Grootste groeikans</h4>
+                                                    <h4 className="text-[14px] font-sans text-white/60 font-bold tracking-tight">Grootste groeikans</h4>
                                                     <div className="text-[15px] font-sans font-medium text-white leading-relaxed p-6 bg-black/60 rounded-[2rem] border border-white/10 shadow-lg min-h-[140px] flex items-center">
                                                         {report.missedOpp}
                                                     </div>
@@ -451,7 +451,7 @@ const WebsiteScanner = () => {
 
                                             <div className="pt-10 flex flex-col items-center space-y-12">
                                                 <div className="flex flex-col items-center w-full">
-                                                    <p className="text-xs font-mono uppercase tracking-[0.3em] font-black text-white/40 mb-6">Actieplan</p>
+                                                    <p className="text-[14px] font-sans text-white/40 font-bold tracking-tight mb-6">Actieplan</p>
 
                                                     <div className="w-full max-w-xl bg-black/40 border border-white/10 rounded-[2.5rem] p-8 md:p-10 space-y-8 overflow-hidden relative text-left">
                                                         <div className="absolute top-0 right-0 w-32 h-32 bg-emerald-500/10 blur-[60px] rounded-full"></div>
@@ -495,7 +495,7 @@ const WebsiteScanner = () => {
                                                     </motion.div>
                                                 </div>
 
-                                                <a href="/contact" className="btn-magnetic group bg-white text-primary px-8 py-4 rounded-full font-black uppercase tracking-widest italic flex items-center gap-4 shadow-[0_0_30px_rgba(255,255,255,0.3)] text-xs">
+                                                <a href="/contact" className="btn-magnetic group bg-white text-primary px-8 py-4 rounded-full font-bold flex items-center gap-4 shadow-[0_0_30px_rgba(255,255,255,0.3)] text-base">
                                                     Plan een gratis check
                                                     <ArrowRight size={16} />
                                                 </a>

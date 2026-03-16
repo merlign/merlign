@@ -67,14 +67,14 @@ const Navbar = ({ theme, toggleTheme }) => {
                             <img src="/logo_merlign.png" alt="Merlign" className={`h-5 md:h-6 transition-all duration-500 ${theme === 'dark' ? 'brightness-0 invert' : 'brightness-0'}`} />
                         </Link>
 
-                        <div className="hidden lg:flex items-center gap-10 font-sans text-[13px] uppercase tracking-widest text-[var(--text)]/60">
+                        <div className="hidden lg:flex items-center gap-10 font-sans text-[15px] text-[var(--text)]/60">
                             {/* Diensten Dropdown */}
                             <div
                                 className="relative group/diensten"
                                 onMouseEnter={() => setIsDienstenOpen(true)}
                                 onMouseLeave={() => setIsDienstenOpen(false)}
                             >
-                                <button className="hover:text-[var(--text)] transition-colors py-2 flex items-center gap-2 font-bold group font-sans text-[13px] uppercase tracking-widest">
+                                <button className="hover:text-[var(--text)] transition-colors py-2 flex items-center gap-2 font-bold font-sans text-[15px]">
                                     Diensten
                                     <ChevronDown size={12} className="group-hover:rotate-180 transition-transform duration-500" />
                                 </button>
@@ -88,8 +88,8 @@ const Navbar = ({ theme, toggleTheme }) => {
                                                     to={s.href}
                                                     className="block p-4 rounded-[1.5rem] hover:bg-primary/10 transition-all group/item"
                                                 >
-                                                    <p className="text-[var(--text)] font-sans font-bold text-[13px] uppercase tracking-widest leading-none">{s.label}</p>
-                                                    <p className="text-[var(--text)]/60 font-sans text-[9px] uppercase tracking-widest mt-2">{s.desc}</p>
+                                                    <p className="text-[var(--text)] font-sans font-bold text-[14px] leading-none">{s.label}</p>
+                                                    <p className="text-[var(--text)]/60 font-sans text-[11px] mt-2 italic">{s.desc}</p>
                                                 </Link>
                                             ))}
                                         </div>
@@ -107,7 +107,7 @@ const Navbar = ({ theme, toggleTheme }) => {
 
                         <div className="flex items-center gap-4 md:gap-6 relative z-10">
                             <a href="#contact" className="hidden sm:block btn-magnetic group bg-[var(--text)]/5 text-[var(--text)] px-6 py-2.5 rounded-full border border-[var(--border)] overflow-hidden">
-                                <span className="relative z-10 text-[12px] font-bold uppercase tracking-widest">Gratis adviesgesprek</span>
+                                <span className="relative z-10 text-[14px] font-bold">Gratis adviesgesprek</span>
                                 <div className="btn-bg bg-primary shadow-[0_0_20px_rgba(99,102,241,0.5)]" />
                             </a>
 
@@ -142,7 +142,7 @@ const Navbar = ({ theme, toggleTheme }) => {
                         <div className="flex flex-col gap-8">
                             <div className="space-y-4">
                                 <button
-                                    className="flex items-center gap-4 text-[var(--text)] uppercase tracking-widest font-sans text-3xl font-bold py-2"
+                                    className="flex items-center gap-4 text-[var(--text)] font-sans text-3xl font-bold py-2"
                                     onClick={() => setIsDienstenOpen(!isDienstenOpen)}
                                 >
                                     Diensten
@@ -162,7 +162,7 @@ const Navbar = ({ theme, toggleTheme }) => {
                                                     <Link
                                                         key={i}
                                                         to={s.href}
-                                                        className="text-xl md:text-2xl font-sans font-bold uppercase tracking-widest text-[var(--text)]/60 hover:text-[var(--text)] transition-colors pl-4"
+                                                        className="text-xl md:text-2xl font-sans font-bold text-[var(--text)]/60 hover:text-[var(--text)] transition-colors pl-4"
                                                         onClick={() => setIsMobileMenuOpen(false)}
                                                     >
                                                         {s.label}
@@ -179,7 +179,7 @@ const Navbar = ({ theme, toggleTheme }) => {
                                     <Link
                                         key={i}
                                         to={link.href}
-                                        className="text-3xl font-sans font-bold text-[var(--text)] uppercase tracking-widest"
+                                        className="text-3xl font-sans font-bold text-[var(--text)]"
                                         onClick={() => setIsMobileMenuOpen(false)}
                                     >
                                         {link.label}
@@ -191,7 +191,7 @@ const Navbar = ({ theme, toggleTheme }) => {
                         <div className="mt-auto pb-12 space-y-8">
                             <a
                                 href="#contact"
-                                className="w-full bg-primary text-white py-5 rounded-full font-mono text-[14px] uppercase tracking-[0.2em] font-bold flex items-center justify-center gap-4 group border border-white/10 overflow-hidden relative"
+                                className="w-full bg-primary text-white py-5 rounded-full font-sans text-[16px] font-bold flex items-center justify-center gap-4 group border border-white/10 overflow-hidden relative"
                                 onClick={() => setIsMobileMenuOpen(false)}
                             >
                                 <span className="relative z-10">Gratis adviesgesprek</span>
@@ -240,26 +240,26 @@ const Footer = ({ data, theme }) => {
                         </div>
                     </div>
                     <div className="space-y-8 md:space-y-12 pt-8 md:pt-0">
-                        <h5 className="font-sans text-[12px] md:text-[14px] uppercase tracking-widest text-[var(--text)]/40 font-black italic">Archief</h5>
-                        <ul className="space-y-4 md:space-y-6 font-sans text-[14px] md:text-[15px] uppercase tracking-widest font-bold">
+                        <h5 className="font-sans text-[14px] md:text-[16px] text-primary font-bold tracking-tight">Archief</h5>
+                        <ul className="space-y-4 md:space-y-6 font-sans text-[15px] md:text-[17px] font-bold">
                             <li><Link to="/over-mij" className="text-[var(--text)]/60 hover:text-primary transition-colors">Over mij</Link></li>
                             <li><Link to="/cases" className="text-[var(--text)]/60 hover:text-primary transition-colors">Cases</Link></li>
                             <li><Link to="/contact" className="text-[var(--text)]/60 hover:text-primary transition-colors">Contact</Link></li>
                         </ul>
                     </div>
                     <div className="space-y-8 md:space-y-12 pt-8 md:pt-0">
-                        <h5 className="font-sans text-[12px] md:text-[14px] uppercase tracking-widest text-[var(--text)]/40 font-black italic">Sociaal</h5>
-                        <ul className="space-y-4 md:space-y-6 font-sans text-[14px] md:text-[15px] uppercase tracking-widest font-bold">
+                        <h5 className="font-sans text-[14px] md:text-[16px] text-primary font-bold tracking-tight">Sociaal</h5>
+                        <ul className="space-y-4 md:space-y-6 font-sans text-[15px] md:text-[17px] font-bold">
                             <li><a href={linkedinLink} target="_blank" rel="noopener noreferrer" className="text-[var(--text)]/60 hover:text-primary transition-colors">LinkedIn</a></li>
                         </ul>
                     </div>
                 </div>
                 <div className="flex flex-col md:flex-row justify-between items-center gap-8 md:gap-12 pt-8 md:pt-10 border-t border-[var(--border)]">
-                    <div className="flex flex-col md:flex-row items-center gap-4 md:gap-8 font-mono text-[10px] md:text-[11px] uppercase tracking-[0.5em] font-black italic text-[var(--text)]/45">
+                    <div className="flex flex-col md:flex-row items-center gap-4 md:gap-8 font-sans text-[12px] md:text-[13px] font-bold text-[var(--text)]/45">
                         <div className="flex items-center gap-4">
                             <span>© 2026 MERLIJN VAN DER VLEUTEN</span>
                             <span className="opacity-40">|</span>
-                            <span>KVK-NUMMER: 75629887</span>
+                            <span>KVK: 75629887</span>
                         </div>
                         <div className="flex items-center gap-4">
                             <span className="hidden md:inline opacity-40">|</span>
