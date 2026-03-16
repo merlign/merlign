@@ -52,7 +52,7 @@ const Hero = ({ data }) => {
     return (
         <section ref={heroRef} className="relative h-[100dvh] flex items-center bg-[var(--background)] overflow-hidden">
             {/* Cinematic Background Layer */}
-            <div className="absolute inset-0 z-[-1] pointer-events-none overflow-hidden">
+            <div className="absolute inset-0 z-0 pointer-events-none overflow-hidden">
                 {/* Clean Moving Grid */}
                 <motion.div
                     animate={{
