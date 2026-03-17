@@ -3,6 +3,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { Link, useLocation } from 'react-router-dom';
 import { ChevronDown, Linkedin, ArrowRight, ArrowUpRight, Menu, X, Sun, Moon } from 'lucide-react';
 import WhatsAppWidget from './WhatsAppWidget';
+import CookieBanner from './CookieBanner';
 
 const Navbar = ({ theme, toggleTheme }) => {
     const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -378,6 +379,7 @@ const Layout = ({ children }) => {
             <Navbar theme={theme} toggleTheme={toggleTheme} />
             <main>{children}</main>
             <WhatsAppWidget phoneNumber={contactInfo?.whatsappPhone || "31647693209"} />
+            <CookieBanner />
             <Footer data={contactInfo} theme={theme} />
         </div>
     );
