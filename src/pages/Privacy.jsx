@@ -26,7 +26,7 @@ const Privacy = () => {
                                 Zodra je mijn website <span className="text-primary underline">www.merlign.com</span> bezoekt of contact met mij opneemt, ontvang ik informatie over jou. In deze privacyverklaring leg ik uit wat ik met deze informatie doe. Ik ga altijd zorgvuldig met je informatie om en sla die veilig op. Heb je vragen of wil je weten welke informatie ik van je heb, neem dan contact op met mij.
                             </p>
                             <p className="text-sm opacity-60 italic">
-                                Ik kan deze privacyverklaring aanpassen als ik dat nodig vind. Ik raad je daarom aan om deze regelmatig te bekijken. Deze privacyverklaring is voor het laatst gewijzigd op 09 maart 2026.
+                                Ik kan deze privacyverklaring aanpassen als ik dat nodig vind. Ik raad je daarom aan om deze regelmatig te bekijken. Deze privacyverklaring is voor het laatst gewijzigd op 17 maart 2026.
                             </p>
                         </section>
 
@@ -95,6 +95,7 @@ const Privacy = () => {
                                     <li>Naam</li>
                                     <li>E-mailadres</li>
                                     <li>Telefoonnummer</li>
+                                    <li>Geanonimiseerde gebruiksgegevens (via Microsoft Clarity, zoals klikgedrag en paginabezoeken)</li>
                                 </ul>
                             </div>
 
@@ -117,7 +118,7 @@ const Privacy = () => {
                             <div className="space-y-4">
                                 <h3 className="text-xl font-bold text-primary italic">8. Met wie delen we je gegevens?</h3>
                                 <p>
-                                    Je persoonsgegevens worden alleen door mij persoonlijk gebruikt. Ik zal je persoonsgegevens **nooit** met anderen delen of verkopen.
+                                    Je persoonsgegevens worden door mij persoonlijk gebruikt. Voor het verbeteren van de gebruikerservaring maak ik gebruik van Microsoft Clarity. Deze tool legt vast hoe bezoekers mijn website gebruiken (zoals kliks, muisbewegingen en scroll-gedrag). Deze informatie wordt geanonimiseerd verwerkt en ik gebruik deze gegevens **nooit** voor advertentiedoeleinden of verkoop aan derden.
                                 </p>
                             </div>
 
