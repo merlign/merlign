@@ -74,7 +74,7 @@ const CookieBanner = () => {
                                             <ShieldCheck className="text-primary" size={28} />
                                         </div>
                                         <div className="space-y-2">
-                                            <h4 className="text-xl md:text-2xl font-sans font-bold text-[var(--text)] tracking-tight">Privacy-instellingen</h4>
+                                            <h4 className="text-xl md:text-2xl font-sans font-bold text-[var(--text)] tracking-tight">Koekjes?</h4>
                                             <p className="text-[var(--text)]/80 font-sans text-base leading-relaxed">
                                                 Ik gebruik cookies om te zien hoe de site presteert en om jouw ervaring te verbeteren. Geen advertenties, alleen pure kwaliteitsverbetering.
                                             </p>
