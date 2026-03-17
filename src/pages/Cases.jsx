@@ -110,7 +110,7 @@ const Cases = () => {
                                     variants={fadeUp}
                                     className="font-sans font-bold text-[var(--text)] text-h1"
                                 >
-                                    {pageData?.headlineSans || "Geen mooie praatjes."} <span className="text-primary font-drama font-normal text-h1-serif">{pageData?.headlineSerif || "Gewoon resultaten."}</span>
+                                    {pageData?.headlineSans || "Geen mooie praatjes,"} <span className="text-primary font-drama font-normal text-h1-serif">{pageData?.headlineSerif || "gewoon resultaten."}</span>
                                 </motion.h1>
                                 <motion.p variants={fadeUp} className="font-sans text-[var(--text)]/85 text-lg md:text-xl font-light italic leading-[1.8] max-w-2xl">
                                     {pageData?.subtitle || "Wat ik heb gebouwd en welk meetbaar resultaat dat heeft opgeleverd."}

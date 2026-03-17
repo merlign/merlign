@@ -35,8 +35,8 @@ const DashboardService = () => {
         fetchData();
     }, []);
 
-    const heroSans = data?.heroSans || "Stop met gokken.";
-    const heroSerif = data?.heroSerif || "Begin met sturen op cijfers.";
+    const heroSans = data?.heroSans || "Stop met gokken,";
+    const heroSerif = data?.heroSerif || "begin met sturen op cijfers.";
     const heroSubtitle = data?.heroSubtitle || "Ik bouw een dashboard dat al je belangrijkste cijfers op één plek zet. Altijd inzichtelijk, op je telefoon of laptop.";
 
     const staticFeatures = [
@@ -52,7 +52,7 @@ const DashboardService = () => {
     })) : staticFeatures;
 
     const staticProcess = [
-        { step: "01", title: "Gratis check", desc: "We kijken samen welke cijfers voor jou het meest relevant zijn en welke tools je al gebruikt. 20 minuten, geen verplichtingen.", icon: <Search size={24} /> },
+        { step: "01", title: "Gratis check", desc: "We kijken samen in 20 minuten welke cijfers voor jou het meest relevant zijn en welke tools je al gebruikt. Geheel zonder verplichtingen.", icon: <Search size={24} /> },
         { step: "02", title: "Bouw en koppeling", desc: "Ik bouw het dashboard en koppel je databronnen. Jij hoeft niks te doen behalve feedback geven op het ontwerp.", icon: <Database size={24} /> },
         { step: "03", title: "Klaar voor gebruik", desc: "Je krijgt toegang, een korte uitleg en je bent klaar. Vanaf dat moment stuur je op feiten in plaats van gevoel.", icon: <Layout size={24} /> }
     ];

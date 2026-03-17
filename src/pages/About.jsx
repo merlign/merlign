@@ -32,9 +32,9 @@ const About = () => {
         fetchData();
     }, []);
 
-    const introSans = data?.introSans || "Designer. Bouwer.";
-    const introSerif = data?.introSerif || "Jouw sparringspartner.";
-    const bioText = data?.bio?.[0]?.children?.[0]?.text || "Ik ben Merlijn. 10 jaar designer, nu ook bouwer van websites, dashboards en automatiseringen. Ik combineer wat andere freelancers niet combineren.";
+    const introSans = data?.introSans || "Designer, bouwer en";
+    const introSerif = data?.introSerif || "jouw sparringspartner.";
+    const bioText = data?.bio?.[0]?.children?.[0]?.text || "Mijn naam is Merlijn. Ik ben al meer dan 10 jaar designer, nu ook bouwer van websites, dashboards en automatiseringen. Ik combineer wat andere freelancers niet combineren.";
     return (
         <div className="bg-[var(--background)] min-h-screen">
             <SEO
@@ -135,7 +135,7 @@ const About = () => {
                                             variants={fadeUp}
                                             className="font-sans font-bold text-[var(--text)] text-h2"
                                         >
-                                            {data?.whoAmIHeadlineSans || "De perfecte mix tussen"} <span className="text-primary font-drama font-normal text-h2-serif">{data?.whoAmIHeadlineSerif || "vorm en functie."}</span>
+                                            {data?.whoAmIHeadlineSans || "De perfecte mix tussen"} <span className="text-primary font-drama font-normal text-h2-serif">{data?.whoAmIHeadlineSerif || "design en functie."}</span>
                                         </motion.h2>
                                     </div>
                                     <div className="space-y-8 font-sans text-[var(--text)]/85 text-lg md:text-2xl font-light italic leading-[1.8] whitespace-pre-wrap">
@@ -144,8 +144,8 @@ const About = () => {
                                         )) : (
                                             <>
                                                 <p>Ik begon als grafisch designer en ben in AI gedoken omdat ik zag wat er mogelijk was. Nu combineer ik 10 jaar design-ervaring met moderne AI-tools om dingen te bouwen die er goed uitzien en goed werken.</p>
-                                                <p>Het verschil met een bureau: ik ben snel, ik denk mee en je hebt altijd één aanspreekpunt. Het verschil met een goedkope freelancer: ik lever niet alleen wat je vraagt, maar ook wat je nodig hebt.</p>
-                                                <p>Voor ondernemers van 1 tot 10 man ben ik de sparringspartner die ze anders niet hebben. Iemand die begrijpt hoe een goede uitstraling eruitziet én hoe systemen in elkaar moeten zitten.</p>
+                                                <p>Bij mij krijg je de flexibiliteit van een specialist met de strategische diepgang van een partner. Ik vervang de traagheid van een bureau door directe actie en de tunnelvisie van een freelancer door business-inzicht.</p>
+                                                <p>Voor ondernemers ben ik de sparringspartner die ze anders niet hebben. Iemand die begrijpt hoe een goede uitstraling eruitziet én hoe systemen in elkaar moeten zitten.</p>
                                             </>
                                         )}
                                     </div>

@@ -53,7 +53,7 @@ const AutomationService = () => {
     })) : staticFeatures;
 
     const staticProcess = [
-        { step: "01", title: "Gratis check", desc: "We kijken samen welke taken je nu handmatig doet en hoeveel tijd dat kost. Ik geef je direct een eerlijk beeld van wat er mogelijk is.", icon: <Search size={24} /> },
+        { step: "01", title: "Gratis check", desc: "We kijken samen in 20 minuten welke taken je nu handmatig doet en hoeveel tijd dat kost. Ik geef je direct een eerlijk beeld van wat er mogelijk is.", icon: <Search size={24} /> },
         { step: "02", title: "Bouw en test", desc: "Ik bouw de automatisering, test hem grondig en koppel hem aan je bestaande tools. Jij hoeft niks te doen.", icon: <Settings size={24} /> },
         { step: "03", title: "Live en op de achtergrond", desc: "Zodra het live staat, loopt het. Je hoeft er niet meer naar om te kijken. Het werk wordt gedaan terwijl jij onderneemt.", icon: <Cpu size={24} /> }
     ];

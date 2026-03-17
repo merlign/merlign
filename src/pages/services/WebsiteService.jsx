@@ -38,14 +38,14 @@ const WebsiteService = () => {
 
     const heroSans = data?.heroSans || "Een website die voor je werkt";
     const heroSerif = data?.heroSerif || "terwijl jij onderneemt.";
-    const heroSubtitle = data?.heroSubtitle || "Niet alleen mooi. Gebouwd om bezoekers te overtuigen en te laten converteren. Klaar in 72 uur.";
+    const heroSubtitle = data?.heroSubtitle || "Design dat niet alleen prachtig oogt, maar ook keihard converteert. En dat al binnen 72 uur.";
 
     const staticFeatures = [
-        { title: "Strategie voor design", desc: "Elke sectie heeft een doel. Elke zin doet werk. Ik bouw op basis van 10 jaar design-ervaring gecombineerd met funnel-denken." },
-        { title: "Live in 72 uur", desc: "Geen weken wachten. Na de check ga ik aan de slag en lever ik op. Jij geeft feedback, ik pas aan, klaar." },
-        { title: "SEO ingebakken", desc: "Snelle laadtijd, schone structuur, juiste titels en beschrijvingen. Je website wordt gevonden zonder dat je er extra voor hoeft te betalen." },
-        { title: "Zorgeloos onderhoud", desc: "Je website blijft veilig, snel en up-to-date. Ik zorg voor de techniek op de achtergrond, zodat jij er geen omkijken naar hebt." },
-        { title: "Makkelijk te beheren", desc: "Wil je toch zelf iets aanpassen? Dat kan. Ik lever met een korte uitleg zodat je zelfstandig kleine wijzigingen kunt doen." }
+        { title: "Strategie voor design", desc: "Ik bouw een logische route van bezoeker naar aanvraag. Geen losse flodders, maar een interface die het werk voor je doet." },
+        { title: "Live in 72 uur", desc: "Na onze intake staat je nieuwe basis binnen drie dagen live. Snelle sprints, direct resultaat, geen gedoe." },
+        { title: "SEO & GEO geoptimaliseerd", desc: "Een bliksemsnel systeem dat direct hoog scoort in Google & AI. Je bent zichtbaar waar je klanten zoeken, zonder dat je er zelf omkijken naar hebt." },
+        { title: "Zorgeloos onderhoud", desc: "Jouw site blijft veilig en razendsnel op de achtergrond. Jij focust op je klanten, ik zorg dat de machine blijft draaien." },
+        { title: "Makkelijk te beheren", desc: "Zelf een tekst of foto aanpassen is een fluitje van een cent. Je bent nooit meer afhankelijk van een trage developer." }
     ];
 
     const features = data?.features?.length > 0 ? data.features.map((f, i) => ({
@@ -54,9 +54,9 @@ const WebsiteService = () => {
     })) : staticFeatures;
 
     const staticProcess = [
-        { step: "01", title: "Gratis check", desc: "20 minuten. Ik kijk naar je huidige situatie, wat je wil bereiken en wat daarvoor nodig is. Geen verkooppraatje.", icon: <Search size={24} /> },
-        { step: "02", title: "Bouwsprint", desc: "Ik bouw de website. Design, copy-structuur, SEO, snelheid, alles in één sprint. Jij geeft feedback als ik iets laat zien.", icon: <Zap size={24} /> },
-        { step: "03", title: "Live en klaar", desc: "Je site staat live. Korte overdracht, je bent zelfstandig, en je weet dat ik op de achtergrond het onderhoud blijf doen als je dat wenst.", icon: <Check size={24} /> }
+        { step: "01", title: "Gratis check", desc: "In 20 minuten kijk ik gratis naar je huidige situatie, wat je wil bereiken en wat daarvoor nodig is. Geen verkooppraatje.", icon: <Search size={24} /> },
+        { step: "02", title: "Intake & Bouwsprint", desc: "We duiken de diepte in tijdens de intake en ik start direct de sprint. Design, techniek en copy: ik bouw alles in één vloeiende beweging.", icon: <Zap size={24} /> },
+        { step: "03", title: "Overdracht & gas erop", desc: "Je site gaat live. Je krijgt een korte uitleg zodat je zelfstandig bent, terwijl ik op de achtergrond zorg dat alles veilig en razendsnel blijft.", icon: <Check size={24} /> }
     ];
 
     const processItems = data?.processSteps?.length > 0 ? data.processSteps.map((p, i) => ({
@@ -74,7 +74,7 @@ const WebsiteService = () => {
                 path="/website"
                 services={[{
                     name: "Website Design & Development",
-                    description: data?.heroSubtitle || "Niet alleen mooi. Gebouwd om bezoekers te overtuigen en te laten converteren. Klaar in 72 uur.",
+                    description: data?.heroSubtitle || "Design dat niet alleen prachtig oogt, maar ook keihard converteert. En dat al binnen 72 uur.",
                     features: features
                 }]}
                 faqs={data?.faqs?.length > 0 ? data.faqs.map(f => ({ q: f.question, a: f.answer })) : staticFeatures.map(f => ({ q: f.title, a: f.desc }))} // Use staticFeatures as fallback for FAQ schema if no CMS FAQs

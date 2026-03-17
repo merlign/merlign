@@ -5,7 +5,7 @@ const SEO = ({ title, description, path = "", type = "website", services = [], f
     const siteName = "Merlign";
     const fullTitle = title.includes(siteName) ? title : `${title} | ${siteName}`;
     const url = `https://merlign.com${path}`;
-    const ogImage = "https://merlign.com/og-image.png";
+    const ogImage = "https://merlign.com/logo_merlign.png";
 
     // Structured Data (Schema.org) for the specific page
     const breadcrumbSchema = {

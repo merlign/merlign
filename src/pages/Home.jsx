@@ -43,9 +43,9 @@ const Hero = ({ data }) => {
     const y1 = useTransform(scrollY, [0, 500], [0, 200]);
 
     // Fallbacks
-    const heroSans = data?.heroSans || "Krijg meer gedaan met";
-    const heroSerif = data?.heroSerif || "je huidige team.";
-    const heroSubtitle = data?.heroSubtitle || "Ik bouw de systemen die het werk van je overnemen. Een website die zelf leads vangt, een dashboard voor direct overzicht, of slimme hulpjes voor je dagelijkse taken. Jij richt je op de groei, ik regel de techniek.";
+    const heroSans = data?.heroSans || "Schaal je business";
+    const heroSerif = data?.heroSerif || "zonder extra personeel.";
+    const heroSubtitle = data?.heroSubtitle || "Ik bouw systemen die het handmatige werk van je overnemen. Een website die zelf leads vangt, een dashboard voor direct overzicht, of slimme hulpjes voor je dagelijkse taken.";
     const heroCta = data?.heroCta || "Gratis adviesgesprek";
     const heroCtaAlt = data?.heroCtaAlt || "Bekijk diensten";
 
@@ -186,10 +186,10 @@ const Hero = ({ data }) => {
 };
 
 const HomeAbout = ({ data }) => {
-    const headlineSans = data?.aboutHeadlineSans || "Geen mooie praatjes.";
-    const headlineSerif = data?.aboutHeadlineSerif || "Gewoon resultaten.";
-    const para1 = data?.aboutPara1 || "Ik ben al meer dan 10 jaar actief als designer. Dat is mijn edge. Ik begrijp hoe systemen eruit moeten zien voordat ik ze bouw: waardoor wat ik opleveer niet alleen werkt, maar er ook ziet alsof het zo hoort.";
-    const para2 = data?.aboutPara2 || "Ik heb een allergie voor traagheid en onnodige complexiteit. Geen eindeloze meetings, geen vaag advies. Ik bouw geen websites, ik bouw tools die je werk uit handen nemen omdat ik stop met handmatige gepruts. Dit is geen tijdprobleem, dit is een systeemprobleem.";
+    const headlineSans = data?.aboutHeadlineSans || "Geen mooie praatjes,";
+    const headlineSerif = data?.aboutHeadlineSerif || "gewoon resultaten.";
+    const para1 = data?.aboutPara1 || "Ik draai al 10 jaar mee als designer en dat is precies wat mij anders maakt. Ik kijk niet alleen naar de code, maar naar de mens die het moet gebruiken. Voor mij is een systeem pas af als het niet alleen werkt, maar ook direct logisch voelt.";
+    const para2 = data?.aboutPara2 || "Net als jij zit ik niet te wachten op eindeloze meetings of vage rapporten. Ik ben de bouwer die je belt als je klaar bent met aanmodderen. Ik vervang handmatig gepruts door slimme systemen die 24/7 voor je draaien.";
 
     return (
         <section id="over-mij" className="section-py relative overflow-hidden border-y border-[var(--border)] bg-[var(--background)]">
@@ -263,9 +263,9 @@ const HomeAbout = ({ data }) => {
 };
 
 const Services = ({ cmsServices, data }) => {
-    const headlineSans = data?.servicesHeadlineSans || "Kies waar we";
-    const headlineSerif = data?.servicesHeadlineSerif || "beginnen.";
-    const subtitle = data?.servicesSubtitle || "Drie manieren om je bedrijf weer op snelheid te krijgen. Zonder gedoe, direct resultaat.";
+    const headlineSans = data?.servicesHeadlineSans || "Kies je eerste";
+    const headlineSerif = data?.servicesHeadlineSerif || "upgrade.";
+    const subtitle = data?.servicesSubtitle || "Ik bouw de systemen die het werk van je overnemen. Zo heb jij je handen weer vrij voor je klanten.";
     const staticServices = [
         {
             icon: <LayoutIcon />,
@@ -500,17 +500,17 @@ const Process = ({ data }) => {
         {
             id: "01",
             title: "De Intake",
-            desc: "Eén gesprek van 45 minuten om de koers te bepalen. Ik graaf diep in je business en we trekken een streep in het zand."
+            desc: "We kijken waar je nu de meeste tijd verliest of klanten laat liggen."
         },
         {
             id: "02",
-            title: "De Bouw-Sprint",
+            title: "De Bouw",
             desc: "Ik bouw je website, dashboard of automatisering in recordtempo. Alles in-house, zonder vertraging."
         },
         {
             id: "03",
             title: "De Overdracht",
-            desc: "Je krijgt een systeem dat werkt, inclusief een simpele uitleg zodat je direct door kunt met real-time overzicht over je business."
+            desc: "Binnen no-time staan je systemen aan en heb je je handen weer vrij."
         }
     ];
 
@@ -640,7 +640,7 @@ const FAQ = ({ data }) => {
 };
 
 const ContactSection = ({ data }) => {
-    const headlineSans = data?.headlineSans || "Welke upgrade gaan we als";
+    const headlineSans = data?.headlineSans || "Welke upgrade gaan we als ";
     const headlineSerif = data?.headlineSerif || "eerste activeren?";
     const subtitle = data?.subtitle || "Kies het onderdeel waar je nu de meeste winst laat liggen. Ik kijk in 20 minuten met je mee waar de kansen zitten.";
 
@@ -694,10 +694,10 @@ const Home = () => {
                 } else {
                     // Fallback to static if needed
                     setFaqs([
-                        { q: "Heb ik zelf technische kennis nodig?", a: "Totaal niet. Ik neem het volledige proces uit handen: van design en code tot de laatste API-koppeling. Jij krijgt een systeem dat simpel werkt, zodat jij je kunt focussen op je business terwijl de techniek op de achtergrond voor je draait." },
-                        { q: "Ik heb al een website, wat nu?", a: "Geen probleem. We kunnen je huidige site optimaliseren voor meer conversie, of we voegen specifiek de dashboards en automatiseringen toe aan je bestaande systeem. Ik bouw modulaire oplossingen die overal op aansluiten." },
-                        { q: "Hoeveel tijd kost een samenwerking mij?", a: "Minimaal. We starten met een check van 20 minuten. Daarna neem ik het zware werk over. Ik werk in korte sprints en jij geeft alleen feedback op de mijlpalen. Zo bouwen we high-end resultaat zonder dat het jouw agenda overneemt." },
-                        { q: "Moet ik alles (website, dashboard, automatisering) in één keer doen?", a: "Zeker niet. De meeste ondernemers beginnen met de grootste tijdvreter of het herstellen van hun 'digitale voordeur'. We pakken eerst het proces aan dat je nu de meeste winst of tijd oplevert. Opschalen kan altijd." }
+                        { q: "Heb ik zelf technische kennis nodig?", a: "Totaal niet. Ik neem het volledige technische proces uit handen - van de code en koppelingen tot het bouwen van de dashboards. Jij krijgt een gebruiksklaar systeem dat simpel werkt, zodat jij je kunt focussen op je business terwijl de techniek op de achtergrond voor je draait." },
+                        { q: "Ik heb al een website, wat nu?", a: "Geen enkel probleem. We kunnen je huidige website onder de loep nemen en optimaliseren voor meer conversie. Heb je al een goede site? Dan kijken we direct hoe we slimme automatiseringen en dashboards kunnen koppelen aan je bestaande systeem om je workflow te versnellen." },
+                        { q: "Hoeveel tijd kost dit mij?", a: "Het begint altijd met een gratis check van 20 minuten. We bespreken je doelen en ik laat je direct zien waar de winst zit. Daarna hangt de tijdsbesteding af van je vraag:\n\n- Automatiseringen: Je zet je vraag bij me uit en ik ga aan de slag. Jij hoeft geen ingewikkelde briefings te schrijven; ik analyseer de mogelijkheden en fix de koppeling (zo veel mogelijk) op de achtergrond.\n\n- Dashboards & Websites: Na de check doe ik een voorstel. Gaan we akkoord? Dan plannen we één call (of ik kom langs) om alles af te stemmen. Daarna bouw ik de dashboard/site en hoef jij alleen nog feedback te geven op het eindresultaat.\n‎ \nKortom: we praten 20 minuten, en daarna neem ik het zware werk van je over." },
+                        { q: "Moet ik alles in één keer doen?", a: "Zeker niet. Sterker nog, ik adviseer vaak om te beginnen met de grootste tijdvreter. We pakken eerst het proces aan dat je nu de meeste frustratie kost. Zodra dat staat en je de eerste tijdwinst pakt, kunnen we stap voor stap andere processen automatiseren of je website uitbouwen. Jij bepaalt het tempo." }
                     ]);
                 }
             } catch (err) {
@@ -710,8 +710,8 @@ const Home = () => {
     return (
         <div className="bg-[var(--background)] min-h-screen">
             <SEO
-                title={pageData?.seoTitle || "Design & AI-automatisering voor mkb en zzpers"}
-                description={pageData?.seoDescription || "Ik bouw websites die converteren, dashboards die inzicht geven en automatiseringen die tijd besparen. Geen gedoe, gewoon resultaat voor mkb en zzpers."}
+                title={pageData?.seoTitle || "Design & AI-Automatisering voor MKB & ZZP | Merlign"}
+                description={pageData?.seoDescription || "Ik bouw websites die converteren, dashboards die inzicht geven en automatiseringen die tijd besparen. Geen gedoe, gewoon resultaat voor MKB & ZZP in Boxtel en online."}
                 path=""
                 faqs={faqs}
             />
