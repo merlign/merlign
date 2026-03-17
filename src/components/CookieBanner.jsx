@@ -91,16 +91,16 @@ const CookieBanner = () => {
                                             <div className="btn-bg bg-primary shadow-[0_0_20px_rgba(99,102,241,0.4)]" />
                                         </button>
 
-                                        <div className="flex flex-row gap-2 justify-between">
+                                        <div className="flex flex-row gap-4 justify-between items-center px-1">
                                             <button
                                                 onClick={() => setShowOptions(true)}
-                                                className="flex-1 font-sans text-[12px] md:text-sm font-bold text-[var(--text)]/40 hover:text-primary transition-colors py-2 text-left"
+                                                className="flex-1 font-sans text-[12px] md:text-sm font-bold text-[var(--text)]/40 hover:text-primary transition-colors py-3 text-left cursor-pointer relative z-20"
                                             >
-                                                Aanpassen
+                                                Instellingen
                                             </button>
                                             <button
                                                 onClick={handleDeclineAll}
-                                                className="flex-1 font-sans text-[12px] md:text-sm font-bold text-[var(--text)]/40 hover:text-[var(--text)] transition-colors py-2 text-right"
+                                                className="flex-1 font-sans text-[12px] md:text-sm font-bold text-[var(--text)]/40 hover:text-[var(--text)] transition-colors py-3 text-right cursor-pointer relative z-20"
                                             >
                                                 Noodzakelijk
                                             </button>
