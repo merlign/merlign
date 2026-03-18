@@ -50,7 +50,7 @@ const Hero = ({ data }) => {
     const heroCtaAlt = data?.heroCtaAlt || "Bekijk diensten";
 
     return (
-        <section ref={heroRef} className="relative h-[100dvh] flex items-center bg-[var(--background)] overflow-hidden">
+        <section ref={heroRef} className="relative min-h-[100dvh] flex items-center bg-[var(--background)] overflow-hidden py-24 md:py-32">
             {/* Cinematic Background Layer */}
             <div className="absolute inset-0 z-0 pointer-events-none overflow-hidden">
                 {/* Clean Moving Grid */}
@@ -116,13 +116,13 @@ const Hero = ({ data }) => {
                 <div className="absolute inset-0 bg-gradient-to-t from-[var(--background)] via-transparent to-transparent opacity-100" />
             </div>
 
-            <div className="relative z-20 w-full content-max-width section-px pt-24 md:pt-40">
+            <div className="relative z-20 w-full content-max-width section-px">
                 <motion.div
                     initial="initial"
                     animate="whileInView"
                     viewport={{ once: true }}
                     variants={staggerContainer}
-                    className="max-w-5xl space-y-12"
+                    className="max-w-5xl space-y-8 md:space-y-12"
                 >
                     <motion.div variants={fadeUp} className="flex items-center mb-4">
                         <div className="group flex items-center bg-[var(--text)]/[0.03] border border-[var(--border)] backdrop-blur-md rounded-xl md:rounded-2xl p-1 md:p-2 pr-3 md:pr-6 shadow-2xl">
@@ -167,7 +167,7 @@ const Hero = ({ data }) => {
                     </motion.div>
                     <motion.div
                         variants={fadeUp}
-                        className="flex flex-wrap items-center gap-4 md:gap-6 pt-2"
+                        className="flex flex-wrap items-center gap-4 md:gap-6 pt-4"
                     >
                         <a href="#contact" className="btn-magnetic group bg-primary text-white border-transparent px-10 md:px-12 py-5 md:py-6 rounded-full shadow-[0_0_20px_rgba(99,102,241,0.3)] w-full sm:w-auto">
                             <span className="relative z-10 text-[16px] md:text-[18px] font-bold">{heroCta}</span>
