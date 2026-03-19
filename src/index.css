@@ -223,6 +223,18 @@ html {
   .text-h3 {
     @apply text-[1.5rem] sm:text-[1.75rem] md:text-[2.25rem] lg:text-[36px] leading-[1.4];
   }
+
+  /* GPU Acceleration & Sub-pixel Smoothing for Windows */
+  .smooth-render {
+    @apply transform-gpu;
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+    -webkit-perspective: 1000;
+    perspective: 1000;
+    -webkit-transform-style: preserve-3d;
+    transform-style: preserve-3d;
+    will-change: transform, opacity;
+  }
 }
 
 .reveal-text {

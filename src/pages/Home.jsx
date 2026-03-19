@@ -99,7 +99,7 @@ const Hero = ({ data }) => {
                             className="absolute text-primary"
                             style={{ left: node.x, top: node.y }}
                         >
-                            <div className="p-8 md:p-10 rounded-[2.5rem] bg-primary/10 border border-primary/20 backdrop-blur-3xl shadow-[0_0_60px_rgba(var(--primary-rgb),0.15)] relative">
+                            <div className="p-8 md:p-10 rounded-[2.5rem] bg-primary/10 border border-primary/20 backdrop-blur-3xl shadow-[0_0_60px_rgba(var(--primary-rgb),0.15)] relative smooth-render">
                                 <div className="absolute inset-0 bg-primary/20 blur-[50px] rounded-full opacity-30" />
                                 <div className="relative z-10 opacity-90">
                                     {React.cloneElement(node.icon, {
@@ -332,7 +332,7 @@ const Services = ({ cmsServices, data }) => {
                             rotate: [0, 90, 0]
                         }}
                         transition={{ duration: 10 + i * 2, repeat: Infinity, ease: "linear" }}
-                        className="absolute w-20 h-20 border border-primary/20 rounded-xl"
+                        className="absolute w-20 h-20 border border-primary/20 rounded-xl smooth-render"
                         style={{
                             top: `${Math.random() * 100}%`,
                             left: `${Math.random() * 100}%`
@@ -373,7 +373,7 @@ const Services = ({ cmsServices, data }) => {
                                 <div className="absolute top-0 right-0 w-64 h-64 bg-primary/10 rounded-full blur-[40px] md:blur-[100px] translate-x-1/2 -translate-y-1/2 opacity-0 group-hover:opacity-100 transition-opacity duration-1000" />
                                 <div className="absolute bottom-0 left-0 w-32 h-32 bg-primary/5 rounded-full blur-[30px] md:blur-[60px] translate-y-1/2 -translate-x-1/2 opacity-0 group-hover:opacity-100 transition-opacity duration-1000" />
 
-                                <div className="w-14 h-14 md:w-20 md:h-20 bg-primary/10 rounded-2xl flex items-center justify-center mb-10 md:mb-16 text-primary group-hover:bg-primary group-hover:text-white transition-all duration-700 transform group-hover:scale-110 group-hover:rotate-3">
+                                <div className="w-14 h-14 md:w-20 md:h-20 bg-primary/10 rounded-2xl flex items-center justify-center mb-10 md:mb-16 text-primary group-hover:bg-primary group-hover:text-white transition-all duration-700 transform group-hover:scale-110 group-hover:rotate-3 smooth-render">
                                     {React.cloneElement(s.icon, { size: 28, className: "group-hover:scale-110 transition-transform duration-500" })}
                                 </div>
 
@@ -415,7 +415,7 @@ const ProcessAnimation = ({ id }) => {
                 <motion.div
                     animate={{ rotate: 360 }}
                     transition={{ duration: 10, repeat: Infinity, ease: "linear" }}
-                    className="w-40 h-40 border border-primary/20 rounded-full flex items-center justify-center"
+                    className="w-40 h-40 border border-primary/20 rounded-full flex items-center justify-center smooth-render"
                 >
                     <motion.div
                         animate={{ scale: [1, 1.2, 1] }}
