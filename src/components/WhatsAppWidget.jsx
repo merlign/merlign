@@ -76,7 +76,7 @@ const WhatsAppWidget = ({ phoneNumber = "31647693209" }) => {
     };
 
     return (
-        <div className="fixed bottom-6 right-6 md:bottom-10 md:right-10 z-[1000] flex flex-col items-end gap-4">
+        <div className="fixed bottom-6 right-6 md:bottom-8 md:right-8 z-[1000] flex flex-col items-end gap-4">
             <AnimatePresence>
                 {!isOpen && !isTooltipDismissed && (
                     <motion.div
@@ -115,7 +115,7 @@ const WhatsAppWidget = ({ phoneNumber = "31647693209" }) => {
                         initial={{ opacity: 0, scale: 0.8, y: 20, transformOrigin: 'bottom right' }}
                         animate={{ opacity: 1, scale: 1, y: 0 }}
                         exit={{ opacity: 0, scale: 0.8, y: 20 }}
-                        className="w-[340px] md:w-[420px] h-[550px] bg-[var(--background)] border border-[var(--border)] rounded-[2.5rem] shadow-2xl overflow-hidden flex flex-col backdrop-blur-2xl mb-4"
+                        className="w-[340px] md:w-[380px] h-[520px] bg-[var(--background)] border border-[var(--border)] rounded-[2.5rem] shadow-2xl overflow-hidden flex flex-col backdrop-blur-2xl mb-4"
                     >
                         {/* Header with Photo */}
                         <div className="bg-primary p-6 md:p-8 flex items-center justify-between shadow-lg relative z-10">
@@ -223,7 +223,7 @@ const WhatsAppWidget = ({ phoneNumber = "31647693209" }) => {
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
                 onClick={() => setIsOpen(!isOpen)}
-                className={`w-14 h-14 md:w-16 md:h-16 rounded-full flex items-center justify-center shadow-2xl transition-all duration-700 relative group overflow-hidden ${isOpen ? 'bg-white' : 'bg-primary shadow-[0_0_30px_rgba(99,102,241,0.3)]'}`}
+                className={`w-14 h-14 md:w-14 md:h-14 rounded-full flex items-center justify-center shadow-2xl transition-all duration-700 relative group overflow-hidden ${isOpen ? 'bg-white' : 'bg-primary shadow-[0_0_30px_rgba(99,102,241,0.3)]'}`}
             >
                 <div className="absolute inset-0 rounded-full bg-primary/40 animate-ping opacity-20 pointer-events-none" />
                 <div className="absolute inset-0 bg-gradient-to-tr from-black/20 via-transparent to-white/10 opacity-50" />

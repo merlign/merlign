@@ -50,7 +50,7 @@ const Hero = ({ data }) => {
     const heroCtaAlt = data?.heroCtaAlt || "Bekijk diensten";
 
     return (
-        <section ref={heroRef} className="relative min-h-[100dvh] flex items-center bg-[var(--background)] overflow-hidden py-24 md:py-32">
+        <section ref={heroRef} className="relative min-h-[100dvh] flex items-center bg-[var(--background)] overflow-hidden py-16 md:py-24">
             {/* Cinematic Background Layer */}
             <div className="absolute inset-0 z-0 pointer-events-none overflow-hidden">
                 {/* Clean Moving Grid */}
@@ -99,12 +99,12 @@ const Hero = ({ data }) => {
                             className="absolute text-primary"
                             style={{ left: node.x, top: node.y }}
                         >
-                            <div className="p-8 md:p-10 rounded-[2.5rem] bg-primary/10 border border-primary/20 backdrop-blur-3xl shadow-[0_0_60px_rgba(var(--primary-rgb),0.15)] relative smooth-render">
+                            <div className="p-7 md:p-8 rounded-[2.5rem] bg-primary/10 border border-primary/20 backdrop-blur-3xl shadow-[0_0_60px_rgba(var(--primary-rgb),0.15)] relative smooth-render">
                                 <div className="absolute inset-0 bg-primary/20 blur-[50px] rounded-full opacity-30" />
                                 <div className="relative z-10 opacity-90">
                                     {React.cloneElement(node.icon, {
                                         size: undefined,
-                                        className: "w-7 h-7 md:w-11 md:h-11"
+                                        className: "w-6 h-6 md:w-9 md:h-9"
                                     })}
                                 </div>
                             </div>
@@ -122,7 +122,7 @@ const Hero = ({ data }) => {
                     animate="whileInView"
                     viewport={{ once: true }}
                     variants={staggerContainer}
-                    className="max-w-5xl space-y-8 md:space-y-12"
+                    className="max-w-4xl space-y-6 md:space-y-10"
                 >
                     <motion.div variants={fadeUp} className="flex items-center mb-4">
                         <div className="group flex items-center bg-[var(--text)]/[0.03] border border-[var(--border)] backdrop-blur-md rounded-xl md:rounded-2xl p-1 md:p-2 pr-3 md:pr-6 shadow-2xl">
@@ -169,12 +169,12 @@ const Hero = ({ data }) => {
                         variants={fadeUp}
                         className="flex flex-wrap items-center gap-4 md:gap-6 pt-4"
                     >
-                        <a href="#contact" className="btn-magnetic group bg-primary text-white border-transparent px-10 md:px-12 py-5 md:py-6 rounded-full shadow-[0_0_20px_rgba(99,102,241,0.3)] w-full sm:w-auto">
-                            <span className="relative z-10 text-[16px] md:text-[18px] font-bold">{heroCta}</span>
+                        <a href="#contact" className="btn-magnetic group bg-primary text-white border-transparent px-8 md:px-10 py-4 md:py-5 rounded-full shadow-[0_0_20px_rgba(99,102,241,0.3)] w-full sm:w-auto">
+                            <span className="relative z-10 text-[16px] md:text-[17px] font-bold">{heroCta}</span>
                             <div className="btn-bg bg-primary" />
                         </a>
-                        <a href="#wat-ik-bouw" className="btn-magnetic group bg-transparent border border-[var(--border)] text-[var(--text)] px-10 md:px-12 py-5 md:py-6 rounded-full w-full sm:w-auto">
-                            <span className="relative z-10 text-[16px] md:text-[18px] font-bold">{heroCtaAlt}</span>
+                        <a href="#wat-ik-bouw" className="btn-magnetic group bg-transparent border border-[var(--border)] text-[var(--text)] px-8 md:px-10 py-4 md:py-5 rounded-full w-full sm:w-auto">
+                            <span className="relative z-10 text-[16px] md:text-[17px] font-bold">{heroCtaAlt}</span>
                             <div className="btn-bg bg-primary" />
                         </a>
                     </motion.div>
@@ -317,7 +317,7 @@ const Services = ({ cmsServices, data }) => {
     });
 
     return (
-        <section id="wat-ik-bouw" className="py-32 bg-[var(--paper)] relative overflow-hidden border-t border-[var(--border)]">
+        <section id="wat-ik-bouw" className="py-24 bg-[var(--paper)] relative overflow-hidden border-t border-[var(--border)]">
             <div className="absolute top-1/2 left-0 w-[60vw] h-[60vw] bg-primary/[0.05] rounded-full blur-[60px] md:blur-[140px] -translate-y-1/2 -translate-x-1/2 pointer-events-none" />
             <div className="absolute bottom-0 right-0 w-[40vw] h-[40vw] bg-primary/[0.03] rounded-full blur-[40px] md:blur-[100px] pointer-events-none" />
             {/* 2D Background Artifacts */}
@@ -359,7 +359,7 @@ const Services = ({ cmsServices, data }) => {
                     </motion.p>
                 </motion.div>
 
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12">
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 md:gap-10">
                     {services.map((s, i) => (
                         <motion.div
                             key={i}
@@ -369,11 +369,11 @@ const Services = ({ cmsServices, data }) => {
                             transition={{ duration: 0.8, delay: i * 0.15 }}
                             className="group relative h-full"
                         >
-                            <div className="bg-[var(--paper)]/40 backdrop-blur-md md:backdrop-blur-xl p-8 md:p-10 rounded-[2.5rem] border border-[var(--border)] group-hover:border-primary/40 group-hover:bg-[var(--paper)]/60 transition-all duration-700 flex flex-col h-full cursor-pointer shadow-sm hover:shadow-2xl overflow-hidden relative">
+                            <div className="bg-[var(--paper)]/40 backdrop-blur-md md:backdrop-blur-xl p-8 md:p-9 rounded-[2.5rem] border border-[var(--border)] group-hover:border-primary/40 group-hover:bg-[var(--paper)]/60 transition-all duration-700 flex flex-col h-full cursor-pointer shadow-sm hover:shadow-2xl overflow-hidden relative">
                                 <div className="absolute top-0 right-0 w-64 h-64 bg-primary/10 rounded-full blur-[40px] md:blur-[100px] translate-x-1/2 -translate-y-1/2 opacity-0 group-hover:opacity-100 transition-opacity duration-1000" />
                                 <div className="absolute bottom-0 left-0 w-32 h-32 bg-primary/5 rounded-full blur-[30px] md:blur-[60px] translate-y-1/2 -translate-x-1/2 opacity-0 group-hover:opacity-100 transition-opacity duration-1000" />
 
-                                <div className="w-14 h-14 md:w-20 md:h-20 bg-primary/10 rounded-2xl flex items-center justify-center mb-10 md:mb-16 text-primary group-hover:bg-primary group-hover:text-white transition-all duration-700 transform group-hover:scale-110 group-hover:rotate-3 smooth-render">
+                                <div className="w-14 h-14 md:w-16 md:h-16 bg-primary/10 rounded-2xl flex items-center justify-center mb-10 md:mb-12 text-primary group-hover:bg-primary group-hover:text-white transition-all duration-700 transform group-hover:scale-110 group-hover:rotate-3 smooth-render">
                                     {React.cloneElement(s.icon, { size: 28, className: "group-hover:scale-110 transition-transform duration-500" })}
                                 </div>
 

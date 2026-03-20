@@ -51,8 +51,8 @@ const Navbar = ({ theme, toggleTheme }) => {
 
     return (
         <>
-            <div className="fixed top-4 md:top-6 left-0 w-full z-[100] px-4 md:px-20 pointer-events-none">
-                <nav className={`max-w-[1500px] mx-auto pointer-events-auto transition-[padding,background-color,border-color,box-shadow] duration-500 ease-out rounded-full border ${isScrolled ? 'bg-[var(--background)]/60 backdrop-blur-xl border-[var(--border)] py-3 md:py-4 px-6 md:px-10 shadow-2xl' : 'bg-[var(--background)]/20 backdrop-blur-sm border-[var(--border)] py-4 md:py-6 px-4'}`}>
+            <div className="fixed top-4 md:top-5 left-0 w-full z-[100] px-4 md:px-12 pointer-events-none">
+                <nav className={`max-w-[1400px] mx-auto pointer-events-auto transition-[padding,background-color,border-color,box-shadow] duration-500 ease-out rounded-full border ${isScrolled ? 'bg-[var(--background)]/60 backdrop-blur-xl border-[var(--border)] py-2 md:py-3 px-6 md:px-8 shadow-2xl' : 'bg-[var(--background)]/20 backdrop-blur-sm border-[var(--border)] py-3 md:py-4 px-4'}`}>
                     <div className="flex items-center justify-between">
                         <Link
                             to="/"
@@ -216,10 +216,10 @@ const Footer = ({ data, theme }) => {
     const linkedinLink = data?.linkedin || "https://www.linkedin.com/in/merlijn-van-der-vleuten-1b9118267/";
 
     return (
-        <footer className="bg-[var(--paper)] text-[var(--text)] pt-12 md:pt-20 pb-12 px-6 md:px-8 relative overflow-hidden">
+        <footer className="bg-[var(--paper)] text-[var(--text)] pt-12 md:pt-16 pb-12 px-6 md:px-8 relative overflow-hidden">
             <div className="absolute bottom-0 left-0 w-full h-[1px] bg-gradient-to-r from-transparent via-primary/20 to-transparent" />
-            <div className="max-w-[1500px] mx-auto px-8 md:px-20 relative z-20">
-                <div className="grid grid-cols-1 md:grid-cols-4 gap-16 md:gap-32 border-b border-[var(--border)] pb-10 md:pb-16">
+            <div className="max-w-[1400px] mx-auto px-8 md:px-16 relative z-20">
+                <div className="grid grid-cols-1 md:grid-cols-4 gap-16 md:gap-24 border-b border-[var(--border)] pb-10 md:pb-12">
                     <div className="md:col-span-2 space-y-10 md:space-y-16">
                         <Link
                             to="/"
