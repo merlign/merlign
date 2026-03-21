@@ -12,8 +12,13 @@ const getEnv = (key) => {
     return '';
 };
 
+const projectId = getEnv('VITE_SANITY_PROJECT_ID');
+if (!projectId) {
+    console.warn('⚠️ WARNING: VITE_SANITY_PROJECT_ID is missing from environment. Using placeholder.');
+}
+
 export const client = createClient({
-    projectId: getEnv('VITE_SANITY_PROJECT_ID'),
+    projectId: projectId || 'placeholder',
     dataset: getEnv('VITE_SANITY_DATASET') || 'production',
     useCdn: true,
     apiVersion: '2023-05-03',

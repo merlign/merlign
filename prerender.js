@@ -5,8 +5,7 @@ import { fileURLToPath } from 'url';
 import { client } from './src/lib/sanity.js';
 
 if (!process.env.VITE_SANITY_PROJECT_ID) {
-    console.error('ERROR: VITE_SANITY_PROJECT_ID is missing from environment variables!');
-    process.exit(1);
+    console.warn('⚠️ WARNING: VITE_SANITY_PROJECT_ID is missing for prerender.js. Using fallbacks.');
 }
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
@@ -40,114 +39,118 @@ async function generate() {
         let routeDesc = 'Ik bouw websites die converteren, dashboards die inzicht geven en automatiseringen die tijd besparen. Geen gedoe, gewoon resultaat.';
         const schemas = [];
 
-        if (route.type === 'service') {
-            const data = await client.fetch(`*[_type == "servicePage" && serviceName == $name][0]`, { name: route.name });
-            if (data) {
-                routeTitle = data.seoTitle || `${data.title || route.name} — Merlign`;
-                routeDesc = data.seoDescription || data.heroSubtitle || routeDesc;
-                seoContent += `<h1>${data.heroSans || ''} ${data.heroSerif || ''}</h1>`;
-                seoContent += `<p>${data.heroSubtitle || ''}</p>`;
+        try {
+            if (route.type === 'service') {
+                const data = await client.fetch(`*[_type == "servicePage" && serviceName == $name][0]`, { name: route.name });
+                if (data) {
+                    routeTitle = data.seoTitle || `${data.title || route.name} — Merlign`;
+                    routeDesc = data.seoDescription || data.heroSubtitle || routeDesc;
+                    seoContent += `<h1>${data.heroSans || ''} ${data.heroSerif || ''}</h1>`;
+                    seoContent += `<p>${data.heroSubtitle || ''}</p>`;
 
-                // Inject features
-                if (data.features?.length > 0) {
-                    seoContent += `<h2>Onze aanpak voor ${route.name}</h2><ul>`;
-                    data.features.forEach(f => {
-                        seoContent += `<li><h3>${f.title}</h3><p>${f.description}</p></li>`;
-                    });
-                    seoContent += `</ul>`;
-                }
+                    // Inject features
+                    if (data.features?.length > 0) {
+                        seoContent += `<h2>Onze aanpak voor ${route.name}</h2><ul>`;
+                        data.features.forEach(f => {
+                            seoContent += `<li><h3>${f.title}</h3><p>${f.description}</p></li>`;
+                        });
+                        seoContent += `</ul>`;
+                    }
 
-                // Inject FAQs
-                if (data.faqs?.length > 0) {
-                    seoContent += `<h2>Veelgestelde vragen</h2>`;
-                    data.faqs.forEach(f => {
-                        seoContent += `<div><h3>${f.question}</h3><p>${f.answer}</p></div>`;
-                    });
-                } else {
-                    // Static fallbacks for each service
-                    if (route.name === 'Website') {
-                        seoContent += `<h2>Veelgestelde vragen over websites</h2>`;
-                        seoContent += `<div><b>Waarom React/Vite?</b> Veel bureaus gebruiken WordPress omdat het makkelijk is voor henzelf, maar het is vaak zwaar en traag...</div>`;
-                        seoContent += `<div><b>Klaar in 2 weken?</b> Ja, door een strakke workflow en focus op wat echt telt voor conversie...</div>`;
-                    } else if (route.name === 'Automation') {
-                        seoContent += `<h2>Veelgestelde vragen over automatisering</h2>`;
-                        seoContent += `<div><b>Waarom n8n?</b> Zapier is prima voor simpele taken, maar wordt extreem duur...</div>`;
-                    } else if (route.name === 'Dashboard') {
-                        seoContent += `<h2>Veelgestelde vragen over dashboards</h2>`;
-                        seoContent += `<div><b>Data bronnen combineren?</b> Ja, dat is juist de kracht van een custom dashboard...</div>`;
+                    // Inject FAQs
+                    if (data.faqs?.length > 0) {
+                        seoContent += `<h2>Veelgestelde vragen</h2>`;
+                        data.faqs.forEach(f => {
+                            seoContent += `<div><h3>${f.question}</h3><p>${f.answer}</p></div>`;
+                        });
+                    } else {
+                        // Static fallbacks for each service
+                        if (route.name === 'Website') {
+                            seoContent += `<h2>Veelgestelde vragen over websites</h2>`;
+                            seoContent += `<div><b>Waarom React/Vite?</b> Veel bureaus gebruiken WordPress omdat het makkelijk is voor henzelf, maar het is vaak zwaar en traag...</div>`;
+                            seoContent += `<div><b>Klaar in 2 weken?</b> Ja, door een strakke workflow en focus op wat echt telt voor conversie...</div>`;
+                        } else if (route.name === 'Automation') {
+                            seoContent += `<h2>Veelgestelde vragen over automatisering</h2>`;
+                            seoContent += `<div><b>Waarom n8n?</b> Zapier is prima voor simpele taken, maar wordt extreem duur...</div>`;
+                        } else if (route.name === 'Dashboard') {
+                            seoContent += `<h2>Veelgestelde vragen over dashboards</h2>`;
+                            seoContent += `<div><b>Data bronnen combineren?</b> Ja, dat is juist de kracht van een custom dashboard...</div>`;
+                        }
                     }
                 }
-            }
-        } else if (route.type === 'home') {
-            const home = await client.fetch(`*[_type == "homePage"][0]`);
-            routeTitle = home?.seoTitle || "Design & AI-Automatisering voor mkb en zzpers";
-            routeDesc = home?.seoDescription || home?.heroSubtitle || "Ik bouw websites die converteren, dashboards die inzicht geven en automatiseringen die tijd besparen. Geen gedoe, gewoon resultaat voor mkb en zzpers.";
+            } else if (route.type === 'home') {
+                const home = await client.fetch(`*[_type == "homePage"][0]`);
+                routeTitle = home?.seoTitle || "Design & AI-Automatisering voor mkb en zzpers";
+                routeDesc = home?.seoDescription || home?.heroSubtitle || "Ik bouw websites die converteren, dashboards die inzicht geven en automatiseringen die tijd besparen. Geen gedoe, gewoon resultaat voor mkb en zzpers.";
 
-            seoContent += `<h1>Cinematic Landing Pages & AI Automatisering</h1>`;
-            seoContent += `<p>${routeDesc}</p>`;
+                seoContent += `<h1>Cinematic Landing Pages & AI Automatisering</h1>`;
+                seoContent += `<p>${routeDesc}</p>`;
 
-            seoContent += `<h2>Diensten</h2>`;
-            seoContent += `<ul>
-                <li>Website ontwerp & realisatie</li>
-                <li>Data dashboards & insights</li>
-                <li>AI & Workflow automatisering</li>
-            </ul>`;
+                seoContent += `<h2>Diensten</h2>`;
+                seoContent += `<ul>
+                    <li>Website ontwerp & realisatie</li>
+                    <li>Data dashboards & insights</li>
+                    <li>AI & Workflow automatisering</li>
+                </ul>`;
 
-            faqs.forEach(f => {
-                seoContent += `<div><h3>${f.question}</h3><p>${f.answer}</p></div>`;
-            });
-        } else if (route.type === 'about') {
-            const about = await client.fetch(`*[_type == "aboutPage"][0]`);
-            routeTitle = about?.seoTitle || "Over Merlign — Design & Strategie";
-            routeDesc = about?.seoDescription || "Lees meer over de visie van Merlijn op design en automatisering.";
-            seoContent += `<h1>Over Merlign</h1>`;
-            seoContent += `<p>Merlijn is een senior digitaal strateeg met meer dan 10 jaar ervaring in design en ontwikkeling.</p>`;
-        } else if (route.type === 'cases') {
-            const cases = await client.fetch(`*[_type == "caseStudy"] | order(order asc)`);
-            routeTitle = "Cases & Resultaten — Merlign";
-            routeDesc = "Bekijk hoe ik andere ondernemers hielp aan meer tijd en overzicht. Van snelle websites tot volledige AI-automatiseringen.";
-
-            seoContent += `<h1>Projecten & Successen</h1><p>${routeDesc}</p>`;
-
-            if (cases?.length > 0) {
-                seoContent += `<div class="cases-list">`;
-                cases.forEach(c => {
-                    seoContent += `<article>
-                        <h2>${c.title}</h2>
-                        <p class="date">Opgeleverd: ${c.completionDate || 'Recent'}</p>
-                        <p><strong>Situatie:</strong> ${c.situatie || ''}</p>
-                        <p><strong>Aanpak:</strong> ${c.aanpak || ''}</p>
-                        <h3>Resultaten:</h3>
-                        <ul>${c.results?.map(r => `<li>${r}</li>`).join('') || ''}</ul>
-                        <blockquote>${c.quote || ''} — ${c.author || ''}</blockquote>
-                    </article>`;
-
-                    schemas.push({
-                        "@context": "https://schema.org",
-                        "@type": "CreativeWork",
-                        "name": c.title,
-                        "description": c.situatie,
-                        "datePublished": c.completionDate,
-                        "author": { "@type": "ProfessionalService", "name": "Merlign" },
-                        "review": {
-                            "@type": "Review",
-                            "reviewBody": c.quote,
-                            "author": { "@type": "Person", "name": c.author }
-                        }
-                    });
+                faqs.forEach(f => {
+                    seoContent += `<div><h3>${f.question}</h3><p>${f.answer}</p></div>`;
                 });
-                seoContent += `</div>`;
+            } else if (route.type === 'about') {
+                const about = await client.fetch(`*[_type == "aboutPage"][0]`);
+                routeTitle = about?.seoTitle || "Over Merlign — Design & Strategie";
+                routeDesc = about?.seoDescription || "Lees meer over de visie van Merlijn op design en automatisering.";
+                seoContent += `<h1>Over Merlign</h1>`;
+                seoContent += `<p>Merlijn is een senior digitaal strateeg met meer dan 10 jaar ervaring in design en ontwikkeling.</p>`;
+            } else if (route.type === 'cases') {
+                const cases = await client.fetch(`*[_type == "caseStudy"] | order(order asc)`);
+                routeTitle = "Cases & Resultaten — Merlign";
+                routeDesc = "Bekijk hoe ik andere ondernemers hielp aan meer tijd en overzicht. Van snelle websites tot volledige AI-automatiseringen.";
+
+                seoContent += `<h1>Projecten & Successen</h1><p>${routeDesc}</p>`;
+
+                if (cases?.length > 0) {
+                    seoContent += `<div class="cases-list">`;
+                    cases.forEach(c => {
+                        seoContent += `<article>
+                            <h2>${c.title}</h2>
+                            <p class="date">Opgeleverd: ${c.completionDate || 'Recent'}</p>
+                            <p><strong>Situatie:</strong> ${c.situatie || ''}</p>
+                            <p><strong>Aanpak:</strong> ${c.aanpak || ''}</p>
+                            <h3>Resultaten:</h3>
+                            <ul>${c.results?.map(r => `<li>${r}</li>`).join('') || ''}</ul>
+                            <blockquote>${c.quote || ''} — ${c.author || ''}</blockquote>
+                        </article>`;
+
+                        schemas.push({
+                            "@context": "https://schema.org",
+                            "@type": "CreativeWork",
+                            "name": c.title,
+                            "description": c.situatie,
+                            "datePublished": c.completionDate,
+                            "author": { "@type": "ProfessionalService", "name": "Merlign" },
+                            "review": {
+                                "@type": "Review",
+                                "reviewBody": c.quote,
+                                "author": { "@type": "Person", "name": c.author }
+                            }
+                        });
+                    });
+                    seoContent += `</div>`;
+                }
+            } else if (route.type === 'contact') {
+                const contact = await client.fetch(`*[_type == "contactInfo"][0]`);
+                routeTitle = contact?.seoTitle || "Contact opnemen — Merlign";
+                routeDesc = contact?.seoDescription || "Heb je een vraag of wil je direct een gratis check inplannen?";
+                seoContent += `<h1>Contact opnemen</h1>`;
+                seoContent += `<p>Plan direct een afspraak in of stel je vraag via de website.</p>`;
+            } else if (route.type === 'simple') {
+                routeTitle = route.title;
+                routeDesc = "Lees onze voorwaarden.";
+                seoContent += `<h1>${route.title}</h1>`;
             }
-        } else if (route.type === 'contact') {
-            const contact = await client.fetch(`*[_type == "contactInfo"][0]`);
-            routeTitle = contact?.seoTitle || "Contact opnemen — Merlign";
-            routeDesc = contact?.seoDescription || "Heb je een vraag of wil je direct een gratis check inplannen?";
-            seoContent += `<h1>Contact opnemen</h1>`;
-            seoContent += `<p>Plan direct een afspraak in of stel je vraag via de website.</p>`;
-        } else if (route.type === 'simple') {
-            routeTitle = route.title;
-            routeDesc = "Lees onze voorwaarden.";
-            seoContent += `<h1>${route.title}</h1>`;
+        } catch (fetchErr) {
+            console.warn(`⚠️ Warning: Content fetch failed for ${route.path}. Using basic fallbacks. Message: ${fetchErr.message}`);
         }
         // Inject content into body
         // We put it inside #root so it's visible to bots but gets replaced by React on hydration
