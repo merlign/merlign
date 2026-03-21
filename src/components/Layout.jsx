@@ -258,7 +258,7 @@ const Footer = ({ data, theme }) => {
                 <div className="flex flex-col md:flex-row justify-between items-center gap-8 md:gap-12 pt-8 md:pt-10 border-t border-[var(--border)]">
                     <div className="flex flex-col md:flex-row items-center gap-4 md:gap-8 font-sans text-[12px] md:text-[14px] font-bold text-[var(--text)]/40">
                         <div className="flex items-center gap-4">
-                            <span>© 2026 Merlign</span>
+                            <span>© Merlign 2026</span>
                             <span className="opacity-40">|</span>
                             <span>KVK: 75629887</span>
                         </div>
