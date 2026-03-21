@@ -13,7 +13,7 @@ const getEnv = (key) => {
 };
 
 export const client = createClient({
-    projectId: getEnv('VITE_SANITY_PROJECT_ID') || '1r5lk62n',
+    projectId: getEnv('VITE_SANITY_PROJECT_ID'),
     dataset: getEnv('VITE_SANITY_DATASET') || 'production',
     useCdn: true,
     apiVersion: '2023-05-03',

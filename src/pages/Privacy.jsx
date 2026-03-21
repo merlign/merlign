@@ -10,6 +10,7 @@ const Privacy = () => {
                 title="Privacyverklaring"
                 description="Privacyverklaring van Merlign. Ontdek hoe ik zorgvuldig omga met jouw persoonsgegevens."
                 path="/privacy"
+                noindex={true}
             />
             <div className="content-max-width section-px relative z-10">
                 <motion.div

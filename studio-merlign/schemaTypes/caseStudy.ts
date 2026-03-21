@@ -91,6 +91,12 @@ export default defineType({
             description: 'Upload hier de hoofdafbeelding of foto voor deze case.'
         }),
         defineField({
+            name: 'completionDate',
+            title: 'Opleverdatum / Jaartal',
+            type: 'string',
+            description: 'Wanneer was dit project klaar? Bijv: "Januari 2024" of "2023". Cruciaal voor SEO/GEO autoriteit.'
+        }),
+        defineField({
             name: 'caseUrl',
             title: 'Project Link URL',
             type: 'url',

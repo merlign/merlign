@@ -1,0 +1,26 @@
+# Merlign
+
+> Merlign helpt MKB en ZZP in Nederland met professionele websites die converteren, 
+> custom data dashboards die inzicht geven, en AI-automatiseringen die tijd besparen. 
+> Senior digital strateeg met 10+ jaar ervaring. Gevestigd in Boxtel, Noord-Brabant.
+
+## Diensten
+
+- [Webdesign & Webdevelopment](https://merlign.com/website): Op maat gemaakte websites live binnen 2 weken. React/Vite, SEO & GEO geoptimaliseerd.
+- [Data Dashboards](https://merlign.com/dashboard): Custom dashboards die alle cijfers op één plek samenvoegen — omzet, leads, traffic, advertentiekosten.
+- [AI Automatisering](https://merlign.com/automatisering): Workflow automatiseringen die handmatige taken elimineren voor kleine bedrijven en freelancers.
+
+## Over Merlign
+
+- [Over Mij](https://merlign.com/over-mij): Senior digital strateeg Merlijn, 10+ jaar ervaring in design en development, Boxtel (NL).
+- [Cases & Resultaten](https://merlign.com/cases): Overzicht van projecten en klantresultaten.
+
+## Contact
+
+- [Contact](https://merlign.com/contact): Gratis intake gesprek van 20 minuten.
+- Doelgroep: MKB en ZZP in Nederland
+
+## Juridisch
+
+- [Privacyverklaring](https://merlign.com/privacy)
+- [Algemene Voorwaarden](https://merlign.com/terms)

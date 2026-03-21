@@ -256,20 +256,20 @@ const Footer = ({ data, theme }) => {
                     </div>
                 </div>
                 <div className="flex flex-col md:flex-row justify-between items-center gap-8 md:gap-12 pt-8 md:pt-10 border-t border-[var(--border)]">
-                    <div className="flex flex-col md:flex-row items-center gap-4 md:gap-8 font-sans text-[13px] md:text-[15px] font-bold text-[var(--text)]/45">
+                    <div className="flex flex-col md:flex-row items-center gap-4 md:gap-8 font-sans text-[12px] md:text-[14px] font-bold text-[var(--text)]/40">
                         <div className="flex items-center gap-4">
-                            <span>© 2026 Merlijn van der Vleuten</span>
+                            <span>© 2026 Merlign</span>
                             <span className="opacity-40">|</span>
                             <span>KVK: 75629887</span>
                         </div>
                         <div className="flex items-center gap-4">
                             <span className="hidden md:inline opacity-40">|</span>
-                            <span>Dennendreef 5-111, 5282 HK Boxtel</span>
+                            <span>Boxtel, Nederland</span>
                         </div>
                     </div>
-                    <div className="flex items-center gap-8 font-sans text-[13px] md:text-[15px] font-bold text-[var(--text)]/30">
-                        <Link to="/privacy" className="hover:text-primary transition-colors">Privacy</Link>
-                        <Link to="/terms" className="hover:text-primary transition-colors">Terms</Link>
+                    <div className="flex items-center gap-8 font-sans text-[12px] md:text-[14px] font-bold text-[var(--text)]/30 group">
+                        <Link to="/privacy" className="hover:text-primary transition-colors hover:translate-y-[-1px] inline-block">Privacybeleid</Link>
+                        <Link to="/terms" className="hover:text-primary transition-colors hover:translate-y-[-1px] inline-block">Algemene Voorwaarden</Link>
                     </div>
                 </div>
             </div>

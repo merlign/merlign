@@ -10,6 +10,7 @@ const Terms = () => {
                 title="Algemene Voorwaarden"
                 description="Algemene Voorwaarden van Merlign. De juridische basis voor onze samenwerking."
                 path="/terms"
+                noindex={true}
             />
             <div className="content-max-width section-px relative z-10">
                 <motion.div
