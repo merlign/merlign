@@ -151,9 +151,11 @@ async function generate() {
         }
         // Inject content into body
         // We put it inside #root so it's visible to bots but gets replaced by React on hydration
+        // We use inline styles to hide it visually from users to avoid FOUC
+        const hiddenStyle = 'position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border-width:0;';
         let finalHtml = TEMPLATE.replace(
             '<div id="root"></div>',
-            `<div id="root">${seoContent}</div>`
+            `<div id="root"><div style="${hiddenStyle}">${seoContent}</div></div>`
         );
 
         // 1. Breadcrumb Schema (All pages)
