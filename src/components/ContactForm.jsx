@@ -18,7 +18,7 @@ const ContactForm = ({ selectedUpgrade: initialUpgrade = null }) => {
     const [lastSubmitTime, setLastSubmitTime] = useState(0);
 
     const upgrades = [
-        { id: 'website', title: "Website die écht verkoopt", tag: "Klaar in 72u" },
+        { id: 'website', title: "Website die écht verkoopt", tag: "Live binnen 2 weken" },
         { id: 'dashboard', title: "Overzicht in cijfers en winst", tag: "Dashboard" },
         { id: 'automation', title: "Randzaken op autopilot", tag: "Automatisering" }
     ];

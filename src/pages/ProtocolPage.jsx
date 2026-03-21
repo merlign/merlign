@@ -22,22 +22,22 @@ const ProtocolPage = () => {
 
     const steps = [
         {
-            day: "Dag 1",
+            day: "Fase 1",
             title: "Identiteit & Fundering",
-            time: "0-24u",
+            time: "Week 1",
             icon: <Rocket className="text-primary" size={24} />,
             tasks: [
                 "Cinematic Intake & Design Keuze",
                 "Project Scaffolding (React/Vite)",
                 "Global Design System & Layout",
-                "Eerste High-Fidelity Draft Live"
+                "Eerste High-Fidelity Draft"
             ],
-            desc: "We leggen de visuele fundering. Geen witte paginas, maar direct een cinematieke ervaring die de toon zet."
+            desc: "We leggen de visuele fundering. Geen witte pagina's, maar direct een cinematieke ervaring die de toon van je merk zet."
         },
         {
-            day: "Dag 2",
+            day: "Fase 2",
             title: "Interactie & CMS",
-            time: "24-48u",
+            time: "Week 1-2",
             icon: <Zap className="text-primary" size={24} />,
             tasks: [
                 "Custom Interactieve Artifacts",
@@ -45,12 +45,12 @@ const ProtocolPage = () => {
                 "Dynamic Content Mapping",
                 "Scroll-trigger Animaties"
             ],
-            desc: "De site komt tot leven. We koppelen de backend zodat je zelf de controle hebt over elk woord en beeld."
+            desc: "De site komt tot leven. We bouwen de interactie en koppelen de backend zodat je zelf de controle hebt over elk woord en beeld."
         },
         {
-            day: "Dag 3",
+            day: "Fase 3",
             title: "Beveiliging & Launch",
-            time: "48-72u",
+            time: "Week 2",
             icon: <Shield className="text-primary" size={24} />,
             tasks: [
                 "Security Lockdown (Keys & Forms)",
@@ -58,15 +58,15 @@ const ProtocolPage = () => {
                 "Performance Audit & Mobile Polish",
                 "Officiële Livegang"
             ],
-            desc: "De laatste 1% die het verschil maakt tussen een website en een digitaal instrument. Veilig, snel en vindbaar."
+            desc: "De verfijning die het verschil maakt. We zorgen dat je systeem veilig, razendsnel en direct vindbaar is voor je klanten."
         }
     ];
 
     return (
         <div className="bg-[var(--background)] min-h-screen">
             <SEO
-                title="Het 72-uurs Protocol"
-                description="Hoe ik in 3 dagen een high-end, cinematieke website voor je bouw."
+                title="Het Operationeel Protocol"
+                description="Hoe ik in 2 weken een high-end, cinematieke website voor je bouw."
                 noindex={true}
             />
 
@@ -92,7 +92,7 @@ const ProtocolPage = () => {
                             variants={fadeUp}
                             className="text-xl md:text-2xl font-sans font-light italic text-[var(--text)]/70 max-w-2xl leading-relaxed"
                         >
-                            Met de kracht van AI-gedreven development transformeer ik jouw visie in 72 uur naar een premium digitale ervaring. Geen compromissen, alleen pure snelheid.
+                            Met de kracht van moderne technieken en AI-gedreven development transformeer ik jouw visie binnen 2 weken naar een premium digitale ervaring. Geen compromissen, alleen pure precisie.
                         </motion.p>
                     </motion.div>
                 </div>
@@ -154,7 +154,7 @@ const ProtocolPage = () => {
                             <Clock className="text-primary animate-pulse" size={48} />
                         </div>
                         <h2 className="text-3xl md:text-5xl font-sans font-bold text-[var(--text)] italic leading-[1.4]">
-                            "De meeste ondernemers wachten <span className="text-primary">weken</span> op een eerste opzet. <br className="hidden md:block" /> Wij lanceren het volledige instrument in <span className="text-primary">dagen</span>."
+                            "De meeste ondernemers wachten <span className="text-primary">maanden</span> op een nieuwe site. <br className="hidden md:block" /> Wij lanceren het volledige instrument binnen <span className="text-primary">veertien dagen</span>."
                         </h2>
                         <div className="w-24 h-[2px] bg-primary mx-auto" />
                     </motion.div>
@@ -167,7 +167,7 @@ const ProtocolPage = () => {
                     <div className="bg-primary/5 rounded-[3rem] p-12 md:p-20 border border-primary/20 flex flex-col md:flex-row items-center justify-between gap-12 text-center md:text-left">
                         <div className="space-y-4">
                             <h3 className="text-3xl md:text-5xl font-sans font-bold text-[var(--text)]">Klaar voor de start?</h3>
-                            <p className="text-xl font-sans font-light italic text-[var(--text)]/60">Laten we vandaag nog die 72 uur in laten gaan.</p>
+                            <p className="text-xl font-sans font-light italic text-[var(--text)]/60">Laten we die eerste fase direct activeren.</p>
                         </div>
                         <a href="/contact" className="btn-magnetic group bg-primary text-white px-12 py-6 rounded-full flex items-center gap-4">
                             <span className="relative z-10 text-lg font-bold">Plan je intake</span>

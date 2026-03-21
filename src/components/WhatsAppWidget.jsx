@@ -24,6 +24,34 @@ const WhatsAppWidget = ({ phoneNumber = "31647693209" }) => {
         }
     }, [chatHistory, isOpen, isTyping]);
 
+    const AI_KNOWLEDGE = [
+        { keywords: ["hoe", "website", "2 weken", "veertien", "14"], answer: "Focus en de juiste tools. Terwijl grote bureaus wekenlang handmatig bouwen, gebruik ik AI voor de eerste opzet en de technische structuur. Zodra jij je content aanlevert, ga ik full-focus aan de slag. Geen maandenlang gewacht, maar direct resultaat." },
+        { keywords: ["kwaliteit", "snel", "goed"], answer: "Zeker weten. De snelheid zit 'm in het overslaan van handmatig werk door AI-tools. De kwaliteit zit in mijn oog voor design en de techniek onder de motorkap. Je krijgt een snelle, veilige en moderne site, alleen zonder de bureau-traagheid." },
+        { keywords: ["tekst", "foto", "geen content", "midjourney", "copywriting"], answer: "Geen stress. Ik gebruik AI-copywriting om teksten te schrijven die ook echt verkopen en tools als Midjourney voor visuals die je nergens anders ziet. We schaven het samen bij tot het 100% als 'jou' voelt." },
+        { keywords: ["google", "seo", "vindbaarheid", "geoptimaliseerd"], answer: "Ja, dat is de basis. Ik bouw geen digitale folder die ergens op pagina 10 stof staat te happen. Ik zet de technische SEO direct goed neer en zorg dat 'ie razendsnel laadt. Google (en je bezoeker) houdt daarvan." },
+        { keywords: ["aanpassen", "zelf", "live", "beheren"], answer: "Tuurlijk. Ik bouw je site zo dat je niet voor elke punt of komma bij mij hoeft aan te kloppen. Je krijgt een simpele omgeving waarin je zelf teksten en foto's kunt fixen. Kom je er niet uit? Dan app je me gewoon even." },
+        { keywords: ["dashboard", "overzicht", "rust", "sales", "leads"], answer: "Het geeft je rust en overzicht. In plaats van te graven in Excel of tien verschillende apps, breng ik al je data (sales, leads, ads) samen op één scherm. Je ziet in één oogopslag hoe je business ervoor staat." },
+        { keywords: ["ai", "cijfers", "trends", "afwijkingen"], answer: "AI kijkt mee met je cijfers. Het vindt trends of afwijkingen die je zelf waarschijnlijk over het hoofd ziet. Het dashboard vertelt je dus niet alleen wat er is gebeurd, maar geeft je ook een seintje waar je kansen liggen." },
+        { keywords: ["software", "koppelen", "crm", "boekhoud"], answer: "Vrijwel alles. Of het nu je boekhoudpakket, je webshop of je CRM is; ik knoop de boel aan elkaar. Alles praat met elkaar en komt samen in jouw persoonlijke cockpit." },
+        { keywords: ["groot", "bedrijf", "mkb", "betaalbaar"], answer: "Juist niet. Als kleinere ondernemer heb je vaak minder tijd voor rapportages. Door AI is het bouwen van zo’n dashboard nu ook voor het MKB betaalbaar en bespaart het je simpelweg uren puzzelen per week." },
+        { keywords: ["data", "zien", "verkeer", "voorraad"], answer: "Alles wat digitaal is. Van je websiteverkeer en conversies tot aan je voorraad of de productiviteit van je team. We bepalen samen welke cijfers voor jou echt het verschil maken." },
+        { keywords: ["precies", "automatiseren", "herhalend", "hekel aan"], answer: "Eigenlijk alles wat je nu \"met de hand\" doet en stiekem een hekel aan hebt. Denk aan het beantwoorden van standaard mails, facturen verwerken of leads opvolgen. Als het een herhalend klusje is, kan ik het automatiseren." },
+        { keywords: ["robot", "script", "slim", "extra medewerker"], answer: "Juist niet. Ik gebruik AI om die processen \"slim\" te maken. Een chatbot die écht begrijpt wat de klant vraagt, of een mail die precies op het juiste moment de juiste info geeft. Het voelt als een extra medewerker, niet als een scriptje." },
+        { keywords: ["tijd", "besparen", "hoeveel", "werkweken"], answer: "Reken maar uit: als we een proces dat je dagelijks een half uur kost automatiseren, win je per jaar twee volledige werkweken terug. Wat zou jij doen met die extra tijd?" },
+        { keywords: ["ingewikkeld", "moeilijk", "naadloos"], answer: "Voor mij wel, voor jou niet. Ik regel de techniek onder de motorkap en zorg dat het naadloos aansluit op hoe jij nu al werkt. Je merkt alleen dat je ineens veel meer tijd overhoudt." },
+        { keywords: ["chatbot", "klanten", "klantenservice"], answer: "Zeker weten! Ik kan slimme bots bouwen die je klantenservice overnemen, afspraken inplannen of zelfs producten verkopen terwijl jij ligt te slapen." },
+        { keywords: ["kosten", "prijs", "prijzen", "pakketten"], answer: "Ik werk met transparante pakketten zodat je precies weet waar je aan toe bent. Geen \"uurtje-factuurtje\" verrassingen achteraf. De prijs hangt af van je wensen." },
+        { keywords: ["maandelijks", "onderhoud", "hosting", "beveiliging"], answer: "Ja, ik bied een vast bedrag voor hosting, beveiliging en technisch onderhoud. Zo zorg ik dat alles veilig is en blijft draaien, terwijl jij je focust op je business." },
+        { keywords: ["proces", "samenwerken", "klik", "snelle kennismaking"], answer: "We starten met een snelle kennismaking. Als we een klik hebben, maken we een plan. Jij levert de content aan, ik zet de AI-turbo erop en binnen 2 weken staat de basis van je nieuwe site of systeem." },
+        { keywords: ["waarom", "bureau", "kiezen", "korte lijnen"], answer: "Omdat je bij mij korte lijnen hebt. Geen accountmanagers of wachttijden. Je krijgt de snelheid van de nieuwste AI-tech, gecombineerd met mijn persoonlijke aandacht en design-oog." },
+        { keywords: ["vragen", "na de lancering", "hulp", "tweak"], answer: "Ik laat je niet zwemmen. Na de lancering ben ik er nog steeds voor je. Of het nu gaat om een kleine tweak of hulp bij de techniek; ik help je gewoon verder." },
+        { keywords: ["voorbeelden", "portfolio", "cases", "werk"], answer: "Natuurlijk! Check mijn portfolio op de site. Daar zie je websites en systemen die ik onlangs heb opgeleverd." },
+        { keywords: ["tools", "echt", "serieus gereedschap"], answer: "De tech van nu (2026) is bizar goed. Het is niet meer \"een beetje spelen\", maar serieus gereedschap. Ik laat je tijdens een demo graag zien hoe ik het voor jouw business inzet." },
+        { keywords: ["eenmanszaak", "alleen", "expert"], answer: "Klopt! En dat is jouw voordeel. Je schakelt direct met de bouwer. Voor hele grote trajecten heb ik een netwerk van andere AI-experts die ik kan invliegen, maar ik blijf altijd je aanspiekpunt." },
+        { keywords: ["demo", "videobellen", "bakkie doen", "gratis demo"], answer: "Altijd goed. We kunnen even videobellen of een bakkie doen, dan laat ik je zien wat er mogelijk is voor jouw specifieke situatie." },
+        { keywords: ["naam", "merlign", "vandaan", "align"], answer: "Een mix van mijn naam (Merlijn) en 'align' (zorgen dat techniek en business op één lijn liggen). En oké, een beetje magie van de tovenaar Merlijn past ook wel bij wat ik met AI doe, toch? 😉" }
+    ];
+
     const handleSend = async () => {
         if (!message.trim()) return;
 
@@ -32,30 +60,28 @@ const WhatsAppWidget = ({ phoneNumber = "31647693209" }) => {
         setMessage('');
         setIsTyping(true);
 
-        // Simulated AI logic with your specific answers
         setTimeout(() => {
-            let response = "";
             const lowerMsg = userMsg.toLowerCase();
+            let bestMatch = null;
+            let maxScore = 0;
 
-            if (lowerMsg.includes('website')) {
-                response = "Ik bouw high-end maatwerk websites die binnen 72 uur live kunnen staan. Focus ligt op conversie en design voor MKB en solo ondernemers.";
-            } else if (lowerMsg.includes('dashboard')) {
-                response = "Voor een dashboard heb ik ongeveer 7 dagen nodig. Dit komt omdat ik API-koppelingen leg en alles grondig moet testen voor een foutloos inzicht.";
-            } else if (lowerMsg.includes('automatisering') || lowerMsg.includes('ai')) {
-                response = "Ik help je repetitief werk te automatiseren. Om te starten heb ik vaak toegang nodig tot je data of accounts, maar dat bespreken we in de gratis check.";
-            } else if (lowerMsg.includes('prijs') || lowerMsg.includes('kosten') || lowerMsg.includes('duur')) {
-                response = "Prijzen zijn bij mij altijd op basis van maatwerk, omdat elk bedrijf anders is. Onderhoud bied ik overigens al aan vanaf €35,- per maand.";
-            } else if (lowerMsg.includes('nodig') || lowerMsg.includes('starten') || lowerMsg.includes('hoe werkt')) {
-                response = "Voor de start heb ik toegang tot data en design assets nodig. We beginnen met een gratis check van 20 minuten, daarna gaan we een uurtje de diepte in.";
-            } else if (lowerMsg.includes('wie') || lowerMsg.includes('voor wie') || lowerMsg.includes('doelgroep')) {
-                response = "Ik werk het liefst voor ambitieuze MKB-ondernemers en solo ondernemers die hun business willen professionaliseren en automatiseren.";
-            } else {
-                response = "Interessante vraag! Ik kan hier dieper op ingaan tijdens een korte call of via WhatsApp. Zal ik je doorverbinden naar m'n persoonlijke app?";
-            }
+            AI_KNOWLEDGE.forEach(item => {
+                let score = 0;
+                item.keywords.forEach(word => {
+                    if (lowerMsg.includes(word.toLowerCase())) score++;
+                });
+
+                if (score > maxScore) {
+                    maxScore = score;
+                    bestMatch = item.answer;
+                }
+            });
+
+            const response = bestMatch || "Interessante vraag! Ik kan hier dieper op ingaan tijdens een korte call of via WhatsApp. Zal ik je doorverbinden naar m'n persoonlijke app?";
 
             setChatHistory(prev => [...prev, { role: 'assistant', text: response }]);
             setIsTyping(false);
-        }, 1500);
+        }, 1200);
     };
 
     const handleWhatsAppRedirect = () => {

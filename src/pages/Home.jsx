@@ -270,8 +270,8 @@ const Services = ({ cmsServices, data }) => {
         {
             icon: <LayoutIcon />,
             title: "Nieuwe website die écht verkoopt",
-            subtitle: "Live in 72u",
-            desc: "Je wacht al te lang op die nieuwe site. Ik bouw een strakke website die direct klanten voor je binnenhaalt. Geen maanden gedoe, volgende week ben je live.",
+            subtitle: "Live binnen 2 weken",
+            desc: "Je wacht al te lang op die nieuwe site. Ik bouw een strakke website die direct klanten voor je binnenhaalt. Geen maanden gedoe, binnen 14 dagen ben je live.",
             cta: "Bekijk website aanpak",
             href: "/website"
         },

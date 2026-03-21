@@ -44,7 +44,7 @@ const Navbar = ({ theme, toggleTheme }) => {
     ];
 
     const services = [
-        { label: 'Website', href: '/website', desc: 'Live in 72 uur' },
+        { label: 'Website', href: '/website', desc: 'Live in 2 weken' },
         { label: 'Dashboard', href: '/dashboard', desc: 'Direct inzicht' },
         { label: 'Automatisering', href: '/automatisering', desc: 'Tijd terug' }
     ];

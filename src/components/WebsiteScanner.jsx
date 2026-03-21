@@ -490,7 +490,7 @@ const WebsiteScanner = () => {
                                                         </div>
                                                         <div className="text-center md:text-left space-y-1">
                                                             <p className="text-white font-sans font-bold text-sm">Zullen we dit samen fixen?</p>
-                                                            <p className="text-[var(--text)]/60 font-sans text-xs italic">Ik help je dit binnen 72 uur op te lossen in een sprint.</p>
+                                                            <p className="text-[var(--text)]/60 font-sans text-xs italic">Ik help je dit binnen 14 dagen op te lossen in een sprint.</p>
                                                         </div>
                                                     </motion.div>
                                                 </div>

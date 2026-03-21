@@ -26,7 +26,7 @@ export default function App() {
                     <Route path="/automatisering" element={<AutomationService />} />
                     <Route path="/privacy" element={<Privacy />} />
                     <Route path="/terms" element={<Terms />} />
-                    <Route path="/72h-sprint" element={<ProtocolPage />} />
+                    <Route path="/het-protocol" element={<ProtocolPage />} />
                 </Routes>
             </Layout>
         </Router>

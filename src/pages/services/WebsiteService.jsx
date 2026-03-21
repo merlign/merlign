@@ -38,11 +38,11 @@ const WebsiteService = () => {
 
     const heroSans = data?.heroSans || "Een website die voor je werkt";
     const heroSerif = data?.heroSerif || "terwijl jij onderneemt.";
-    const heroSubtitle = data?.heroSubtitle || "Design dat niet alleen prachtig oogt, maar ook keihard converteert. En dat al binnen 72 uur.";
+    const heroSubtitle = data?.heroSubtitle || "Design dat niet alleen prachtig oogt, maar ook keihard converteert. En dat al binnen twee weken.";
 
     const staticFeatures = [
         { title: "Strategie voor design", desc: "Ik bouw een logische route van bezoeker naar aanvraag. Geen losse flodders, maar een interface die het werk voor je doet." },
-        { title: "Live in 72 uur", desc: "Na onze intake staat je nieuwe basis binnen drie dagen live. Snelle sprints, direct resultaat, geen gedoe." },
+        { title: "Live binnen 2 weken", desc: "Zodra we akkoord zijn, start de bouw direct. Geen maanden gedoe: binnen 14 dagen staat je nieuwe fundering online, pixel-perfect en klaar voor de start." },
         { title: "SEO & GEO geoptimaliseerd", desc: "Een bliksemsnel systeem dat direct hoog scoort in Google & AI. Je bent zichtbaar waar je klanten zoeken, zonder dat je er zelf omkijken naar hebt." },
         { title: "Zorgeloos onderhoud", desc: "Jouw site blijft veilig en razendsnel op de achtergrond. Jij focust op je klanten, ik zorg dat de machine blijft draaien." },
         { title: "Makkelijk te beheren", desc: "Zelf een tekst of foto aanpassen is een fluitje van een cent. Je bent nooit meer afhankelijk van een trage developer." }
@@ -69,12 +69,12 @@ const WebsiteService = () => {
     return (
         <div className="bg-[var(--background)] min-h-screen">
             <SEO
-                title={data?.seoTitle || "Een nieuwe website in 72 uur | Webdesign door Merlign"}
-                description={data?.seoDescription || "Je wacht al te lang op die nieuwe site. Ik bouw een strakke website die écht verkoopt en binnen 3 dagen live is. Geen gedoe, direct resultaat voor jouw business."}
+                title={data?.seoTitle || "Een nieuwe website binnen 2 weken | Webdesign door Merlign"}
+                description={data?.seoDescription || "Je wacht al te lang op die nieuwe site. Ik bouw een strakke website die écht verkoopt en binnen 14 dagen live is. Geen gedoe, direct resultaat voor jouw business."}
                 path="/website"
                 services={[{
                     name: "Website Design & Development",
-                    description: data?.heroSubtitle || "Design dat niet alleen prachtig oogt, maar ook keihard converteert. En dat al binnen 72 uur.",
+                    description: data?.heroSubtitle || "Design dat niet alleen prachtig oogt, maar ook keihard converteert. En dat al binnen twee weken.",
                     features: features
                 }]}
                 faqs={data?.faqs?.length > 0 ? data.faqs.map(f => ({ q: f.question, a: f.answer })) : staticFeatures.map(f => ({ q: f.title, a: f.desc }))} // Use staticFeatures as fallback for FAQ schema if no CMS FAQs
