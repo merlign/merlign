@@ -1,7 +1,13 @@
+import 'dotenv/config';
 import fs from 'fs';
 import path from 'path';
 import { fileURLToPath } from 'url';
 import { client } from './src/lib/sanity.js';
+
+if (!process.env.VITE_SANITY_PROJECT_ID) {
+    console.error('ERROR: VITE_SANITY_PROJECT_ID is missing from environment variables!');
+    process.exit(1);
+}
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const DIST_DIR = path.resolve(__dirname, 'dist');
@@ -32,6 +38,7 @@ async function generate() {
         let seoContent = '';
         let routeTitle = 'Merlign — Webdesign & AI-automatisering';
         let routeDesc = 'Ik bouw websites die converteren, dashboards die inzicht geven en automatiseringen die tijd besparen. Geen gedoe, gewoon resultaat.';
+        const schemas = [];
 
         if (route.type === 'service') {
             const data = await client.fetch(`*[_type == "servicePage" && serviceName == $name][0]`, { name: route.name });
@@ -148,9 +155,6 @@ async function generate() {
             '<div id="root"></div>',
             `<div id="root">${seoContent}</div>`
         );
-
-        // Generate Structured Data (JSON-LD)
-        const schemas = [];
 
         // 1. Breadcrumb Schema (All pages)
         schemas.push({
