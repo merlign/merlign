@@ -30,7 +30,11 @@
             "destination": "/robots.txt"
         },
         {
-            "source": "/(?!.*\\.).*",
+            "source": "/llms.txt",
+            "destination": "/llms.txt"
+        },
+        {
+            "source": "/((?!api/).*)",
             "destination": "/index.html"
         }
     ]
