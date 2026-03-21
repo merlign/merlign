@@ -243,5 +243,5 @@ generate().then(() => {
     process.exit(0);
 }).catch(err => {
     console.error('SEO Injection failed:', err);
-    process.exit(0);
+    process.exit(1);
 });
