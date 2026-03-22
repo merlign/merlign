@@ -3,16 +3,33 @@ export const config = {
     regions: ['iad1'],
 };
 
+import { z } from 'zod';
+
+const UrlSchema = z.object({
+    url: z.string().url('Ongeldige URL indeling. Zorg dat je begint met http:// of https://')
+});
+
 export default async function handler(req) {
     if (req.method !== 'POST') {
         return new Response('Method not allowed', { status: 405 });
     }
 
-    const { url } = await req.json();
-
-    if (!url) {
-        return new Response('URL is required', { status: 400 });
+    let body;
+    try {
+        body = await req.json();
+    } catch (e) {
+        return new Response('Ongeldige JSON body.', { status: 400 });
     }
+
+    // --- ZOD VALIDATION ---
+    const validation = UrlSchema.safeParse(body);
+    if (!validation.success) {
+        return new Response(JSON.stringify({
+            error: validation.error.errors[0].message
+        }), { status: 400, headers: { 'Content-Type': 'application/json' } });
+    }
+
+    const { url } = validation.data;
 
     // --- 🛡️ SSRF PROTECTION ---
     try {
