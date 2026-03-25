@@ -215,12 +215,12 @@ const WhatsAppWidget = ({ phoneNumber = "31647693209" }) => {
                                     }}
                                     onChange={(e) => setMessage(e.target.value)}
                                     placeholder="Vraag iets aan de AI..."
-                                    className="w-full bg-[var(--text)]/5 border border-[var(--border)] rounded-2xl p-4 pr-14 text-[var(--text)] font-sans text-sm focus:outline-none focus:border-primary transition-all min-h-[60px] max-h-[120px] resize-none"
+                                    className="w-full bg-white border border-[var(--border)] rounded-2xl p-4 pr-14 text-slate-900 font-sans text-sm focus:outline-none focus:border-primary transition-all min-h-[60px] max-h-[120px] resize-none shadow-sm placeholder:text-slate-400"
                                 />
                                 <button
                                     onClick={handleSend}
                                     disabled={!message.trim() || isTyping}
-                                    className={`absolute right-3 top-1/2 -translate-y-1/2 p-3 rounded-full transition-all ${message.trim() ? 'bg-primary text-white scale-100 shadow-lg' : 'bg-[var(--text)]/5 text-[var(--text)]/20 scale-90'}`}
+                                    className={`absolute right-3 top-1/2 -translate-y-1/2 p-3 rounded-full transition-all ${message.trim() ? 'bg-primary text-white scale-100 shadow-lg' : 'bg-slate-100 text-slate-300 scale-90'}`}
                                 >
                                     <Send size={16} />
                                 </button>
