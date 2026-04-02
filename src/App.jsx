@@ -18,7 +18,7 @@ export default function App() {
         <Router>
             <Routes>
                 {/* Landing page without standard Layout */}
-                <Route path="/advies" element={<Advies />} />
+                <Route path="/website-lp" element={<Advies />} />
 
                 {/* Default pages with Layout */}
                 <Route
