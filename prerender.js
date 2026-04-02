@@ -23,7 +23,8 @@ const routes = [
     { path: '/privacy', type: 'simple', title: 'Privacy Policy — Merlign' },
     { path: '/terms', type: 'simple', title: 'Terms of Service — Merlign' },
     { path: '/het-protocol', type: 'simple', title: 'Het Protocol — Merlign', noindex: true },
-    { path: '/website-lp', type: 'simple', title: 'Professionele website in twee weken | Merlign', noindex: true }
+    { path: '/website-lp', type: 'simple', title: 'Professionele website in twee weken | Merlign', noindex: true },
+    { path: '/404', type: 'simple', title: '404 - Pagina niet gevonden | Merlign', noindex: true }
 ];
 
 async function generate() {
@@ -235,7 +236,7 @@ async function generate() {
 
         finalHtml = finalHtml.replace('</head>', `${metaTags}\n</head>`);
 
-        const relativePath = route.path === '/' ? '/index.html' : `${route.path}/index.html`;
+        const relativePath = route.path === '/' ? '/index.html' : route.path === '/404' ? '/404.html' : `${route.path}/index.html`;
         const savePath = path.join(DIST_DIR, relativePath);
         const saveDir = path.dirname(savePath);
 

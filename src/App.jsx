@@ -37,11 +37,11 @@ export default function App() {
                                 <Route path="/privacy" element={<Privacy />} />
                                 <Route path="/terms" element={<Terms />} />
                                 <Route path="/het-protocol" element={<ProtocolPage />} />
+                                <Route path="*" element={<NotFound />} />
                             </Routes>
                         </Layout>
                     }
                 />
-                <Route path="*" element={<NotFound />} />
             </Routes>
         </Router>
     );
