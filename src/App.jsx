@@ -11,24 +11,36 @@ import AutomationService from './pages/services/AutomationService';
 import Privacy from './pages/Privacy';
 import Terms from './pages/Terms';
 import ProtocolPage from './pages/ProtocolPage';
+import Advies from './pages/Advies';
 
 export default function App() {
     return (
         <Router>
-            <Layout>
-                <Routes>
-                    <Route path="/" element={<Home />} />
-                    <Route path="/over-mij" element={<About />} />
-                    <Route path="/cases" element={<Cases />} />
-                    <Route path="/contact" element={<ContactPage />} />
-                    <Route path="/website" element={<WebsiteService />} />
-                    <Route path="/dashboard" element={<DashboardService />} />
-                    <Route path="/automatisering" element={<AutomationService />} />
-                    <Route path="/privacy" element={<Privacy />} />
-                    <Route path="/terms" element={<Terms />} />
-                    <Route path="/het-protocol" element={<ProtocolPage />} />
-                </Routes>
-            </Layout>
+            <Routes>
+                {/* Landing page without standard Layout */}
+                <Route path="/advies" element={<Advies />} />
+
+                {/* Default pages with Layout */}
+                <Route
+                    path="/*"
+                    element={
+                        <Layout>
+                            <Routes>
+                                <Route path="/" element={<Home />} />
+                                <Route path="/over-mij" element={<About />} />
+                                <Route path="/cases" element={<Cases />} />
+                                <Route path="/contact" element={<ContactPage />} />
+                                <Route path="/website" element={<WebsiteService />} />
+                                <Route path="/dashboard" element={<DashboardService />} />
+                                <Route path="/automatisering" element={<AutomationService />} />
+                                <Route path="/privacy" element={<Privacy />} />
+                                <Route path="/terms" element={<Terms />} />
+                                <Route path="/het-protocol" element={<ProtocolPage />} />
+                            </Routes>
+                        </Layout>
+                    }
+                />
+            </Routes>
         </Router>
     );
 }
