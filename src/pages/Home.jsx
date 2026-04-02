@@ -50,7 +50,8 @@ const Hero = ({ data }) => {
     const heroCtaAlt = data?.heroCtaAlt || "Bekijk diensten";
 
     return (
-        <section ref={heroRef} className="relative min-h-[100dvh] flex items-center bg-[var(--background)] overflow-hidden py-16 md:py-24">
+        <>
+            <section ref={heroRef} className="relative min-h-[100dvh] flex items-center bg-[var(--background)] overflow-hidden py-16 md:py-24">
             {/* Cinematic Background Layer */}
             <div className="absolute inset-0 z-0 pointer-events-none overflow-hidden">
                 {/* Clean Moving Grid */}
@@ -181,69 +182,113 @@ const Hero = ({ data }) => {
                 </motion.div>
             </div>
 
-            {/* Logo Slider Section */}
             <div className="absolute bottom-0 left-0 w-full bg-[var(--text)]/[0.02] border-t border-[var(--border)] py-6 md:py-8 overflow-hidden z-20">
                 <div className="content-max-width section-px">
                     <div className="flex flex-col md:flex-row items-center gap-8 md:gap-12">
                         {/* Text Part */}
-                        <div className="whitespace-nowrap flex-shrink-0">
+                        <div className="whitespace-nowrap flex-shrink-0 flex items-center gap-4">
                             <p className="font-sans text-[var(--text)]/60 text-sm md:text-base font-medium tracking-tight">
                                 {data?.logoSliderText || "Deze bedrijven gingen je al voor"}
                             </p>
+                            <ChevronDown className="md:hidden w-4 h-4 text-primary animate-bounce shadow-glow" />
                         </div>
 
-                        {/* Slider Part */}
-                        <div className="relative w-full overflow-hidden">
+                        {/* Slider Part - Desktop only here */}
+                        <div className="relative w-full overflow-hidden hidden md:block">
                             {/* Gradient Fades for Slider */}
                             <div className="absolute inset-y-0 left-0 w-20 bg-gradient-to-r from-[var(--background)] to-transparent z-10 hidden md:block" />
                             <div className="absolute inset-y-0 right-0 w-20 bg-gradient-to-l from-[var(--background)] to-transparent z-10 hidden md:block" />
-                            
+
                             <motion.div 
-                                className="flex items-center gap-10 md:gap-20"
-                                animate={{
-                                    x: [0, -1500],
-                                }}
-                                transition={{
-                                    duration: 40,
-                                    repeat: Infinity,
-                                    ease: "linear",
-                                }}
+                                className="flex items-center gap-20 w-max"
+                                animate={{ x: ["0%", "-50%"] }}
+                                transition={{ duration: 30, repeat: Infinity, ease: "linear" }}
                             >
-                                {/* Duplicated for seamless loop */}
-                                {data?.logos && data.logos.length > 0 ? (
-                                    [...data.logos, ...data.logos, ...data.logos, ...data.logos, ...data.logos, ...data.logos].map((logo, i) => (
-                                        <div key={i} className="flex-shrink-0 flex items-center justify-center min-w-[90px] md:min-w-[130px]">
-                                            <img 
-                                                src={urlFor(logo.image).url()} 
-                                                alt={logo.alt || "Client Logo"} 
-                                                className="h-6 md:h-9 w-auto max-w-[120px] md:max-w-[180px] grayscale-logo object-contain opacity-60 hover:opacity-100 transition-opacity"
-                                            />
-                                        </div>
-                                    ))
-                                ) : (
-                                    // Fallback logos
-                                    [...Array(20)].map((_, i) => (
-                                        <div key={i} className="flex-shrink-0 flex items-center justify-center min-w-[90px] md:min-w-[130px]">
-                                            <img 
-                                                src={[
-                                                    "/logos/logo.svg",
-                                                    "/logos/Upfit-logo-groen_rgb (1).svg",
-                                                    "/logos/Studiofit_weblogo.png",
-                                                    "/logos/logo-fer-copy-1-scaled-300x258.png",
-                                                    "/logos/Logo_SocialManners-w.svg"
-                                                ][i % 5]} 
-                                                alt="Partner Logo" 
-                                                className="h-6 md:h-9 w-auto max-w-[120px] md:max-w-[180px] grayscale-logo object-contain opacity-60 hover:opacity-100 transition-opacity"
-                                            />
-                                        </div>
-                                    ))
-                                )}
+                                {[1, 2].map((iteration) => (
+                                    <div key={iteration} className="flex items-center gap-20">
+                                        {data?.logos && data.logos.length > 0 ? (
+                                            data.logos.map((logo, i) => (
+                                                <div key={i} className="flex-shrink-0 flex items-center justify-center">
+                                                    <img 
+                                                        src={urlFor(logo.image).url()} 
+                                                        alt={logo.alt || "Client Logo"} 
+                                                        className="h-7 md:h-9 w-auto max-w-[120px] md:max-w-[180px] grayscale-logo object-contain opacity-60 hover:opacity-100 transition-opacity"
+                                                    />
+                                                </div>
+                                            ))
+                                        ) : (
+                                            [
+                                                "/logos/logo.svg",
+                                                "/logos/Upfit-logo-groen_rgb (1).svg",
+                                                "/logos/Studiofit_weblogo.png",
+                                                "/logos/logo-fer-copy-1-scaled-300x258.png",
+                                                "/logos/Logo_SocialManners-w.svg"
+                                            ].map((logoPath, i) => {
+                                                const isSmallLogo = logoPath.includes('Upfit') || logoPath.includes('fer-copy');
+                                                return (
+                                                    <div key={i} className="flex-shrink-0 flex items-center justify-center">
+                                                        <img 
+                                                            src={logoPath} 
+                                                            alt="Partner Logo" 
+                                                            className={`${isSmallLogo ? 'h-9 md:h-12' : 'h-7 md:h-9'} w-auto max-w-[120px] md:max-w-[180px] grayscale-logo object-contain opacity-60 hover:opacity-100 transition-opacity`}
+                                                        />
+                                                    </div>
+                                                );
+                                            })
+                                        )}
+                                    </div>
+                                ))}
                             </motion.div>
                         </div>
                     </div>
                 </div>
             </div>
         </section>
+
+            {/* Mobile Logo Slider - Only visible on mobile below the hero fold */}
+            <div className="md:hidden py-12 border-b border-white/5 bg-[var(--background)] overflow-hidden">
+                <motion.div 
+                    className="flex items-center gap-12 w-max"
+                    animate={{ x: ["0%", "-50%"] }}
+                    transition={{ duration: 25, repeat: Infinity, ease: "linear" }}
+                >
+                    {[1, 2].map((iteration) => (
+                        <div key={iteration} className="flex items-center gap-12">
+                            {data?.logos && data.logos.length > 0 ? (
+                                data.logos.map((logo, i) => (
+                                    <div key={i} className="flex-shrink-0 flex items-center justify-center px-2">
+                                        <img 
+                                            src={urlFor(logo.image).url()} 
+                                            alt={logo.alt || "Client Logo"} 
+                                            className="h-8 w-auto max-w-[140px] grayscale-logo object-contain opacity-50 px-2"
+                                        />
+                                    </div>
+                                ))
+                            ) : (
+                                [
+                                    "/logos/logo.svg",
+                                    "/logos/Upfit-logo-groen_rgb (1).svg",
+                                    "/logos/Studiofit_weblogo.png",
+                                    "/logos/logo-fer-copy-1-scaled-300x258.png",
+                                    "/logos/Logo_SocialManners-w.svg"
+                                ].map((logoPath, i) => {
+                                    const isSmallLogo = logoPath.includes('Upfit') || logoPath.includes('fer-copy');
+                                    return (
+                                        <div key={i} className="flex-shrink-0 flex items-center justify-center px-2">
+                                            <img 
+                                                src={logoPath} 
+                                                alt="Partner Logo" 
+                                                className={`${isSmallLogo ? 'h-10' : 'h-8'} w-auto max-w-[140px] grayscale-logo object-contain opacity-50 px-2`}
+                                            />
+                                        </div>
+                                    );
+                                })
+                            )}
+                        </div>
+                    ))}
+                </motion.div>
+            </div>
+        </>
     );
 };
 
