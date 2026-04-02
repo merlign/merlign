@@ -63,6 +63,27 @@ export default defineType({
             type: 'string',
             initialValue: 'Bekijk diensten'
         }),
+        defineField({
+            name: 'logoSliderText',
+            title: 'Logo Slider Tekst',
+            type: 'string',
+            initialValue: 'Deze bedrijven gingen je al voor',
+            description: 'De tekst die links van de logo slider verschijnt.'
+        }),
+        defineField({
+            name: 'logos',
+            title: 'Logos (Slider)',
+            type: 'array',
+            of: [
+                {
+                    type: 'object',
+                    fields: [
+                        { name: 'image', title: 'Logo Afbeelding', type: 'image' },
+                        { name: 'alt', title: 'Alt Tekst', type: 'string' }
+                    ]
+                }
+            ]
+        }),
         // Value Props / Features (Service Cards)
         defineField({
             name: 'features',

@@ -21,7 +21,7 @@ import {
     Monitor
 } from 'lucide-react';
 import SEO from '../components/SEO';
-import { getContactInfo } from '../lib/sanity';
+import { getContactInfo, getHomePageData, urlFor } from '../lib/sanity';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -45,15 +45,20 @@ const CALENDLY_URL = "https://calendly.com/merlijn-merlign/check";
 
 export default function Advies() {
     const [brandData, setBrandData] = useState(null);
+    const [homeData, setHomeData] = useState(null);
     const mainRef = useRef(null);
 
     useEffect(() => {
         async function fetchData() {
             try {
-                const data = await getContactInfo();
-                setBrandData(data);
+                const [contact, home] = await Promise.all([
+                    getContactInfo(),
+                    getHomePageData()
+                ]);
+                setBrandData(contact);
+                setHomeData(home);
             } catch (err) {
-                console.error("Error fetching brand data:", err);
+                console.error("Error fetching data:", err);
             }
         }
         fetchData();
@@ -191,9 +196,72 @@ export default function Advies() {
                     </div>
                 </div>
 
-                <div className="relative z-10 flex flex-col items-center gap-4 opacity-40 pointer-events-none transition-opacity duration-1000 mt-auto">
+                <div className="relative z-10 flex flex-col items-center gap-4 opacity-40 pointer-events-none transition-opacity duration-1000 mt-auto mb-16 md:mb-24">
                     <span className="text-[10px] font-mono tracking-[0.3em] uppercase">Scroll</span>
                     <div className="w-[1px] h-12 md:h-16 bg-gradient-to-b from-white to-transparent" />
+                </div>
+
+                {/* Logo Slider Section */}
+                <div className="absolute bottom-0 left-0 w-full bg-white/[0.02] border-t border-white/5 py-6 md:py-8 overflow-hidden z-20">
+                    <div className="max-w-[1400px] mx-auto px-6">
+                        <div className="flex flex-col md:flex-row items-center gap-8 md:gap-12">
+                            {/* Text Part */}
+                            <div className="whitespace-nowrap flex-shrink-0">
+                                <p className="font-sans text-white/40 text-sm md:text-base font-medium tracking-tight">
+                                    {homeData?.logoSliderText || "Deze bedrijven gingen je al voor"}
+                                </p>
+                            </div>
+
+                            {/* Slider Part */}
+                            <div className="relative w-full overflow-hidden">
+                                {/* Gradient Fades for Slider */}
+                                <div className="absolute inset-y-0 left-0 w-20 bg-gradient-to-r from-[#0D0D12] to-transparent z-10 hidden md:block" />
+                                <div className="absolute inset-y-0 right-0 w-20 bg-gradient-to-l from-[#0D0D12] to-transparent z-10 hidden md:block" />
+                                
+                                <motion.div 
+                                    className="flex items-center gap-10 md:gap-20"
+                                    animate={{
+                                        x: [0, -1500],
+                                    }}
+                                    transition={{
+                                        duration: 40,
+                                        repeat: Infinity,
+                                        ease: "linear",
+                                    }}
+                                >
+                                    {/* Duplicated for seamless loop */}
+                                    {homeData?.logos && homeData.logos.length > 0 ? (
+                                        [...homeData.logos, ...homeData.logos, ...homeData.logos, ...homeData.logos, ...homeData.logos, ...homeData.logos].map((logo, i) => (
+                                            <div key={i} className="flex-shrink-0 flex items-center justify-center min-w-[90px] md:min-w-[130px]">
+                                                <img 
+                                                    src={urlFor(logo.image).url()} 
+                                                    alt={logo.alt || "Client Logo"} 
+                                                    className="h-6 md:h-9 w-auto max-w-[120px] md:max-w-[180px] grayscale-logo object-contain opacity-60 hover:opacity-100 transition-opacity"
+                                                />
+                                            </div>
+                                        ))
+                                    ) : (
+                                        // Fallback logos
+                                        [...Array(20)].map((_, i) => (
+                                            <div key={i} className="flex-shrink-0 flex items-center justify-center min-w-[90px] md:min-w-[130px]">
+                                                <img 
+                                                    src={[
+                                                        "/logos/logo.svg",
+                                                        "/logos/Upfit-logo-groen_rgb (1).svg",
+                                                        "/logos/Studiofit_weblogo.png",
+                                                        "/logos/logo-fer-copy-1-scaled-300x258.png",
+                                                        "/logos/Logo_SocialManners-w.svg"
+                                                    ][i % 5]} 
+                                                    alt="Partner Logo" 
+                                                    className="h-6 md:h-9 w-auto max-w-[120px] md:max-w-[180px] grayscale-logo object-contain opacity-60 hover:opacity-100 transition-opacity"
+                                                />
+                                            </div>
+                                        ))
+                                    )}
+                                </motion.div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </section>
 

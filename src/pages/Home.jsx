@@ -21,7 +21,7 @@ import { Link } from 'react-router-dom';
 import SectionLabel from '../components/SectionLabel';
 import ContactForm from '../components/ContactForm';
 import SEO from '../components/SEO';
-import { getHomePageData, getFaqs, getContactInfo } from '../lib/sanity';
+import { getHomePageData, getFaqs, getContactInfo, urlFor } from '../lib/sanity';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -181,6 +181,68 @@ const Hero = ({ data }) => {
                 </motion.div>
             </div>
 
+            {/* Logo Slider Section */}
+            <div className="absolute bottom-0 left-0 w-full bg-[var(--text)]/[0.02] border-t border-[var(--border)] py-6 md:py-8 overflow-hidden z-20">
+                <div className="content-max-width section-px">
+                    <div className="flex flex-col md:flex-row items-center gap-8 md:gap-12">
+                        {/* Text Part */}
+                        <div className="whitespace-nowrap flex-shrink-0">
+                            <p className="font-sans text-[var(--text)]/60 text-sm md:text-base font-medium tracking-tight">
+                                {data?.logoSliderText || "Deze bedrijven gingen je al voor"}
+                            </p>
+                        </div>
+
+                        {/* Slider Part */}
+                        <div className="relative w-full overflow-hidden">
+                            {/* Gradient Fades for Slider */}
+                            <div className="absolute inset-y-0 left-0 w-20 bg-gradient-to-r from-[var(--background)] to-transparent z-10 hidden md:block" />
+                            <div className="absolute inset-y-0 right-0 w-20 bg-gradient-to-l from-[var(--background)] to-transparent z-10 hidden md:block" />
+                            
+                            <motion.div 
+                                className="flex items-center gap-10 md:gap-20"
+                                animate={{
+                                    x: [0, -1500],
+                                }}
+                                transition={{
+                                    duration: 40,
+                                    repeat: Infinity,
+                                    ease: "linear",
+                                }}
+                            >
+                                {/* Duplicated for seamless loop */}
+                                {data?.logos && data.logos.length > 0 ? (
+                                    [...data.logos, ...data.logos, ...data.logos, ...data.logos, ...data.logos, ...data.logos].map((logo, i) => (
+                                        <div key={i} className="flex-shrink-0 flex items-center justify-center min-w-[90px] md:min-w-[130px]">
+                                            <img 
+                                                src={urlFor(logo.image).url()} 
+                                                alt={logo.alt || "Client Logo"} 
+                                                className="h-6 md:h-9 w-auto max-w-[120px] md:max-w-[180px] grayscale-logo object-contain opacity-60 hover:opacity-100 transition-opacity"
+                                            />
+                                        </div>
+                                    ))
+                                ) : (
+                                    // Fallback logos
+                                    [...Array(20)].map((_, i) => (
+                                        <div key={i} className="flex-shrink-0 flex items-center justify-center min-w-[90px] md:min-w-[130px]">
+                                            <img 
+                                                src={[
+                                                    "/logos/logo.svg",
+                                                    "/logos/Upfit-logo-groen_rgb (1).svg",
+                                                    "/logos/Studiofit_weblogo.png",
+                                                    "/logos/logo-fer-copy-1-scaled-300x258.png",
+                                                    "/logos/Logo_SocialManners-w.svg"
+                                                ][i % 5]} 
+                                                alt="Partner Logo" 
+                                                className="h-6 md:h-9 w-auto max-w-[120px] md:max-w-[180px] grayscale-logo object-contain opacity-60 hover:opacity-100 transition-opacity"
+                                            />
+                                        </div>
+                                    ))
+                                )}
+                            </motion.div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </section>
     );
 };
