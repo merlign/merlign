@@ -126,7 +126,7 @@ export default function Advies() {
             </nav>
 
             {/* 1. HERO SECTION */}
-            <section className="relative min-h-[100dvh] flex items-center justify-center pt-24 pb-16 px-6 overflow-hidden text-center">
+            <section className="relative min-h-[100dvh] flex items-center justify-center pt-24 pb-40 md:pb-24 px-6 overflow-hidden text-center">
                 <div className="absolute inset-0 opacity-[0.05]"
                     style={{
                         backgroundImage: `radial-gradient(rgba(255, 255, 255, 0.4) 1px, transparent 1px)`,
@@ -134,7 +134,7 @@ export default function Advies() {
                     }}
                 />
 
-                <div className="relative z-10 max-w-4xl mx-auto space-y-8 md:space-y-12 pb-24 md:pb-0">
+                <div className="relative z-10 max-w-4xl mx-auto space-y-8 md:space-y-12">
                     <div className="h-6 md:h-8" />
 
                     {/* Google Review Badge */}
@@ -190,7 +190,7 @@ export default function Advies() {
                     </div>
                 </div>
 
-                <div className="absolute bottom-8 md:bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-4 opacity-40 pointer-events-none transition-opacity duration-1000">
+                <div className="absolute bottom-10 md:bottom-16 left-1/2 -translate-x-1/2 flex flex-col items-center gap-4 opacity-40 pointer-events-none transition-opacity duration-1000">
                     <span className="text-[10px] font-mono tracking-[0.3em] uppercase">Scroll</span>
                     <div className="w-[1px] h-12 md:h-20 bg-gradient-to-b from-white to-transparent" />
                 </div>
