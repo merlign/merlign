@@ -51,7 +51,7 @@ const Hero = ({ data }) => {
 
     return (
         <>
-            <section ref={heroRef} className="relative min-h-[100dvh] flex items-center bg-[var(--background)] overflow-hidden py-16 md:py-24">
+            <section ref={heroRef} className="relative min-h-[100svh] md:min-h-screen flex items-center bg-[var(--background)] overflow-hidden py-16 md:py-24">
             {/* Cinematic Background Layer */}
             <div className="absolute inset-0 z-0 pointer-events-none overflow-hidden">
                 {/* Clean Moving Grid */}
@@ -201,6 +201,7 @@ const Hero = ({ data }) => {
 
                             <motion.div 
                                 className="flex items-center gap-20 w-max"
+                                style={{ willChange: "transform" }}
                                 animate={{ x: ["0%", "-50%"] }}
                                 transition={{ duration: 30, repeat: Infinity, ease: "linear" }}
                             >
@@ -249,6 +250,7 @@ const Hero = ({ data }) => {
             <div className="md:hidden py-12 border-b border-white/5 bg-[var(--background)] overflow-hidden">
                 <motion.div 
                     className="flex items-center gap-12 w-max"
+                    style={{ willChange: "transform" }}
                     animate={{ x: ["0%", "-50%"] }}
                     transition={{ duration: 25, repeat: Infinity, ease: "linear" }}
                 >
