@@ -126,23 +126,24 @@ export default function Advies() {
             </nav>
 
             {/* 1. HERO SECTION */}
-            <section className="relative min-h-[100dvh] flex items-center justify-center pt-24 pb-40 md:pb-24 px-6 overflow-hidden text-center">
-                <div className="absolute inset-0 opacity-[0.05]"
-                    style={{
+            <section className="relative min-h-[100dvh] flex flex-col pt-24 pb-8 md:pb-12 px-6 overflow-hidden text-center">
+                {/* Background Noise & Assets */}
+                <div className="absolute inset-0 opacity-[0.05] pointer-events-none" 
+                     style={{ 
                         backgroundImage: `radial-gradient(rgba(255, 255, 255, 0.4) 1px, transparent 1px)`,
-                        backgroundSize: '40px 40px'
-                    }}
+                        backgroundSize: '40px 40px' 
+                      }} 
                 />
 
-                <div className="relative z-10 max-w-4xl mx-auto space-y-8 md:space-y-12">
-                    <div className="h-6 md:h-8" />
+                <div className="flex-1 flex flex-col items-center justify-center relative z-10 max-w-4xl mx-auto space-y-8 md:space-y-12 py-12 md:py-20">
+                    <div className="h-2" />
 
                     {/* Google Review Badge */}
-                    <motion.div
+                    <motion.div 
                         initial={{ opacity: 0, y: 20 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.8, delay: 0.2 }}
-                        className="flex justify-center mb-6 md:mb-12"
+                        className="flex justify-center mb-4 md:mb-8"
                     >
                         <div className="group flex items-center bg-white/[0.03] border border-white/10 backdrop-blur-md rounded-xl p-1 md:p-1.5 pr-3 md:pr-5 shadow-2xl">
                             <div className="flex items-center gap-2 md:gap-3 px-1.5 md:px-2.5">
@@ -178,7 +179,7 @@ export default function Advies() {
                     </p>
 
                     <div className="hero-fade-up flex flex-col items-center gap-6 pt-4">
-                        <a
+                        <a 
                             href={CALENDLY_URL}
                             target="_blank"
                             rel="noopener noreferrer"
@@ -190,9 +191,9 @@ export default function Advies() {
                     </div>
                 </div>
 
-                <div className="absolute bottom-10 md:bottom-16 left-1/2 -translate-x-1/2 flex flex-col items-center gap-4 opacity-40 pointer-events-none transition-opacity duration-1000">
+                <div className="relative z-10 flex flex-col items-center gap-4 opacity-40 pointer-events-none transition-opacity duration-1000 mt-auto">
                     <span className="text-[10px] font-mono tracking-[0.3em] uppercase">Scroll</span>
-                    <div className="w-[1px] h-12 md:h-20 bg-gradient-to-b from-white to-transparent" />
+                    <div className="w-[1px] h-12 md:h-16 bg-gradient-to-b from-white to-transparent" />
                 </div>
             </section>
 
