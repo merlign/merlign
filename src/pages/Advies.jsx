@@ -176,7 +176,7 @@ export default function Advies() {
                         </div>
                     </motion.div>
 
-                    <h1 className="hero-fade-up text-[clamp(2.1rem,7vw,4.5rem)] leading-[1.15] md:leading-[1.05] font-bold tracking-tighter max-w-5xl mx-auto">
+                    <h1 className="hero-fade-up text-[clamp(2.1rem,7vw,4.2rem)] leading-[1.15] md:leading-[1.05] font-bold tracking-tighter max-w-5xl mx-auto">
                         Een professionele website in twee weken, <span className="italic font-drama text-[#6366F1] font-normal text-[1.1em] inline-block">voor een fractie van wat een bureau vraagt.</span>
                     </h1>
 
