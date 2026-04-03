@@ -58,6 +58,12 @@ export default function Advies() {
         fetchData();
     }, []);
 
+    const handleCalendlyClick = () => {
+        if (typeof window !== 'undefined' && window.fbq) {
+            window.fbq('track', 'Lead');
+        }
+    };
+
     useEffect(() => {
         const ctx = gsap.context(() => {
             gsap.from(".hero-fade-up", {
@@ -117,6 +123,7 @@ export default function Advies() {
                         href={CALENDLY_URL}
                         target="_blank"
                         rel="noopener noreferrer"
+                        onClick={handleCalendlyClick}
                         className="bg-[#6366F1] text-white text-[13px] font-bold px-4 py-2 rounded-full transition-all hover:scale-105 active:scale-95"
                     >
                         Plan gratis adviesgesprek
@@ -182,6 +189,7 @@ export default function Advies() {
                             href={CALENDLY_URL}
                             target="_blank"
                             rel="noopener noreferrer"
+                            onClick={handleCalendlyClick}
                             className="inline-flex items-center justify-center gap-3 bg-[#6366F1] text-white px-8 py-4 md:px-12 md:py-6 rounded-full font-bold text-base md:text-xl transition-all hover:scale-[1.03] active:scale-[0.98] shadow-lg shadow-[#6366F1]/20"
                         >
                             Plan gratis adviesgesprek
@@ -376,6 +384,7 @@ export default function Advies() {
                                 href={CALENDLY_URL}
                                 target="_blank"
                                 rel="noopener noreferrer"
+                                onClick={handleCalendlyClick}
                                 className="inline-flex items-center justify-center gap-3 bg-[#6366F1] text-white px-8 py-4 md:px-12 md:py-6 rounded-full font-bold text-base md:text-xl transition-all hover:scale-[1.05] active:scale-[0.98] shadow-2xl shadow-[#6366F1]/20"
                             >
                                 Plan gratis adviesgesprek
