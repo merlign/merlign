@@ -44,6 +44,7 @@ const TYPOGRAPHY = {
 const CALENDLY_URL = "https://calendly.com/merlijn-merlign/check";
 
 export default function Advies() {
+    const mainRef = useRef(null);
     const [brandData, setBrandData] = useState(null);
     useEffect(() => {
         async function fetchData() {
