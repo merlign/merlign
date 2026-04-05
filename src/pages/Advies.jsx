@@ -41,7 +41,7 @@ const TYPOGRAPHY = {
     mono: "'Space Mono', monospace"
 };
 
-const CALENDLY_URL = "https://calendly.com/merlijn-merlign/check";
+const CALENDLY_URL = "https://calendly.com/merlign/kennismakingsgesprek";
 
 export default function Advies() {
     const mainRef = useRef(null);
