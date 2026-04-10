@@ -46,6 +46,7 @@ const CALENDLY_URL = "https://calendly.com/merlign/kennismakingsgesprek";
 export default function Advies() {
     const mainRef = useRef(null);
     const [brandData, setBrandData] = useState(null);
+    const [openFaq, setOpenFaq] = useState(null);
     useEffect(() => {
         async function fetchData() {
             try {
@@ -243,6 +244,21 @@ export default function Advies() {
                             ))}
                         </div>
                     </div>
+
+                    {/* CTA onder Herken je dit */}
+                    <div className="flex flex-col items-center gap-4 pt-12">
+                        <a
+                            href={CALENDLY_URL}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            onClick={handleCalendlyClick}
+                            className="inline-flex items-center justify-center gap-3 bg-[#6366F1] text-white px-8 py-4 md:px-12 md:py-5 rounded-full font-bold text-base md:text-lg transition-all hover:scale-[1.03] active:scale-[0.98] shadow-lg shadow-[#6366F1]/20"
+                        >
+                            Plan gratis adviesgesprek
+                            <ArrowRight size={20} />
+                        </a>
+                        <p className="text-white/30 text-sm">100% vrijblijvend &mdash; gewoon een eerlijk gesprek</p>
+                    </div>
                 </div>
             </section>
 
@@ -351,17 +367,39 @@ export default function Advies() {
                         Je vraagt je <br /> <span className="italic font-drama text-[#6366F1] font-normal text-[1.1em] inline-block">misschien af...</span>
                     </h2>
 
-                    <div className="space-y-6">
+                    <div className="space-y-4">
                         {[
-                            { q: "Wat gaat me dat kosten?", a: "Een prijs roepen zonder te weten wat jij nodig hebt, heeft geen zin. We kijken samen wat je écht nodig hebt en ik geef je een eerlijk voorstel. Geen verborgen kosten." },
+                            { q: "Wat gaat me dat kosten?", a: "Een website bij Merlign start vanaf \u20ac995. Wat het uiteindelijk wordt, hangt af van wat jij nodig hebt \u2014 we kijken dat samen door zodat je geen euro te veel betaalt. Geen verborgen kosten, gewoon een eerlijk voorstel." },
                             { q: "Ben ik echt binnen 2 weken klaar?", a: "Ja. Als jij de teksten en beelden aanlevert, regel ik de rest. Ik hou niet van treuzelen, jij waarschijnlijk ook niet." },
                             { q: "Ziet mijn site er niet uit als een AI-site?", a: "Nee. Ik gebruik AI om sneller te bouwen, niet om minder na te denken. Mijn achtergrond in ontwerp zorgt dat alles aansluit bij wie jij bent. Generiek is precies wat ik probeer te vermijden." },
-                            { q: "Word ik wel gevonden in Google?", a: "Ja. Je site is technisch 100% geoptimaliseerd. Snelheid, veiligheid en structuur zijn de standaard, zodat je direct goed op de kaart staat bij Google én de nieuwe AI-zoekmachines zoals ChatGPT en Perplexity." },
+                            { q: "Word ik wel gevonden in Google?", a: "Ja. Je site is technisch 100% geoptimaliseerd. Snelheid, veiligheid en structuur zijn de standaard, zodat je direct goed op de kaart staat bij Google \u00e9n de nieuwe AI-zoekmachines zoals ChatGPT en Perplexity." },
                             { q: "Moet ik zelf alles schrijven?", a: "Hoeft niet. Ik kan je helpen om je verhaal zo op te schrijven dat het ook echt aankomt bij je klanten." }
                         ].map((faq, i) => (
-                            <div key={i} className="bg-white/5 border border-white/5 rounded-3xl p-8 space-y-3 transition-all hover:bg-white/[0.08]">
-                                <h4 className="text-xl font-bold">{faq.q}</h4>
-                                <p className="text-white/50 leading-relaxed text-sm">{faq.a}</p>
+                            <div key={i} className="border border-white/5 rounded-3xl overflow-hidden transition-all">
+                                <button
+                                    onClick={() => setOpenFaq(openFaq === i ? null : i)}
+                                    className="w-full flex items-center justify-between p-8 text-left hover:bg-white/[0.04] transition-colors"
+                                >
+                                    <h4 className="text-xl font-bold pr-4">{faq.q}</h4>
+                                    <ChevronDown
+                                        size={20}
+                                        className={`shrink-0 text-[#6366F1] transition-transform duration-300 ${openFaq === i ? 'rotate-180' : ''}`}
+                                    />
+                                </button>
+                                <AnimatePresence initial={false}>
+                                    {openFaq === i && (
+                                        <motion.div
+                                            key="content"
+                                            initial={{ height: 0, opacity: 0 }}
+                                            animate={{ height: 'auto', opacity: 1 }}
+                                            exit={{ height: 0, opacity: 0 }}
+                                            transition={{ duration: 0.3, ease: 'easeInOut' }}
+                                            className="overflow-hidden"
+                                        >
+                                            <p className="px-8 pb-8 text-white/50 leading-relaxed text-sm">{faq.a}</p>
+                                        </motion.div>
+                                    )}
+                                </AnimatePresence>
                             </div>
                         ))}
                     </div>
