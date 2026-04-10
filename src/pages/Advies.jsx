@@ -257,7 +257,7 @@ export default function Advies() {
                             Plan gratis adviesgesprek
                             <ArrowRight size={20} />
                         </a>
-                        <p className="text-white/30 text-sm">100% vrijblijvend &mdash; gewoon een eerlijk gesprek</p>
+                        <p className="text-white/30 text-sm">100% vrijblijvend</p>
                     </div>
                 </div>
             </section>
@@ -357,6 +357,21 @@ export default function Advies() {
                             </div>
                         ))}
                     </div>
+
+                    {/* CTA na 3 stappen */}
+                    <div className="flex flex-col items-center gap-4">
+                        <a
+                            href={CALENDLY_URL}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            onClick={handleCalendlyClick}
+                            className="inline-flex items-center justify-center gap-3 bg-[#6366F1] text-white px-8 py-4 md:px-12 md:py-5 rounded-full font-bold text-base md:text-lg transition-all hover:scale-[1.03] active:scale-[0.98] shadow-lg shadow-[#6366F1]/20"
+                        >
+                            Plan gratis adviesgesprek
+                            <ArrowRight size={20} />
+                        </a>
+                        <p className="text-white/30 text-sm">100% vrijblijvend</p>
+                    </div>
                 </div>
             </section>
 
@@ -369,7 +384,7 @@ export default function Advies() {
 
                     <div className="space-y-4">
                         {[
-                            { q: "Wat gaat me dat kosten?", a: "Een website bij Merlign start vanaf \u20ac995. Wat het uiteindelijk wordt, hangt af van wat jij nodig hebt \u2014 we kijken dat samen door zodat je geen euro te veel betaalt. Geen verborgen kosten, gewoon een eerlijk voorstel." },
+                            { q: "Wat gaat me dat kosten?", a: "Een website maak ik vanaf €995. Wat het uiteindelijk wordt, hangt af van wat jij nodig hebt — we kijken dat samen door zodat je geen euro te veel betaalt. Geen verborgen kosten, gewoon een eerlijk voorstel." },
                             { q: "Ben ik echt binnen 2 weken klaar?", a: "Ja. Als jij de teksten en beelden aanlevert, regel ik de rest. Ik hou niet van treuzelen, jij waarschijnlijk ook niet." },
                             { q: "Ziet mijn site er niet uit als een AI-site?", a: "Nee. Ik gebruik AI om sneller te bouwen, niet om minder na te denken. Mijn achtergrond in ontwerp zorgt dat alles aansluit bij wie jij bent. Generiek is precies wat ik probeer te vermijden." },
                             { q: "Word ik wel gevonden in Google?", a: "Ja. Je site is technisch 100% geoptimaliseerd. Snelheid, veiligheid en structuur zijn de standaard, zodat je direct goed op de kaart staat bij Google \u00e9n de nieuwe AI-zoekmachines zoals ChatGPT en Perplexity." },
