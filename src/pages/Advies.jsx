@@ -315,7 +315,12 @@ export default function Advies() {
                         <blockquote className="text-2xl md:text-4xl font-bold tracking-tight leading-tight">
                             "Echt een zeer professionele site geworden, precies zoals het moest. Die feedback krijg ik nu ook direct terug als ik mijn site laat zien."
                         </blockquote>
-                        <div className="flex flex-col items-center gap-2">
+                        <div className="flex flex-col items-center gap-3">
+                            <img
+                                src="/ferry.jpg"
+                                alt="Ferry Struik"
+                                className="w-14 h-14 rounded-full object-cover border-2 border-[#6366F1]/40"
+                            />
                             <cite className="not-italic font-bold text-xl block">Ferry Struik</cite>
                             <span className="text-[#6366F1] font-mono text-[10px] uppercase tracking-[0.2em] bg-[#6366F1]/10 px-4 py-1 rounded-full">Ferry Zorgt</span>
                         </div>
