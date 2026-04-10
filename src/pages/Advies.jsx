@@ -182,7 +182,7 @@ export default function Advies() {
                     </h1>
 
                     <p className="hero-fade-up text-[17px] md:text-[21px] text-white/50 max-w-3xl mx-auto font-medium leading-[1.6]">
-                        Geen generieke templates. Geen maanden wachten. Ik zorg dat je site er goed uitziet én gevonden wordt.
+                        Geen generieke templates. Geen maanden wachten. Ik zorg dat je site er goed uitziet én gevonden wordt. Vanaf €995.
                     </p>
 
                     <div className="hero-fade-up flex flex-col items-center gap-6 pt-4">
@@ -272,7 +272,7 @@ export default function Advies() {
 
                         <div className="space-y-8 text-lg md:text-xl text-white/60 font-light leading-relaxed max-w-3xl mx-auto">
                             <p>
-                                Ik gebruik AI om te bouwen. Dat betekent twee weken van gesprek tot live, en geen bureaurekening aan het einde. Maar AI alleen spuugt generieke sites uit, en dat is precies wat ik niet wil.
+                                Ik gebruik AI om te bouwen. Dat betekent twee weken van gesprek tot live. Maar AI alleen spuugt generieke sites uit, en dat is precies wat ik niet wil.
                             </p>
                             <div className="bg-white/5 border border-white/5 p-8 rounded-[3rem] text-white">
                                 <p>
