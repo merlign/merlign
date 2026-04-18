@@ -328,57 +328,6 @@ export default function Advies() {
                 </div>
             </section>
 
-            {/* 4. PROCES SECTION */}
-            <section className="reveal-section py-32 px-6 border-t border-white/5 bg-[#0A0A0F]">
-                <div className="max-w-4xl mx-auto space-y-20 text-center">
-                    <h2 className="text-4xl md:text-7xl font-bold tracking-tighter leading-tight">
-                        In drie stappen live, <br /> <span className="italic font-drama text-[#6366F1] font-normal text-[1.1em] inline-block">zonder gezeik.</span>
-                    </h2>
-
-                    <div className="grid grid-cols-1 md:grid-cols-3 gap-8 text-left">
-                        {[
-                            {
-                                number: "01",
-                                title: "Gratis gesprek",
-                                desc: "20 minuten, geen verkooppraatje. Ik kijk eerlijk mee naar wat jouw site nu écht nodig heeft."
-                            },
-                            {
-                                number: "02",
-                                title: "Ontwerp & bouw",
-                                desc: "Ik bouw niet alleen een mooi plaatje, maar iets dat bezoekers ook echt klant maakt."
-                            },
-                            {
-                                number: "03",
-                                title: "Live en klaar",
-                                desc: "Binnen twee weken staat je nieuwe site online. Je deelt je link zonder je er voor te schamen."
-                            }
-                        ].map((step, i) => (
-                            <div key={i} className="bg-white/5 border border-white/5 p-8 rounded-[2.5rem] space-y-4 hover:border-[#6366F1]/30 transition-all">
-                                <div className="w-12 h-12 rounded-xl bg-[#6366F1] text-white flex items-center justify-center text-xl font-black">
-                                    {step.number}
-                                </div>
-                                <h3 className="text-xl font-bold tracking-tight">{step.title}</h3>
-                                <p className="text-sm text-white/50 leading-relaxed font-light">{step.desc}</p>
-                            </div>
-                        ))}
-                    </div>
-
-                    {/* CTA na 3 stappen */}
-                    <div className="flex flex-col items-center gap-4">
-                        <a
-                            href={CALENDLY_URL}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            onClick={handleCalendlyClick}
-                            className="inline-flex items-center justify-center gap-3 bg-[#6366F1] text-white px-8 py-4 md:px-12 md:py-5 rounded-full font-bold text-base md:text-lg transition-all hover:scale-[1.03] active:scale-[0.98] shadow-lg shadow-[#6366F1]/20"
-                        >
-                            Plan gratis adviesgesprek
-                            <ArrowRight size={20} />
-                        </a>
-                        <p className="text-white/30 text-sm">100% vrijblijvend</p>
-                    </div>
-                </div>
-            </section>
 
             {/* 5. FAQ SECTION */}
             <section className="reveal-section py-32 px-6">

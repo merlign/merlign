@@ -12,6 +12,7 @@ import Privacy from './pages/Privacy';
 import Terms from './pages/Terms';
 import ProtocolPage from './pages/ProtocolPage';
 import Advies from './pages/Advies';
+import WebsiteLP2 from './pages/WebsiteLP2';
 import NotFound from './pages/NotFound';
 
 export default function App() {
@@ -20,6 +21,7 @@ export default function App() {
             <Routes>
                 {/* Landing page without standard Layout */}
                 <Route path="/website-lp" element={<Advies />} />
+                {/* <Route path="/website-lp2" element={<WebsiteLP2 />} /> */}
 
                 {/* Default pages with Layout */}
                 <Route
