@@ -144,71 +144,71 @@ export default function Advies() {
 
                 {/* Floating Background Designs */}
                 <div className="absolute inset-0 overflow-hidden pointer-events-none">
-                    <motion.div 
+                    <motion.div
                         initial={{ opacity: 0, scale: 0.8, rotate: -15 }}
-                        animate={{ 
-                            opacity: 0.12, 
-                            scale: 1, 
+                        animate={{
+                            opacity: 0.12,
+                            scale: 1,
                             rotate: -12,
-                            y: [0, -20, 0] 
+                            y: [0, -20, 0]
                         }}
-                        transition={{ 
+                        transition={{
                             opacity: { duration: 2 },
                             scale: { duration: 2 },
                             y: { duration: 10, repeat: Infinity, ease: "linear" }
                         }}
                         className="absolute top-[12%] -left-[15%] md:-left-[5%] w-[70%] md:w-[45%] aspect-video bg-white/5 border border-white/10 rounded-2xl"
                     >
-                        <img 
-                            src="/hero-previews/hero1.png" 
-                            alt="" 
-                            className="w-full h-full object-cover rounded-2xl opacity-70" 
+                        <img
+                            src="/hero-previews/hero1.png"
+                            alt=""
+                            className="w-full h-full object-cover rounded-2xl opacity-70"
                             onError={(e) => e.target.style.display = 'none'}
                         />
                     </motion.div>
 
-                    <motion.div 
+                    <motion.div
                         initial={{ opacity: 0, scale: 0.8, rotate: 10 }}
-                        animate={{ 
-                            opacity: 0.1, 
-                            scale: 1, 
+                        animate={{
+                            opacity: 0.1,
+                            scale: 1,
                             rotate: 8,
-                            y: [0, 25, 0] 
+                            y: [0, 25, 0]
                         }}
-                        transition={{ 
+                        transition={{
                             opacity: { duration: 2, delay: 0.5 },
                             scale: { duration: 2, delay: 0.5 },
                             y: { duration: 12, repeat: Infinity, ease: "linear" }
                         }}
                         className="absolute top-[35%] -right-[20%] md:-right-[10%] w-[75%] md:w-[50%] aspect-video bg-white/5 border border-white/10 rounded-3xl"
                     >
-                        <img 
-                            src="/hero-previews/hero2.png" 
-                            alt="" 
-                            className="w-full h-full object-cover rounded-3xl opacity-65" 
+                        <img
+                            src="/hero-previews/hero2.png"
+                            alt=""
+                            className="w-full h-full object-cover rounded-3xl opacity-65"
                             onError={(e) => e.target.style.display = 'none'}
                         />
                     </motion.div>
 
-                    <motion.div 
+                    <motion.div
                         initial={{ opacity: 0, scale: 0.8, rotate: 5 }}
-                        animate={{ 
-                            opacity: 0.08, 
-                            scale: 1, 
+                        animate={{
+                            opacity: 0.08,
+                            scale: 1,
                             rotate: 4,
-                            y: [0, -15, 0] 
+                            y: [0, -15, 0]
                         }}
-                        transition={{ 
+                        transition={{
                             opacity: { duration: 2, delay: 1 },
                             scale: { duration: 2, delay: 1 },
                             y: { duration: 15, repeat: Infinity, ease: "linear" }
                         }}
                         className="absolute bottom-[10%] left-[5%] md:left-[15%] w-[65%] md:w-[40%] aspect-video bg-white/5 border border-white/10 rounded-2xl"
                     >
-                        <img 
-                            src="/hero-previews/hero3.png" 
-                            alt="" 
-                            className="w-full h-full object-cover rounded-2xl opacity-60" 
+                        <img
+                            src="/hero-previews/hero3.png"
+                            alt=""
+                            className="w-full h-full object-cover rounded-2xl opacity-60"
                             onError={(e) => e.target.style.display = 'none'}
                         />
                     </motion.div>
@@ -353,7 +353,7 @@ export default function Advies() {
                         {[
                             {
                                 title: "Jouw verhaal, jouw uitstraling",
-                                desc: "Geen templates die voor duizend bedrijven werken. En als je wil help ik ook met de teksten, zodat wat er staat ook echt aankomt.",
+                                desc: "Ik gebruik geen templates die duizend andere bedrijven ook gebruiken. En als je wil help ik ook met de teksten, zodat wat er staat ook echt aankomt.",
                                 icon: <Sparkles size={24} />
                             },
                             {
@@ -380,7 +380,7 @@ export default function Advies() {
                     {/* Testimonial */}
                     <div className="bg-white/5 border border-white/5 rounded-[3rem] p-10 md:p-16 space-y-8 relative overflow-hidden text-center">
                         <blockquote className="text-2xl md:text-4xl font-bold tracking-tight leading-tight">
-                            "Echt een zeer professionele site geworden, precies zoals het moest. Die feedback krijg ik nu ook direct terug als ik mijn site laat zien."
+                            "Echt een zeer professionele site geworden, precies zoals het moest. Die feedback krijg ik nu ook direct terug als ik mijn site laat zien aan klanten."
                         </blockquote>
                         <div className="flex flex-col items-center gap-3">
                             <img
