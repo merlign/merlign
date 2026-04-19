@@ -344,13 +344,8 @@ export default function Advies() {
 
                         <div className="space-y-8 text-lg md:text-xl text-white/60 font-light leading-relaxed max-w-3xl mx-auto">
                             <p>
-                                Ik gebruik AI om te bouwen. Dat betekent twee weken van gesprek tot live. Maar AI alleen spuugt generieke sites uit, en dat is precies wat ik niet wil.
+                                Mijn achtergrond in ontwerp zorgt dat jouw site er niet uitziet als die van iedereen. Ik ga diep in op wie jij bent en wat je doet, en dat zie je terug in het eindresultaat.
                             </p>
-                            <div className="bg-white/5 border border-white/5 p-8 rounded-[3rem] text-white">
-                                <p>
-                                    Mijn achtergrond in ontwerp zorgt dat jouw site er niet uitziet als die van iedereen. Ik ga diep in op wie jij bent en wat je doet, en dat zie je terug in het eindresultaat.
-                                </p>
-                            </div>
                         </div>
                     </div>
 
