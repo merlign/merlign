@@ -157,7 +157,7 @@ export default function Advies() {
                             scale: { duration: 2 },
                             y: { duration: 10, repeat: Infinity, ease: "linear" }
                         }}
-                        className="absolute top-[10%] -left-[5%] w-[45%] aspect-video bg-white/5 border border-white/10 rounded-2xl"
+                        className="absolute top-[12%] -left-[15%] md:-left-[5%] w-[70%] md:w-[45%] aspect-video bg-white/5 border border-white/10 rounded-2xl"
                     >
                         <img 
                             src="/hero-previews/hero1.png" 
@@ -180,7 +180,7 @@ export default function Advies() {
                             scale: { duration: 2, delay: 0.5 },
                             y: { duration: 12, repeat: Infinity, ease: "linear" }
                         }}
-                        className="absolute top-[30%] -right-[10%] w-[50%] aspect-video bg-white/5 border border-white/10 rounded-3xl"
+                        className="absolute top-[35%] -right-[20%] md:-right-[10%] w-[75%] md:w-[50%] aspect-video bg-white/5 border border-white/10 rounded-3xl"
                     >
                         <img 
                             src="/hero-previews/hero2.png" 
@@ -203,7 +203,7 @@ export default function Advies() {
                             scale: { duration: 2, delay: 1 },
                             y: { duration: 15, repeat: Infinity, ease: "linear" }
                         }}
-                        className="absolute -bottom-[5%] left-[15%] w-[40%] aspect-video bg-white/5 border border-white/10 rounded-2xl"
+                        className="absolute bottom-[10%] left-[5%] md:left-[15%] w-[65%] md:w-[40%] aspect-video bg-white/5 border border-white/10 rounded-2xl"
                     >
                         <img 
                             src="/hero-previews/hero3.png" 
