@@ -142,6 +142,78 @@ export default function Advies() {
                     }}
                 />
 
+                {/* Floating Background Designs */}
+                <div className="absolute inset-0 overflow-hidden pointer-events-none">
+                    <motion.div 
+                        initial={{ opacity: 0, scale: 0.8, rotate: -15 }}
+                        animate={{ 
+                            opacity: 0.12, 
+                            scale: 1, 
+                            rotate: -12,
+                            y: [0, -20, 0] 
+                        }}
+                        transition={{ 
+                            opacity: { duration: 2 },
+                            scale: { duration: 2 },
+                            y: { duration: 10, repeat: Infinity, ease: "linear" }
+                        }}
+                        className="absolute top-[10%] -left-[5%] w-[45%] aspect-video bg-white/5 border border-white/10 rounded-2xl"
+                    >
+                        <img 
+                            src="/hero-previews/hero1.png" 
+                            alt="" 
+                            className="w-full h-full object-cover rounded-2xl opacity-70" 
+                            onError={(e) => e.target.style.display = 'none'}
+                        />
+                    </motion.div>
+
+                    <motion.div 
+                        initial={{ opacity: 0, scale: 0.8, rotate: 10 }}
+                        animate={{ 
+                            opacity: 0.1, 
+                            scale: 1, 
+                            rotate: 8,
+                            y: [0, 25, 0] 
+                        }}
+                        transition={{ 
+                            opacity: { duration: 2, delay: 0.5 },
+                            scale: { duration: 2, delay: 0.5 },
+                            y: { duration: 12, repeat: Infinity, ease: "linear" }
+                        }}
+                        className="absolute top-[30%] -right-[10%] w-[50%] aspect-video bg-white/5 border border-white/10 rounded-3xl"
+                    >
+                        <img 
+                            src="/hero-previews/hero2.png" 
+                            alt="" 
+                            className="w-full h-full object-cover rounded-3xl opacity-65" 
+                            onError={(e) => e.target.style.display = 'none'}
+                        />
+                    </motion.div>
+
+                    <motion.div 
+                        initial={{ opacity: 0, scale: 0.8, rotate: 5 }}
+                        animate={{ 
+                            opacity: 0.08, 
+                            scale: 1, 
+                            rotate: 4,
+                            y: [0, -15, 0] 
+                        }}
+                        transition={{ 
+                            opacity: { duration: 2, delay: 1 },
+                            scale: { duration: 2, delay: 1 },
+                            y: { duration: 15, repeat: Infinity, ease: "linear" }
+                        }}
+                        className="absolute -bottom-[5%] left-[15%] w-[40%] aspect-video bg-white/5 border border-white/10 rounded-2xl"
+                    >
+                        <img 
+                            src="/hero-previews/hero3.png" 
+                            alt="" 
+                            className="w-full h-full object-cover rounded-2xl opacity-60" 
+                            onError={(e) => e.target.style.display = 'none'}
+                        />
+                    </motion.div>
+                </div>
+
                 <div className="flex-1 flex flex-col items-center justify-center relative z-10 max-w-4xl mx-auto space-y-8 md:space-y-12 py-12 md:py-20">
                     <div className="h-2" />
 
