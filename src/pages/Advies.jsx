@@ -41,7 +41,7 @@ const TYPOGRAPHY = {
     mono: "'Space Mono', monospace"
 };
 
-const CALENDLY_URL = "https://calendly.com/merlign/kennismakingsgesprek";
+const WHATSAPP_URL = "https://wa.me/31683368411?text=Hey%20Merlijn!%20Ik%20wil%20graag%20sparren%20over%20mijn%20website.";
 
 export default function Advies() {
     const mainRef = useRef(null);
@@ -59,7 +59,7 @@ export default function Advies() {
         fetchData();
     }, []);
 
-    const handleCalendlyClick = () => {
+    const handleCTAClick = () => {
         if (typeof window !== 'undefined' && window.fbq) {
             window.fbq('track', 'Lead');
         }
@@ -100,7 +100,7 @@ export default function Advies() {
         >
             <SEO
                 title="Professionele website in twee weken | Merlign"
-                description="Geen generieke templates. Geen maanden wachten. Ik zorg dat je site er goed uitziet én gevonden wordt."
+                description="Volledig op maat, met rake copy en kraakhelder design. Ziet je nieuwe site er niet direct beter uit dan wat je nu hebt staan? Dan betaal je niets."
                 noindex={true}
             />
 
@@ -121,13 +121,13 @@ export default function Advies() {
                         <img src="/logo_merlign.png" alt="Merlign" className="h-4 brightness-0 invert" />
                     </div>
                     <a
-                        href={CALENDLY_URL}
+                        href={WHATSAPP_URL}
                         target="_blank"
                         rel="noopener noreferrer"
-                        onClick={handleCalendlyClick}
+                        onClick={handleCTAClick}
                         className="bg-[#6366F1] text-white text-[13px] font-bold px-4 py-2 rounded-full transition-all hover:scale-105 active:scale-95"
                     >
-                        Plan gratis adviesgesprek
+                        Claim je gratis advies
                     </a>
                 </div>
             </nav>
@@ -239,7 +239,7 @@ export default function Advies() {
 
                             <div className="w-px h-5 md:h-6 bg-white/10 mx-1.5 md:mx-2" />
 
-                            <div className="flex items-center gap-0.5 md:gap-1 ml-1">
+                            <div className="flex items-center gap-0.5 md:gap-1 ml-1" title="Gebaseerd op 25+ klantbeoordelingen">
                                 {[...Array(5)].map((_, i) => (
                                     <svg key={i} className="w-2.5 h-2.5 md:w-4 md:h-4 text-[#FBB03B] fill-current" viewBox="0 0 20 20">
                                         <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
@@ -254,20 +254,22 @@ export default function Advies() {
                     </h1>
 
                     <p className="hero-fade-up text-[17px] md:text-[21px] text-white/50 max-w-3xl mx-auto font-medium leading-[1.6]">
-                        Geen generieke templates. Geen maanden wachten. Ik zorg dat je site er goed uitziet én gevonden wordt. Vanaf €995.
+                        Volledig op maat, met rake copy en kraakhelder design. Ziet je nieuwe site er niet direct beter uit dan wat je nu hebt staan? Dan betaal je niets.
                     </p>
 
                     <div className="hero-fade-up flex flex-col items-center gap-6 pt-4">
-                        <a
-                            href={CALENDLY_URL}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            onClick={handleCalendlyClick}
-                            className="inline-flex items-center justify-center gap-3 bg-[#6366F1] text-white px-8 py-4 md:px-12 md:py-6 rounded-full font-bold text-base md:text-xl transition-all hover:scale-[1.03] active:scale-[0.98] shadow-lg shadow-[#6366F1]/20"
-                        >
-                            Plan gratis adviesgesprek
-                            <ArrowRight size={20} className="md:w-6 md:h-6" />
-                        </a>
+                        <div className="flex flex-col items-center gap-3">
+                            <a
+                                href={WHATSAPP_URL}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                onClick={handleCTAClick}
+                                className="inline-flex items-center justify-center gap-3 bg-[#6366F1] text-white px-8 py-4 md:px-12 md:py-6 rounded-full font-bold text-base md:text-xl transition-all hover:scale-[1.03] active:scale-[0.98] shadow-lg shadow-[#6366F1]/20"
+                            >
+                                Claim je gratis advies
+                            </a>
+                            <p className="text-white/40 text-sm font-medium">Via WhatsApp, ik reageer dezelfde dag</p>
+                        </div>
                     </div>
                 </div>
 
@@ -318,18 +320,19 @@ export default function Advies() {
                     </div>
 
                     {/* CTA onder Herken je dit */}
-                    <div className="flex flex-col items-center gap-4 pt-12">
-                        <a
-                            href={CALENDLY_URL}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            onClick={handleCalendlyClick}
-                            className="inline-flex items-center justify-center gap-3 bg-[#6366F1] text-white px-8 py-4 md:px-12 md:py-5 rounded-full font-bold text-base md:text-lg transition-all hover:scale-[1.03] active:scale-[0.98] shadow-lg shadow-[#6366F1]/20"
-                        >
-                            Plan gratis adviesgesprek
-                            <ArrowRight size={20} />
-                        </a>
-                        <p className="text-white/30 text-sm">100% vrijblijvend</p>
+                    <div className="flex flex-col items-center gap-6 pt-12 text-center">
+                        <div className="flex flex-col items-center gap-3">
+                            <a
+                                href={WHATSAPP_URL}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                onClick={handleCTAClick}
+                                className="inline-flex items-center justify-center gap-3 bg-[#6366F1] text-white px-8 py-4 md:px-12 md:py-5 rounded-full font-bold text-base md:text-lg transition-all hover:scale-[1.03] active:scale-[0.98] shadow-lg shadow-[#6366F1]/20"
+                            >
+                                Claim je gratis advies
+                            </a>
+                            <p className="text-white/40 text-sm font-medium">Via WhatsApp, ik reageer dezelfde dag</p>
+                        </div>
                     </div>
                 </div>
             </section>
@@ -405,7 +408,7 @@ export default function Advies() {
 
                     <div className="space-y-4">
                         {[
-                            { q: "Wat gaat me dat kosten?", a: "Een website maak ik vanaf €995. Wat het uiteindelijk wordt, hangt af van wat jij nodig hebt. We kijken dat samen door zodat je geen euro te veel betaalt. Geen verborgen kosten, gewoon een eerlijk voorstel." },
+                            { q: "Wat gaat me dat kosten?", a: "Een website maak ik vanaf €995. Wat het uiteindelijk wordt, hangt af van wat jij nodig hebt. We stellen vooraf samen vast hoe succes eruitziet, zodat je geen euro te veel betaalt. Geen verborgen kosten, gewoon een eerlijk voorstel." },
                             { q: "Ben ik echt binnen 2 weken klaar?", a: "Ja. Als jij de teksten en beelden aanlevert, regel ik de rest. Ik hou niet van treuzelen, jij waarschijnlijk ook niet." },
                             { q: "Zit ik vast aan een duur onderhoudscontract?", a: "Nee. Je site is van jou. Ik bouw hem zo op dat je zelf kleine teksten en foto's kunt aanpassen via een simpel systeem. Je betaalt alleen voor je hosting en domeinnaam, verder heb je geen vaste maandelijkse kosten bij mij." },
                             { q: "Word ik wel gevonden in Google?", a: "Ja. Je site is technisch 100% geoptimaliseerd. Snelheid, veiligheid en structuur zijn de standaard, zodat je direct goed op de kaart staat bij Google \u00e9n de nieuwe AI-zoekmachines zoals ChatGPT en Perplexity." },
@@ -451,20 +454,21 @@ export default function Advies() {
                             Zullen we kijken <br className="md:hidden" /> waar voor jou <br className="md:hidden" /> <span className="italic font-drama font-normal text-[#6366F1] text-[1.1em] inline-block">de kansen liggen?</span>
                         </h2>
                         <p className="text-lg md:text-2xl text-white/50 max-w-2xl mx-auto font-light leading-relaxed">
-                            Ik heb maar een paar plekken vrij per maand, dus plan nu je gesprek in.
+                            Ik neem bewust maar een handjevol klanten aan per maand. Stuur me een berichtje en ik kijk gratis met je mee.
                         </p>
                         <div className="flex flex-col items-center gap-8 pt-4">
-                            <a
-                                href={CALENDLY_URL}
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                onClick={handleCalendlyClick}
-                                className="inline-flex items-center justify-center gap-3 bg-[#6366F1] text-white px-8 py-4 md:px-12 md:py-6 rounded-full font-bold text-base md:text-xl transition-all hover:scale-[1.05] active:scale-[0.98] shadow-2xl shadow-[#6366F1]/20"
-                            >
-                                Plan gratis adviesgesprek
-                                <ArrowRight size={24} />
-                            </a>
-                            <p className="text-white/30 text-sm font-medium">100% vrijblijvend</p>
+                            <div className="flex flex-col items-center gap-3">
+                                <a
+                                    href={WHATSAPP_URL}
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    onClick={handleCTAClick}
+                                    className="inline-flex items-center justify-center gap-3 bg-[#6366F1] text-white px-8 py-4 md:px-12 md:py-6 rounded-full font-bold text-base md:text-xl transition-all hover:scale-[1.05] active:scale-[0.98] shadow-2xl shadow-[#6366F1]/20"
+                                >
+                                    Claim je gratis advies
+                                </a>
+                                <p className="text-white/40 text-sm font-medium">Via WhatsApp, ik reageer dezelfde dag</p>
+                            </div>
                         </div>
                     </div>
                 </div>
