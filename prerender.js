@@ -22,7 +22,6 @@ const routes = [
     { path: '/contact', type: 'contact' },
     { path: '/privacy', type: 'simple', title: 'Privacy Policy — Merlign' },
     { path: '/terms', type: 'simple', title: 'Terms of Service — Merlign' },
-    { path: '/het-protocol', type: 'simple', title: 'Het Protocol — Merlign', noindex: true },
     { path: '/website-lp', type: 'simple', title: 'Professionele website in twee weken | Merlign', noindex: true },
     { path: '/404', type: 'simple', title: '404 - Pagina niet gevonden | Merlign', noindex: true }
 ];

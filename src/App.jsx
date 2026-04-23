@@ -10,7 +10,6 @@ import DashboardService from './pages/services/DashboardService';
 import AutomationService from './pages/services/AutomationService';
 import Privacy from './pages/Privacy';
 import Terms from './pages/Terms';
-import ProtocolPage from './pages/ProtocolPage';
 import Advies from './pages/Advies';
 import WebsiteLP2 from './pages/WebsiteLP2';
 import NotFound from './pages/NotFound';
@@ -38,7 +37,6 @@ export default function App() {
                                 <Route path="/automatisering" element={<AutomationService />} />
                                 <Route path="/privacy" element={<Privacy />} />
                                 <Route path="/terms" element={<Terms />} />
-                                <Route path="/het-protocol" element={<ProtocolPage />} />
                                 <Route path="*" element={<NotFound />} />
                             </Routes>
                         </Layout>
