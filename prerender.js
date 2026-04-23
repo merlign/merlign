@@ -85,7 +85,7 @@ async function generate() {
                 routeTitle = home?.seoTitle || "Design & AI-Automatisering voor mkb en zzpers";
                 routeDesc = home?.seoDescription || home?.heroSubtitle || "Ik bouw websites die converteren, dashboards die inzicht geven en automatiseringen die tijd besparen. Geen gedoe, gewoon resultaat voor mkb en zzpers.";
 
-                seoContent += `<h1>Cinematic Landing Pages & AI Automatisering</h1>`;
+                seoContent += `<h1>Maatwerk Websites & AI-Automatisering</h1>`;
                 seoContent += `<p>${routeDesc}</p>`;
 
                 seoContent += `<h2>Diensten</h2>`;

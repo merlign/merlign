@@ -52,7 +52,7 @@ const Hero = ({ data }) => {
     return (
         <>
             <section ref={heroRef} className="relative min-h-[100svh] md:min-h-screen flex items-center bg-[var(--background)] overflow-hidden py-16 md:py-24">
-            {/* Cinematic Background Layer */}
+            {/* Background Layer */}
             <div className="absolute inset-0 z-0 pointer-events-none overflow-hidden">
                 {/* Clean Moving Grid */}
                 <motion.div
@@ -72,7 +72,7 @@ const Hero = ({ data }) => {
                     }}
                 />
 
-                {/* Floating Service Icons (Curated constellation for maximum cinematic impact) */}
+                {/* Floating Service Icons */}
                 <div className="hidden md:block absolute inset-y-0 right-0 w-full md:w-[70%] overflow-visible pointer-events-none md:-translate-x-12">
                     {[
                         { icon: <Zap size={44} />, x: '78%', y: '15%', delay: 0 },

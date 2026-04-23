@@ -27,12 +27,12 @@ const ProtocolPage = () => {
             time: "Week 1",
             icon: <Rocket className="text-primary" size={24} />,
             tasks: [
-                "Cinematic Intake & Design Keuze",
+                "Hoogwaardige Intake & Design Keuze",
                 "Project Scaffolding (React/Vite)",
                 "Global Design System & Layout",
                 "Eerste High-Fidelity Draft"
             ],
-            desc: "We leggen de visuele fundering. Geen witte pagina's, maar direct een cinematieke ervaring die de toon van je merk zet."
+            desc: "We leggen de visuele fundering. Geen witte pagina's, maar direct een professionele ervaring die de toon van je merk zet."
         },
         {
             day: "Fase 2",
@@ -66,7 +66,7 @@ const ProtocolPage = () => {
         <div className="bg-[var(--background)] min-h-screen">
             <SEO
                 title="Het Operationeel Protocol"
-                description="Hoe ik in 2 weken een high-end, cinematieke website voor je bouw."
+                description="Hoe ik in 2 weken een high-end website voor je bouw."
                 noindex={true}
             />
 
