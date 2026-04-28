@@ -81,8 +81,8 @@ async function generate() {
                 }
             } else if (route.type === 'home') {
                 const home = await client.fetch(`*[_type == "homePage"][0]`);
-                routeTitle = home?.seoTitle || "Design & AI-Automatisering voor mkb en zzpers";
-                routeDesc = home?.seoDescription || home?.heroSubtitle || "Ik bouw websites die converteren, dashboards die inzicht geven en automatiseringen die tijd besparen. Geen gedoe, gewoon resultaat voor mkb en zzpers.";
+                routeTitle = home?.seoTitle || "Design & AI-Automatisering voor MKB & ZZP | Merlign";
+                routeDesc = home?.seoDescription || home?.heroSubtitle || "Ik bouw websites die converteren, dashboards die inzicht geven en automatiseringen die tijd besparen. Geen gedoe, gewoon resultaat voor MKB & ZZP in Boxtel en omstreken.";
 
                 seoContent += `<h1>Maatwerk Websites & AI-Automatisering</h1>`;
                 seoContent += `<p>${routeDesc}</p>`;

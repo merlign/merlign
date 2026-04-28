@@ -94,13 +94,10 @@ const ContactPage = () => {
                                     <ContactForm />
                                 </div>
 
-                                <p className="font-sans text-base font-bold text-[#F2F0E9]/60">
-                                    E-mail: contact@merlign.com<br />
-                                    Website: www.merlign.com
-                                </p>    <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12">
+                                <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12">
                                     {[
-                                        { icon: <Mail className="w-6 h-6 md:w-8 md:h-8" />, label: "E-mail", value: contactEmail, href: `mailto:${contactEmail}` },
-                                        { icon: <Linkedin className="w-6 h-6 md:w-8 md:h-8" />, label: "LinkedIn", value: "Merlijn van der Vleuten", href: linkedinLink }
+                                        { icon: <Mail className="w-6 h-6 md:w-8 md:h-8" />, value: contactEmail, href: `mailto:${contactEmail}` },
+                                        { icon: <Linkedin className="w-6 h-6 md:w-8 md:h-8" />, value: "Merlijn van der Vleuten", href: linkedinLink }
                                     ].map((item, i) => (
                                         <motion.a
                                             key={i}
@@ -115,8 +112,7 @@ const ContactPage = () => {
                                                 <div className="w-12 h-12 md:w-16 md:h-16 rounded-full bg-primary/10 border border-primary/10 flex items-center justify-center text-primary group-hover:bg-primary group-hover:text-white transition-all duration-700">
                                                     {item.icon}
                                                 </div>
-                                                <div className="text-left space-y-1">
-                                                    <span className="font-sans text-xs font-bold text-[#F2F0E9]/40">{item.label}</span>
+                                                <div className="text-left">
                                                     <span className="text-lg md:text-2xl font-sans font-bold text-[var(--text)]/70 group-hover:text-primary transition-colors duration-500 tracking-tighter">{item.value}</span>
                                                 </div>
                                             </div>
