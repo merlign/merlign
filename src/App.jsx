@@ -1,6 +1,7 @@
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Layout from './components/Layout';
+import Analytics from './components/Analytics';
 import Home from './pages/Home';
 import About from './pages/About';
 import Cases from './pages/Cases';
@@ -17,6 +18,7 @@ import NotFound from './pages/NotFound';
 export default function App() {
     return (
         <Router>
+            <Analytics />
             <Routes>
                 {/* Landing page without standard Layout */}
                 <Route path="/website-lp" element={<Advies />} />
