@@ -3,6 +3,13 @@ import fs from 'fs';
 import path from 'path';
 import { fileURLToPath } from 'url';
 import { client } from './src/lib/sanity.js';
+import Critters from 'critters';
+
+const critters = new Critters({
+    path: DIST_DIR,
+    prepend: true,
+    pruneSource: false,
+});
 
 if (!process.env.VITE_SANITY_PROJECT_ID) {
     console.warn('⚠️ WARNING: VITE_SANITY_PROJECT_ID is missing for prerender.js. Using fallbacks.');
@@ -235,6 +242,9 @@ async function generate() {
 
         finalHtml = finalHtml.replace('</head>', `${metaTags}\n</head>`);
 
+        // Inline critical CSS
+        const inlinedHtml = await critters.process(finalHtml);
+
         const relativePath = route.path === '/' ? '/index.html' : route.path === '/404' ? '/404.html' : `${route.path}/index.html`;
         const savePath = path.join(DIST_DIR, relativePath);
         const saveDir = path.dirname(savePath);
@@ -243,7 +253,7 @@ async function generate() {
             fs.mkdirSync(saveDir, { recursive: true });
         }
 
-        fs.writeFileSync(savePath, finalHtml);
+        fs.writeFileSync(savePath, inlinedHtml);
         console.log(`Saved ${savePath}`);
     }
 }

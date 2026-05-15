@@ -37,7 +37,7 @@ const PALETTE = {
 
 const TYPOGRAPHY = {
     sans: "'Plus Jakarta Sans', sans-serif",
-    drama: "'Lora', serif",
+    drama: "'Cormorant Garamond', serif",
     mono: "'Space Mono', monospace"
 };
 
@@ -101,6 +101,7 @@ export default function Advies() {
             <SEO
                 title="Professionele website in twee weken | Merlign"
                 description="Volledig op maat, met rake copy en kraakhelder design. Ziet je nieuwe site er niet direct beter uit dan wat je nu hebt staan? Dan betaal je niets."
+                path="/website-lp"
                 noindex={true}
             />
 
