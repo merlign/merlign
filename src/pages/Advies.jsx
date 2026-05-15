@@ -266,7 +266,7 @@ export default function Advies() {
                         Een professionele website in twee weken, <span className="italic font-drama text-[#6366F1] font-normal text-[1.1em]">voor een fractie van wat een bureau vraagt.</span>
                     </h1>
 
-                    <p className="hero-fade-up text-[17px] md:text-[21px] text-white/50 max-w-3xl mx-auto font-medium leading-[1.6]">
+                    <p className="hero-fade-up text-[17px] md:text-[21px] text-white/70 max-w-3xl mx-auto font-medium leading-[1.6]">
                         Volledig op maat, met rake copy en kraakhelder design. Ziet je nieuwe site er niet direct beter uit dan wat je nu hebt staan? Dan betaal je niets.
                     </p>
 
