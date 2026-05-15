@@ -160,8 +160,12 @@ export default function Advies() {
                         className="absolute top-[12%] -left-[15%] md:-left-[5%] w-[70%] md:w-[45%] aspect-video bg-white/5 border border-white/10 rounded-2xl"
                     >
                         <img
-                            src="/hero-previews/hero1.png"
+                            src="/hero-previews/hero1.webp"
                             alt=""
+                            width="800"
+                            height="450"
+                            loading="lazy"
+                            decoding="async"
                             className="w-full h-full object-cover rounded-2xl opacity-70"
                             onError={(e) => e.target.style.display = 'none'}
                         />
@@ -183,8 +187,12 @@ export default function Advies() {
                         className="absolute top-[35%] -right-[20%] md:-right-[10%] w-[75%] md:w-[50%] aspect-video bg-white/5 border border-white/10 rounded-3xl"
                     >
                         <img
-                            src="/hero-previews/hero2.png"
+                            src="/hero-previews/hero2.webp"
                             alt=""
+                            width="800"
+                            height="450"
+                            loading="lazy"
+                            decoding="async"
                             className="w-full h-full object-cover rounded-3xl opacity-65"
                             onError={(e) => e.target.style.display = 'none'}
                         />
@@ -206,8 +214,12 @@ export default function Advies() {
                         className="absolute bottom-[10%] left-[5%] md:left-[15%] w-[65%] md:w-[40%] aspect-video bg-white/5 border border-white/10 rounded-2xl"
                     >
                         <img
-                            src="/hero-previews/hero3.png"
+                            src="/hero-previews/hero3.webp"
                             alt=""
+                            width="800"
+                            height="450"
+                            loading="lazy"
+                            decoding="async"
                             className="w-full h-full object-cover rounded-2xl opacity-60"
                             onError={(e) => e.target.style.display = 'none'}
                         />
@@ -389,6 +401,10 @@ export default function Advies() {
                             <img
                                 src="/ferry.jpg"
                                 alt="Ferry Struik"
+                                width="56"
+                                height="56"
+                                loading="lazy"
+                                decoding="async"
                                 className="w-14 h-14 rounded-full object-cover border-2 border-[#6366F1]/40"
                             />
                             <cite className="not-italic font-bold text-xl block">Ferry Struik</cite>
