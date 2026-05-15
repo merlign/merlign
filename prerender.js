@@ -243,18 +243,27 @@ async function generate() {
         finalHtml = finalHtml.replace('</head>', `${metaTags}\n</head>`);
 
         // Inline critical CSS
-        const inlinedHtml = await critters.process(finalHtml);
+        console.log(`Inlining CSS for ${route.path}...`);
+        try {
+            const inlinedHtml = await critters.process(finalHtml);
+            
+            const relativePath = route.path === '/' ? '/index.html' : route.path === '/404' ? '/404.html' : `${route.path}/index.html`;
+            const savePath = path.join(DIST_DIR, relativePath);
+            const saveDir = path.dirname(savePath);
 
-        const relativePath = route.path === '/' ? '/index.html' : route.path === '/404' ? '/404.html' : `${route.path}/index.html`;
-        const savePath = path.join(DIST_DIR, relativePath);
-        const saveDir = path.dirname(savePath);
+            if (!fs.existsSync(saveDir)) {
+                fs.mkdirSync(saveDir, { recursive: true });
+            }
 
-        if (!fs.existsSync(saveDir)) {
-            fs.mkdirSync(saveDir, { recursive: true });
+            fs.writeFileSync(savePath, inlinedHtml);
+            console.log(`✅ Saved ${savePath}`);
+        } catch (critterErr) {
+            console.error(`❌ Critters failed for ${route.path}:`, critterErr);
+            // Fallback to non-inlined HTML if critters fails
+            const relativePath = route.path === '/' ? '/index.html' : route.path === '/404' ? '/404.html' : `${route.path}/index.html`;
+            const savePath = path.join(DIST_DIR, relativePath);
+            fs.writeFileSync(savePath, finalHtml);
         }
-
-        fs.writeFileSync(savePath, inlinedHtml);
-        console.log(`Saved ${savePath}`);
     }
 }
 
