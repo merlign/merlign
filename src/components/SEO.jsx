@@ -109,7 +109,7 @@ const SEO = ({ title, description, path = "", type = "website", services = [], f
     } : null;
 
     return (
-        <Helmet>
+        <Helmet htmlAttributes={{ lang: 'nl' }}>
             {/* Standard SEO */}
             <title>{fullTitle}</title>
             <meta name="description" content={description} />
