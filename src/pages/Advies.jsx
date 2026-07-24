@@ -343,7 +343,7 @@ export default function Advies() {
                     </motion.div>
 
                     <h1 className="hero-fade-up text-[clamp(2.1rem,7vw,3.8rem)] leading-[1.15] md:leading-[1.05] font-bold tracking-tighter max-w-5xl mx-auto">
-                        Binnen 48 uur een gratis ontwerp <span className="text-[#6366F1]">van je nieuwe site</span>
+                        Binnen 48 uur een gratis ontwerp <span className="italic font-drama text-[#6366F1] font-normal text-[1.1em]">van je nieuwe site</span>
                     </h1>
 
                     <p className="hero-fade-up text-[17px] md:text-[21px] text-white/70 max-w-3xl mx-auto font-medium leading-[1.6]">
