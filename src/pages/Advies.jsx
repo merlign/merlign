@@ -238,7 +238,7 @@ export default function Advies() {
                             scale: { duration: 2 },
                             y: { duration: 10, repeat: Infinity, ease: "linear" }
                         }}
-                        className="absolute top-[12%] -left-[15%] md:-left-[5%] w-[70%] md:w-[45%] aspect-video bg-white/5 border border-white/10 rounded-2xl"
+                        className="absolute top-[6%] -left-[20%] md:-left-[8%] w-[65%] md:w-[36%] max-w-[420px] aspect-video bg-white/5 border border-white/10 rounded-2xl"
                     >
                         <img
                             src="/hero-previews/hero1.webp"
@@ -265,7 +265,7 @@ export default function Advies() {
                             scale: { duration: 2, delay: 0.5 },
                             y: { duration: 12, repeat: Infinity, ease: "linear" }
                         }}
-                        className="absolute top-[35%] -right-[20%] md:-right-[10%] w-[75%] md:w-[50%] aspect-video bg-white/5 border border-white/10 rounded-3xl"
+                        className="absolute top-[48%] -right-[25%] md:-right-[12%] w-[70%] md:w-[38%] max-w-[440px] aspect-video bg-white/5 border border-white/10 rounded-3xl"
                     >
                         <img
                             src="/hero-previews/hero2.webp"
@@ -292,7 +292,7 @@ export default function Advies() {
                             scale: { duration: 2, delay: 1 },
                             y: { duration: 15, repeat: Infinity, ease: "linear" }
                         }}
-                        className="absolute bottom-[10%] left-[5%] md:left-[15%] w-[65%] md:w-[40%] aspect-video bg-white/5 border border-white/10 rounded-2xl"
+                        className="absolute bottom-[2%] left-[8%] md:left-[18%] w-[52%] md:w-[28%] max-w-[360px] aspect-video bg-white/5 border border-white/10 rounded-2xl"
                     >
                         <img
                             src="/hero-previews/hero3.webp"
@@ -669,8 +669,11 @@ export default function Advies() {
                                                     <input
                                                         required
                                                         autoFocus
-                                                        type="url"
-                                                        placeholder="Voer je antwoord in."
+                                                        type="text"
+                                                        inputMode="url"
+                                                        pattern="^(https?:\/\/)?(www\.)?[a-zA-Z0-9-]+(\.[a-zA-Z0-9-]+)+([\/?#].*)?$"
+                                                        title="Voer een geldige website in, bijv. merlign.com, www.merlign.com of https://merlign.com"
+                                                        placeholder="bijv. merlign.com"
                                                         className="w-full bg-white/5 border border-white/10 p-4 rounded-2xl outline-none focus:border-[#6366F1]/50 transition-colors"
                                                         value={formData.websiteUrl}
                                                         onChange={(e) => setFormData({ ...formData, websiteUrl: e.target.value })}
