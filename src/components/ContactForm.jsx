@@ -62,9 +62,14 @@ const ContactForm = ({ selectedUpgrade: initialUpgrade = null }) => {
             to_email: sanitize(trimmedEmail),
             user_email: sanitize(trimmedEmail),
             email: sanitize(trimmedEmail),
+            phone: '',
             company: sanitize(formData.company?.trim()),
             message: sanitize(formData.message),
-            upgrade_choice: upgrades.find(u => u.id === selectedUpgrade)?.title || selectedUpgrade
+            upgrade_choice: upgrades.find(u => u.id === selectedUpgrade)?.title || selectedUpgrade,
+            has_website: '-',
+            website_url: '-',
+            uitstraling: '-',
+            bereiken: '-'
         };
 
         try {

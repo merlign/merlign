@@ -22,6 +22,7 @@ import {
 } from 'lucide-react';
 import SEO from '../components/SEO';
 import { getContactInfo, getHomePageData, urlFor } from '../lib/sanity';
+import emailjs from 'emailjs-com';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -41,12 +42,24 @@ const TYPOGRAPHY = {
     mono: "'Space Mono', monospace"
 };
 
-const WHATSAPP_URL = "https://wa.me/31683368411?text=Hey%20Merlijn!%20Ik%20wil%20graag%20sparren%20over%20mijn%20website.";
-
 export default function Advies() {
     const mainRef = useRef(null);
     const [brandData, setBrandData] = useState(null);
     const [openFaq, setOpenFaq] = useState(null);
+    const [isModalOpen, setIsModalOpen] = useState(false);
+    const [isSending, setIsSending] = useState(false);
+    const [isSuccess, setIsSuccess] = useState(false);
+    const [step, setStep] = useState('hasWebsite');
+    const [formData, setFormData] = useState({
+        hasWebsite: '',
+        websiteUrl: '',
+        uitstraling: '',
+        bereiken: '',
+        email: '',
+        naam: '',
+        telefoon: ''
+    });
+
     useEffect(() => {
         async function fetchData() {
             try {
@@ -59,9 +72,79 @@ export default function Advies() {
         fetchData();
     }, []);
 
-    const handleCTAClick = () => {
+    const handleOpenModal = (e) => {
+        if (e) e.preventDefault();
         if (typeof window !== 'undefined' && window.fbq) {
             window.fbq('track', 'Lead');
+        }
+        setFormData({
+            hasWebsite: '',
+            websiteUrl: '',
+            uitstraling: '',
+            bereiken: '',
+            email: '',
+            naam: '',
+            telefoon: ''
+        });
+        setStep('hasWebsite');
+        setIsSuccess(false);
+        setIsModalOpen(true);
+    };
+
+    const handleSelectHasWebsite = (value) => {
+        setFormData(prev => ({ ...prev, hasWebsite: value }));
+        setStep(value === 'nee' ? 'contact' : 'websiteUrl');
+    };
+
+    const getPrevStep = (current) => {
+        if (current === 'websiteUrl') return 'hasWebsite';
+        if (current === 'uitstraling') return 'websiteUrl';
+        if (current === 'bereiken') return 'uitstraling';
+        if (current === 'contact') return formData.hasWebsite === 'nee' ? 'hasWebsite' : 'bereiken';
+        return 'hasWebsite';
+    };
+
+    const handleBack = () => setStep(getPrevStep(step));
+
+    const stepsOrder = formData.hasWebsite === 'nee'
+        ? ['hasWebsite', 'contact']
+        : ['hasWebsite', 'websiteUrl', 'uitstraling', 'bereiken', 'contact'];
+    const currentStepIndex = stepsOrder.indexOf(step);
+    const totalSteps = stepsOrder.length;
+
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+        if (isSending) return;
+        setIsSending(true);
+
+        const serviceId = import.meta.env.VITE_EMAILJS_SERVICE_ID;
+        const templateId = import.meta.env.VITE_EMAILJS_TEMPLATE_ID;
+        const publicKey = import.meta.env.VITE_EMAILJS_PUBLIC_KEY;
+
+        const templateParams = {
+            from_name: formData.naam,
+            reply_to: formData.email,
+            to_email: formData.email,
+            user_email: formData.email,
+            email: formData.email,
+            phone: formData.telefoon,
+            company: '',
+            upgrade_choice: "Gratis Voorproefje",
+            has_website: formData.hasWebsite === 'ja' ? 'Ja' : 'Nee',
+            website_url: formData.hasWebsite === 'ja' ? formData.websiteUrl : '-',
+            uitstraling: formData.hasWebsite === 'ja' ? formData.uitstraling : '-',
+            bereiken: formData.hasWebsite === 'ja' ? formData.bereiken : '-',
+            message: ''
+        };
+
+        try {
+            await emailjs.send(serviceId, templateId, templateParams, publicKey);
+            setIsSuccess(true);
+        } catch (error) {
+            console.error('EmailJS error:', error);
+            alert('Er ging iets mis bij het verzenden. Probeer het later opnieuw.');
+        } finally {
+            setIsSending(false);
         }
     };
 
@@ -121,15 +204,12 @@ export default function Advies() {
                     <div className="flex items-center gap-2">
                         <img src="/logo_merlign.png" alt="Merlign" className="h-4 brightness-0 invert" />
                     </div>
-                    <a
-                        href={WHATSAPP_URL}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        onClick={handleCTAClick}
+                    <button
+                        onClick={handleOpenModal}
                         className="bg-[#6366F1] text-white text-[13px] font-bold px-4 py-2 rounded-full transition-all hover:scale-105 active:scale-95"
                     >
-                        Claim je gratis advies
-                    </a>
+                        Ontvang gratis voorproefje
+                    </button>
                 </div>
             </nav>
 
@@ -263,25 +343,21 @@ export default function Advies() {
                     </motion.div>
 
                     <h1 className="hero-fade-up text-[clamp(2.1rem,7vw,3.8rem)] leading-[1.15] md:leading-[1.05] font-bold tracking-tighter max-w-5xl mx-auto">
-                        Een professionele website in twee weken, <span className="italic font-drama text-[#6366F1] font-normal text-[1.1em]">voor een fractie van wat een bureau vraagt.</span>
+                        Binnen 48 uur een gratis ontwerp <span className="text-[#6366F1]">van je nieuwe site</span>
                     </h1>
 
                     <p className="hero-fade-up text-[17px] md:text-[21px] text-white/70 max-w-3xl mx-auto font-medium leading-[1.6]">
-                        Volledig op maat, met rake copy en kraakhelder design. Ziet je nieuwe site er niet direct beter uit dan wat je nu hebt staan? Dan betaal je niets.
+                        Ik bouw binnen twee dagen een werkende homepage voor jouw bedrijf. Volledig op maat, met rake copy en kraakhelder design.
                     </p>
 
                     <div className="hero-fade-up flex flex-col items-center gap-6 pt-4">
                         <div className="flex flex-col items-center gap-3">
-                            <a
-                                href={WHATSAPP_URL}
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                onClick={handleCTAClick}
+                            <button
+                                onClick={handleOpenModal}
                                 className="inline-flex items-center justify-center gap-3 bg-[#6366F1] text-white px-8 py-4 md:px-12 md:py-6 rounded-full font-bold text-base md:text-xl transition-all hover:scale-[1.03] active:scale-[0.98] shadow-lg shadow-[#6366F1]/20"
                             >
-                                Claim je gratis advies
-                            </a>
-                            <p className="text-white/40 text-sm font-medium">Via WhatsApp, ik reageer dezelfde dag</p>
+                                Ontvang gratis voorproefje
+                            </button>
                         </div>
                     </div>
                 </div>
@@ -335,16 +411,12 @@ export default function Advies() {
                     {/* CTA onder Herken je dit */}
                     <div className="flex flex-col items-center gap-6 pt-12 text-center">
                         <div className="flex flex-col items-center gap-3">
-                            <a
-                                href={WHATSAPP_URL}
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                onClick={handleCTAClick}
+                            <button
+                                onClick={handleOpenModal}
                                 className="inline-flex items-center justify-center gap-3 bg-[#6366F1] text-white px-8 py-4 md:px-12 md:py-5 rounded-full font-bold text-base md:text-lg transition-all hover:scale-[1.03] active:scale-[0.98] shadow-lg shadow-[#6366F1]/20"
                             >
-                                Claim je gratis advies
-                            </a>
-                            <p className="text-white/40 text-sm font-medium">Via WhatsApp, ik reageer dezelfde dag</p>
+                                Ontvang gratis voorproefje
+                            </button>
                         </div>
                     </div>
                 </div>
@@ -471,25 +543,249 @@ export default function Advies() {
                             Zullen we kijken <br className="md:hidden" /> waar voor jou <br className="md:hidden" /> <span className="italic font-drama font-normal text-[#6366F1] text-[1.1em] inline-block">de kansen liggen?</span>
                         </h2>
                         <p className="text-lg md:text-2xl text-white/50 max-w-2xl mx-auto font-light leading-relaxed">
-                            Ik neem bewust maar een handjevol klanten aan per maand. Stuur me een berichtje en ik kijk gratis met je mee.
+                            Ik neem bewust maar een handjevol klanten aan per maand. Vul het formulier in en ontvang een gratis voorproefje van je nieuwe website.
                         </p>
                         <div className="flex flex-col items-center gap-8 pt-4">
                             <div className="flex flex-col items-center gap-3">
-                                <a
-                                    href={WHATSAPP_URL}
-                                    target="_blank"
-                                    rel="noopener noreferrer"
-                                    onClick={handleCTAClick}
+                                <button
+                                    onClick={handleOpenModal}
                                     className="inline-flex items-center justify-center gap-3 bg-[#6366F1] text-white px-8 py-4 md:px-12 md:py-6 rounded-full font-bold text-base md:text-xl transition-all hover:scale-[1.05] active:scale-[0.98] shadow-2xl shadow-[#6366F1]/20"
                                 >
-                                    Claim je gratis advies
-                                </a>
-                                <p className="text-white/40 text-sm font-medium">Via WhatsApp, ik reageer dezelfde dag</p>
+                                    Ontvang gratis voorproefje
+                                </button>
                             </div>
                         </div>
                     </div>
                 </div>
             </section>
+
+            {/* Modal */}
+            <AnimatePresence>
+                {isModalOpen && (
+                    <div className="fixed inset-0 z-[200] flex items-center justify-center p-4 md:p-8">
+                        <motion.div
+                            initial={{ opacity: 0 }}
+                            animate={{ opacity: 1 }}
+                            exit={{ opacity: 0 }}
+                            onClick={() => setIsModalOpen(false)}
+                            className="absolute inset-0 bg-[#0D0D12]/90 backdrop-blur-xl"
+                        />
+
+                        <motion.div
+                            initial={{ scale: 0.95, opacity: 0, y: 20 }}
+                            animate={{ scale: 1, opacity: 1, y: 0 }}
+                            exit={{ scale: 0.95, opacity: 0, y: 20 }}
+                            className="relative w-full max-w-2xl bg-[#12121A] border border-white/10 rounded-[2.5rem] shadow-2xl overflow-hidden overflow-y-auto max-h-[90vh]"
+                        >
+                            <button
+                                onClick={() => setIsModalOpen(false)}
+                                className="absolute top-6 right-6 text-white/40 hover:text-white transition-colors z-10"
+                            >
+                                <X size={24} />
+                            </button>
+
+                            <div className="p-8 md:p-12">
+                                {isSuccess ? (
+                                    <div className="text-center space-y-8 py-12">
+                                        <div className="w-20 h-20 bg-[#6366F1]/20 rounded-full flex items-center justify-center mx-auto border border-[#6366F1]/50">
+                                            <Check size={40} className="text-[#6366F1]" />
+                                        </div>
+                                        <div className="space-y-4">
+                                            <h3 className="text-3xl font-bold tracking-tight">Bedankt!</h3>
+                                            <p className="text-white/60 text-lg leading-relaxed max-w-md mx-auto">
+                                                Ik ga voor je aan de slag en stuur je gratis voorproefje zo snel mogelijk toe.
+                                            </p>
+                                        </div>
+                                        <button
+                                            onClick={() => setIsModalOpen(false)}
+                                            className="bg-white/5 border border-white/10 px-8 py-3 rounded-full font-bold text-sm"
+                                        >
+                                            Sluiten
+                                        </button>
+                                    </div>
+                                ) : (
+                                    <div className="space-y-8">
+                                        <div className="space-y-2">
+                                            <div className="flex items-center justify-between text-xs font-bold text-white/40 uppercase tracking-wider">
+                                                <span>Stap {currentStepIndex + 1} van {totalSteps}</span>
+                                            </div>
+                                            <div className="h-1.5 w-full bg-white/10 rounded-full overflow-hidden">
+                                                <motion.div
+                                                    className="h-full bg-[#6366F1] rounded-full"
+                                                    initial={false}
+                                                    animate={{ width: `${((currentStepIndex + 1) / totalSteps) * 100}%` }}
+                                                    transition={{ duration: 0.3, ease: 'easeOut' }}
+                                                />
+                                            </div>
+                                        </div>
+
+                                        {(step === 'hasWebsite' || step === 'contact') && (
+                                            <div className="space-y-2">
+                                                <h3 className="text-2xl md:text-3xl font-bold tracking-tight text-[#6366F1]">
+                                                    {step === 'contact' ? 'Contactgegevens' : 'Gratis voorproefje'}
+                                                </h3>
+                                                {step === 'contact' ? (
+                                                    <p className="text-white/50">
+                                                        Ik gebruik je gegevens alleen om je gratis voorproefje toe te sturen. Ik ga je niet spammen en je ontvangt geen ongevraagde nieuwsbrief.
+                                                    </p>
+                                                ) : (
+                                                    <p className="text-white/50">Beantwoord een paar korte vragen, dan ga ik voor je aan de slag.</p>
+                                                )}
+                                            </div>
+                                        )}
+
+                                        <AnimatePresence mode="wait">
+                                        <motion.div
+                                            key={step}
+                                            initial={{ opacity: 0, x: 24 }}
+                                            animate={{ opacity: 1, x: 0 }}
+                                            exit={{ opacity: 0, x: -24 }}
+                                            transition={{ duration: 0.25, ease: 'easeInOut' }}
+                                        >
+                                        {step === 'hasWebsite' && (
+                                            <div className="space-y-4">
+                                                <label className="text-lg font-bold text-white">Heb je al een website?</label>
+                                                <div className="grid grid-cols-2 gap-4">
+                                                    <button
+                                                        onClick={() => handleSelectHasWebsite('ja')}
+                                                        className="bg-white/5 border border-white/10 hover:border-[#6366F1]/50 hover:bg-[#6366F1]/10 p-6 rounded-2xl font-bold text-lg transition-colors"
+                                                    >
+                                                        Ja
+                                                    </button>
+                                                    <button
+                                                        onClick={() => handleSelectHasWebsite('nee')}
+                                                        className="bg-white/5 border border-white/10 hover:border-[#6366F1]/50 hover:bg-[#6366F1]/10 p-6 rounded-2xl font-bold text-lg transition-colors"
+                                                    >
+                                                        Nee
+                                                    </button>
+                                                </div>
+                                            </div>
+                                        )}
+
+                                        {step === 'websiteUrl' && (
+                                            <form onSubmit={(e) => { e.preventDefault(); setStep('uitstraling'); }} className="space-y-6">
+                                                <div className="space-y-2">
+                                                    <label className="text-lg font-bold text-white">Wat is je website URL?</label>
+                                                    <input
+                                                        required
+                                                        autoFocus
+                                                        type="url"
+                                                        placeholder="Voer je antwoord in."
+                                                        className="w-full bg-white/5 border border-white/10 p-4 rounded-2xl outline-none focus:border-[#6366F1]/50 transition-colors"
+                                                        value={formData.websiteUrl}
+                                                        onChange={(e) => setFormData({ ...formData, websiteUrl: e.target.value })}
+                                                    />
+                                                </div>
+                                                <div className="flex gap-4">
+                                                    <button type="button" onClick={handleBack} className="bg-white/5 border border-white/10 px-6 py-4 rounded-full font-bold text-sm">Terug</button>
+                                                    <button type="submit" className="flex-1 bg-[#6366F1] text-white py-4 rounded-full font-bold text-lg hover:scale-[1.02] active:scale-[0.98] transition-all shadow-xl shadow-[#6366F1]/20">Volgende</button>
+                                                </div>
+                                            </form>
+                                        )}
+
+                                        {step === 'uitstraling' && (
+                                            <form onSubmit={(e) => { e.preventDefault(); setStep('bereiken'); }} className="space-y-6">
+                                                <div className="space-y-2">
+                                                    <label className="text-lg font-bold text-white">Wat moet je nieuwe website uitstralen?</label>
+                                                    <textarea
+                                                        required
+                                                        autoFocus
+                                                        placeholder="Voer je antwoord in."
+                                                        rows={3}
+                                                        className="w-full bg-white/5 border border-white/10 p-4 rounded-2xl outline-none focus:border-[#6366F1]/50 transition-colors resize-none"
+                                                        value={formData.uitstraling}
+                                                        onChange={(e) => setFormData({ ...formData, uitstraling: e.target.value })}
+                                                    />
+                                                </div>
+                                                <div className="flex gap-4">
+                                                    <button type="button" onClick={handleBack} className="bg-white/5 border border-white/10 px-6 py-4 rounded-full font-bold text-sm">Terug</button>
+                                                    <button type="submit" className="flex-1 bg-[#6366F1] text-white py-4 rounded-full font-bold text-lg hover:scale-[1.02] active:scale-[0.98] transition-all shadow-xl shadow-[#6366F1]/20">Volgende</button>
+                                                </div>
+                                            </form>
+                                        )}
+
+                                        {step === 'bereiken' && (
+                                            <form onSubmit={(e) => { e.preventDefault(); setStep('contact'); }} className="space-y-6">
+                                                <div className="space-y-2">
+                                                    <label className="text-lg font-bold text-white">Wat wil je bereiken met je nieuwe website?</label>
+                                                    <textarea
+                                                        required
+                                                        autoFocus
+                                                        placeholder="Voer je antwoord in."
+                                                        rows={3}
+                                                        className="w-full bg-white/5 border border-white/10 p-4 rounded-2xl outline-none focus:border-[#6366F1]/50 transition-colors resize-none"
+                                                        value={formData.bereiken}
+                                                        onChange={(e) => setFormData({ ...formData, bereiken: e.target.value })}
+                                                    />
+                                                </div>
+                                                <div className="flex gap-4">
+                                                    <button type="button" onClick={handleBack} className="bg-white/5 border border-white/10 px-6 py-4 rounded-full font-bold text-sm">Terug</button>
+                                                    <button type="submit" className="flex-1 bg-[#6366F1] text-white py-4 rounded-full font-bold text-lg hover:scale-[1.02] active:scale-[0.98] transition-all shadow-xl shadow-[#6366F1]/20">Volgende</button>
+                                                </div>
+                                            </form>
+                                        )}
+
+                                        {step === 'contact' && (
+                                            <form onSubmit={handleSubmit} className="space-y-6">
+                                                <div className="space-y-2">
+                                                    <label className="text-lg font-bold text-white">E-mailadres</label>
+                                                    <input
+                                                        required
+                                                        autoFocus
+                                                        type="email"
+                                                        pattern="^[^\s@]+@[^\s@]+\.[^\s@]{2,}$"
+                                                        title="Voer een geldig e-mailadres in, bijv. naam@bedrijf.nl"
+                                                        placeholder="Voer je antwoord in."
+                                                        className="w-full bg-white/5 border border-white/10 p-4 rounded-2xl outline-none focus:border-[#6366F1]/50 transition-colors"
+                                                        value={formData.email}
+                                                        onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+                                                    />
+                                                </div>
+                                                <div className="space-y-2">
+                                                    <label className="text-lg font-bold text-white">Volledige naam</label>
+                                                    <input
+                                                        required
+                                                        type="text"
+                                                        placeholder="Voer je antwoord in."
+                                                        className="w-full bg-white/5 border border-white/10 p-4 rounded-2xl outline-none focus:border-[#6366F1]/50 transition-colors"
+                                                        value={formData.naam}
+                                                        onChange={(e) => setFormData({ ...formData, naam: e.target.value })}
+                                                    />
+                                                </div>
+                                                <div className="space-y-2">
+                                                    <label className="text-lg font-bold text-white">Telefoonnummer</label>
+                                                    <input
+                                                        required
+                                                        type="tel"
+                                                        pattern="^\+?[0-9\s-]{9,15}$"
+                                                        title="Voer een geldig telefoonnummer in, bijv. 06 12345678"
+                                                        placeholder="Voer je antwoord in."
+                                                        className="w-full bg-white/5 border border-white/10 p-4 rounded-2xl outline-none focus:border-[#6366F1]/50 transition-colors"
+                                                        value={formData.telefoon}
+                                                        onChange={(e) => setFormData({ ...formData, telefoon: e.target.value })}
+                                                    />
+                                                </div>
+                                                <div className="flex gap-4">
+                                                    <button type="button" onClick={handleBack} className="bg-white/5 border border-white/10 px-6 py-4 rounded-full font-bold text-sm">Terug</button>
+                                                    <button
+                                                        type="submit"
+                                                        disabled={isSending}
+                                                        className="flex-1 bg-[#6366F1] text-white py-4 rounded-full font-bold text-lg hover:scale-[1.02] active:scale-[0.98] transition-all shadow-xl shadow-[#6366F1]/20 disabled:opacity-50"
+                                                    >
+                                                        {isSending ? 'Momentje...' : 'Verstuur aanvraag'}
+                                                    </button>
+                                                </div>
+                                            </form>
+                                        )}
+                                        </motion.div>
+                                        </AnimatePresence>
+                                    </div>
+                                )}
+                            </div>
+                        </motion.div>
+                    </div>
+                )}
+            </AnimatePresence>
 
             {/* 7. FOOTER */}
             <footer className="py-20 px-6 border-t border-white/5 bg-[#0D0D12] text-center md:text-left relative overflow-hidden">
