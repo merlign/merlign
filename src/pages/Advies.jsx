@@ -238,7 +238,7 @@ export default function Advies() {
                             scale: { duration: 2 },
                             y: { duration: 10, repeat: Infinity, ease: "linear" }
                         }}
-                        className="absolute top-[6%] -left-[20%] md:-left-[8%] w-[65%] md:w-[36%] max-w-[420px] aspect-video bg-white/5 border border-white/10 rounded-2xl"
+                        className="absolute top-[6%] -left-[20%] md:-left-[8%] w-[65%] md:w-[36%] max-w-[560px] aspect-video bg-white/5 border border-white/10 rounded-2xl"
                     >
                         <img
                             src="/hero-previews/hero1.webp"
@@ -265,7 +265,7 @@ export default function Advies() {
                             scale: { duration: 2, delay: 0.5 },
                             y: { duration: 12, repeat: Infinity, ease: "linear" }
                         }}
-                        className="absolute top-[48%] -right-[25%] md:-right-[12%] w-[70%] md:w-[38%] max-w-[440px] aspect-video bg-white/5 border border-white/10 rounded-3xl"
+                        className="absolute top-[48%] -right-[25%] md:-right-[12%] w-[70%] md:w-[38%] max-w-[600px] aspect-video bg-white/5 border border-white/10 rounded-3xl"
                     >
                         <img
                             src="/hero-previews/hero2.webp"
@@ -292,7 +292,7 @@ export default function Advies() {
                             scale: { duration: 2, delay: 1 },
                             y: { duration: 15, repeat: Infinity, ease: "linear" }
                         }}
-                        className="absolute bottom-[2%] left-[8%] md:left-[18%] w-[52%] md:w-[28%] max-w-[360px] aspect-video bg-white/5 border border-white/10 rounded-2xl"
+                        className="absolute bottom-[2%] left-[8%] md:left-[18%] w-[52%] md:w-[28%] max-w-[460px] aspect-video bg-white/5 border border-white/10 rounded-2xl"
                     >
                         <img
                             src="/hero-previews/hero3.webp"
@@ -343,7 +343,7 @@ export default function Advies() {
                     </motion.div>
 
                     <h1 className="hero-fade-up text-[clamp(2.1rem,7vw,3.8rem)] leading-[1.15] md:leading-[1.05] font-bold tracking-tighter max-w-5xl mx-auto">
-                        Binnen 48 uur een gratis ontwerp <span className="italic font-drama text-[#6366F1] font-normal text-[1.1em]">van je nieuwe site</span>
+                        Binnen 48 uur een gratis ontwerp <span className="italic font-drama text-[#6366F1] font-normal text-[1.1em] inline-block">van je nieuwe site</span>
                     </h1>
 
                     <p className="hero-fade-up text-[17px] md:text-[21px] text-white/70 max-w-3xl mx-auto font-medium leading-[1.6]">
