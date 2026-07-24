@@ -199,7 +199,7 @@ export default function WebsiteLP2() {
                     </motion.div>
 
                     <h1 className="hero-fade-up text-[clamp(2.1rem,7vw,3.8rem)] leading-[1.15] md:leading-[1.05] font-bold tracking-tighter max-w-5xl mx-auto">
-                        Een professionele website in twee weken, <span className="italic font-drama text-[#6366F1] font-normal text-[1.1em] inline-block">voor een fractie van wat een bureau vraagt.</span>
+                        Een professionele website in twee weken, <span className="font-drama text-[#6366F1] font-normal text-[1.1em] inline-block">voor een fractie van wat een bureau vraagt.</span>
                     </h1>
 
                     <p className="hero-fade-up text-[17px] md:text-[21px] text-white/50 max-w-3xl mx-auto font-medium leading-[1.6]">
@@ -275,7 +275,7 @@ export default function WebsiteLP2() {
                 <div className="max-w-4xl mx-auto space-y-20">
                     <div className="space-y-8 text-center">
                         <h2 className="text-4xl md:text-7xl font-bold tracking-tighter leading-tight">
-                            Geen gepraat, maar <br /> <span className="italic font-drama text-[#6366F1] font-normal text-[1.1em] inline-block">direct resultaat.</span>
+                            Geen gepraat, maar <br /> <span className="font-drama text-[#6366F1] font-normal text-[1.1em] inline-block">direct resultaat.</span>
                         </h2>
 
                         <div className="space-y-8 text-lg md:text-xl text-white/60 font-light leading-relaxed max-w-3xl mx-auto">
@@ -339,7 +339,7 @@ export default function WebsiteLP2() {
             <section className="reveal-section py-32 px-6 border-t border-white/5 bg-[#0A0A0F]">
                 <div className="max-w-4xl mx-auto space-y-20 text-center">
                     <h2 className="text-4xl md:text-7xl font-bold tracking-tighter leading-tight">
-                        In drie stappen live, <br /> <span className="italic font-drama text-[#6366F1] font-normal text-[1.1em] inline-block">zonder gezeik.</span>
+                        In drie stappen live, <br /> <span className="font-drama text-[#6366F1] font-normal text-[1.1em] inline-block">zonder gezeik.</span>
                     </h2>
 
                     <div className="grid grid-cols-1 md:grid-cols-3 gap-8 text-left">
@@ -387,7 +387,7 @@ export default function WebsiteLP2() {
             <section className="reveal-section py-32 px-6 border-t border-white/5">
                 <div className="max-w-3xl mx-auto space-y-16">
                     <h2 className="text-4xl md:text-6xl font-bold tracking-tighter text-center leading-tight">
-                        Je vraagt je <br /> <span className="italic font-drama text-[#6366F1] font-normal text-[1.1em] inline-block">misschien af...</span>
+                        Je vraagt je <br /> <span className="font-drama text-[#6366F1] font-normal text-[1.1em] inline-block">misschien af...</span>
                     </h2>
 
                     <div className="space-y-4">
@@ -435,7 +435,7 @@ export default function WebsiteLP2() {
                     <div className="absolute inset-0 bg-[#6366F1]/5 opacity-0 group-hover:opacity-100 transition-opacity duration-1000 blur-[120px]" />
                     <div className="relative z-10 space-y-8 md:space-y-12">
                         <h2 className="text-[32px] md:text-6xl font-bold tracking-tighter max-w-5xl mx-auto leading-tight md:leading-[1.1]">
-                            Zien hoe jouw nieuwe <br /> <span className="italic font-drama font-normal text-[#6366F1] text-[1.1em] inline-block">hero sectie eruit ziet?</span>
+                            Zien hoe jouw nieuwe <br /> <span className="font-drama font-normal text-[#6366F1] text-[1.1em] inline-block">hero sectie eruit ziet?</span>
                         </h2>
                         <p className="text-lg md:text-2xl text-white/50 max-w-2xl mx-auto font-light leading-relaxed">
                             Ik maak tijd voor maximaal 2 gratis redesigns per week. Wacht niet te lang.

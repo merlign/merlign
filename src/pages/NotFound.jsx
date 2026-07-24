@@ -24,7 +24,7 @@ const NotFound = () => {
                     transition={{ duration: 0.8 }}
                     className="space-y-4"
                 >
-                    <h1 className="text-8xl md:text-[12rem] font-bold tracking-tighter leading-none opacity-10 font-drama italic">404</h1>
+                    <h1 className="text-8xl md:text-[12rem] font-bold tracking-tighter leading-none opacity-10 font-drama">404</h1>
                     <div className="space-y-2">
                         <h2 className="text-3xl md:text-5xl font-bold tracking-tight">Oeps. Verdwaald?</h2>
                         <p className="text-white/50 text-lg md:text-xl font-light leading-relaxed">

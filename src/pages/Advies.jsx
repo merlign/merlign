@@ -343,7 +343,7 @@ export default function Advies() {
                     </motion.div>
 
                     <h1 className="hero-fade-up text-[clamp(2.1rem,7vw,3.8rem)] leading-[1.15] md:leading-[1.05] font-bold tracking-tighter max-w-5xl mx-auto">
-                        Binnen 48 uur een gratis ontwerp <span className="italic font-drama text-[#6366F1] font-normal text-[1.1em] inline-block">van je nieuwe site</span>
+                        Binnen 48 uur een gratis ontwerp <span className="font-drama text-[#6366F1] font-normal text-[1.1em] inline-block">van je nieuwe site</span>
                     </h1>
 
                     <p className="hero-fade-up text-[17px] md:text-[21px] text-white/70 max-w-3xl mx-auto font-medium leading-[1.6]">
@@ -427,7 +427,7 @@ export default function Advies() {
                 <div className="max-w-4xl mx-auto space-y-20">
                     <div className="space-y-8 text-center">
                         <h2 className="text-4xl md:text-7xl font-bold tracking-tighter leading-tight">
-                            Snel, betaalbaar én <br /> <span className="italic font-drama text-[#6366F1] font-normal text-[1.1em] inline-block">echt goed ontworpen.</span>
+                            Snel, betaalbaar én <br /> <span className="font-drama text-[#6366F1] font-normal text-[1.1em] inline-block">echt goed ontworpen.</span>
                         </h2>
 
                         <div className="space-y-8 text-lg md:text-xl text-white/60 font-light leading-relaxed max-w-3xl mx-auto">
@@ -492,7 +492,7 @@ export default function Advies() {
             <section className="reveal-section py-32 px-6">
                 <div className="max-w-3xl mx-auto space-y-16">
                     <h2 className="text-4xl md:text-6xl font-bold tracking-tighter text-center leading-tight">
-                        Je vraagt je <br /> <span className="italic font-drama text-[#6366F1] font-normal text-[1.1em] inline-block">misschien af...</span>
+                        Je vraagt je <br /> <span className="font-drama text-[#6366F1] font-normal text-[1.1em] inline-block">misschien af...</span>
                     </h2>
 
                     <div className="space-y-4">
@@ -540,7 +540,7 @@ export default function Advies() {
                     <div className="absolute inset-0 bg-[#6366F1]/5 opacity-0 group-hover:opacity-100 transition-opacity duration-1000 blur-[120px]" />
                     <div className="relative z-10 space-y-8 md:space-y-12">
                         <h2 className="text-[32px] md:text-6xl font-bold tracking-tighter max-w-5xl mx-auto leading-tight md:leading-[1.1]">
-                            Zullen we kijken <br className="md:hidden" /> waar voor jou <br className="md:hidden" /> <span className="italic font-drama font-normal text-[#6366F1] text-[1.1em] inline-block">de kansen liggen?</span>
+                            Zullen we kijken <br className="md:hidden" /> waar voor jou <br className="md:hidden" /> <span className="font-drama font-normal text-[#6366F1] text-[1.1em] inline-block">de kansen liggen?</span>
                         </h2>
                         <p className="text-lg md:text-2xl text-white/50 max-w-2xl mx-auto font-light leading-relaxed">
                             Ik neem bewust maar een handjevol klanten aan per maand. Vul het formulier in en ontvang een gratis voorproefje van je nieuwe website.

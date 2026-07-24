@@ -255,7 +255,7 @@ const WebsiteScanner = () => {
                     <div className="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-[0.03] mix-blend-overlay pointer-events-none"></div>
                     <div className="max-w-2xl mx-auto text-center space-y-6 mb-12 relative z-10">
                         <h2 className="font-sans font-bold text-white text-3xl sm:text-4xl md:text-5xl leading-tight">
-                            Doe de gratis <span className="text-white font-drama font-normal text-4xl sm:text-5xl md:text-6xl italic">website scan.</span>
+                            Doe de gratis <span className="text-white font-drama font-normal text-4xl sm:text-5xl md:text-6xl">website scan.</span>
                         </h2>
                         <p className="text-sm md:text-base font-sans text-white/80 font-light italic max-w-sm mx-auto">
                             Ontdek binnen 30 seconden waar je leads verliest.
