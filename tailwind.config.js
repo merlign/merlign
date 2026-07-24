@@ -19,7 +19,7 @@ export default {
       fontFamily: {
         sans: ["Inter", "sans-serif"],
         display: ["Plus Jakarta Sans", "sans-serif"], // Readable header font
-        drama: ["Cormorant Garamond", "serif"],
+        drama: ["Lora", "serif"],
         mono: ["Space Mono", "monospace"],
       },
       borderRadius: {
