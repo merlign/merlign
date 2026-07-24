@@ -265,7 +265,7 @@ export default function Advies() {
                             scale: { duration: 2, delay: 0.5 },
                             y: { duration: 12, repeat: Infinity, ease: "linear" }
                         }}
-                        className="absolute top-[48%] -right-[25%] md:-right-[12%] w-[70%] md:w-[46%] max-w-[780px] aspect-video bg-white/5 border border-white/10 rounded-3xl"
+                        className="absolute top-[38%] -right-[25%] md:-right-[12%] w-[70%] md:w-[46%] max-w-[780px] aspect-video bg-white/5 border border-white/10 rounded-3xl"
                     >
                         <img
                             src="/hero-previews/hero2.webp"
