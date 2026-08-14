@@ -622,7 +622,7 @@ export default function Advies() {
                                                     </button>
                                                     <button
                                                         onClick={() => handleSelectHasWebsite('nee')}
-                                                        className="bg-white/5 border border-white/10 hover:border-[#6366F1]/50 hover:bg-[#6366F1]/10 p6 rounded-2xl font-bold text-lg transition-colors"
+                                                        className="bg-white/5 border border-white/10 hover:border-[#6366F1]/50 hover:bg-[#6366F1]/10 p-6 rounded-2xl font-bold text-lg transition-colors"
                                                     >
                                                         Nee
                                                     </button>
