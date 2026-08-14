@@ -309,7 +309,7 @@ export default function Advies() {
                     </motion.div>
                 </div>
 
-                <div className="flex-1 flex flex-col items-center justify-center relative z-10 max-w-4xl mx-auto space-y-8 md:space-y-12 pt-8 pb-24 md:pt-12 md:pb-36">
+                <div className="flex-1 flex flex-col items-center relative z-10 max-w-4xl mx-auto space-y-8 md:space-y-12 pt-[28vh] pb-[8vh]">
                     <h1 className="hero-fade-up text-[clamp(2.1rem,7vw,3.8rem)] leading-[1.15] md:leading-[1.05] font-bold tracking-tighter max-w-5xl mx-auto">
                         Binnen 48 uur een gratis ontwerp <span className="font-drama text-[#6366F1] font-normal text-[1.1em] inline-block">van je nieuwe site</span>
                     </h1>
