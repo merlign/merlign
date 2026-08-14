@@ -22,7 +22,7 @@ import {
 } from 'lucide-react';
 import SEO from '../components/SEO';
 import { getContactInfo, getHomePageData, urlFor } from '../lib/sanity';
-import emailjs from 'emailjs-com';
+// emailjs wordt alleen geladen wanneer het formulier wordt verzonden (lazy import)
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -138,6 +138,7 @@ export default function Advies() {
         };
 
         try {
+            const { default: emailjs } = await import('emailjs-com');
             await emailjs.send(serviceId, templateId, templateParams, publicKey);
             setIsSuccess(true);
         } catch (error) {
@@ -243,9 +244,10 @@ export default function Advies() {
                         <img
                             src="/hero-previews/hero1.webp"
                             alt=""
-                            width="800"
-                            height="450"
-                            loading="lazy"
+                            width="900"
+                            height="534"
+                            loading="eager"
+                            fetchPriority="low"
                             decoding="async"
                             className="w-full h-full object-cover rounded-2xl opacity-70"
                             onError={(e) => e.target.style.display = 'none'}
@@ -270,8 +272,8 @@ export default function Advies() {
                         <img
                             src="/hero-previews/hero2.webp"
                             alt=""
-                            width="800"
-                            height="450"
+                            width="900"
+                            height="534"
                             loading="lazy"
                             decoding="async"
                             className="w-full h-full object-cover rounded-3xl opacity-65"
@@ -297,8 +299,8 @@ export default function Advies() {
                         <img
                             src="/hero-previews/hero3.webp"
                             alt=""
-                            width="800"
-                            height="450"
+                            width="900"
+                            height="528"
                             loading="lazy"
                             decoding="async"
                             className="w-full h-full object-cover rounded-2xl opacity-60"
@@ -472,7 +474,7 @@ export default function Advies() {
                         </blockquote>
                         <div className="flex flex-col items-center gap-3">
                             <img
-                                src="/ferry.jpg"
+                                src="/ferry.webp"
                                 alt="Ferry Struik"
                                 width="56"
                                 height="56"
@@ -500,7 +502,7 @@ export default function Advies() {
                             { q: "Wat gaat me dat kosten?", a: "Een website maak ik vanaf €995. Wat het uiteindelijk wordt, hangt af van wat jij nodig hebt. We stellen vooraf samen vast hoe succes eruitziet, zodat je geen euro te veel betaalt. Geen verborgen kosten, gewoon een eerlijk voorstel." },
                             { q: "Ben ik echt binnen 2 weken klaar?", a: "Ja. Als jij de teksten en beelden aanlevert, regel ik de rest. Ik hou niet van treuzelen, jij waarschijnlijk ook niet." },
                             { q: "Zit ik vast aan een duur onderhoudscontract?", a: "Nee. Je site is van jou. Ik bouw hem zo op dat je zelf kleine teksten en foto's kunt aanpassen via een simpel systeem. Je betaalt alleen voor je hosting en domeinnaam, verder heb je geen vaste maandelijkse kosten bij mij." },
-                            { q: "Word ik wel gevonden in Google?", a: "Ja. Je site is technisch 100% geoptimaliseerd. Snelheid, veiligheid en structuur zijn de standaard, zodat je direct goed op de kaart staat bij Google \u00e9n de nieuwe AI-zoekmachines zoals ChatGPT en Perplexity." },
+                            { q: "Word ik wel gevonden in Google?", a: "Ja. Je site is technisch 100% geoptimaliseerd. Snelheid, veiligheid en structuur zijn de standaard, zodat je direct goed op de kaart staat bij Google én de nieuwe AI-zoekmachines zoals ChatGPT en Perplexity." },
                             { q: "Moet ik zelf alles schrijven?", a: "Hoeft niet. Ik kan je helpen om je verhaal zo op te schrijven dat het ook echt aankomt bij je klanten." }
                         ].map((faq, i) => (
                             <div key={i} className="border border-white/5 rounded-3xl overflow-hidden transition-all">
