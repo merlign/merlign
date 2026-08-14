@@ -215,7 +215,7 @@ export default function Advies() {
             </nav>
 
             {/* 1. HERO SECTION */}
-            <section className="relative min-h-[100dvh] flex flex-col pt-24 pb-8 md:pb-12 px-6 overflow-hidden text-center">
+            <section className="relative h-[100dvh] px-6 overflow-hidden text-center">
                 {/* Background Noise & Assets */}
                 <div className="absolute inset-0 opacity-[0.05] pointer-events-none"
                     style={{
@@ -309,17 +309,18 @@ export default function Advies() {
                     </motion.div>
                 </div>
 
-                <div className="flex-1 flex flex-col items-center justify-center relative z-10 max-w-4xl mx-auto space-y-8 md:space-y-12 py-12 md:py-20">
-                    <h1 className="hero-fade-up text-[clamp(2.1rem,7vw,3.8rem)] leading-[1.15] md:leading-[1.05] font-bold tracking-tighter max-w-5xl mx-auto">
-                        Binnen 48 uur een gratis ontwerp <span className="font-drama text-[#6366F1] font-normal text-[1.1em] inline-block">van je nieuwe site</span>
-                    </h1>
+                {/* Content — gecentreerd in de ruimte onder de navbar */}
+                <div className="absolute inset-0 pt-24 flex items-center justify-center pointer-events-none">
+                    <div className="relative z-10 max-w-4xl mx-auto space-y-8 md:space-y-12 px-6 pointer-events-auto">
+                        <h1 className="hero-fade-up text-[clamp(2.1rem,7vw,3.8rem)] leading-[1.15] md:leading-[1.05] font-bold tracking-tighter max-w-5xl mx-auto">
+                            Binnen 48 uur een gratis ontwerp <span className="font-drama text-[#6366F1] font-normal text-[1.1em] inline-block">van je nieuwe site</span>
+                        </h1>
 
-                    <p className="hero-fade-up text-[17px] md:text-[21px] text-white/70 max-w-3xl mx-auto font-medium leading-[1.6]">
-                        Ik bouw binnen twee dagen een werkende homepage voor jouw bedrijf. Volledig op maat, met rake copy en kraakhelder design.
-                    </p>
+                        <p className="hero-fade-up text-[17px] md:text-[21px] text-white/70 max-w-3xl mx-auto font-medium leading-[1.6]">
+                            Ik bouw binnen twee dagen een werkende homepage voor jouw bedrijf. Volledig op maat, met rake copy en kraakhelder design.
+                        </p>
 
-                    <div className="hero-fade-up flex flex-col items-center gap-6 pt-4">
-                        <div className="flex flex-col items-center gap-3">
+                        <div className="hero-fade-up flex flex-col items-center gap-6 pt-4">
                             <button
                                 onClick={handleOpenModal}
                                 className="inline-flex items-center justify-center gap-3 bg-[#6366F1] text-white px-8 py-4 md:px-12 md:py-6 rounded-full font-bold text-base md:text-xl transition-all hover:scale-[1.03] active:scale-[0.98] shadow-lg shadow-[#6366F1]/20"
@@ -330,7 +331,8 @@ export default function Advies() {
                     </div>
                 </div>
 
-                <div className="relative z-10 flex flex-col items-center gap-4 opacity-40 pointer-events-none transition-opacity duration-1000 mt-auto mb-16 md:mb-24 pb-8">
+                {/* SCROLL — vastgezet onderin */}
+                <div className="absolute bottom-16 md:bottom-20 left-1/2 -translate-x-1/2 z-10 flex flex-col items-center gap-4 opacity-40 pointer-events-none transition-opacity duration-1000">
                     <span className="text-[10px] font-mono tracking-[0.3em] uppercase">Scroll</span>
                     <div className="w-[1px] h-12 md:h-16 bg-gradient-to-b from-white to-transparent" />
                 </div>
