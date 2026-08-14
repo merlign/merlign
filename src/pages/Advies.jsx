@@ -22,7 +22,7 @@ import {
 } from 'lucide-react';
 import SEO from '../components/SEO';
 import { getContactInfo, getHomePageData, urlFor } from '../lib/sanity';
-import emailjs from 'emailjs-com';
+// emailjs wordt alleen geladen wanneer het formulier wordt verzonden (lazy import)
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -138,6 +138,7 @@ export default function Advies() {
         };
 
         try {
+            const { default: emailjs } = await import('emailjs-com');
             await emailjs.send(serviceId, templateId, templateParams, publicKey);
             setIsSuccess(true);
         } catch (error) {
@@ -243,9 +244,10 @@ export default function Advies() {
                         <img
                             src="/hero-previews/hero1.webp"
                             alt=""
-                            width="800"
-                            height="450"
-                            loading="lazy"
+                            width="900"
+                            height="534"
+                            loading="eager"
+                            fetchPriority="low"
                             decoding="async"
                             className="w-full h-full object-cover rounded-2xl opacity-70"
                             onError={(e) => e.target.style.display = 'none'}
@@ -270,8 +272,8 @@ export default function Advies() {
                         <img
                             src="/hero-previews/hero2.webp"
                             alt=""
-                            width="800"
-                            height="450"
+                            width="900"
+                            height="534"
                             loading="lazy"
                             decoding="async"
                             className="w-full h-full object-cover rounded-3xl opacity-65"
@@ -297,8 +299,8 @@ export default function Advies() {
                         <img
                             src="/hero-previews/hero3.webp"
                             alt=""
-                            width="800"
-                            height="450"
+                            width="900"
+                            height="528"
                             loading="lazy"
                             decoding="async"
                             className="w-full h-full object-cover rounded-2xl opacity-60"
@@ -309,38 +311,6 @@ export default function Advies() {
 
                 <div className="flex-1 flex flex-col items-center justify-center relative z-10 max-w-4xl mx-auto space-y-8 md:space-y-12 py-12 md:py-20">
                     <div className="h-2" />
-
-                    {/* Google Review Badge */}
-                    <motion.div
-                        initial={{ opacity: 0, y: 20 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        transition={{ duration: 0.8, delay: 0.2 }}
-                        className="flex justify-center mb-4 md:mb-8"
-                    >
-                        <div className="group flex items-center bg-white/[0.03] border border-white/10 backdrop-blur-md rounded-xl p-1 md:p-1.5 pr-3 md:pr-5 shadow-2xl">
-                            <div className="flex items-center gap-2 md:gap-3 px-1.5 md:px-2.5">
-                                <div className="w-5 h-5 md:w-6 md:h-6 flex items-center justify-center">
-                                    <svg viewBox="0 0 24 24" className="w-full h-full">
-                                        <path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4" />
-                                        <path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853" />
-                                        <path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l3.66-2.84z" fill="#FBBC05" />
-                                        <path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335" />
-                                    </svg>
-                                </div>
-                                <span className="text-white font-sans text-base md:text-xl font-black italic tracking-tighter">5.0</span>
-                            </div>
-
-                            <div className="w-px h-5 md:h-6 bg-white/10 mx-1.5 md:mx-2" />
-
-                            <div className="flex items-center gap-0.5 md:gap-1 ml-1" title="Gebaseerd op 25+ klantbeoordelingen">
-                                {[...Array(5)].map((_, i) => (
-                                    <svg key={i} className="w-2.5 h-2.5 md:w-4 md:h-4 text-[#FBB03B] fill-current" viewBox="0 0 20 20">
-                                        <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
-                                    </svg>
-                                ))}
-                            </div>
-                        </div>
-                    </motion.div>
 
                     <h1 className="hero-fade-up text-[clamp(2.1rem,7vw,3.8rem)] leading-[1.15] md:leading-[1.05] font-bold tracking-tighter max-w-5xl mx-auto">
                         Binnen 48 uur een gratis ontwerp <span className="font-drama text-[#6366F1] font-normal text-[1.1em] inline-block">van je nieuwe site</span>
@@ -500,7 +470,7 @@ export default function Advies() {
                             { q: "Wat gaat me dat kosten?", a: "Een website maak ik vanaf €995. Wat het uiteindelijk wordt, hangt af van wat jij nodig hebt. We stellen vooraf samen vast hoe succes eruitziet, zodat je geen euro te veel betaalt. Geen verborgen kosten, gewoon een eerlijk voorstel." },
                             { q: "Ben ik echt binnen 2 weken klaar?", a: "Ja. Als jij de teksten en beelden aanlevert, regel ik de rest. Ik hou niet van treuzelen, jij waarschijnlijk ook niet." },
                             { q: "Zit ik vast aan een duur onderhoudscontract?", a: "Nee. Je site is van jou. Ik bouw hem zo op dat je zelf kleine teksten en foto's kunt aanpassen via een simpel systeem. Je betaalt alleen voor je hosting en domeinnaam, verder heb je geen vaste maandelijkse kosten bij mij." },
-                            { q: "Word ik wel gevonden in Google?", a: "Ja. Je site is technisch 100% geoptimaliseerd. Snelheid, veiligheid en structuur zijn de standaard, zodat je direct goed op de kaart staat bij Google \u00e9n de nieuwe AI-zoekmachines zoals ChatGPT en Perplexity." },
+                            { q: "Word ik wel gevonden in Google?", a: "Ja. Je site is technisch 100% geoptimaliseerd. Snelheid, veiligheid en structuur zijn de standaard, zodat je direct goed op de kaart staat bij Google én de nieuwe AI-zoekmachines zoals ChatGPT en Perplexity." },
                             { q: "Moet ik zelf alles schrijven?", a: "Hoeft niet. Ik kan je helpen om je verhaal zo op te schrijven dat het ook echt aankomt bij je klanten." }
                         ].map((faq, i) => (
                             <div key={i} className="border border-white/5 rounded-3xl overflow-hidden transition-all">

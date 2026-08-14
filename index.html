@@ -30,9 +30,17 @@
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link
+  <!-- Fonts laden non-blocking: browser schildert meteen, fonts wisselen in zodra geladen -->
+  <link rel="preload" as="style"
     href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;700;800&family=Cormorant+Garamond:ital,wght@1,400;1,600&family=Space+Mono:wght@400;700&display=swap"
-    rel="stylesheet">
+    onload="this.rel='stylesheet'">
+  <noscript>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;700;800&family=Cormorant+Garamond:ital,wght@1,400;1,600&family=Space+Mono:wght@400;700&display=swap"
+      rel="stylesheet">
+  </noscript>
+  <!-- Hero-afbeelding vroeg ophalen zodat browser er geen vertraging op heeft -->
+  <link rel="preload" as="image" href="/hero-previews/hero1.webp" fetchpriority="low">
 
   <script>
     (function () {
