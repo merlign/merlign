@@ -19,7 +19,7 @@ const WebsiteScanner = () => {
     const [report, setReport] = useState(null);
     const [error, setError] = useState(null);
     const [progress, setProgress] = useState(0);
-    const [leadCaptured, setLeadCaptured] = useState(true); // Temporarily true to bypass lead gate
+    const [leadCaptured, setLeadCaptured] = useState(false);
     const [isModalOpen, setIsModalOpen] = useState(false);
     const [leadForm, setLeadForm] = useState({ name: '', email: '' });
     const [isSubmittingLead, setIsSubmittingLead] = useState(false);
@@ -325,11 +325,10 @@ const WebsiteScanner = () => {
                                 <motion.div
                                     initial={{ opacity: 0 }}
                                     animate={{ opacity: 1 }}
-                                    className="space-y-4"
+                                    className="flex flex-col items-center gap-4 py-6 text-white/60 font-sans text-sm italic"
                                 >
-                                    <div className="bg-black/10 border border-white/10 p-6 rounded-[2rem] font-sans text-sm font-bold text-white/70 whitespace-pre-wrap leading-relaxed h-[200px] overflow-y-auto custom-scrollbar">
-                                        {streamedText || "AI analyseert de content..."}
-                                    </div>
+                                    <Loader2 className="animate-spin text-white/40" size={24} />
+                                    AI analyseert de content...
                                 </motion.div>
                             )}
 
