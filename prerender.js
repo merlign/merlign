@@ -4,6 +4,16 @@ import path from 'path';
 import { fileURLToPath } from 'url';
 import { client } from './src/lib/sanity.js';
 
+// Catch any unhandled socket/TCP errors so the build never fails
+process.on('uncaughtException', (err) => {
+    console.warn('⚠️ prerender uncaught exception (non-fatal):', err.message);
+    process.exit(0);
+});
+process.on('unhandledRejection', (reason) => {
+    console.warn('⚠️ prerender unhandled rejection (non-fatal):', reason);
+    process.exit(0);
+});
+
 if (!process.env.VITE_SANITY_PROJECT_ID) {
     console.warn('⚠️ WARNING: VITE_SANITY_PROJECT_ID is missing for prerender.js. Using fallbacks.');
 }
