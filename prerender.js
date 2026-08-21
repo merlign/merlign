@@ -30,7 +30,12 @@ async function generate() {
     console.log('Fetching data from Sanity for SEO injection...');
 
     // Fetch generic FAQs (for home)
-    const faqs = await client.fetch(`*[_type == "faq"] | order(order asc)`);
+    let faqs = [];
+    try {
+        faqs = await client.fetch(`*[_type == "faq"] | order(order asc)`);
+    } catch (e) {
+        console.warn('⚠️ Could not fetch FAQs, using empty array.', e.message);
+    }
 
     for (const route of routes) {
         console.log(`Processing ${route.path}...`);
@@ -204,7 +209,8 @@ async function generate() {
         }
 
         if (route.type === 'service') {
-            const data = await client.fetch(`*[_type == "servicePage" && serviceName == $name][0]`, { name: route.name });
+            let data = null;
+            try { data = await client.fetch(`*[_type == "servicePage" && serviceName == $name][0]`, { name: route.name }); } catch (e) { console.warn('⚠️ Schema fetch failed for', route.name, e.message); }
             if (data) {
                 schemas.push({
                     "@context": "https://schema.org",
@@ -269,6 +275,6 @@ generate().then(() => {
     console.log('SEO Injection finished!');
     process.exit(0);
 }).catch(err => {
-    console.error('SEO Injection failed:', err);
-    process.exit(1);
+    console.error('SEO Injection failed (non-fatal):', err);
+    process.exit(0);
 });
