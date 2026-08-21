@@ -71,23 +71,23 @@ const ContactPage = () => {
                         </div>
 
                         <div className="content-max-width section-px space-y-20 md:space-y-40 relative z-10">
-                            <div className="space-y-24 md:space-y-40 text-center">
+                            <div className="space-y-24 md:space-y-40">
                                 <motion.div
                                     initial="initial"
                                     whileInView="whileInView"
                                     viewport={{ once: true }}
-                                    className="max-w-5xl mx-auto space-y-8 md:space-y-12 mb-4 md:mb-12 flex flex-col items-center"
+                                    className="max-w-5xl space-y-8 md:space-y-12 mb-4 md:mb-12 flex flex-col items-start"
                                 >
-                                    <Breadcrumb items={[{ label: 'Contact' }]} className="self-start" />
+                                    <Breadcrumb items={[{ label: 'Contact' }]} />
                                     <SectionLabel>Contact</SectionLabel>
                                     <motion.h1
                                         variants={fadeUp}
-                                        className="font-sans font-bold text-[var(--text)] md:text-center text-h1 tracking-tighter"
+                                        className="font-sans font-bold text-[var(--text)] text-h1 tracking-tighter"
                                     >
                                         {headlineSans}{' '}
                                         <span className="text-primary font-drama font-normal text-h1-serif">{headlineSerif}</span>
                                     </motion.h1>
-                                    <motion.p variants={fadeUp} className="font-sans text-[var(--text)]/80 text-lg md:text-xl font-light leading-relaxed max-w-2xl text-center">
+                                    <motion.p variants={fadeUp} className="font-sans text-[var(--text)]/80 text-lg md:text-xl font-light leading-relaxed max-w-2xl">
                                         {subtitle}
                                     </motion.p>
                                 </motion.div>
