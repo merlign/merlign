@@ -68,8 +68,8 @@ const DashboardService = () => {
     return (
         <div className="bg-[var(--background)] min-h-screen">
             <SEO
-                title={data?.seoTitle || "Business dashboard laten maken | al je cijfers in één overzicht | Merlign"}
-                description={data?.seoDescription || "Business dashboard laten maken voor ZZP of MKB? Van omzet tot advertenties — alles in één helder overzicht. Geen gedoe met Excel, gewoon direct inzicht op je laptop of telefoon."}
+                title="Business dashboard laten maken | al je cijfers in één overzicht | Merlign"
+                description="Business dashboard laten maken voor ZZP of MKB? Van omzet tot advertenties — alles in één helder overzicht. Geen gedoe met Excel, gewoon direct inzicht op je laptop of telefoon."
                 path="/dashboard"
                 services={[{
                     name: "Business Intelligence Dashboards",

@@ -66,8 +66,8 @@ const Cases = () => {
     return (
         <div className="bg-[var(--background)] min-h-screen">
             <SEO
-                title={pageData?.seoTitle || "Cases & resultaten | webdesign en automatisering | Merlign"}
-                description={pageData?.seoDescription || "Bekijk echte resultaten van ZZP'ers en MKB-ondernemers die ik hielp met een nieuwe website of automatisering. Van meer leads tot minder handwerk — concrete resultaten, geen mooie verhalen."}
+                title="Cases & resultaten | webdesign en automatisering | Merlign"
+                description="Bekijk echte resultaten van ZZP'ers en MKB-ondernemers die ik hielp met een nieuwe website of automatisering. Van meer leads tot minder handwerk — concrete resultaten, geen mooie verhalen."
                 path="/cases"
             />
             <AnimatePresence mode="wait">

@@ -819,8 +819,8 @@ const Home = () => {
     return (
         <div className="bg-[var(--background)] min-h-screen">
             <SEO
-                title={pageData?.seoTitle || "Webdesigner Boxtel | websites & automatisering voor ZZP | Merlign"}
-                description={pageData?.seoDescription || "Maatwerk websites, slimme automatiseringen en dashboards voor ZZP en MKB. Live binnen 2 weken, reactie binnen 24 uur. Gevestigd in Boxtel, actief door heel Nederland."}
+                title="Webdesigner Boxtel | websites & automatisering voor ZZP | Merlign"
+                description="Maatwerk websites, slimme automatiseringen en dashboards voor ZZP en MKB. Live binnen 2 weken, reactie binnen 24 uur. Gevestigd in Boxtel, actief door heel Nederland."
                 path=""
                 faqs={faqs}
             />
