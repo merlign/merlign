@@ -78,7 +78,7 @@ const ContactPage = () => {
                                     viewport={{ once: true }}
                                     className="max-w-5xl mx-auto space-y-8 md:space-y-12 mb-4 md:mb-12 flex flex-col items-center"
                                 >
-                                    <Breadcrumb items={[{ label: 'Contact' }]} />
+                                    <Breadcrumb items={[{ label: 'Contact' }]} className="self-start" />
                                     <SectionLabel>Contact</SectionLabel>
                                     <motion.h1
                                         variants={fadeUp}

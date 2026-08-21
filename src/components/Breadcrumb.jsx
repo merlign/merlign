@@ -2,8 +2,8 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { ChevronRight } from 'lucide-react';
 
-const Breadcrumb = ({ items }) => (
-    <nav aria-label="Breadcrumb" className="flex items-center gap-1.5 text-xs font-sans text-[var(--text)]/40 mb-6">
+const Breadcrumb = ({ items, className = '' }) => (
+    <nav aria-label="Breadcrumb" className={`flex items-center gap-1.5 text-xs font-sans text-[var(--text)]/40 mb-6 ${className}`}>
         <Link to="/" className="hover:text-[var(--text)]/70 transition-colors">Home</Link>
         {items.map((item, i) => (
             <React.Fragment key={i}>
