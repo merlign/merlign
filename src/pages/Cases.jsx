@@ -6,6 +6,7 @@ import ContactForm from '../components/ContactForm';
 import { Link } from 'react-router-dom';
 import { BrowserMockup, DashboardMockup, AutomationMockup } from '../components/CaseMockup';
 import SEO from '../components/SEO';
+import Breadcrumb from '../components/Breadcrumb';
 import { getCases, urlFor, getCasesPageData } from '../lib/sanity';
 
 const fadeUp = {
@@ -65,8 +66,8 @@ const Cases = () => {
     return (
         <div className="bg-[var(--background)] min-h-screen">
             <SEO
-                title={pageData?.seoTitle || "Cases & resultaten | Hoe ik ondernemers help schalen"}
-                description={pageData?.seoDescription || "Bekijk hoe ik andere ondernemers hielp aan meer tijd en overzicht. Van snelle websites tot volledige AI-automatiseringen. Ontdek wat ik voor jou kan betekenen."}
+                title={pageData?.seoTitle || "Cases & resultaten | webdesign en automatisering | Merlign"}
+                description={pageData?.seoDescription || "Bekijk echte resultaten van ZZP'ers en MKB-ondernemers die ik hielp met een nieuwe website of automatisering. Van meer leads tot minder handwerk — concrete resultaten, geen mooie verhalen."}
                 path="/cases"
             />
             <AnimatePresence mode="wait">
@@ -105,6 +106,7 @@ const Cases = () => {
                                 animate="whileInView"
                                 className="max-w-5xl space-y-8 md:space-y-12"
                             >
+                                <Breadcrumb items={[{ label: 'Cases' }]} />
                                 <SectionLabel>Cases</SectionLabel>
                                 <motion.h1
                                     variants={fadeUp}

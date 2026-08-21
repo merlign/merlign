@@ -4,6 +4,7 @@ import { Mail, Linkedin } from 'lucide-react';
 import SectionLabel from '../components/SectionLabel';
 import ContactForm from '../components/ContactForm';
 import SEO from '../components/SEO';
+import Breadcrumb from '../components/Breadcrumb';
 import { getContactInfo } from '../lib/sanity';
 
 const fadeUp = {
@@ -36,8 +37,8 @@ const ContactPage = () => {
     return (
         <div className="bg-[var(--background)] min-h-screen">
             <SEO
-                title={data?.seoTitle || "Plan je gratis scan (20 min) | Direct advies"}
-                description={data?.seoDescription || "Welke upgrade heeft jouw bedrijf nodig? Ik kijk in 20 minuten met je mee waar je winst laat liggen. Plan nu je gratis scan!"}
+                title={data?.seoTitle || "Gratis check aanvragen | in 20 minuten resultaat zien | Merlign"}
+                description={data?.seoDescription || "Vraag een gratis check aan. In 20 minuten kijk ik mee naar jouw website of proces en laat ik zien waar de winst zit. Geen verkooppraatje, gewoon eerlijk advies."}
                 path="/contact"
             />
             <AnimatePresence mode="wait">
@@ -77,6 +78,7 @@ const ContactPage = () => {
                                     viewport={{ once: true }}
                                     className="max-w-5xl mx-auto space-y-8 md:space-y-12 mb-4 md:mb-12 flex flex-col items-center"
                                 >
+                                    <Breadcrumb items={[{ label: 'Contact' }]} />
                                     <SectionLabel>Contact</SectionLabel>
                                     <motion.h1
                                         variants={fadeUp}

@@ -7,6 +7,7 @@ import { Link } from 'react-router-dom';
 
 import { getServicePageData } from '../../lib/sanity';
 import SEO from '../../components/SEO';
+import Breadcrumb from '../../components/Breadcrumb';
 
 const fadeUp = {
     initial: { opacity: 0, y: 30 },
@@ -67,8 +68,8 @@ const DashboardService = () => {
     return (
         <div className="bg-[var(--background)] min-h-screen">
             <SEO
-                title={data?.seoTitle || "Al je cijfers in één dashboard | Ik geef je direct Inzicht"}
-                description={data?.seoDescription || "Van omzet tot ads: ik bouw een simpel dashboard waardoor je precies ziet waar je winst maakt. Stop met gokken en krijg grip op je cijfers."}
+                title={data?.seoTitle || "Business dashboard laten maken | al je cijfers in één overzicht | Merlign"}
+                description={data?.seoDescription || "Business dashboard laten maken voor ZZP of MKB? Van omzet tot advertenties — alles in één helder overzicht. Geen gedoe met Excel, gewoon direct inzicht op je laptop of telefoon."}
                 path="/dashboard"
                 services={[{
                     name: "Business Intelligence Dashboards",
@@ -114,6 +115,7 @@ const DashboardService = () => {
                                     viewport={{ once: true }}
                                     className="max-w-5xl space-y-8 md:space-y-12"
                                 >
+                                    <Breadcrumb items={[{ label: 'Dashboard' }]} />
                                     <SectionLabel>Dashboard</SectionLabel>
                                     <motion.h1
                                         variants={fadeUp}
@@ -240,6 +242,26 @@ const DashboardService = () => {
                                     </div>
                                 </div>
                                 <FAQ cmsFaqs={data?.faqs} />
+
+                                {/* Cross-service links */}
+                                <div className="border-t border-[var(--border)] pt-16 space-y-8">
+                                    <h2 className="font-sans font-bold text-[var(--text)] text-xl tracking-tighter">Meer van Merlign</h2>
+                                    <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                                        <Link to="/website" className="p-8 rounded-[2rem] border border-[var(--border)] hover:border-primary/30 hover:bg-[var(--paper)]/60 transition-all duration-500 space-y-3">
+                                            <p className="text-primary font-sans font-bold text-sm">Website</p>
+                                            <h3 className="font-sans font-bold text-[var(--text)] text-lg tracking-tight">Website laten maken in 14 dagen</h3>
+                                            <p className="text-[var(--text)]/60 text-sm font-sans leading-relaxed">Een professionele website die converteert, live binnen twee weken. Geen maanden wachten.</p>
+                                            <span className="inline-flex items-center gap-2 text-primary text-sm font-bold">Meer over website <ArrowRight size={13} /></span>
+                                        </Link>
+                                        <Link to="/automatisering" className="p-8 rounded-[2rem] border border-[var(--border)] hover:border-primary/30 hover:bg-[var(--paper)]/60 transition-all duration-500 space-y-3">
+                                            <p className="text-primary font-sans font-bold text-sm">Automatisering</p>
+                                            <h3 className="font-sans font-bold text-[var(--text)] text-lg tracking-tight">Je randzaken op de autopilot</h3>
+                                            <p className="text-[var(--text)]/60 text-sm font-sans leading-relaxed">Ik neem je herhalende werk over. Van leadopvolging tot administratie — slimme koppelingen die 24/7 draaien.</p>
+                                            <span className="inline-flex items-center gap-2 text-primary text-sm font-bold">Meer over automatisering <ArrowRight size={13} /></span>
+                                        </Link>
+                                    </div>
+                                </div>
+
                                 {/* Bottom CTA */}
                                 <div id="contact" className="py-20 md:py-32 border-t border-[var(--border)] flex flex-col items-center">
                                     <motion.div

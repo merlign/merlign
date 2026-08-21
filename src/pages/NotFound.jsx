@@ -40,20 +40,35 @@ const NotFound = () => {
                     transition={{ duration: 0.8, delay: 0.3 }}
                     className="flex flex-col sm:flex-row items-center justify-center gap-4 pt-8"
                 >
-                    <Link 
-                        to="/" 
+                    <Link
+                        to="/"
                         className="inline-flex items-center gap-3 bg-[#6366F1] text-white px-8 py-4 rounded-full font-bold transition-all hover:scale-[1.05] active:scale-[0.98] shadow-lg shadow-[#6366F1]/20"
                     >
                         <Home size={20} />
                         Terug naar Home
                     </Link>
-                    <button 
+                    <button
                         onClick={() => window.history.back()}
                         className="inline-flex items-center gap-3 bg-white/5 border border-white/10 text-white px-8 py-4 rounded-full font-bold transition-all hover:bg-white/10"
                     >
                         <ArrowLeft size={20} />
                         Vorige pagina
                     </button>
+                </motion.div>
+
+                <motion.div
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    transition={{ duration: 0.8, delay: 0.6 }}
+                    className="flex flex-wrap justify-center gap-x-6 gap-y-2 pt-6"
+                >
+                    <Link to="/website" className="text-white/40 hover:text-white/80 text-sm transition-colors">Website laten maken</Link>
+                    <span className="text-white/20 text-sm">·</span>
+                    <Link to="/over-mij" className="text-white/40 hover:text-white/80 text-sm transition-colors">Over Merlijn</Link>
+                    <span className="text-white/20 text-sm">·</span>
+                    <Link to="/cases" className="text-white/40 hover:text-white/80 text-sm transition-colors">Cases</Link>
+                    <span className="text-white/20 text-sm">·</span>
+                    <Link to="/contact" className="text-white/40 hover:text-white/80 text-sm transition-colors">Contact</Link>
                 </motion.div>
             </div>
 

@@ -219,18 +219,18 @@ const Hero = ({ data }) => {
                                             ))
                                         ) : (
                                             [
-                                                "/logos/logo.svg",
-                                                "/logos/Upfit-logo-groen_rgb (1).svg",
-                                                "/logos/Studiofit_weblogo.png",
-                                                "/logos/logo-fer-copy-1-scaled-300x258.png",
-                                                "/logos/Logo_SocialManners-w.svg"
-                                            ].map((logoPath, i) => {
+                                                { path: "/logos/logo.svg", label: "Partner van Merlign" },
+                                                { path: "/logos/Upfit-logo-groen_rgb (1).svg", label: "Upfit" },
+                                                { path: "/logos/Studiofit_weblogo.png", label: "Studiofit" },
+                                                { path: "/logos/logo-fer-copy-1-scaled-300x258.png", label: "Ferry Zorgt" },
+                                                { path: "/logos/Logo_SocialManners-w.svg", label: "Social Manners" }
+                                            ].map(({ path: logoPath, label }, i) => {
                                                 const isSmallLogo = logoPath.includes('Upfit') || logoPath.includes('fer-copy');
                                                 return (
                                                     <div key={i} className="flex-shrink-0 flex items-center justify-center">
-                                                        <img 
-                                                            src={logoPath} 
-                                                            alt="Partner Logo" 
+                                                        <img
+                                                            src={logoPath}
+                                                            alt={label}
                                                             className={`${isSmallLogo ? 'h-9 md:h-12' : 'h-7 md:h-9'} w-auto max-w-[120px] md:max-w-[180px] grayscale-logo object-contain opacity-60 hover:opacity-100 transition-opacity`}
                                                         />
                                                     </div>
@@ -268,18 +268,18 @@ const Hero = ({ data }) => {
                                 ))
                             ) : (
                                 [
-                                    "/logos/logo.svg",
-                                    "/logos/Upfit-logo-groen_rgb (1).svg",
-                                    "/logos/Studiofit_weblogo.png",
-                                    "/logos/logo-fer-copy-1-scaled-300x258.png",
-                                    "/logos/Logo_SocialManners-w.svg"
-                                ].map((logoPath, i) => {
+                                    { path: "/logos/logo.svg", label: "Partner van Merlign" },
+                                    { path: "/logos/Upfit-logo-groen_rgb (1).svg", label: "Upfit" },
+                                    { path: "/logos/Studiofit_weblogo.png", label: "Studiofit" },
+                                    { path: "/logos/logo-fer-copy-1-scaled-300x258.png", label: "Ferry Zorgt" },
+                                    { path: "/logos/Logo_SocialManners-w.svg", label: "Social Manners" }
+                                ].map(({ path: logoPath, label }, i) => {
                                     const isSmallLogo = logoPath.includes('Upfit') || logoPath.includes('fer-copy');
                                     return (
                                         <div key={i} className="flex-shrink-0 flex items-center justify-center px-2">
-                                            <img 
-                                                src={logoPath} 
-                                                alt="Partner Logo" 
+                                            <img
+                                                src={logoPath}
+                                                alt={label}
                                                 className={`${isSmallLogo ? 'h-10' : 'h-8'} w-auto max-w-[140px] grayscale-logo object-contain opacity-50 px-2`}
                                             />
                                         </div>
@@ -322,7 +322,7 @@ const HomeAbout = ({ data }) => {
                         {/* The Cutout Portrait - Refined Proportional Scale */}
                         <motion.img
                             src="/merlijn-new.png"
-                            alt="Merlijn"
+                            alt="Merlijn van der Vleuten — webdesigner en digitaal strateeg uit Boxtel"
                             className="absolute bottom-0 left-[48%] -translate-x-1/2 w-auto h-[95%] max-w-none z-30 filter brightness-95 group-hover:brightness-110 group-hover:scale-105 transition-all duration-1000 ease-out pointer-events-none origin-bottom"
                         />
 
@@ -819,8 +819,8 @@ const Home = () => {
     return (
         <div className="bg-[var(--background)] min-h-screen">
             <SEO
-                title={pageData?.seoTitle || "Design & AI-Automatisering voor MKB & ZZP | Merlign"}
-                description={pageData?.seoDescription || "Ik bouw websites die converteren, dashboards die inzicht geven en automatiseringen die tijd besparen. Geen gedoe, gewoon resultaat voor MKB & ZZP in Boxtel en online."}
+                title={pageData?.seoTitle || "Webdesigner Boxtel | websites & automatisering voor ZZP | Merlign"}
+                description={pageData?.seoDescription || "Maatwerk websites, slimme automatiseringen en dashboards voor ZZP en MKB. Live binnen 2 weken, reactie binnen 24 uur. Gevestigd in Boxtel, actief door heel Nederland."}
                 path=""
                 faqs={faqs}
             />

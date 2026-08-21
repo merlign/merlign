@@ -1,12 +1,13 @@
 import React from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Search, Settings, Cpu, Zap, Check, ChevronDown } from 'lucide-react';
+import { Search, Settings, Cpu, Zap, Check, ChevronDown, ArrowRight } from 'lucide-react';
 import SectionLabel from '../../components/SectionLabel';
 import ContactForm from '../../components/ContactForm';
 import { Link } from 'react-router-dom';
 
 import { getServicePageData } from '../../lib/sanity';
 import SEO from '../../components/SEO';
+import Breadcrumb from '../../components/Breadcrumb';
 
 const fadeUp = {
     initial: { opacity: 0, y: 30 },
@@ -68,8 +69,8 @@ const AutomationService = () => {
     return (
         <div className="bg-[var(--background)] min-h-screen">
             <SEO
-                title={data?.seoTitle || "Ik zet je workflow op autopilot | AI-Automatisering"}
-                description={data?.seoDescription || "Ik neem je saaie, herhalende werk uit handen met slimme AI-koppelingen. Van administratie tot leads: ik bouw systemen die voor jóú werken terwijl jij onderneemt."}
+                title={data?.seoTitle || "Bedrijfsprocessen automatiseren voor ZZP en MKB | Merlign"}
+                description={data?.seoDescription || "Bedrijfsprocessen automatiseren en tijd besparen? Ik bouw slimme koppelingen die je herhalende werk overnemen — van administratie tot leadopvolging. Minder handwerk, meer resultaat."}
                 path="/automatisering"
                 services={[{
                     name: "AI & Workflow Automation",
@@ -115,6 +116,7 @@ const AutomationService = () => {
                                     viewport={{ once: true }}
                                     className="max-w-5xl space-y-8 md:space-y-12"
                                 >
+                                    <Breadcrumb items={[{ label: 'Automatisering' }]} />
                                     <SectionLabel>Automatisering</SectionLabel>
                                     <motion.h1
                                         variants={fadeUp}
@@ -232,6 +234,26 @@ const AutomationService = () => {
                                     </div>
                                 </div>
                                 <FAQ cmsFaqs={data?.faqs} />
+
+                                {/* Cross-service links */}
+                                <div className="border-t border-[var(--border)] pt-16 space-y-8">
+                                    <h2 className="font-sans font-bold text-[var(--text)] text-xl tracking-tighter">Meer van Merlign</h2>
+                                    <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                                        <Link to="/website" className="p-8 rounded-[2rem] border border-[var(--border)] hover:border-primary/30 hover:bg-[var(--paper)]/60 transition-all duration-500 space-y-3">
+                                            <p className="text-primary font-sans font-bold text-sm">Website</p>
+                                            <h3 className="font-sans font-bold text-[var(--text)] text-lg tracking-tight">Website laten maken in 14 dagen</h3>
+                                            <p className="text-[var(--text)]/60 text-sm font-sans leading-relaxed">Een professionele website die converteert, live binnen twee weken. Geen maanden wachten.</p>
+                                            <span className="inline-flex items-center gap-2 text-primary text-sm font-bold">Meer over website <ArrowRight size={13} /></span>
+                                        </Link>
+                                        <Link to="/dashboard" className="p-8 rounded-[2rem] border border-[var(--border)] hover:border-primary/30 hover:bg-[var(--paper)]/60 transition-all duration-500 space-y-3">
+                                            <p className="text-primary font-sans font-bold text-sm">Dashboard</p>
+                                            <h3 className="font-sans font-bold text-[var(--text)] text-lg tracking-tight">Al je cijfers in één overzicht</h3>
+                                            <p className="text-[var(--text)]/60 text-sm font-sans leading-relaxed">Stop met gokken. Ik bouw een dashboard dat direct inzicht geeft in je omzet, leads en advertenties.</p>
+                                            <span className="inline-flex items-center gap-2 text-primary text-sm font-bold">Meer over dashboard <ArrowRight size={13} /></span>
+                                        </Link>
+                                    </div>
+                                </div>
+
                                 {/* Bottom CTA */}
                                 <div id="contact" className="py-20 md:py-32 border-t border-[var(--border)] flex flex-col items-center text-center">
                                     <motion.div
