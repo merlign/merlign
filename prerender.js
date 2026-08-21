@@ -67,9 +67,11 @@ async function generate() {
                     } else {
                         // Static fallbacks for each service
                         if (route.name === 'Website') {
-                            seoContent += `<h2>Veelgestelde vragen over websites</h2>`;
-                            seoContent += `<div><b>Waarom React/Vite?</b> Veel bureaus gebruiken WordPress omdat het makkelijk is voor henzelf, maar het is vaak zwaar en traag...</div>`;
-                            seoContent += `<div><b>Klaar in 2 weken?</b> Ja, door een strakke workflow en focus op wat echt telt voor conversie...</div>`;
+                            seoContent += `<h2>Veelgestelde vragen over website laten maken</h2>`;
+                            seoContent += `<div><h3>Wat kost een professionele website laten maken?</h3><p>De kosten voor een professionele website bij Merlign zijn transparant en eerlijk. Voor ZZP en MKB bouw ik een complete, snelle website die écht converteert. Geen verborgen kosten, geen maandelijkse abonnementen die oplopen. Vraag een gratis check aan voor een persoonlijk voorstel.</p></div>`;
+                            seoContent += `<div><h3>Hoe snel staat mijn nieuwe website live?</h3><p>Binnen 14 dagen staat je nieuwe website online. Merlign werkt met een strakke bouwsprint: na de intake ga ik direct aan de slag. Geen maanden wachten zoals bij grote bureaus — binnen twee weken heb jij een professionele website die klanten trekt.</p></div>`;
+                            seoContent += `<div><h3>Waarom een maatwerk website in plaats van WordPress of Squarespace?</h3><p>Een maatwerk website op React en Vite is razendsnel, veilig en perfect afgestemd op jouw merk. WordPress-sites zijn vaak traag, kwetsbaar voor hackers en zwaar door onnodige plugins. Google beloont snelle websites met hogere posities — dat is precies wat jij nodig hebt om boven je concurrenten te staan.</p></div>`;
+                            seoContent += `<div><h3>Is mijn website vindbaar in Google (SEO)?</h3><p>Ja. Elke website die ik bouw is volledig SEO-geoptimaliseerd: snelle laadtijden, schone code, meta-tags, gestructureerde data en lokale SEO voor ondernemers in Boxtel en omgeving. Ik zorg dat Google en AI-zoekmachines je site begrijpen en hoger plaatsen.</p></div>`;
                         } else if (route.name === 'Automation') {
                             seoContent += `<h2>Veelgestelde vragen over automatisering</h2>`;
                             seoContent += `<div><b>Waarom n8n?</b> Zapier is prima voor simpele taken, maar wordt extreem duur...</div>`;
@@ -224,12 +226,21 @@ async function generate() {
         // Inject meta tags AND schemas into head
         const schemaScripts = schemas.map(s => `\n    <script type="application/ld+json">${JSON.stringify(s)}</script>`).join('');
 
+        const ogImage = "https://merlign.com/logo_merlign.png";
         const metaTags = `
     <title>${routeTitle}</title>
     <meta name="description" content="${routeDesc}">
     <meta name="google-site-verification" content="r3hVpGRHUOO4mx2O30EZ6eyUYx62mJBLucBDW9cLPZI">
+    <meta property="og:type" content="website">
     <meta property="og:title" content="${routeTitle}">
     <meta property="og:description" content="${routeDesc}">
+    <meta property="og:image" content="${ogImage}">
+    <meta property="og:url" content="https://merlign.com${route.path === '/' ? '' : route.path}">
+    <meta property="og:site_name" content="Merlign">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="${routeTitle}">
+    <meta name="twitter:description" content="${routeDesc}">
+    <meta name="twitter:image" content="${ogImage}">
     <link rel="canonical" href="https://merlign.com${route.path === '/' ? '' : route.path}">
     ${route.noindex ? '<meta name="robots" content="noindex, nofollow">' : '<meta name="robots" content="index, follow">'}${schemaScripts}`;
 

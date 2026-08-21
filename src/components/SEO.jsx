@@ -1,11 +1,11 @@
 import React from 'react';
 import { Helmet } from 'react-helmet-async';
 
-const SEO = ({ title, description, path = "", type = "website", services = [], faqs = [], noindex = false }) => {
+const SEO = ({ title, description, path = "", type = "website", services = [], faqs = [], noindex = false, ogImage: ogImageProp }) => {
     const siteName = "Merlign";
     const fullTitle = title.includes(siteName) ? title : `${title} | ${siteName}`;
     const url = `https://merlign.com${path}`;
-    const ogImage = "https://merlign.com/logo_merlign.png";
+    const ogImage = ogImageProp || "https://merlign.com/logo_merlign.png";
 
     // Structured Data (Schema.org) for the specific page
     const breadcrumbSchema = {
@@ -36,7 +36,8 @@ const SEO = ({ title, description, path = "", type = "website", services = [], f
         "@id": "https://merlign.com",
         "url": "https://merlign.com",
         "telephone": "+31 6 47693209",
-        "priceRange": "$$",
+        "priceRange": "€€",
+        "description": "Webdesign, AI-automatisering en dashboards voor ZZP en MKB. Website live binnen 2 weken. Reactie binnen 24 uur gegarandeerd.",
         "address": {
             "@type": "PostalAddress",
             "streetAddress": "Dennendreef 5-111",
@@ -50,6 +51,15 @@ const SEO = ({ title, description, path = "", type = "website", services = [], f
             "latitude": 51.5974,
             "longitude": 5.2887
         },
+        "areaServed": [
+            { "@type": "AdministrativeArea", "name": "Nederland" },
+            { "@type": "City", "name": "Boxtel" },
+            { "@type": "City", "name": "Den Bosch" },
+            { "@type": "City", "name": "Eindhoven" }
+        ],
+        "availableLanguage": "Dutch",
+        "currenciesAccepted": "EUR",
+        "paymentAccepted": "Factuur, iDEAL, Bankoverschrijving",
         "openingHoursSpecification": {
             "@type": "OpeningHoursSpecification",
             "dayOfWeek": [

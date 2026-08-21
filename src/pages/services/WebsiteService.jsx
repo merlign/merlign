@@ -69,8 +69,8 @@ const WebsiteService = () => {
     return (
         <div className="bg-[var(--background)] min-h-screen">
             <SEO
-                title={data?.seoTitle || "Een nieuwe website binnen 2 weken | Webdesign door Merlign"}
-                description={data?.seoDescription || "Je wacht al te lang op die nieuwe site. Ik bouw een strakke website die écht verkoopt en binnen 14 dagen live is. Geen gedoe, direct resultaat voor jouw business."}
+                title={data?.seoTitle || "Website laten maken door expert | Live in 2 weken | Merlign"}
+                description={data?.seoDescription || "Website laten maken die écht klanten oplevert? Ik bouw een professionele, snelle website voor ZZP en MKB — binnen 14 dagen live. Geen maanden wachten, gewoon resultaat."}
                 path="/website"
                 services={[{
                     name: "Website Design & Development",
