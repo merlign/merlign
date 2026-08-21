@@ -6,6 +6,7 @@ import ContactForm from '../components/ContactForm';
 import { Link } from 'react-router-dom';
 import { BrowserMockup, DashboardMockup, AutomationMockup } from '../components/CaseMockup';
 import SEO from '../components/SEO';
+import Breadcrumb from '../components/Breadcrumb';
 import { getCases, urlFor, getCasesPageData } from '../lib/sanity';
 
 const fadeUp = {
@@ -105,6 +106,7 @@ const Cases = () => {
                                 animate="whileInView"
                                 className="max-w-5xl space-y-8 md:space-y-12"
                             >
+                                <Breadcrumb items={[{ label: 'Cases' }]} />
                                 <SectionLabel>Cases</SectionLabel>
                                 <motion.h1
                                     variants={fadeUp}

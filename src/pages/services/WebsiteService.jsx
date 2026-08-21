@@ -8,6 +8,7 @@ import { Link } from 'react-router-dom';
 import { getServicePageData } from '../../lib/sanity';
 import SEO from '../../components/SEO';
 import WebsiteScanner from '../../components/WebsiteScanner';
+import Breadcrumb from '../../components/Breadcrumb';
 
 const fadeUp = {
     initial: { opacity: 0, y: 30 },
@@ -116,6 +117,7 @@ const WebsiteService = () => {
                                     viewport={{ once: true }}
                                     className="max-w-5xl space-y-8 md:space-y-12 pt-12"
                                 >
+                                    <Breadcrumb items={[{ label: 'Website' }]} />
                                     <SectionLabel>Website</SectionLabel>
                                     <motion.h1
                                         variants={fadeUp}
@@ -241,6 +243,26 @@ const WebsiteService = () => {
                                     </div>
                                 </div>
                                 <FAQ cmsFaqs={data?.faqs} />
+
+                                {/* Cross-service links */}
+                                <div className="border-t border-[var(--border)] pt-16 space-y-8">
+                                    <h2 className="font-sans font-bold text-[var(--text)] text-xl tracking-tighter">Meer van Merlign</h2>
+                                    <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                                        <Link to="/dashboard" className="p-8 rounded-[2rem] border border-[var(--border)] hover:border-primary/30 hover:bg-[var(--paper)]/60 transition-all duration-500 group space-y-3">
+                                            <p className="text-primary font-sans font-bold text-sm">Dashboard</p>
+                                            <h3 className="font-sans font-bold text-[var(--text)] text-lg tracking-tight">Al je cijfers in één overzicht</h3>
+                                            <p className="text-[var(--text)]/60 text-sm font-sans leading-relaxed">Stop met gokken. Ik bouw een dashboard dat direct inzicht geeft in je omzet, leads en advertenties.</p>
+                                            <span className="inline-flex items-center gap-2 text-primary text-sm font-bold">Meer over dashboard <ArrowRight size={13} /></span>
+                                        </Link>
+                                        <Link to="/automatisering" className="p-8 rounded-[2rem] border border-[var(--border)] hover:border-primary/30 hover:bg-[var(--paper)]/60 transition-all duration-500 group space-y-3">
+                                            <p className="text-primary font-sans font-bold text-sm">Automatisering</p>
+                                            <h3 className="font-sans font-bold text-[var(--text)] text-lg tracking-tight">Je randzaken op de autopilot</h3>
+                                            <p className="text-[var(--text)]/60 text-sm font-sans leading-relaxed">Ik neem je herhalende werk over. Van leadopvolging tot administratie — slimme koppelingen die 24/7 draaien.</p>
+                                            <span className="inline-flex items-center gap-2 text-primary text-sm font-bold">Meer over automatisering <ArrowRight size={13} /></span>
+                                        </Link>
+                                    </div>
+                                </div>
+
                                 {/* Bottom CTA */}
                                 <div id="contact" className="py-20 md:py-32 border-t border-[var(--border)] flex flex-col items-center">
                                     <motion.div

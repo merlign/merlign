@@ -4,6 +4,7 @@ import { Mail, Linkedin } from 'lucide-react';
 import SectionLabel from '../components/SectionLabel';
 import ContactForm from '../components/ContactForm';
 import SEO from '../components/SEO';
+import Breadcrumb from '../components/Breadcrumb';
 import { getContactInfo } from '../lib/sanity';
 
 const fadeUp = {
@@ -77,6 +78,7 @@ const ContactPage = () => {
                                     viewport={{ once: true }}
                                     className="max-w-5xl mx-auto space-y-8 md:space-y-12 mb-4 md:mb-12 flex flex-col items-center"
                                 >
+                                    <Breadcrumb items={[{ label: 'Contact' }]} />
                                     <SectionLabel>Contact</SectionLabel>
                                     <motion.h1
                                         variants={fadeUp}

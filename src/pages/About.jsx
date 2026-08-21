@@ -3,6 +3,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import SectionLabel from '../components/SectionLabel';
 import ContactForm from '../components/ContactForm';
 import SEO from '../components/SEO';
+import Breadcrumb from '../components/Breadcrumb';
 import { getAboutPageData } from '../lib/sanity';
 
 const fadeUp = {
@@ -80,6 +81,7 @@ const About = () => {
                                     viewport={{ once: true }}
                                     className="max-w-5xl space-y-8 md:space-y-12"
                                 >
+                                    <Breadcrumb items={[{ label: 'Over mij' }]} />
                                     <SectionLabel>Over mij</SectionLabel>
                                     <motion.h1
                                         variants={fadeUp}
