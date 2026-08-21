@@ -67,8 +67,8 @@ const DashboardService = () => {
     return (
         <div className="bg-[var(--background)] min-h-screen">
             <SEO
-                title={data?.seoTitle || "Al je cijfers in één dashboard | Ik geef je direct Inzicht"}
-                description={data?.seoDescription || "Van omzet tot ads: ik bouw een simpel dashboard waardoor je precies ziet waar je winst maakt. Stop met gokken en krijg grip op je cijfers."}
+                title={data?.seoTitle || "Business dashboard laten maken | al je cijfers in één overzicht | Merlign"}
+                description={data?.seoDescription || "Business dashboard laten maken voor ZZP of MKB? Van omzet tot advertenties — alles in één helder overzicht. Geen gedoe met Excel, gewoon direct inzicht op je laptop of telefoon."}
                 path="/dashboard"
                 services={[{
                     name: "Business Intelligence Dashboards",

@@ -36,8 +36,13 @@ async function generate() {
         console.log(`Processing ${route.path}...`);
 
         let seoContent = '';
-        let routeTitle = 'Merlign — Webdesign & AI-automatisering';
-        let routeDesc = 'Ik bouw websites die converteren, dashboards die inzicht geven en automatiseringen die tijd besparen. Geen gedoe, gewoon resultaat.';
+        const serviceFallbacks = {
+            Website: { title: 'Website laten maken voor ZZP en MKB | in 14 dagen live | Merlign', desc: 'Website laten maken die écht klanten oplevert? Ik bouw een professionele, snelle website voor ZZP en MKB — binnen 14 dagen live. Geen maanden wachten, gewoon resultaat.' },
+            Dashboard: { title: 'Business dashboard laten maken | al je cijfers in één overzicht | Merlign', desc: 'Business dashboard laten maken voor ZZP of MKB? Van omzet tot advertenties — alles in één helder overzicht. Geen gedoe met Excel, gewoon direct inzicht.' },
+            Automation: { title: 'Bedrijfsprocessen automatiseren voor ZZP en MKB | Merlign', desc: 'Bedrijfsprocessen automatiseren en tijd besparen? Ik bouw slimme koppelingen die je herhalende werk overnemen — van administratie tot leadopvolging.' }
+        };
+        let routeTitle = route.name && serviceFallbacks[route.name] ? serviceFallbacks[route.name].title : 'Merlign — Webdesign & AI-automatisering';
+        let routeDesc = route.name && serviceFallbacks[route.name] ? serviceFallbacks[route.name].desc : 'Ik bouw websites die converteren, dashboards die inzicht geven en automatiseringen die tijd besparen. Geen gedoe, gewoon resultaat.';
         const schemas = [];
 
         try {
@@ -83,8 +88,8 @@ async function generate() {
                 }
             } else if (route.type === 'home') {
                 const home = await client.fetch(`*[_type == "homePage"][0]`);
-                routeTitle = home?.seoTitle || "Design & AI-Automatisering voor MKB & ZZP | Merlign";
-                routeDesc = home?.seoDescription || home?.heroSubtitle || "Ik bouw websites die converteren, dashboards die inzicht geven en automatiseringen die tijd besparen. Geen gedoe, gewoon resultaat voor MKB & ZZP in Boxtel en omstreken.";
+                routeTitle = home?.seoTitle || "Webdesigner Boxtel | websites & automatisering voor ZZP | Merlign";
+                routeDesc = home?.seoDescription || home?.heroSubtitle || "Maatwerk websites, slimme automatiseringen en dashboards voor ZZP en MKB. Live binnen 2 weken, reactie binnen 24 uur. Gevestigd in Boxtel, actief door heel Nederland.";
 
                 seoContent += `<h1>Maatwerk Websites & AI-Automatisering</h1>`;
                 seoContent += `<p>${routeDesc}</p>`;
@@ -101,14 +106,14 @@ async function generate() {
                 });
             } else if (route.type === 'about') {
                 const about = await client.fetch(`*[_type == "aboutPage"][0]`);
-                routeTitle = about?.seoTitle || "Over Merlign — Design & Strategie";
-                routeDesc = about?.seoDescription || "Lees meer over de visie van Merlijn op design en automatisering.";
+                routeTitle = about?.seoTitle || "Over Merlijn — webdesigner uit Boxtel | Merlign";
+                routeDesc = about?.seoDescription || "Merlijn van der Vleuten is webdesigner en digitaal strateeg uit Boxtel. Met 10+ jaar ervaring bouw ik websites en systemen die écht werken voor ZZP en MKB.";
                 seoContent += `<h1>Over Merlign</h1>`;
                 seoContent += `<p>Merlijn is een senior digitaal strateeg met meer dan 10 jaar ervaring in design en ontwikkeling.</p>`;
             } else if (route.type === 'cases') {
                 const cases = await client.fetch(`*[_type == "caseStudy"] | order(order asc)`);
-                routeTitle = "Cases & Resultaten — Merlign";
-                routeDesc = "Bekijk hoe ik andere ondernemers hielp aan meer tijd en overzicht. Van snelle websites tot volledige AI-automatiseringen.";
+                routeTitle = "Cases & resultaten | webdesign en automatisering | Merlign";
+                routeDesc = "Bekijk echte resultaten van ZZP'ers en MKB-ondernemers die ik hielp met een nieuwe website of automatisering. Van meer leads tot minder handwerk — concrete resultaten.";
 
                 seoContent += `<h1>Projecten & Successen</h1><p>${routeDesc}</p>`;
 
@@ -143,8 +148,8 @@ async function generate() {
                 }
             } else if (route.type === 'contact') {
                 const contact = await client.fetch(`*[_type == "contactInfo"][0]`);
-                routeTitle = contact?.seoTitle || "Contact opnemen — Merlign";
-                routeDesc = contact?.seoDescription || "Heb je een vraag of wil je direct een gratis check inplannen?";
+                routeTitle = contact?.seoTitle || "Gratis check aanvragen | in 20 minuten resultaat zien | Merlign";
+                routeDesc = contact?.seoDescription || "Vraag een gratis check aan. In 20 minuten kijk ik mee naar jouw website of proces en laat ik zien waar de winst zit. Geen verkooppraatje, gewoon eerlijk advies.";
                 seoContent += `<h1>Contact opnemen</h1>`;
                 seoContent += `<p>Plan direct een afspraak in of stel je vraag via de website.</p>`;
             } else if (route.type === 'simple') {

@@ -68,8 +68,8 @@ const AutomationService = () => {
     return (
         <div className="bg-[var(--background)] min-h-screen">
             <SEO
-                title={data?.seoTitle || "Ik zet je workflow op autopilot | AI-Automatisering"}
-                description={data?.seoDescription || "Ik neem je saaie, herhalende werk uit handen met slimme AI-koppelingen. Van administratie tot leads: ik bouw systemen die voor jóú werken terwijl jij onderneemt."}
+                title={data?.seoTitle || "Bedrijfsprocessen automatiseren voor ZZP en MKB | Merlign"}
+                description={data?.seoDescription || "Bedrijfsprocessen automatiseren en tijd besparen? Ik bouw slimme koppelingen die je herhalende werk overnemen — van administratie tot leadopvolging. Minder handwerk, meer resultaat."}
                 path="/automatisering"
                 services={[{
                     name: "AI & Workflow Automation",

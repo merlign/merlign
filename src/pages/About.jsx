@@ -38,8 +38,8 @@ const About = () => {
     return (
         <div className="bg-[var(--background)] min-h-screen">
             <SEO
-                title={data?.seoTitle || "Over mij | Designer & Automatiseringspartner in Boxtel"}
-                description={data?.seoDescription || "Met 10+ jaar ervaring als designer begrijp ik hoe systemen eruit moeten zien én hoe ze moeten werken. Geen vage adviezen, ik bouw tools die je werk uit handen nemen."}
+                title={data?.seoTitle || "Over Merlijn — webdesigner uit Boxtel | Merlign"}
+                description={data?.seoDescription || "Merlijn van der Vleuten is webdesigner en digitaal strateeg uit Boxtel. Met 10+ jaar ervaring bouw ik websites en systemen die écht werken voor ZZP en MKB — geen mooie praatjes, gewoon resultaat."}
                 path="/over-mij"
             />
             <AnimatePresence mode="wait">
