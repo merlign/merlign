@@ -94,21 +94,21 @@ const CaseDetail = () => {
                             initial={{ opacity: 0, y: 20 }}
                             animate={{ opacity: 1, y: 0 }}
                             transition={{ duration: 0.8 }}
-                            className="w-full aspect-[16/9] md:aspect-[21/9] rounded-[2rem] overflow-hidden border border-[var(--border)] shadow-2xl"
+                            className="w-full rounded-[2rem] overflow-hidden border border-[var(--border)] shadow-2xl"
                         >
                             {c.caseUrl ? (
-                                <a href={c.caseUrl} target="_blank" rel="noopener noreferrer" className="block w-full h-full group">
+                                <a href={c.caseUrl} target="_blank" rel="noopener noreferrer" className="block w-full group">
                                     <img
                                         src={urlFor(c.image).width(1600).url()}
                                         alt={c.title}
-                                        className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-1000"
+                                        className="w-full h-auto group-hover:scale-105 transition-transform duration-1000 origin-center"
                                     />
                                 </a>
                             ) : (
                                 <img
                                     src={urlFor(c.image).width(1600).url()}
                                     alt={c.title}
-                                    className="w-full h-full object-cover"
+                                    className="w-full h-auto"
                                 />
                             )}
                         </motion.div>
