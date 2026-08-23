@@ -5,6 +5,7 @@ import Analytics from './components/Analytics';
 import Home from './pages/Home';
 import About from './pages/About';
 import Cases from './pages/Cases';
+import CaseDetail from './pages/CaseDetail';
 import ContactPage from './pages/Contact';
 import WebsiteService from './pages/services/WebsiteService';
 import DashboardService from './pages/services/DashboardService';
@@ -33,6 +34,7 @@ export default function App() {
                                 <Route path="/" element={<Home />} />
                                 <Route path="/over-mij" element={<About />} />
                                 <Route path="/cases" element={<Cases />} />
+                                <Route path="/cases/:id" element={<CaseDetail />} />
                                 <Route path="/contact" element={<ContactPage />} />
                                 <Route path="/website" element={<WebsiteService />} />
                                 <Route path="/dashboard" element={<DashboardService />} />

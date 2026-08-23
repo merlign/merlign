@@ -65,3 +65,13 @@ export async function getCasesPageData() {
     return await client.fetch(`*[_type == "casesPage"][0]`)
 }
 
+export async function getCaseById(id) {
+    try {
+        const data = await client.fetch(`*[_type == "caseStudy" && _id == $id][0]`, { id })
+        return data || null
+    } catch (err) {
+        console.error("Sanity getCaseById Error:", err);
+        return null
+    }
+}
+
