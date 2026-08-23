@@ -1,7 +1,7 @@
 import React from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
-import { ArrowLeft, Zap, Layout as LayoutIcon, Database } from 'lucide-react';
+import { ArrowLeft, ArrowRight, Zap, Layout as LayoutIcon, Database } from 'lucide-react';
 import SEO from '../components/SEO';
 import Breadcrumb from '../components/Breadcrumb';
 import ContactForm from '../components/ContactForm';
@@ -72,61 +72,74 @@ const CaseDetail = () => {
                 </div>
 
                 <div className="content-max-width section-px relative z-10 space-y-20 md:space-y-32">
-                    {/* Header */}
-                    <motion.div initial="initial" animate="whileInView" className="space-y-8 max-w-4xl">
-                        <Breadcrumb items={[{ label: 'Cases', href: '/cases' }, { label: c.title }]} />
+                    {/* Hero: tekst links, foto rechts */}
+                    <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 md:gap-20 items-center">
+                        {/* Tekst */}
+                        <motion.div initial="initial" animate="whileInView" className="space-y-8">
+                            <Breadcrumb items={[{ label: 'Cases', href: '/cases' }, { label: c.title }]} />
 
-                        <div className="flex items-center gap-3">
-                            <div className="w-10 h-10 rounded-xl bg-primary/10 border border-primary/20 flex items-center justify-center text-primary">
-                                {getIcon(c.category)}
+                            <div className="flex items-center gap-3">
+                                <div className="w-10 h-10 rounded-xl bg-primary/10 border border-primary/20 flex items-center justify-center text-primary">
+                                    {getIcon(c.category)}
+                                </div>
+                                <span className="font-sans text-sm font-bold text-primary/70">{c.tag}</span>
                             </div>
-                            <span className="font-sans text-sm font-bold text-primary/70">{c.tag}</span>
-                        </div>
 
-                        <motion.h1 variants={fadeUp} className="font-sans font-bold text-[var(--text)] text-h1 tracking-tighter leading-tight">
-                            {c.title}
-                        </motion.h1>
-                    </motion.div>
+                            <motion.h1 variants={fadeUp} className="font-sans font-bold text-[var(--text)] text-h1 tracking-tighter leading-tight">
+                                {c.title}
+                            </motion.h1>
 
-                    {/* Hero image */}
-                    {c.image && (
-                        <motion.div
-                            initial={{ opacity: 0, y: 20 }}
-                            animate={{ opacity: 1, y: 0 }}
-                            transition={{ duration: 0.8 }}
-                            className="w-full rounded-[2rem] overflow-hidden border border-[var(--border)] shadow-2xl"
-                        >
-                            {c.caseUrl ? (
-                                <a href={c.caseUrl} target="_blank" rel="noopener noreferrer" className="block w-full group">
-                                    <img
-                                        src={urlFor(c.image).width(1600).url()}
-                                        alt={c.title}
-                                        className="w-full h-auto group-hover:scale-105 transition-transform duration-1000 origin-center"
-                                    />
-                                </a>
-                            ) : (
-                                <img
-                                    src={urlFor(c.image).width(1600).url()}
-                                    alt={c.title}
-                                    className="w-full h-auto"
-                                />
+                            {c.situatie && (
+                                <motion.p variants={fadeUp} className="font-sans text-[var(--text)]/70 text-lg md:text-xl font-light italic leading-[1.8]">
+                                    {c.situatie}
+                                </motion.p>
+                            )}
+
+                            {c.caseUrl && (
+                                <motion.div variants={fadeUp}>
+                                    <a
+                                        href={c.caseUrl}
+                                        target="_blank"
+                                        rel="noopener noreferrer"
+                                        className="inline-flex items-center gap-2 text-primary font-bold text-sm hover:gap-3 transition-all duration-300"
+                                    >
+                                        Bekijk de website
+                                        <ArrowRight size={14} />
+                                    </a>
+                                </motion.div>
                             )}
                         </motion.div>
-                    )}
 
-                    {/* Situatie + Aanpak */}
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-20">
-                        <motion.div variants={fadeUp} initial="initial" whileInView="whileInView" className="space-y-6">
-                            <div className="flex items-center gap-3">
-                                <div className="w-1 h-1 rounded-full bg-primary" />
-                                <h2 className="font-sans text-base font-bold text-primary/60">Situatie</h2>
-                            </div>
-                            <p className="font-sans text-[var(--text)]/85 text-lg md:text-xl font-light italic leading-[1.8]">
-                                {c.situatie}
-                            </p>
-                        </motion.div>
+                        {/* Foto */}
+                        {c.image && (
+                            <motion.div
+                                initial={{ opacity: 0, x: 20 }}
+                                animate={{ opacity: 1, x: 0 }}
+                                transition={{ duration: 0.9, ease: [0.22, 1, 0.36, 1] }}
+                                className="rounded-[2rem] overflow-hidden border border-[var(--border)] shadow-2xl"
+                            >
+                                {c.caseUrl ? (
+                                    <a href={c.caseUrl} target="_blank" rel="noopener noreferrer" className="block group">
+                                        <img
+                                            src={urlFor(c.image).width(900).url()}
+                                            alt={c.title}
+                                            className="w-full h-auto group-hover:scale-105 transition-transform duration-1000 origin-center"
+                                        />
+                                    </a>
+                                ) : (
+                                    <img
+                                        src={urlFor(c.image).width(900).url()}
+                                        alt={c.title}
+                                        className="w-full h-auto"
+                                    />
+                                )}
+                            </motion.div>
+                        )}
+                    </div>
 
-                        <motion.div variants={fadeUp} initial="initial" whileInView="whileInView" className="space-y-6">
+                    {/* Aanpak */}
+                    {c.aanpak && (
+                        <motion.div variants={fadeUp} initial="initial" whileInView="whileInView" className="max-w-3xl space-y-6">
                             <div className="flex items-center gap-3">
                                 <div className="w-1 h-1 rounded-full bg-primary" />
                                 <h2 className="font-sans text-base font-bold text-primary/60">Aanpak</h2>
@@ -135,7 +148,7 @@ const CaseDetail = () => {
                                 {c.aanpak}
                             </p>
                         </motion.div>
-                    </div>
+                    )}
 
                     {/* Results */}
                     {c.results?.length > 0 && (
