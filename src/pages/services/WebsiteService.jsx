@@ -7,8 +7,7 @@ import { Link } from 'react-router-dom';
 
 import { getServicePageData } from '../../lib/sanity';
 import SEO from '../../components/SEO';
-import WebsiteScanner from '../../components/WebsiteScanner';
-import Breadcrumb from '../../components/Breadcrumb';
+import WebsiteScanner from '../../components/WebsiteScanner';import Breadcrumb from '../../components/Breadcrumb';
 
 const fadeUp = {
     initial: { opacity: 0, y: 30 },
@@ -208,7 +207,7 @@ const WebsiteService = () => {
                                     </motion.div>
                                 </div>
 
-                                <WebsiteScanner />
+                                {/* WebsiteScanner tijdelijk uitgeschakeld */}
 
                                 {/* Process Section */}
                                 <div className="space-y-16 md:space-y-24">
@@ -297,8 +296,8 @@ const WebsiteService = () => {
 const FAQ = ({ cmsFaqs }) => {
     const staticQuestions = [
         {
-            q: "Waarom kies je voor een framework als React/Vite in plaats van WordPress?",
-            a: "Veel bureaus gebruiken WordPress omdat het makkelijk is voor henzelf, maar het is vaak zwaar en traag voor de bezoeker. Ik bouw je website met moderne technieken (React en Vite) die zorgen voor een 'app-achtige' ervaring. Pagina's laden direct, zonder die vervelende laadbalkjes. Voor Google is deze snelheid (Core Web Vitals) een van de belangrijkste factoren om je hoger in de zoekresultaten te plaatsen. Plus: je bent minder kwetsbaar voor hackers omdat er geen database-koppelingen op de voorgrond draaien."
+            q: "Waarom kies je voor Next.js in plaats van WordPress?",
+            a: "Veel bureaus gebruiken WordPress omdat het makkelijk is voor henzelf, maar het is vaak zwaar en traag voor de bezoeker. Ik bouw je website met Next.js — een modern React-framework dat pagina's server-side rendert en vooraf genereert. Dit zorgt voor razendsnel laden, directe leesbaarheid voor Google en maximale veiligheid. Voor Google zijn snelheid en technische kwaliteit (Core Web Vitals) cruciale rankingfactoren. Bovendien ben je minder kwetsbaar voor aanvallen dan bij een WordPress-installatie vol plugins."
         },
         {
             q: "Hoe zorg je ervoor dat mijn website meer leads en leads-aanvragen oplevert?",
@@ -310,7 +309,7 @@ const FAQ = ({ cmsFaqs }) => {
         },
         {
             q: "Hoe zit het met de vindbaarheid (SEO) bij een op maat gemaakte site?",
-            a: "Veel maatwerk sites vergeten SEO, maar bij Merlign zit dit in het DNA. Ik gebruik technieken zoals Static Site Generation (SSG) zodat de teksten direct leesbaar zijn voor Google-bots. Verder zorg ik voor schone meta-data, geoptimaliseerde afbeeldingen (WebP) en een logische kopstructuur (H1, H2, H3). Je krijgt een technische SEO-basis die sterker is dan de meeste standaard plugins kunnen bieden."
+            a: "Veel maatwerk sites vergeten SEO, maar bij Merlign zit dit in het DNA. Next.js genereert pagina's server-side, waardoor de volledige HTML direct leesbaar is voor Google-bots — geen JavaScript-rendering die Google moet 'raden'. Verder zorg ik voor schone meta-data, geoptimaliseerde afbeeldingen (WebP) en een logische kopstructuur (H1, H2, H3). Je krijgt een technische SEO-basis die sterker is dan de meeste standaard plugins kunnen bieden."
         },
         {
             q: "Wat zijn de kosten voor onderhoud na de lancering?",
