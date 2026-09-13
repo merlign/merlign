@@ -136,12 +136,7 @@ async function generate() {
                             "name": c.title,
                             "description": c.situatie,
                             "datePublished": c.completionDate,
-                            "author": { "@type": "ProfessionalService", "name": "Merlign" },
-                            "review": {
-                                "@type": "Review",
-                                "reviewBody": c.quote,
-                                "author": { "@type": "Person", "name": c.author }
-                            }
+                            "author": { "@type": "ProfessionalService", "name": "Merlign" }
                         });
                     });
                     seoContent += `</div>`;
