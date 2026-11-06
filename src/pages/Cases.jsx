@@ -177,6 +177,7 @@ const Cases = () => {
                                                     <img
                                                         src={urlFor(c.image).width(800).url()}
                                                         alt={c.title}
+                                                        loading="lazy"
                                                         className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
                                                     />
                                                 ) : (

@@ -173,15 +173,16 @@ const ContactForm = ({ selectedUpgrade: initialUpgrade = null }) => {
                 <form onSubmit={handleSubmit} className="space-y-8 md:space-y-10">
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-10">
                         {[
-                            { label: 'Naam', placeholder: 'Elon Musk', key: 'name', type: 'text' },
+                            { label: 'Naam', placeholder: 'Jan de Vries', key: 'name', type: 'text' },
                             { label: 'E-mailadres', placeholder: 'naam@bedrijf.nl', key: 'email', type: 'email' },
-                            { label: 'Bedrijfsnaam', placeholder: 'Tesla Inc.', key: 'company', type: 'text' }
+                            { label: 'Bedrijfsnaam', placeholder: 'Jouw bedrijf', key: 'company', type: 'text' }
                         ].map((field, i) => (
                             <div key={i} className="space-y-2 md:space-y-3">
-                                <p className="font-sans text-lg md:text-xl text-primary block font-bold tracking-tight">
+                                <label htmlFor={`cf-${field.key}`} className="font-sans text-lg md:text-xl text-primary block font-bold tracking-tight">
                                     {field.label}
-                                </p>
+                                </label>
                                 <input
+                                    id={`cf-${field.key}`}
                                     required={field.key !== 'company'}
                                     type={field.type}
                                     placeholder={field.placeholder}
@@ -194,8 +195,9 @@ const ContactForm = ({ selectedUpgrade: initialUpgrade = null }) => {
                     </div>
 
                     <div className="space-y-2 md:space-y-3">
-                        <label className="font-sans text-[16px] md:text-[18px] text-primary block font-bold tracking-tight">Bericht (optioneel)</label>
+                        <label htmlFor="cf-message" className="font-sans text-[16px] md:text-[18px] text-primary block font-bold tracking-tight">Bericht (optioneel)</label>
                         <textarea
+                            id="cf-message"
                             placeholder="Laat weten wat er speelt..."
                             className="w-full bg-transparent border-b border-[var(--border)] py-3 md:py-4 font-sans text-lg md:text-xl focus:outline-none focus:border-primary transition-all text-[var(--text)] placeholder:text-[var(--text)]/10 min-h-[100px] resize-none"
                             value={formData.message}

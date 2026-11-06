@@ -65,6 +65,7 @@ const CaseDetail = () => {
                 title={`${c.title} | Case | Merlign`}
                 description={c.situatie || ''}
                 path={`/cases/${id}`}
+                ogImage={c.image ? urlFor(c.image).width(1200).height(630).url() : undefined}
             />
 
             <div className="pt-40 md:pt-56 pb-20 md:pb-32 relative overflow-hidden">
@@ -120,6 +121,7 @@ const CaseDetail = () => {
                                         <img
                                             src={urlFor(c.image).width(900).url()}
                                             alt={c.title}
+                                            loading="eager"
                                             className="w-full h-auto group-hover:scale-105 transition-transform duration-1000 origin-center"
                                         />
                                     </a>
@@ -127,6 +129,7 @@ const CaseDetail = () => {
                                     <img
                                         src={urlFor(c.image).width(900).url()}
                                         alt={c.title}
+                                        loading="eager"
                                         className="w-full h-auto"
                                     />
                                 )}
@@ -190,6 +193,7 @@ const CaseDetail = () => {
                                     <img
                                         src={urlFor(c.authorImage).width(80).height(80).url()}
                                         alt={c.author}
+                                        loading="lazy"
                                         className="w-12 h-12 rounded-full object-cover border border-primary/20"
                                     />
                                 ) : (
