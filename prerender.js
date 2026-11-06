@@ -4,6 +4,17 @@ import path from 'path';
 import { fileURLToPath } from 'url';
 import { client } from './src/lib/sanity.js';
 
+// Escape untrusted CMS content before inserting into HTML
+function esc(str) {
+    if (!str) return '';
+    return String(str)
+        .replace(/&/g, '&amp;')
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;')
+        .replace(/"/g, '&quot;')
+        .replace(/'/g, '&#39;');
+}
+
 // Catch any unhandled socket/TCP errors so the build never fails
 process.on('uncaughtException', (err) => {
     console.warn('⚠️ prerender uncaught exception (non-fatal):', err.message);
@@ -66,14 +77,14 @@ async function generate() {
                 if (data) {
                     routeTitle = data.seoTitle || `${data.title || route.name} — Merlign`;
                     routeDesc = data.seoDescription || data.heroSubtitle || routeDesc;
-                    seoContent += `<h1>${data.heroSans || ''} ${data.heroSerif || ''}</h1>`;
-                    seoContent += `<p>${data.heroSubtitle || ''}</p>`;
+                    seoContent += `<h1>${esc(data.heroSans)} ${esc(data.heroSerif)}</h1>`;
+                    seoContent += `<p>${esc(data.heroSubtitle)}</p>`;
 
                     // Inject features
                     if (data.features?.length > 0) {
                         seoContent += `<h2>Onze aanpak voor ${route.name}</h2><ul>`;
                         data.features.forEach(f => {
-                            seoContent += `<li><h3>${f.title}</h3><p>${f.description}</p></li>`;
+                            seoContent += `<li><h3>${esc(f.title)}</h3><p>${esc(f.description)}</p></li>`;
                         });
                         seoContent += `</ul>`;
                     }
@@ -82,7 +93,7 @@ async function generate() {
                     if (data.faqs?.length > 0) {
                         seoContent += `<h2>Veelgestelde vragen</h2>`;
                         data.faqs.forEach(f => {
-                            seoContent += `<div><h3>${f.question}</h3><p>${f.answer}</p></div>`;
+                            seoContent += `<div><h3>${esc(f.question)}</h3><p>${esc(f.answer)}</p></div>`;
                         });
                     } else {
                         // Static fallbacks for each service
@@ -117,7 +128,7 @@ async function generate() {
                 </ul>`;
 
                 faqs.forEach(f => {
-                    seoContent += `<div><h3>${f.question}</h3><p>${f.answer}</p></div>`;
+                    seoContent += `<div><h3>${esc(f.question)}</h3><p>${esc(f.answer)}</p></div>`;
                 });
             } else if (route.type === 'about') {
                 const about = await client.fetch(`*[_type == "aboutPage"][0]`);
@@ -136,13 +147,13 @@ async function generate() {
                     seoContent += `<div class="cases-list">`;
                     cases.forEach(c => {
                         seoContent += `<article>
-                            <h2>${c.title}</h2>
-                            <p class="date">Opgeleverd: ${c.completionDate || 'Recent'}</p>
-                            <p><strong>Situatie:</strong> ${c.situatie || ''}</p>
-                            <p><strong>Aanpak:</strong> ${c.aanpak || ''}</p>
+                            <h2>${esc(c.title)}</h2>
+                            <p class="date">Opgeleverd: ${esc(c.completionDate) || 'Recent'}</p>
+                            <p><strong>Situatie:</strong> ${esc(c.situatie)}</p>
+                            <p><strong>Aanpak:</strong> ${esc(c.aanpak)}</p>
                             <h3>Resultaten:</h3>
-                            <ul>${c.results?.map(r => `<li>${r}</li>`).join('') || ''}</ul>
-                            <blockquote>${c.quote || ''} — ${c.author || ''}</blockquote>
+                            <ul>${c.results?.map(r => `<li>${esc(r)}</li>`).join('') || ''}</ul>
+                            <blockquote>${esc(c.quote)} — ${esc(c.author)}</blockquote>
                         </article>`;
 
                         schemas.push({

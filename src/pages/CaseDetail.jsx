@@ -7,6 +7,8 @@ import Breadcrumb from '../components/Breadcrumb';
 import ContactForm from '../components/ContactForm';
 import { getCaseById, urlFor } from '../lib/sanity';
 
+const safeUrl = (url) => url && /^https?:\/\//.test(url) ? url : '#';
+
 const fadeUp = {
     initial: { opacity: 0, y: 30 },
     whileInView: { opacity: 1, y: 0 },
@@ -97,12 +99,7 @@ const CaseDetail = () => {
 
                             {c.caseUrl && (
                                 <motion.div variants={fadeUp}>
-                                    <a
-                                        href={c.caseUrl}
-                                        target="_blank"
-                                        rel="noopener noreferrer"
-                                        className="inline-flex items-center gap-2 text-primary font-bold text-sm hover:gap-3 transition-all duration-300"
-                                    >
+                                    <a href={safeUrl(c.caseUrl)} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 text-primary font-bold text-sm hover:gap-3 transition-all duration-300">
                                         Bekijk de website
                                         <ArrowRight size={14} />
                                     </a>
@@ -119,7 +116,7 @@ const CaseDetail = () => {
                                 className="rounded-[2rem] overflow-hidden border border-[var(--border)] shadow-2xl"
                             >
                                 {c.caseUrl ? (
-                                    <a href={c.caseUrl} target="_blank" rel="noopener noreferrer" className="block group">
+                                    <a href={safeUrl(c.caseUrl)} target="_blank" rel="noopener noreferrer" className="block group">
                                         <img
                                             src={urlFor(c.image).width(900).url()}
                                             alt={c.title}

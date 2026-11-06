@@ -33,7 +33,7 @@ const ContactPage = () => {
     const headlineSerif = data?.headlineSerif || "Ik kijk mee.";
     const subtitle = data?.subtitle || "In 20 minuten kijk ik met je mee naar je situatie. Je krijgt direct eerlijke feedback over wat het oplevert als je het aanpakt.";
     const contactEmail = data?.email || "contact@merlign.com";
-    const linkedinLink = data?.linkedin || "https://www.linkedin.com/in/merlijn-van-der-vleuten-1b9118267/";
+    const linkedinLink = /^https?:\/\//.test(data?.linkedin) ? data.linkedin : "https://www.linkedin.com/in/merlijn-van-der-vleuten-1b9118267/";
     return (
         <div className="bg-[var(--background)] min-h-screen">
             <SEO
