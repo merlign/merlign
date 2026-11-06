@@ -42,8 +42,8 @@ export default async function handler(req) {
             return new Response('Geen toegang tot interne adressen.', { status: 403 });
         }
 
-        // Block private IP ranges (basic check for Edge runtime)
-        if (hostname.match(/^10\.|^172\.(1[6-9]|2[0-9]|3[0-1])\.|^192\.168\./)) {
+        // Block private IP ranges + link-local (cloud metadata)
+        if (hostname.match(/^10\.|^172\.(1[6-9]|2[0-9]|3[0-1])\.|^192\.168\.|^169\.254\./)) {
             return new Response('Geen toegang tot private netwerken.', { status: 403 });
         }
     } catch (e) {
